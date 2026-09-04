@@ -1,6 +1,8 @@
 {
   "name": "visual-app-builder",
   "version": "1.0.0",
+  "description": "Enterprise Visual Application Builder Platform with AI Generation & Agent Builder",
+  "author": "yoalmog",
   "main": "electron/main.js",
   "scripts": {
     "dev": "next dev",
@@ -11,11 +13,12 @@
     "test": "tsx scripts/run-all-acceptance-tests.ts",
     "test:phase3": "tsx scripts/run-phase3-suite.ts",
     "electron": "electron .",
-    "build:windows": "electron-builder --win --x64"
+    "build:windows": "electron-builder --win --x64 --publish never"
   },
   "build": {
     "appId": "com.antigravity.visualappbuilder",
     "productName": "Visual App Builder",
+    "publish": null,
     "directories": {
       "output": "dist"
     },

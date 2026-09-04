@@ -31,14 +31,6 @@ jobs:
       - name: Run ESLint Verification
         run: npm.cmd run lint
 
-      - name: Build Next.js Production Bundle
-        run: npm.cmd run build
-
-      - name: Start Local Dev Server for Integration Tests
-        run: |
-          $devProcess = Start-Process -FilePath "npm.cmd" -ArgumentList "run", "dev" -PassThru
-          Start-Sleep -Seconds 8
-
       - name: Execute Complete Master Acceptance Suite (901/901 Tests)
         run: npx.cmd tsx scripts/run-all-acceptance-tests.ts
 
@@ -62,6 +54,8 @@ jobs:
 
       - name: Build Next.js Production Software
         run: npm.cmd run build
+        env:
+          NODE_ENV: production
 
       - name: Prepare Standalone Assets and Windows Launchers
         run: |
@@ -77,7 +71,9 @@ jobs:
           Copy-Item -Force "Launch-Silent.vbs" ".next\standalone\"
 
       - name: Build Windows Desktop Executables (.exe Installer & Portable)
-        run: npx.cmd electron-builder --win --x64
+        run: npx.cmd electron-builder --win --x64 --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Package Windows Standalone Distribution (Zip)
         run: |
