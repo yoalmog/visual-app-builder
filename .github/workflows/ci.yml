@@ -1,4 +1,4 @@
-name: CI - Build Software & Verify Platform
+name: CI - Build Software for Windows & Verify Platform
 
 on:
   push:
@@ -43,7 +43,7 @@ jobs:
         run: npx.cmd tsx scripts/run-all-acceptance-tests.ts
 
   build-software:
-    name: Build & Package Software Release
+    name: Build Software for Windows (Desktop .exe & Standalone Package)
     runs-on: windows-latest
     needs: verify-tests
 
@@ -60,12 +60,12 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Build Production Software (Next.js Standalone)
+      - name: Build Next.js Production Software
         run: npm.cmd run build
 
-      - name: Prepare Standalone Software Distribution Package
+      - name: Prepare Standalone Assets and Windows Launchers
         run: |
-          # Copy static files to standalone directory for full self-contained deployment
+          # Copy static and public assets into standalone directory for self-contained runtime
           if (Test-Path ".next\static") {
             New-Item -ItemType Directory -Force -Path ".next\standalone\.next\static"
             Copy-Item -Recurse -Force ".next\static\*" ".next\standalone\.next\static\"
@@ -73,14 +73,28 @@ jobs:
           if (Test-Path "public") {
             Copy-Item -Recurse -Force "public" ".next\standalone\"
           }
-          # Create zip archive of the compiled software
-          Compress-Archive -Path ".next\standalone\*" -DestinationPath "visual-app-builder-release.zip" -Force
+          Copy-Item -Force "Launch-Visual-App-Builder.bat" ".next\standalone\"
+          Copy-Item -Force "Launch-Silent.vbs" ".next\standalone\"
 
-      - name: Upload Production Software Artifact
+      - name: Build Windows Desktop Executables (.exe Installer & Portable)
+        run: npx.cmd electron-builder --win --x64
+
+      - name: Package Windows Standalone Distribution (Zip)
+        run: |
+          Compress-Archive -Path ".next\standalone\*" -DestinationPath "visual-app-builder-windows-standalone.zip" -Force
+
+      - name: Upload Windows Desktop Software (.exe)
         uses: actions/upload-artifact@v4
         with:
-          name: visual-app-builder-software-build
+          name: visual-app-builder-windows-desktop-exe
           path: |
-            visual-app-builder-release.zip
-            .next/standalone
+            dist/*.exe
+            dist/*.blockmap
+          retention-days: 30
+
+      - name: Upload Windows Standalone Software (Zip)
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-app-builder-windows-standalone-zip
+          path: visual-app-builder-windows-standalone.zip
           retention-days: 30
