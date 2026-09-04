@@ -1,4 +1,4 @@
-name: CI - Visual App Builder & AI Platform
+name: CI - Build Software & Verify Platform
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  verify:
-    name: Build, Typecheck & Master Acceptance Suite (901 Tests)
+  verify-tests:
+    name: Verify Platform (Typecheck, Lint & 901 Acceptance Tests)
     runs-on: windows-latest
 
     steps:
@@ -41,3 +41,46 @@ jobs:
 
       - name: Execute Complete Master Acceptance Suite (901/901 Tests)
         run: npx.cmd tsx scripts/run-all-acceptance-tests.ts
+
+  build-software:
+    name: Build & Package Software Release
+    runs-on: windows-latest
+    needs: verify-tests
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Production Software (Next.js Standalone)
+        run: npm.cmd run build
+
+      - name: Prepare Standalone Software Distribution Package
+        run: |
+          # Copy static files to standalone directory for full self-contained deployment
+          if (Test-Path ".next\static") {
+            New-Item -ItemType Directory -Force -Path ".next\standalone\.next\static"
+            Copy-Item -Recurse -Force ".next\static\*" ".next\standalone\.next\static\"
+          }
+          if (Test-Path "public") {
+            Copy-Item -Recurse -Force "public" ".next\standalone\"
+          }
+          # Create zip archive of the compiled software
+          Compress-Archive -Path ".next\standalone\*" -DestinationPath "visual-app-builder-release.zip" -Force
+
+      - name: Upload Production Software Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-app-builder-software-build
+          path: |
+            visual-app-builder-release.zip
+            .next/standalone
+          retention-days: 30

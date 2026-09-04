@@ -5,6 +5,7 @@
 
 # Testing
 /coverage
+scripts/acceptance-results.json
 
 # Next.js
 /.next/
