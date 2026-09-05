@@ -6,14 +6,14 @@
   "main": "electron/main.js",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/copy-standalone-assets.js",
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "test": "tsx scripts/run-all-acceptance-tests.ts",
     "test:phase3": "tsx scripts/run-phase3-suite.ts",
     "electron": "electron .",
-    "build:windows": "electron-builder --win --x64 --publish never"
+    "build:windows": "npm run build && electron-builder --win --x64 --publish never"
   },
   "build": {
     "appId": "com.antigravity.visualappbuilder",
@@ -22,10 +22,13 @@
     "directories": {
       "output": "dist"
     },
+    "asar": true,
+    "asarUnpack": [
+      ".next/standalone/**/*"
+    ],
     "files": [
       "electron/**/*",
       ".next/standalone/**/*",
-      ".next/static/**/*",
       "public/**/*"
     ],
     "win": {
