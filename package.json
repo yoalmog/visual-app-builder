@@ -23,13 +23,14 @@
       "output": "dist"
     },
     "asar": true,
-    "asarUnpack": [
-      ".next/standalone/**/*"
-    ],
     "files": [
-      "electron/**/*",
-      ".next/standalone/**/*",
-      "public/**/*"
+      "electron/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": ".next/standalone",
+        "to": "standalone"
+      }
     ],
     "win": {
       "target": [

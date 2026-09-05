@@ -53,19 +53,25 @@ function getServerPath() {
     return fs.existsSync(devPath) ? devPath : null;
   }
 
-  // 1. Unpacked asar path (Standard electron-builder with asarUnpack)
+  // 1. extraResources standalone directory (resources/standalone/server.js)
+  const standalonePath = path.join(process.resourcesPath, 'standalone', 'server.js');
+  if (fs.existsSync(standalonePath)) {
+    return standalonePath;
+  }
+
+  // 2. Unpacked asar path fallback
   const unpackedPath = path.join(process.resourcesPath, 'app.asar.unpacked', '.next', 'standalone', 'server.js');
   if (fs.existsSync(unpackedPath)) {
     return unpackedPath;
   }
 
-  // 2. Direct resources app path
+  // 3. Direct resources app path
   const appPath = path.join(process.resourcesPath, 'app', '.next', 'standalone', 'server.js');
   if (fs.existsSync(appPath)) {
     return appPath;
   }
 
-  // 3. Fallback relative to __dirname
+  // 4. Fallback relative to __dirname
   const relativePath = path.join(__dirname, '..', '.next', 'standalone', 'server.js');
   if (fs.existsSync(relativePath)) {
     return relativePath;
@@ -86,16 +92,20 @@ function startServer(port) {
         return reject(new Error(errMsg));
       }
 
+      const serverDir = path.dirname(serverPath);
+      const nodeModulesDir = path.join(serverDir, 'node_modules');
+
       const env = {
         ...process.env,
         PORT: String(port),
         HOSTNAME: '127.0.0.1',
         NODE_ENV: 'production',
         ELECTRON_RUN_AS_NODE: '1',
+        NODE_PATH: nodeModulesDir,
       };
 
-      const serverDir = path.dirname(serverPath);
       log(`Spawning server process in cwd: ${serverDir} on port ${port}...`);
+      log(`Node modules path: ${nodeModulesDir} (exists: ${fs.existsSync(nodeModulesDir)})`);
 
       serverProcess = fork(serverPath, [], {
         cwd: serverDir,
