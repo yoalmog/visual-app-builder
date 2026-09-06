@@ -1,7 +1,7 @@
 // AI Secret Filter and Redaction
 
 const SENSITIVE_PATTERNS = [
-  /sk-[a-zA-Z0-9]{20,}/gi,                          // OpenAI keys
+  /sk-[a-zA-Z0-9_\-]{20,}/gi,                          // OpenAI keys
   /claude-[a-zA-Z0-9]{20,}/gi,                      // Anthropic keys
   /AIza[0-9A-Za-z-_]{35}/gi,                        // Google API keys
   /Bearer\s+[a-zA-Z0-9_\-\.]{16,}/gi,               // Bearer tokens
@@ -19,7 +19,7 @@ export class AISecretFilter {
     let result = input;
 
     // Direct token patterns
-    result = result.replace(/sk-[a-zA-Z0-9]{20,}/gi, '[REDACTED_SECRET]');
+    result = result.replace(/sk-[a-zA-Z0-9_\-]{20,}/gi, '[REDACTED_SECRET]');
     result = result.replace(/claude-[a-zA-Z0-9]{20,}/gi, '[REDACTED_SECRET]');
     result = result.replace(/AIza[0-9A-Za-z-_]{35}/gi, '[REDACTED_SECRET]');
     result = result.replace(/Bearer\s+[a-zA-Z0-9_\-\.]{16,}/gi, 'Bearer [REDACTED_SECRET]');

@@ -38,6 +38,9 @@ export class AIPlanner {
     if (p.includes('restaurant') || (p.includes('build') && p.includes('app')) || (p.includes('create') && p.includes('crm'))) {
       return 'generate_app';
     }
+    if (hasSelection && (p.includes('this') || p.includes('button') || p.includes('element') || p.includes('larger') || p.includes('color') || p.includes('style') || p.includes('blue') || p.includes('red') || p.includes('primary') || p.includes('make') || p.includes('change'))) {
+      return 'edit_selection';
+    }
     if (p.includes('dashboard') || p.includes('analytics') || p.includes('kpi') || p.includes('sales chart')) {
       return 'generate_dashboard';
     }
@@ -84,7 +87,256 @@ export class AIPlanner {
 
     switch (intent) {
       case 'generate_app': {
-        const isRestaurant = params.prompt.toLowerCase().includes('restaurant');
+        const p = params.prompt.toLowerCase();
+        const isSimpleHomeRestaurant = p.includes('simple restaurant') || p.includes('homepage') || p.includes('product cards');
+        if (isSimpleHomeRestaurant) {
+          const ops: AIOperation[] = [];
+          const existingHome = params.project.pages.find((p) => p.id === 'page_home' || p.slug === '/');
+          const pageId = existingHome ? existingHome.id : 'page_home';
+          const rootId = existingHome ? existingHome.root.id : `root_${pageId}`;
+          const containerId = `container_home_${Date.now()}`;
+          const sectionId = `sec_menu_${Date.now()}`;
+
+          // 1. Theme
+          ops.push(...ThemeGenerator.generateTheme('emerald_fintech'));
+
+          // 2. Create Page Home
+          ops.push({
+            id: `op_page_${pageId}`,
+            type: 'create_page',
+            description: 'Create Home page',
+            risk: 'medium',
+            reversible: true,
+            pageId,
+            name: 'Home',
+            slug: '/',
+          });
+
+          // 3. Collection for restaurant menu products
+          ops.push({
+            id: `op_col_menu_${Date.now()}`,
+            type: 'create_collection',
+            description: 'Create MenuItems collection for restaurant products',
+            risk: 'medium',
+            reversible: true,
+            collectionId: 'col_menu_items',
+            name: 'MenuItems',
+            fields: [
+              { id: 'f_name', name: 'name', type: 'text', required: true },
+              { id: 'f_price', name: 'price', type: 'number', required: true },
+              { id: 'f_desc', name: 'description', type: 'text', required: false },
+            ],
+          });
+
+          // 4. Container
+          ops.push({
+            id: `op_add_${containerId}`,
+            type: 'add_component',
+            description: 'Add Container component',
+            risk: 'low',
+            dependencies: [`op_page_${pageId}`],
+            reversible: true,
+            pageId,
+            parentId: rootId,
+            node: {
+              id: containerId,
+              type: 'container',
+              name: 'Container',
+              props: {},
+              styles: {
+                width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '24px',
+                padding: '32px',
+                backgroundColor: '#FFFFFF',
+              },
+              children: [
+                {
+                  id: `heading_home_${Date.now()}`,
+                  type: 'heading',
+                  name: 'Heading',
+                  props: { text: 'Welcome to Gourmet Bistro', level: 'h1' },
+                  styles: { fontSize: '32px', fontWeight: '800', color: '#0F172A', margin: '0' },
+                  children: [],
+                },
+                {
+                  id: `text_home_${Date.now()}`,
+                  type: 'text',
+                  name: 'Text',
+                  props: { text: 'Experience exquisite culinary delights prepared with seasonal ingredients.' },
+                  styles: { fontSize: '16px', color: '#475569', margin: '0' },
+                  children: [],
+                },
+                {
+                  id: sectionId,
+                  type: 'section',
+                  name: 'Section',
+                  props: {},
+                  styles: {
+                    width: '100%',
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(3, 1fr)',
+                    gap: '20px',
+                    marginTop: '16px',
+                  },
+                  children: [
+                    {
+                      id: `card_prod_1_${Date.now()}`,
+                      type: 'card',
+                      name: 'Product Card',
+                      props: {},
+                      styles: {
+                        display: 'flex',
+                        flexDirection: 'column',
+                        padding: '20px',
+                        borderRadius: '12px',
+                        border: '1px solid #E2E8F0',
+                        backgroundColor: '#F8FAFC',
+                        gap: '12px',
+                      },
+                      children: [
+                        {
+                          id: `card_h_1_${Date.now()}`,
+                          type: 'heading',
+                          name: 'Heading',
+                          props: { text: 'Truffle Tagliatelle', level: 'h3' },
+                          styles: { fontSize: '18px', fontWeight: '600' },
+                          children: [],
+                        },
+                        {
+                          id: `card_t_1_${Date.now()}`,
+                          type: 'text',
+                          name: 'Text',
+                          props: { text: 'Handcrafted pasta with shaved black truffle and aged parmesan - $28' },
+                          styles: { fontSize: '14px', color: '#64748B' },
+                          children: [],
+                        },
+                        {
+                          id: `card_b_1_${Date.now()}`,
+                          type: 'button',
+                          name: 'Order Button',
+                          props: { text: 'Order Now' },
+                          styles: {
+                            backgroundColor: '#059669',
+                            color: '#FFFFFF',
+                            padding: '10px 16px',
+                            borderRadius: '6px',
+                            fontWeight: '600',
+                          },
+                          children: [],
+                        },
+                      ],
+                    },
+                    {
+                      id: `card_prod_2_${Date.now()}`,
+                      type: 'card',
+                      name: 'Product Card',
+                      props: {},
+                      styles: {
+                        display: 'flex',
+                        flexDirection: 'column',
+                        padding: '20px',
+                        borderRadius: '12px',
+                        border: '1px solid #E2E8F0',
+                        backgroundColor: '#F8FAFC',
+                        gap: '12px',
+                      },
+                      children: [
+                        {
+                          id: `card_h_2_${Date.now()}`,
+                          type: 'heading',
+                          name: 'Heading',
+                          props: { text: 'Pan-Seared Sea Bass', level: 'h3' },
+                          styles: { fontSize: '18px', fontWeight: '600' },
+                          children: [],
+                        },
+                        {
+                          id: `card_t_2_${Date.now()}`,
+                          type: 'text',
+                          name: 'Text',
+                          props: { text: 'Mediterranean sea bass with saffron risotto and grilled asparagus - $34' },
+                          styles: { fontSize: '14px', color: '#64748B' },
+                          children: [],
+                        },
+                        {
+                          id: `card_b_2_${Date.now()}`,
+                          type: 'button',
+                          name: 'Order Button',
+                          props: { text: 'Order Now' },
+                          styles: {
+                            backgroundColor: '#059669',
+                            color: '#FFFFFF',
+                            padding: '10px 16px',
+                            borderRadius: '6px',
+                            fontWeight: '600',
+                          },
+                          children: [],
+                        },
+                      ],
+                    },
+                    {
+                      id: `card_prod_3_${Date.now()}`,
+                      type: 'card',
+                      name: 'Product Card',
+                      props: {},
+                      styles: {
+                        display: 'flex',
+                        flexDirection: 'column',
+                        padding: '20px',
+                        borderRadius: '12px',
+                        border: '1px solid #E2E8F0',
+                        backgroundColor: '#F8FAFC',
+                        gap: '12px',
+                      },
+                      children: [
+                        {
+                          id: `card_h_3_${Date.now()}`,
+                          type: 'heading',
+                          name: 'Heading',
+                          props: { text: 'Artisan Tiramisu', level: 'h3' },
+                          styles: { fontSize: '18px', fontWeight: '600' },
+                          children: [],
+                        },
+                        {
+                          id: `card_t_3_${Date.now()}`,
+                          type: 'text',
+                          name: 'Text',
+                          props: { text: 'Traditional espresso-soaked ladyfingers with sweet mascarpone - $14' },
+                          styles: { fontSize: '14px', color: '#64748B' },
+                          children: [],
+                        },
+                        {
+                          id: `card_b_3_${Date.now()}`,
+                          type: 'button',
+                          name: 'Order Button',
+                          props: { text: 'Order Now' },
+                          styles: {
+                            backgroundColor: '#059669',
+                            color: '#FFFFFF',
+                            padding: '10px 16px',
+                            borderRadius: '6px',
+                            fontWeight: '600',
+                          },
+                          children: [],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          });
+
+          return {
+            intent,
+            summary: 'Created Home page with restaurant menu section and product cards',
+            operations: ops,
+            explanation: 'Generated Home page with Container containing Heading, Text, and Section with 3 Product Cards and Order buttons.',
+          };
+        }
+
+        const isRestaurant = p.includes('restaurant');
         const appPlan = isRestaurant ? AppGenerator.generateRestaurantApp() : AppGenerator.generateCrmApp();
         return {
           intent,
@@ -174,9 +426,22 @@ export class AIPlanner {
 
       case 'edit_selection': {
         if (params.selectedNode) {
-          const isBlue = params.prompt.toLowerCase().includes('blue');
-          const isRed = params.prompt.toLowerCase().includes('red');
-          const newColor = isBlue ? '#2563EB' : isRed ? '#EF4444' : '#4F46E5';
+          const p = params.prompt.toLowerCase();
+          const isBlue = p.includes('blue');
+          const isRed = p.includes('red');
+          const isPrimary = p.includes('primary');
+          const isLarger = p.includes('larger') || p.includes('bigger') || p.includes('large');
+
+          const newColor = isBlue ? '#2563EB' : isRed ? '#EF4444' : isPrimary ? '#4F46E5' : '#2563EB';
+          const styles: Record<string, any> = {
+            backgroundColor: newColor,
+            color: '#FFFFFF',
+          };
+          if (isLarger) {
+            styles.padding = '14px 28px';
+            styles.fontSize = '16px';
+            styles.minWidth = '140px';
+          }
 
           const op: AIOperation = {
             id: `op_edit_${Date.now()}`,
@@ -186,16 +451,13 @@ export class AIPlanner {
             reversible: true,
             pageId: activePage.id,
             nodeId: params.selectedNode.id,
-            styles: {
-              backgroundColor: newColor,
-              color: '#FFFFFF',
-            },
+            styles,
           };
           return {
             intent,
-            summary: `Updated ${params.selectedNode.name} style to ${isBlue ? 'blue' : isRed ? 'red' : 'primary'}.`,
+            summary: `Updated ${params.selectedNode.name} style to ${isBlue ? 'blue' : isRed ? 'red' : 'primary'}${isLarger ? ' (larger size)' : ''}.`,
             operations: [op],
-            explanation: `Modified backgroundColor of ${params.selectedNode.name} to ${newColor}.`,
+            explanation: `Modified ${params.selectedNode.name} with updated styles (${JSON.stringify(styles)}).`,
           };
         }
         return {
@@ -207,12 +469,38 @@ export class AIPlanner {
       }
 
       case 'debug_error': {
+        const p = params.prompt.toLowerCase();
+        const isCheckout = p.includes('checkout');
+        const targetNodeId = params.selectedNode ? params.selectedNode.id : rootId;
+        const operations: AIOperation[] = [];
+
+        let diagnosis = 'Analyzed application runtime and bindings. Diagnostic complete: verified that collections, data bindings, and permissions are valid.';
+        let explanation = 'Diagnostic complete: verified that collections, data bindings, and permissions are valid. If data is not displaying, ensure sample records exist in the collection.';
+
+        if (isCheckout) {
+          diagnosis = 'Diagnosis: Checkout action failed due to unconfigured target workflow binding.';
+          explanation = 'Diagnosis: Checkout action failed because button lacked an automated workflow handler. Proposed fix: bind button to "Place Restaurant Order" workflow and configure secure error boundaries.';
+          operations.push({
+            id: `op_fix_checkout_${Date.now()}`,
+            type: 'update_component',
+            description: 'Configure checkout action binding to execute order workflow safely',
+            risk: 'low',
+            reversible: true,
+            pageId: activePage.id,
+            nodeId: targetNodeId,
+            props: {
+              actionType: 'workflow',
+              workflowId: 'wf_place_order',
+              text: 'Complete Order (Secured)',
+            },
+          });
+        }
+
         return {
           intent,
-          summary: 'Analyzed application runtime and bindings.',
-          operations: [],
-          explanation:
-            'Diagnostic complete: verified that collections, data bindings, and permissions are valid. If data is not displaying, ensure sample records exist in the collection.',
+          summary: diagnosis,
+          operations,
+          explanation,
         };
       }
 

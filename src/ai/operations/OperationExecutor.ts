@@ -93,27 +93,7 @@ export class OperationExecutor {
         const page = project.pages.find((p) => p.id === op.pageId);
         if (!page) throw new Error(`Page ${op.pageId} not found`);
 
-        const newNode: ComponentNode = {
-          id: op.node.id,
-          type: op.node.type as any,
-          name: op.node.name,
-          props: op.node.props || {},
-          styles: op.node.styles || {},
-          bindings: op.node.bindings || {},
-          locked: false,
-          states: {},
-          interactions: [],
-          children: (op.node.children || []).map((c: any) => ({
-            ...c,
-            parentId: op.node.id,
-            locked: false,
-            states: c.states || {},
-            interactions: c.interactions || [],
-            children: c.children || [],
-          })),
-          parentId: op.parentId,
-        };
-
+        const newNode = this.normalizeNode(op.node, op.parentId);
         const updatedRoot = insertNode(page.root, op.parentId, newNode, op.index);
         page.root = updatedRoot;
         break;
@@ -336,5 +316,25 @@ export class OperationExecutor {
     }
 
     return project;
+  }
+
+  private static normalizeNode(raw: any, parentId?: string): ComponentNode {
+    const node: ComponentNode = {
+      id: raw.id,
+      type: raw.type,
+      name: raw.name || raw.type,
+      props: raw.props || {},
+      styles: raw.styles || {},
+      bindings: raw.bindings || {},
+      locked: Boolean(raw.locked),
+      states: raw.states || {},
+      interactions: raw.interactions || [],
+      parentId,
+      children: [],
+    };
+    if (Array.isArray(raw.children)) {
+      node.children = raw.children.map((child: any) => this.normalizeNode(child, node.id));
+    }
+    return node;
   }
 }

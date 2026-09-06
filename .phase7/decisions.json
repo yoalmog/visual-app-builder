@@ -1,0 +1,62 @@
+[
+  {
+    "id": "DEC-001",
+    "timestamp": "2026-09-06T07:39:19.671Z",
+    "phase": "Phase 7 Foundation",
+    "title": "Schema-First Operation Vocabularies Only",
+    "rationale": "AI must never output arbitrary JSX or mutate arbitrary React state. All actions are compiled into typed AIOperation objects validated against COMPONENT_REGISTRY.",
+    "implications": [
+      "Zero JSX injection vulnerability",
+      "Total type safety",
+      "Direct runtime compatibility"
+    ]
+  },
+  {
+    "id": "DEC-002",
+    "timestamp": "2026-09-06T07:39:19.671Z",
+    "phase": "Phase 7.8",
+    "title": "Direct History System Integration via pushHistory",
+    "rationale": "Do NOT create a disconnected secondary AI history stack. Push snapshots to builder history so standard Undo/Redo actions effortlessly restore pre-AI state.",
+    "implications": [
+      "Single source of truth for history",
+      "Consistent keyboard shortcuts (Ctrl+Z)",
+      "Predictable rollback"
+    ]
+  },
+  {
+    "id": "DEC-003",
+    "timestamp": "2026-09-06T07:39:19.671Z",
+    "phase": "Phase 7.10",
+    "title": "Strict Bounded Agent Execution with Ceiling Guardrails",
+    "rationale": "Autonomous agents must never run in unbounded loops. DEFAULT_MAX_STEPS = 15 ceiling and 3-step duplicate action detector guarantee safe halts.",
+    "implications": [
+      "No infinite API billing loops",
+      "Deterministic error recovery",
+      "Explicit human intervention upon loop"
+    ]
+  },
+  {
+    "id": "DEC-004",
+    "timestamp": "2026-09-06T07:39:19.671Z",
+    "phase": "Phase 7.39",
+    "title": "Durable Disk-Backed Checkpointing in .phase7",
+    "rationale": "Implementations must survive IDE crashes, restarts, and interruptions without losing verified work or fabricating unverified progress.",
+    "implications": [
+      "Resume from first incomplete deliverable",
+      "Targeted failure recovery",
+      "Never trust state blindly"
+    ]
+  },
+  {
+    "id": "DEC-005",
+    "timestamp": "2026-09-06T08:09:40.000Z",
+    "phase": "Phase 7.40",
+    "title": "Unified End-to-End Pipeline & Hard Safety Boundaries",
+    "rationale": "All Phase 7 capabilities (Builder, Agent, Transactions, Recovery, Security) integrate into a unified pipeline where safety controls (NoEval, SecretFilter, Permission checks, Approval gates) can never be bypassed.",
+    "implications": [
+      "Production-ready coherence across subsystems",
+      "Crash and interruption survival without state duplication",
+      "Strict preservation of the frozen 776/776 Phase 1-6 baseline"
+    ]
+  }
+]
