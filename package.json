@@ -17,7 +17,12 @@
     "test:phase11": "tsx scripts/run-phase11-suite.ts && tsx scripts/run-phase11-chaos.ts",
     "test:phase11:load": "tsx scripts/run-phase11-loadtest.ts",
     "electron": "electron .",
-    "build:windows": "npm run build && electron-builder --win --x64 --publish never"
+    "build:windows": "npm run build && electron-builder --win --x64 --publish never",
+    "verify:d8-6": "tsx scripts/verify-d8-6-autonomous-verification.ts",
+    "verify:d8-7": "tsx scripts/verify-d8-7-autonomous-recovery.ts",
+    "verify:d8-8": "tsx scripts/verify-d8-8-autonomous-learning.ts",
+    "verify:d8-9": "tsx scripts/verify-d8-9-decision-optimization.ts",
+    "verify:d8-10": "tsx scripts/verify-d8-10-observability.ts"
   },
   "build": {
     "appId": "com.antigravity.visualappbuilder",

@@ -1,0 +1,51 @@
+{
+  "sessionId": "learn_sess_1788731411578_ejck",
+  "projectId": "proj_learn_01",
+  "projectVersion": 7,
+  "state": "analyzing",
+  "observations": [],
+  "recommendations": [],
+  "checkpoints": [
+    {
+      "checkpointId": "chk_1788731411579_yw8p",
+      "sessionId": "learn_sess_1788731411578_ejck",
+      "state": "analyzing",
+      "projectId": "proj_learn_01",
+      "projectVersion": 7,
+      "experienceCount": 13,
+      "recommendationsCount": 0,
+      "timestamp": "2026-09-06T21:50:11.579Z"
+    }
+  ],
+  "trace": {
+    "traceId": "trace_learn_sess_1788731411578_ejck",
+    "sessionId": "learn_sess_1788731411578_ejck",
+    "projectId": "proj_learn_01",
+    "events": [
+      {
+        "id": "evt_1788731411578",
+        "state": "idle",
+        "event": "LEARNING_SESSION_STARTED",
+        "message": "Learning session learn_sess_1788731411578_ejck initialized for project proj_learn_01",
+        "timestamp": "2026-09-06T21:50:11.578Z"
+      },
+      {
+        "id": "evt_1788731411578_rasx",
+        "state": "analyzing",
+        "event": "ANALYSIS_IN_PROGRESS",
+        "message": "Crunching data",
+        "timestamp": "2026-09-06T21:50:11.578Z"
+      }
+    ],
+    "startedAt": "2026-09-06T21:50:11.578Z"
+  },
+  "metrics": {
+    "totalExperiences": 14,
+    "recommendationsGenerated": 0,
+    "recommendationsAccepted": 0,
+    "recommendationsRejected": 0,
+    "patternsDetected": 0
+  },
+  "startedAt": "2026-09-06T21:50:11.578Z",
+  "updatedAt": "2026-09-06T21:50:11.578Z"
+}

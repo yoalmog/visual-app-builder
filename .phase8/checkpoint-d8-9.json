@@ -1,0 +1,48 @@
+{
+  "checkpoint": "CP-D8.9",
+  "workstream": "D8.9 — CONTROLLED DECISION OPTIMIZATION",
+  "status": "VERIFIED",
+  "timestamp": "2026-09-06T21:50:18.774Z",
+  "testsPassed": 40,
+  "totalTests": 40,
+  "regressionBaselines": {
+    "phase1_6": "776/776 PASS",
+    "phase7": "125/125 PASS",
+    "phase7_39": "25/25 PASS",
+    "phase7_40": "25/25 PASS",
+    "d8_1": "16/16 PASS",
+    "d8_2": "16/16 PASS",
+    "d8_3": "30/30 PASS",
+    "d8_4": "45/45 PASS",
+    "d8_5": "58/58 PASS",
+    "d8_6": "40/40 PASS",
+    "d8_7": "40/40 PASS",
+    "d8_8": "40/40 PASS",
+    "d8_9": "40/40 PASS"
+  },
+  "securityState": {
+    "noEval": "PASS",
+    "noNewFunction": "PASS",
+    "noArbitraryJs": "PASS",
+    "noArbitrarySql": "PASS",
+    "noShellExecution": "PASS",
+    "noSecretExposure": "PASS",
+    "noCrossProjectLeakage": "PASS",
+    "noPermissionBypass": "PASS",
+    "noPolicyBypass": "PASS",
+    "noApprovalBypass": "PASS",
+    "noTransactionBypass": "PASS",
+    "noVerificationBypass": "PASS",
+    "securityImmutability": "PASS",
+    "autonomyImmutability": "PASS",
+    "promptInjectionDefense": "PASS"
+  },
+  "provenanceState": {
+    "decisionSessionState": "ACTIVE",
+    "deterministicScoring": "PASS",
+    "conservativePreference": "PASS",
+    "transactionManagerIntegration": "PASS",
+    "verificationEngineIntegration": "PASS",
+    "recoveryEngineIntegration": "PASS"
+  }
+}

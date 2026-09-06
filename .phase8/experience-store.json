@@ -1,0 +1,413 @@
+[
+  {
+    "id": "exp_high_score",
+    "projectId": "proj_exp_boost",
+    "category": "EXECUTION_SUCCESS",
+    "outcome": "SUCCESS",
+    "validity": "VALID",
+    "description": "Add button",
+    "context": {
+      "projectId": "proj_exp_boost",
+      "projectVersion": 1,
+      "schemaVersion": 7,
+      "environment": "development",
+      "autonomyLevel": 3
+    },
+    "features": {
+      "version": "1.0",
+      "operationTypes": [
+        "add_component"
+      ],
+      "componentTypes": [
+        "button"
+      ],
+      "mutationCount": 1,
+      "operationCount": 1,
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "rollbackOccurred": false,
+      "tags": [
+        "button"
+      ]
+    },
+    "provenance": {
+      "source": "execution",
+      "projectId": "proj_exp_boost",
+      "projectVersion": 1,
+      "schemaVersion": 7,
+      "environment": "development",
+      "actor": "developer",
+      "timestamp": "2026-09-06T21:50:18.690Z",
+      "sanitized": true
+    },
+    "evidence": [
+      "Verified button addition"
+    ],
+    "timesMatched": 1,
+    "successScore": 0.95,
+    "createdAt": "2026-09-06T21:50:18.690Z",
+    "updatedAt": "2026-09-06T21:50:18.690Z"
+  },
+  {
+    "id": "exp_1788731418730_zjze",
+    "projectId": "proj_opt_01",
+    "category": "EXECUTION_SUCCESS",
+    "outcome": "SUCCESS",
+    "validity": "VALID",
+    "description": "Successfully executed 1 operations",
+    "context": {
+      "projectId": "proj_opt_01",
+      "projectVersion": 7,
+      "schemaVersion": 7,
+      "environment": "development"
+    },
+    "features": {
+      "version": "1.0.0",
+      "operationTypes": [
+        "add_component"
+      ],
+      "componentTypes": [
+        "button"
+      ],
+      "mutationCount": 1,
+      "operationCount": 1,
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "executionDurationMs": 30,
+      "rollbackOccurred": false,
+      "tags": [
+        "execution_success"
+      ]
+    },
+    "provenance": {
+      "source": "execution",
+      "projectId": "proj_opt_01",
+      "projectVersion": 7,
+      "schemaVersion": 7,
+      "environment": "development",
+      "actor": "AutonomousLearningEngine",
+      "timestamp": "2026-09-06T21:50:18.730Z",
+      "sanitized": true,
+      "sanitizationNotes": [
+        "Redacted secrets and injection patterns"
+      ]
+    },
+    "evidence": [
+      "All operations committed cleanly"
+    ],
+    "associatedOperations": [
+      {
+        "id": "op_btn_tx",
+        "type": "add_component",
+        "pageId": "page_home",
+        "parentId": "root_1788731418677",
+        "node": {
+          "id": "btn_tx_node",
+          "type": "button",
+          "name": "Tx Button",
+          "props": {
+            "label": "Click"
+          },
+          "children": []
+        },
+        "description": "Add Tx Button",
+        "risk": "low",
+        "reversible": true
+      }
+    ],
+    "timesMatched": 0,
+    "successScore": 0.8,
+    "createdAt": "2026-09-06T21:50:18.730Z",
+    "updatedAt": "2026-09-06T21:50:18.730Z"
+  },
+  {
+    "id": "exp_1788731418734_yjt4",
+    "projectId": "proj_opt_01",
+    "category": "EXECUTION_SUCCESS",
+    "outcome": "SUCCESS",
+    "validity": "VALID",
+    "description": "Successfully executed 1 operations",
+    "context": {
+      "projectId": "proj_opt_01",
+      "projectVersion": 7,
+      "schemaVersion": 7,
+      "environment": "development"
+    },
+    "features": {
+      "version": "1.0.0",
+      "operationTypes": [
+        "add_component"
+      ],
+      "componentTypes": [
+        "button"
+      ],
+      "mutationCount": 1,
+      "operationCount": 1,
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "executionDurationMs": 2,
+      "rollbackOccurred": false,
+      "tags": [
+        "execution_success"
+      ]
+    },
+    "provenance": {
+      "source": "execution",
+      "projectId": "proj_opt_01",
+      "projectVersion": 7,
+      "schemaVersion": 7,
+      "environment": "development",
+      "actor": "AutonomousLearningEngine",
+      "timestamp": "2026-09-06T21:50:18.734Z",
+      "sanitized": true,
+      "sanitizationNotes": [
+        "Redacted secrets and injection patterns"
+      ]
+    },
+    "evidence": [
+      "All operations committed cleanly"
+    ],
+    "associatedOperations": [
+      {
+        "id": "op_btn_verif",
+        "type": "add_component",
+        "pageId": "page_home",
+        "parentId": "root_1788731418677",
+        "node": {
+          "id": "btn_verif_node",
+          "type": "button",
+          "name": "Verif Button",
+          "props": {
+            "label": "Verified"
+          },
+          "children": []
+        },
+        "description": "Add Verif Button",
+        "risk": "low",
+        "reversible": true
+      }
+    ],
+    "timesMatched": 0,
+    "successScore": 0.8,
+    "createdAt": "2026-09-06T21:50:18.734Z",
+    "updatedAt": "2026-09-06T21:50:18.734Z"
+  },
+  {
+    "id": "exp_1788731418746_rcxb",
+    "projectId": "proj_opt_01",
+    "category": "USER_CORRECTION",
+    "outcome": "FAILURE",
+    "validity": "VALID",
+    "description": "User rejected recommendation cand_user_choice: User corrected decision: User requested comprehensive navbar instead",
+    "context": {
+      "projectId": "proj_opt_01",
+      "projectVersion": 7,
+      "schemaVersion": 7,
+      "environment": "development"
+    },
+    "features": {
+      "version": "1.0.0",
+      "operationTypes": [],
+      "componentTypes": [],
+      "mutationCount": 0,
+      "operationCount": 0,
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "rollbackOccurred": false,
+      "tags": [
+        "user_correction"
+      ]
+    },
+    "provenance": {
+      "source": "user_feedback",
+      "projectId": "proj_opt_01",
+      "projectVersion": 7,
+      "schemaVersion": 7,
+      "environment": "development",
+      "actor": "AutonomousLearningEngine",
+      "timestamp": "2026-09-06T21:50:18.746Z",
+      "sanitized": true,
+      "sanitizationNotes": [
+        "Redacted secrets and injection patterns"
+      ]
+    },
+    "evidence": [
+      "recommendationId:cand_user_choice",
+      "User corrected decision: User requested comprehensive navbar instead"
+    ],
+    "timesMatched": 0,
+    "successScore": 0.2,
+    "createdAt": "2026-09-06T21:50:18.746Z",
+    "updatedAt": "2026-09-06T21:50:18.746Z"
+  },
+  {
+    "id": "exp_1788731418747_c53d",
+    "projectId": "proj_opt_01",
+    "category": "EXECUTION_SUCCESS",
+    "outcome": "SUCCESS",
+    "validity": "VALID",
+    "description": "Successfully executed 0 operations",
+    "context": {
+      "projectId": "proj_opt_01",
+      "projectVersion": 7,
+      "schemaVersion": 7,
+      "environment": "development"
+    },
+    "features": {
+      "version": "1.0.0",
+      "operationTypes": [],
+      "componentTypes": [],
+      "mutationCount": 0,
+      "operationCount": 0,
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "executionDurationMs": 45,
+      "rollbackOccurred": false,
+      "tags": [
+        "execution_success"
+      ]
+    },
+    "provenance": {
+      "source": "execution",
+      "projectId": "proj_opt_01",
+      "projectVersion": 7,
+      "schemaVersion": 7,
+      "environment": "development",
+      "actor": "AutonomousLearningEngine",
+      "timestamp": "2026-09-06T21:50:18.747Z",
+      "sanitized": true,
+      "sanitizationNotes": [
+        "Redacted secrets and injection patterns"
+      ]
+    },
+    "evidence": [
+      "All operations committed cleanly"
+    ],
+    "associatedOperations": [],
+    "timesMatched": 0,
+    "successScore": 0.8,
+    "createdAt": "2026-09-06T21:50:18.747Z",
+    "updatedAt": "2026-09-06T21:50:18.747Z"
+  },
+  {
+    "id": "exp_proj_A_only",
+    "projectId": "proj_A_source",
+    "category": "EXECUTION_SUCCESS",
+    "outcome": "SUCCESS",
+    "validity": "VALID",
+    "description": "Secret feature in Proj A",
+    "context": {
+      "projectId": "proj_A_source",
+      "projectVersion": 1,
+      "schemaVersion": 7,
+      "environment": "development",
+      "autonomyLevel": 3
+    },
+    "features": {
+      "version": "1.0",
+      "operationTypes": [
+        "add_component"
+      ],
+      "componentTypes": [
+        "secret_node"
+      ],
+      "mutationCount": 1,
+      "operationCount": 1,
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "rollbackOccurred": false,
+      "tags": [
+        "secret"
+      ]
+    },
+    "provenance": {
+      "source": "execution",
+      "projectId": "proj_A_source",
+      "projectVersion": 1,
+      "schemaVersion": 7,
+      "environment": "development",
+      "actor": "developer",
+      "timestamp": "2026-09-06T21:50:18.759Z",
+      "sanitized": true
+    },
+    "evidence": [
+      "Secret evidence"
+    ],
+    "timesMatched": 1,
+    "successScore": 0.99,
+    "createdAt": "2026-09-06T21:50:18.759Z",
+    "updatedAt": "2026-09-06T21:50:18.759Z"
+  },
+  {
+    "id": "exp_1788731418773_63g3",
+    "projectId": "proj_d8_9_e2e",
+    "category": "EXECUTION_SUCCESS",
+    "outcome": "SUCCESS",
+    "validity": "VALID",
+    "description": "Successfully executed 1 operations",
+    "context": {
+      "projectId": "proj_d8_9_e2e",
+      "projectVersion": 7,
+      "schemaVersion": 7,
+      "environment": "development"
+    },
+    "features": {
+      "version": "1.0.0",
+      "operationTypes": [
+        "add_component"
+      ],
+      "componentTypes": [
+        "button"
+      ],
+      "mutationCount": 1,
+      "operationCount": 1,
+      "riskLevel": "LOW",
+      "approvalRequired": false,
+      "executionDurationMs": 2,
+      "rollbackOccurred": false,
+      "tags": [
+        "execution_success"
+      ]
+    },
+    "provenance": {
+      "source": "execution",
+      "projectId": "proj_d8_9_e2e",
+      "projectVersion": 7,
+      "schemaVersion": 7,
+      "environment": "development",
+      "actor": "AutonomousLearningEngine",
+      "timestamp": "2026-09-06T21:50:18.773Z",
+      "sanitized": true,
+      "sanitizationNotes": [
+        "Redacted secrets and injection patterns"
+      ]
+    },
+    "evidence": [
+      "All operations committed cleanly"
+    ],
+    "associatedOperations": [
+      {
+        "id": "op_e2e_btn",
+        "type": "add_component",
+        "pageId": "page_home",
+        "parentId": "root_1788731418770",
+        "node": {
+          "id": "btn_e2e_cta",
+          "type": "button",
+          "name": "CTA Button",
+          "props": {
+            "label": "Get Started Now"
+          },
+          "children": []
+        },
+        "description": "Add CTA Button",
+        "risk": "low",
+        "reversible": true
+      }
+    ],
+    "timesMatched": 0,
+    "successScore": 0.8,
+    "createdAt": "2026-09-06T21:50:18.773Z",
+    "updatedAt": "2026-09-06T21:50:18.773Z"
+  }
+]

@@ -1,0 +1,122 @@
+{
+  "sessionId": "dec_sess_1788731418767_s0nm",
+  "projectId": "proj_opt_01",
+  "projectVersion": 7,
+  "state": "CONTEXT_VALIDATED",
+  "context": {
+    "contextId": "ctx_dec_sess_1788731418767_s0nm",
+    "projectId": "proj_opt_01",
+    "projectVersion": 7,
+    "schemaVersion": 7,
+    "userIntent": "Persistence test",
+    "environment": "development",
+    "userAutonomyLevel": 3,
+    "userRoles": [
+      "developer"
+    ],
+    "constraints": [
+      {
+        "id": "c_security_no_eval",
+        "category": "SECURITY",
+        "rule": "Prohibit eval(), new Function(), child_process, execSync, and arbitrary SQL execution",
+        "isHardStop": true,
+        "active": true
+      },
+      {
+        "id": "c_project_isolation",
+        "category": "PROJECT_ISOLATION",
+        "rule": "Mutations and queries must strictly respect target project boundary",
+        "isHardStop": true,
+        "active": true
+      },
+      {
+        "id": "c_supported_operations",
+        "category": "SUPPORTED_OPERATIONS",
+        "rule": "Only registered AIOperation types may be executed",
+        "isHardStop": true,
+        "active": true
+      },
+      {
+        "id": "c_transaction_boundary",
+        "category": "TRANSACTION_BOUNDARY",
+        "rule": "All mutations must be wrapped in atomic AITransactionManager transactions",
+        "isHardStop": true,
+        "active": true
+      },
+      {
+        "id": "c_verification_requirement",
+        "category": "VERIFICATION_REQUIREMENT",
+        "rule": "Every applied strategy must pass post-execution verification",
+        "isHardStop": true,
+        "active": true
+      },
+      {
+        "id": "c_approval_requirement",
+        "category": "APPROVAL_REQUIREMENT",
+        "rule": "High-risk operations mandate approval in safe mode",
+        "isHardStop": false,
+        "active": true
+      }
+    ],
+    "relevantExperienceIds": [
+      "exp_1788731418747_c53d",
+      "exp_1788731418734_yjt4",
+      "exp_1788731418730_zjze",
+      "exp_1788731418746_rcxb"
+    ],
+    "relevantPatternIds": [
+      "pat_test_01"
+    ],
+    "timestamp": "2026-09-06T21:50:18.767Z"
+  },
+  "candidates": [],
+  "filteredCandidates": [],
+  "comparisons": [],
+  "checkpoints": [],
+  "metrics": {
+    "totalCandidatesGenerated": 0,
+    "candidatesFiltered": 0,
+    "candidatesScored": 0,
+    "selectionsMade": 0,
+    "approvalsRequired": 0,
+    "approvalsGranted": 0,
+    "policiesDenied": 0,
+    "verificationsPassed": 0,
+    "verificationsFailed": 0,
+    "recoveriesInvoked": 0,
+    "userCorrectionsCount": 0,
+    "averageConfidence": 0,
+    "averageScore": 0
+  },
+  "trace": {
+    "traceId": "trace_dec_sess_1788731418767_s0nm",
+    "sessionId": "dec_sess_1788731418767_s0nm",
+    "projectId": "proj_opt_01",
+    "events": [
+      {
+        "id": "evt_1788731418767",
+        "state": "IDLE",
+        "event": "DECISION_SESSION_INITIALIZED",
+        "message": "Decision optimization session dec_sess_1788731418767_s0nm initialized for project proj_opt_01",
+        "timestamp": "2026-09-06T21:50:18.767Z"
+      },
+      {
+        "id": "evt_1788731418767_71jo",
+        "state": "CONTEXT_BUILDING",
+        "event": "CONTEXT_BUILDING_STARTED",
+        "message": "Building decision context and querying relevant historical experience",
+        "timestamp": "2026-09-06T21:50:18.767Z"
+      },
+      {
+        "id": "evt_1788731418767_l3ti",
+        "state": "CONTEXT_VALIDATED",
+        "event": "CONTEXT_VALIDATED",
+        "message": "Context validated with 4 historical experiences",
+        "timestamp": "2026-09-06T21:50:18.767Z"
+      }
+    ],
+    "startedAt": "2026-09-06T21:50:18.767Z"
+  },
+  "createdAt": "2026-09-06T21:50:18.767Z",
+  "updatedAt": "2026-09-06T21:50:18.767Z"
+}

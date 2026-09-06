@@ -572,6 +572,7 @@ export class AdaptiveExecutionEngine {
     const maxRetries = Math.min(params.maxRetries ?? this.MAX_RETRIES, this.MAX_RETRIES);
 
     let currentState: AdaptiveExecutionState = 'idle';
+    const initialSnapshot: AppProject = JSON.parse(JSON.stringify(params.project));
     let currentProject: AppProject = JSON.parse(JSON.stringify(params.project));
     const completedStepIds: string[] = [];
     const executionEvents: ExecutionEvent[] = [];
@@ -1017,7 +1018,34 @@ export class AdaptiveExecutionEngine {
       };
     }
 
-    recordStateTransition('committed', 'Final verification passed clean; execution transaction committed');
+    // ── STAGE 4: D8.6 AUTONOMOUS VERIFICATION & COMMIT ──
+    const d86Verification = AutonomousVerificationEngine.verify({
+      verificationId: `ver_${executionId}`,
+      intent: (params.plan as any).goal?.userPrompt || params.plan.title || 'Execute Plan',
+      planId: params.plan.planId,
+      projectVersion: currentProject.version,
+      expectedChanges: params.plan.steps.map((s) => ({
+        entityType: s.expectedResult.entityType as any,
+        entityId: s.expectedResult.entityId,
+        changeType: s.operation.type.startsWith('create') ? 'create' : s.operation.type.startsWith('delete') ? 'delete' : 'update',
+      })),
+      expectedPostconditions: [],
+      affectedResources: params.plan.steps.map((s) => ({
+        type: s.expectedResult.entityType,
+        id: s.expectedResult.entityId,
+      })),
+      riskLevel: 'LOW',
+      projectBefore: initialSnapshot,
+      projectAfter: currentProject,
+      sessionId,
+    });
+
+    recordStateTransition(
+      'committed',
+      d86Verification.status === 'PASS'
+        ? 'Autonomous verification passed clean; execution transaction committed'
+        : `Autonomous verification concluded with status ${d86Verification.status}; execution transaction committed`
+    );
 
     const trace: ExecutionTrace = {
       requestId: executionId,
@@ -1054,7 +1082,7 @@ export class AdaptiveExecutionEngine {
       durationMs: Date.now() - startTime,
       retries: retriesCount,
       rollbacks: rollbackCount,
-      cleanVerification: true,
+      cleanVerification: d86Verification.status === 'PASS',
     };
 
     return {
@@ -1070,6 +1098,7 @@ export class AdaptiveExecutionEngine {
       decisions,
       checkpoints,
       summary,
+      verification: d86Verification,
     };
   }
 

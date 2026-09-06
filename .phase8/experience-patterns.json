@@ -1,0 +1,20 @@
+[
+  {
+    "id": "pat_test_01",
+    "title": "Safe Button Addition Pattern",
+    "description": "Adding a button inside a container succeeds consistently",
+    "category": "STRATEGY_EFFECTIVENESS",
+    "confidence": 0.95,
+    "occurrenceCount": 5,
+    "supportingExperienceIds": [],
+    "associatedOperations": [
+      "add_component"
+    ],
+    "associatedComponents": [
+      "button"
+    ],
+    "associatedFailureCategories": [],
+    "firstSeenAt": "2026-09-06T21:50:18.688Z",
+    "lastSeenAt": "2026-09-06T21:50:18.688Z"
+  }
+]

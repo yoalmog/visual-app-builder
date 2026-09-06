@@ -3,7 +3,7 @@
   "status": "PASSED",
   "checkpoint": "CP-8.20",
   "startedAt": "2026-09-06T09:29:16.248Z",
-  "updatedAt": "2026-09-06T12:46:04.442Z",
+  "updatedAt": "2026-09-06T21:50:30.756Z",
   "completedDeliverables": [
     "D8.1 Workstream D8.1",
     "D8.2 Workstream D8.2",
@@ -26,14 +26,25 @@
     "D8.19 Workstream D8.19",
     "D8.20 Workstream D8.20"
   ],
-  "activeDeliverable": "D8.1 Goal Understanding Engine",
-  "lastSuccessfulStep": "Completed D8.20",
+  "activeDeliverable": null,
+  "lastSuccessfulStep": "Completed D8.10",
+  "lastVerifiedCheckpoint": "CP-D8.10",
   "failures": [],
   "regressionStatus": {
     "baseline776": "PASS",
     "phase7": "PASS",
     "phase7_39": "PASS",
     "phase7_40": "PASS",
+    "d8_1": "PASS",
+    "d8_2": "PASS",
+    "d8_3": "PASS",
+    "d8_4": "PASS",
+    "d8_5": "PASS",
+    "d8_6": "PASS",
+    "d8_7": "PASS",
+    "d8_8": "PASS",
+    "d8_9": "PASS",
+    "d8_10": "PASS",
     "phase8": "PASS"
   }
 }

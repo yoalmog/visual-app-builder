@@ -744,5 +744,15 @@ export interface AdaptiveExecutionResult {
   };
   recovery?: ExecutionRecovery;
   summary?: ExecutionSummary;
+  verification?: import('./verification-types').VerificationResult;
 }
 
+export type * from './verification-types';
+export type * from './recovery-types';
+export type * from './learning-types';
+export type * from './decision-types';
+export { AutonomousLearningEngine } from './AutonomousLearningEngine';
+export { ExperienceStore } from './ExperienceStore';
+export { DecisionOptimizationEngine } from './DecisionOptimizationEngine';
+export { ExecutionTimelineEngine } from '../observability/ExecutionTimelineEngine';
+export { ExecutionEventStore } from '../observability/ExecutionEventStore';

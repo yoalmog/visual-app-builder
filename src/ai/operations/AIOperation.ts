@@ -164,6 +164,8 @@ export interface CreateWorkflowOperation extends BaseAIOperation {
     id: string;
     name: string;
     description?: string;
+    version?: number;
+    triggerType?: string;
     nodes: any[];
     edges: any[];
   };

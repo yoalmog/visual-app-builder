@@ -1,0 +1,2703 @@
+{
+  "sessionId": "recsess_1788731409416_rule",
+  "recoveryId": "rec_1788731409416_x6in",
+  "projectId": "d8_7_test_proj",
+  "projectVersionBefore": 7,
+  "currentState": "completed",
+  "request": {
+    "projectId": "d8_7_test_proj",
+    "projectVersion": 7,
+    "project": {
+      "id": "d8_7_test_proj",
+      "name": "D8.7 Recovery Test App",
+      "version": 7,
+      "theme": {
+        "primaryColor": "#4F46E5",
+        "backgroundColor": "#FFFFFF",
+        "textColor": "#0F172A",
+        "borderRadius": "8px",
+        "colors": {
+          "primary": "#4F46E5",
+          "secondary": "#06B6D4",
+          "background": "#FFFFFF",
+          "foreground": "#0F172A",
+          "muted": "#64748B",
+          "border": "#E2E8F0"
+        },
+        "typography": {
+          "fontFamily": "Inter, sans-serif"
+        },
+        "radius": {
+          "sm": 4,
+          "md": 8,
+          "lg": 12
+        }
+      },
+      "tokens": [
+        {
+          "id": "token_color_primary",
+          "name": "Primary",
+          "category": "color",
+          "value": "#4F46E5",
+          "description": "Primary brand color"
+        },
+        {
+          "id": "token_color_secondary",
+          "name": "Secondary",
+          "category": "color",
+          "value": "#06B6D4",
+          "description": "Secondary accent color"
+        },
+        {
+          "id": "token_color_accent",
+          "name": "Accent",
+          "category": "color",
+          "value": "#8B5CF6",
+          "description": "Accent highlight color"
+        },
+        {
+          "id": "token_color_background",
+          "name": "Background",
+          "category": "color",
+          "value": "#FFFFFF",
+          "description": "Default canvas background"
+        },
+        {
+          "id": "token_color_surface",
+          "name": "Surface",
+          "category": "color",
+          "value": "#F8FAFC",
+          "description": "Card surface color"
+        },
+        {
+          "id": "token_color_text",
+          "name": "Text",
+          "category": "color",
+          "value": "#0F172A",
+          "description": "Primary text color"
+        },
+        {
+          "id": "token_color_muted",
+          "name": "Muted",
+          "category": "color",
+          "value": "#64748B",
+          "description": "Muted text and subtle borders"
+        },
+        {
+          "id": "token_color_border",
+          "name": "Border",
+          "category": "color",
+          "value": "#E2E8F0",
+          "description": "Default border stroke color"
+        },
+        {
+          "id": "token_color_success",
+          "name": "Success",
+          "category": "color",
+          "value": "#10B981",
+          "description": "Success alert color"
+        },
+        {
+          "id": "token_color_warning",
+          "name": "Warning",
+          "category": "color",
+          "value": "#F59E0B",
+          "description": "Warning alert color"
+        },
+        {
+          "id": "token_color_danger",
+          "name": "Danger",
+          "category": "color",
+          "value": "#EF4444",
+          "description": "Destructive / error color"
+        },
+        {
+          "id": "token_space_1",
+          "name": "Spacing 1 (4px)",
+          "category": "spacing",
+          "value": "4px"
+        },
+        {
+          "id": "token_space_2",
+          "name": "Spacing 2 (8px)",
+          "category": "spacing",
+          "value": "8px"
+        },
+        {
+          "id": "token_space_3",
+          "name": "Spacing 3 (12px)",
+          "category": "spacing",
+          "value": "12px"
+        },
+        {
+          "id": "token_space_4",
+          "name": "Spacing 4 (16px)",
+          "category": "spacing",
+          "value": "16px"
+        },
+        {
+          "id": "token_space_5",
+          "name": "Spacing 5 (20px)",
+          "category": "spacing",
+          "value": "20px"
+        },
+        {
+          "id": "token_space_6",
+          "name": "Spacing 6 (24px)",
+          "category": "spacing",
+          "value": "24px"
+        },
+        {
+          "id": "token_space_8",
+          "name": "Spacing 8 (32px)",
+          "category": "spacing",
+          "value": "32px"
+        },
+        {
+          "id": "token_space_10",
+          "name": "Spacing 10 (40px)",
+          "category": "spacing",
+          "value": "40px"
+        },
+        {
+          "id": "token_space_12",
+          "name": "Spacing 12 (48px)",
+          "category": "spacing",
+          "value": "48px"
+        },
+        {
+          "id": "token_space_16",
+          "name": "Spacing 16 (64px)",
+          "category": "spacing",
+          "value": "64px"
+        },
+        {
+          "id": "token_typo_display",
+          "name": "Display",
+          "category": "typography",
+          "value": "48px",
+          "description": "Display title size"
+        },
+        {
+          "id": "token_typo_h1",
+          "name": "H1",
+          "category": "typography",
+          "value": "36px",
+          "description": "Heading 1 size"
+        },
+        {
+          "id": "token_typo_h2",
+          "name": "H2",
+          "category": "typography",
+          "value": "30px",
+          "description": "Heading 2 size"
+        },
+        {
+          "id": "token_typo_h3",
+          "name": "H3",
+          "category": "typography",
+          "value": "24px",
+          "description": "Heading 3 size"
+        },
+        {
+          "id": "token_typo_body",
+          "name": "Body",
+          "category": "typography",
+          "value": "16px",
+          "description": "Body text size"
+        },
+        {
+          "id": "token_typo_small",
+          "name": "Small",
+          "category": "typography",
+          "value": "14px",
+          "description": "Small body text"
+        },
+        {
+          "id": "token_typo_caption",
+          "name": "Caption",
+          "category": "typography",
+          "value": "12px",
+          "description": "Caption / label text"
+        },
+        {
+          "id": "token_typo_button",
+          "name": "Button",
+          "category": "typography",
+          "value": "15px",
+          "description": "Button text size"
+        },
+        {
+          "id": "token_radius_none",
+          "name": "None",
+          "category": "radius",
+          "value": "0px"
+        },
+        {
+          "id": "token_radius_sm",
+          "name": "Small",
+          "category": "radius",
+          "value": "4px"
+        },
+        {
+          "id": "token_radius_md",
+          "name": "Medium",
+          "category": "radius",
+          "value": "8px"
+        },
+        {
+          "id": "token_radius_lg",
+          "name": "Large",
+          "category": "radius",
+          "value": "16px"
+        },
+        {
+          "id": "token_radius_full",
+          "name": "Full",
+          "category": "radius",
+          "value": "9999px"
+        },
+        {
+          "id": "token_shadow_none",
+          "name": "None",
+          "category": "shadow",
+          "value": "none"
+        },
+        {
+          "id": "token_shadow_sm",
+          "name": "Small",
+          "category": "shadow",
+          "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)"
+        },
+        {
+          "id": "token_shadow_md",
+          "name": "Medium",
+          "category": "shadow",
+          "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)"
+        },
+        {
+          "id": "token_shadow_lg",
+          "name": "Large",
+          "category": "shadow",
+          "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)"
+        }
+      ],
+      "assets": [
+        {
+          "id": "asset_default_sample",
+          "name": "Abstract Landscape",
+          "type": "image",
+          "src": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+          "url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+          "width": 600,
+          "height": 400,
+          "alt": "Sample abstract landscape"
+        }
+      ],
+      "components": [],
+      "collections": [],
+      "variables": [],
+      "dataSources": [],
+      "apiConnectors": [],
+      "authConfig": {
+        "provider": "mock",
+        "enabled": false,
+        "allowUserRegistration": true,
+        "persistSession": true
+      },
+      "environments": {
+        "activeEnvironment": "development",
+        "environments": {
+          "development": {
+            "name": "Development",
+            "isProduction": false,
+            "apiVariables": {},
+            "features": {}
+          },
+          "preview": {
+            "name": "Preview",
+            "isProduction": false,
+            "apiVariables": {},
+            "features": {}
+          },
+          "production": {
+            "name": "Production",
+            "isProduction": true,
+            "apiVariables": {},
+            "features": {}
+          }
+        }
+      },
+      "cloudConfig": {
+        "provider": "mock",
+        "projectUrl": "",
+        "anonKey": "",
+        "status": "disconnected"
+      },
+      "deploymentConfig": {
+        "deployments": []
+      },
+      "roles": [
+        {
+          "id": "admin",
+          "name": "Admin",
+          "description": "Full administrative access to manage users, data, and workflows",
+          "permissions": [
+            "*.*"
+          ],
+          "isSystem": true
+        },
+        {
+          "id": "role_owner",
+          "name": "Owner",
+          "description": "Full administrative access to project and all data",
+          "permissions": [
+            "*.*"
+          ],
+          "isSystem": true
+        },
+        {
+          "id": "role_admin",
+          "name": "Admin",
+          "description": "Administrative access to manage users, data, and workflows",
+          "permissions": [
+            "users.*",
+            "records.*",
+            "workflows.*",
+            "export.*"
+          ],
+          "isSystem": true
+        },
+        {
+          "id": "role_editor",
+          "name": "Editor",
+          "description": "Can view and modify collections and execute workflows",
+          "permissions": [
+            "records.create",
+            "records.read",
+            "records.update",
+            "workflows.execute"
+          ],
+          "isSystem": true
+        },
+        {
+          "id": "role_viewer",
+          "name": "Viewer",
+          "description": "Read-only access to records",
+          "permissions": [
+            "records.read"
+          ],
+          "isSystem": true
+        },
+        {
+          "id": "role_user",
+          "name": "User",
+          "description": "Standard authenticated application user",
+          "permissions": [
+            "records.read",
+            "records.create"
+          ],
+          "isSystem": true
+        }
+      ],
+      "permissions": [
+        {
+          "id": "perm_users_all",
+          "resource": "users",
+          "action": "*",
+          "description": "All user management operations"
+        },
+        {
+          "id": "perm_records_read",
+          "resource": "records",
+          "action": "read",
+          "description": "Read collection records"
+        },
+        {
+          "id": "perm_records_create",
+          "resource": "records",
+          "action": "create",
+          "description": "Create new records"
+        },
+        {
+          "id": "perm_records_update",
+          "resource": "records",
+          "action": "update",
+          "description": "Update existing records"
+        },
+        {
+          "id": "perm_records_delete",
+          "resource": "records",
+          "action": "delete",
+          "description": "Delete records"
+        },
+        {
+          "id": "perm_workflows_exec",
+          "resource": "workflows",
+          "action": "execute",
+          "description": "Trigger and execute workflows"
+        },
+        {
+          "id": "perm_export_data",
+          "resource": "export",
+          "action": "data",
+          "description": "Export records to CSV/JSON"
+        }
+      ],
+      "workflows": [],
+      "webhooks": {
+        "incoming": [],
+        "outgoing": []
+      },
+      "queries": [],
+      "dashboards": [],
+      "localization": {
+        "defaultLocale": "en",
+        "locales": [
+          "en",
+          "es",
+          "fr",
+          "de",
+          "ar",
+          "he"
+        ],
+        "direction": {
+          "en": "ltr",
+          "es": "ltr",
+          "fr": "ltr",
+          "de": "ltr",
+          "ar": "rtl",
+          "he": "rtl"
+        },
+        "translations": {
+          "en": {
+            "welcome": "Welcome",
+            "submit": "Submit",
+            "cancel": "Cancel",
+            "delete": "Delete"
+          },
+          "es": {
+            "welcome": "Bienvenido",
+            "submit": "Enviar",
+            "cancel": "Cancelar",
+            "delete": "Eliminar"
+          },
+          "fr": {
+            "welcome": "Bienvenue",
+            "submit": "Soumettre",
+            "cancel": "Annuler",
+            "delete": "Supprimer"
+          },
+          "de": {
+            "welcome": "Willkommen",
+            "submit": "Einreichen",
+            "cancel": "Abbrechen",
+            "delete": "Löschen"
+          },
+          "ar": {
+            "welcome": "أهلاً بك",
+            "submit": "إرسال",
+            "cancel": "إلغاء",
+            "delete": "حذف"
+          },
+          "he": {
+            "welcome": "ברוכים הבאים",
+            "submit": "שלח",
+            "cancel": "ביטול",
+            "delete": "מחק"
+          }
+        }
+      },
+      "auditLogs": [],
+      "templates": [],
+      "pages": [
+        {
+          "id": "page_home",
+          "name": "Home Page",
+          "slug": "/",
+          "root": {
+            "id": "root_1788731409414",
+            "type": "container",
+            "name": "Container",
+            "props": {},
+            "styles": {
+              "display": "flex",
+              "flexDirection": "column",
+              "width": "100%",
+              "minHeight": "400px",
+              "padding": "48px 32px",
+              "gap": "20px",
+              "backgroundColor": "#FFFFFF",
+              "borderRadius": "12px",
+              "border": "1px solid #E2E8F0",
+              "alignItems": "center",
+              "justifyContent": "center"
+            },
+            "locked": false,
+            "states": {},
+            "interactions": [],
+            "children": [
+              {
+                "id": "text_1788731409415",
+                "type": "text",
+                "name": "Text",
+                "props": {
+                  "text": "Welcome to your app"
+                },
+                "styles": {
+                  "fontSize": "24px",
+                  "fontWeight": "600",
+                  "color": "#0F172A",
+                  "textAlign": "center",
+                  "margin": "0 0 8px 0"
+                },
+                "locked": false,
+                "states": {},
+                "interactions": [],
+                "children": [],
+                "parentId": "root_1788731409414"
+              },
+              {
+                "id": "btn_1788731409416",
+                "type": "button",
+                "name": "Button",
+                "props": {
+                  "text": "Click me"
+                },
+                "styles": {
+                  "display": "inline-flex",
+                  "padding": "12px 24px",
+                  "borderRadius": "8px",
+                  "fontSize": "15px",
+                  "fontWeight": "600",
+                  "backgroundColor": "#4F46E5",
+                  "color": "#FFFFFF",
+                  "border": "none",
+                  "cursor": "pointer"
+                },
+                "locked": false,
+                "states": {},
+                "interactions": [],
+                "children": [],
+                "parentId": "root_1788731409414"
+              },
+              {
+                "id": "btn_order_checkout",
+                "type": "button",
+                "name": "Order Button",
+                "props": {
+                  "text": "Order Checkout",
+                  "workflowId": "wf_non_existent"
+                },
+                "styles": {
+                  "padding": "8px 16px"
+                },
+                "bindings": {},
+                "locked": false,
+                "states": {},
+                "interactions": [],
+                "parentId": "root_1788731409414",
+                "children": []
+              }
+            ]
+          },
+          "isHome": true
+        }
+      ],
+      "aiMetadata": {
+        "enabled": true,
+        "settings": {
+          "provider": "mock",
+          "model": "gpt-4o",
+          "temperature": 0.2,
+          "maxTokens": 4096,
+          "safetyMode": "approval",
+          "autoApplyLowRisk": true,
+          "tokenBudget": 50000,
+          "agentMaxSteps": 15,
+          "maxRetries": 3
+        },
+        "generations": [
+          {
+            "id": "gen_1788731409414_l7z2m",
+            "prompt": "Add broken button",
+            "timestamp": "2026-09-06T21:50:09.415Z",
+            "status": "applied",
+            "mode": "generate",
+            "summary": {
+              "pagesCreated": 0,
+              "pagesModified": 1,
+              "componentsAdded": 1,
+              "componentsModified": 0,
+              "collectionsCreated": 0,
+              "workflowsCreated": 0,
+              "themesUpdated": 0
+            },
+            "operationIds": [
+              "op_broken_btn"
+            ],
+            "projectVersionBefore": 7,
+            "projectVersionAfter": 7,
+            "appliedAt": "2026-09-06T21:50:09.415Z"
+          }
+        ],
+        "conversations": [],
+        "memory": {
+          "preferences": {},
+          "conventions": [],
+          "preferredTerminology": {},
+          "notes": []
+        }
+      }
+    },
+    "verificationResult": {
+      "verificationId": "ver_1788731409415_j5tsvj",
+      "status": "FAIL",
+      "intent": "Create working order button with workflow",
+      "checks": [
+        {
+          "checkId": "chk_struct_root_page_home",
+          "type": "structural_page_root",
+          "target": "page_home",
+          "passed": true,
+          "status": "PASS",
+          "expected": "Page Home Page (page_home) has a valid root node",
+          "actual": "Root node present: root_1788731409414 (type: container)"
+        },
+        {
+          "checkId": "chk_structural_overall",
+          "type": "structural_hierarchy_integrity",
+          "target": "project.pages",
+          "passed": true,
+          "status": "PASS",
+          "expected": "All component hierarchies, IDs, and registry definitions are valid",
+          "actual": "Validated 4 components across 1 pages without structural defects"
+        },
+        {
+          "checkId": "chk_exp_change_btn_order_checkout_create",
+          "type": "expected_change_verified",
+          "target": "btn_order_checkout",
+          "passed": true,
+          "status": "PASS",
+          "expected": "Expected create on component \"btn_order_checkout\"",
+          "actual": "Component btn_order_checkout was added"
+        },
+        {
+          "checkId": "chk_scope_isolation",
+          "type": "change_scope_isolation",
+          "target": "project",
+          "passed": true,
+          "status": "PASS",
+          "expected": "All mutations strictly confined to approved scope; zero unauthorized mutations",
+          "actual": "All mutations confirmed within approved scope"
+        },
+        {
+          "checkId": "chk_routes_resolvable",
+          "type": "routes_resolution",
+          "target": "project.pages",
+          "passed": true,
+          "status": "PASS",
+          "expected": "All page routes are unique and a default root route (\"/\") exists",
+          "actual": "Validated 1 distinct routes with root homepage"
+        },
+        {
+          "checkId": "chk_runtime_render_sim",
+          "type": "runtime_renderability_simulation",
+          "target": "project.pages",
+          "passed": true,
+          "status": "PASS",
+          "expected": "All components and properties resolve cleanly for runtime rendering",
+          "actual": "Successfully simulated render of 4 component nodes across 1 pages"
+        },
+        {
+          "checkId": "chk_binding_btn_order_checkout_wf_non_existent",
+          "type": "workflow_binding_resolution",
+          "target": "btn_order_checkout",
+          "passed": false,
+          "status": "FAIL",
+          "expected": "Component \"btn_order_checkout\" workflow binding \"wf_non_existent\" resolves to an existing workflow",
+          "actual": "Workflow \"wf_non_existent\" does not exist in project.workflows!"
+        },
+        {
+          "checkId": "chk_workflow_system_integrity",
+          "type": "workflow_system_integrity",
+          "target": "project.workflows",
+          "passed": false,
+          "status": "FAIL",
+          "expected": "All workflow definitions and component workflow bindings resolve cleanly",
+          "actual": "Workflow defects detected in 1 binding(s)"
+        },
+        {
+          "checkId": "chk_data_model_integrity",
+          "type": "data_model_consistency",
+          "target": "project.collections",
+          "passed": true,
+          "status": "PASS",
+          "expected": "All collections have unique names, valid fields, and resolved relationships",
+          "actual": "Validated 0 data collections without schema anomalies"
+        },
+        {
+          "checkId": "chk_security_invariants",
+          "type": "security_invariants_preserved",
+          "target": "project",
+          "passed": true,
+          "status": "PASS",
+          "expected": "Zero arbitrary code execution, zero arbitrary SQL, zero secret leakage",
+          "actual": "Verified all security invariants preserved clean"
+        },
+        {
+          "checkId": "chk_app_project_schema",
+          "type": "zod_schema_invariant",
+          "target": "project",
+          "passed": true,
+          "status": "PASS",
+          "expected": "Project schema strictly passes AppProjectSchema.safeParse",
+          "actual": "Project schema is 100% compliant with AppProjectSchema"
+        },
+        {
+          "checkId": "chk_serializability",
+          "type": "json_serializability_invariant",
+          "target": "project",
+          "passed": true,
+          "status": "PASS",
+          "expected": "Project object is acyclic and JSON-serializable",
+          "actual": "JSON serialization verified"
+        },
+        {
+          "checkId": "chk_overall_intent_fulfillment",
+          "type": "user_intent_fulfillment",
+          "target": "project",
+          "passed": true,
+          "status": "PASS",
+          "expected": "Application changes faithfully satisfy the stated user intent",
+          "actual": "User intent fulfilled by resulting project state"
+        },
+        {
+          "checkId": "chk_post_post_order_wf",
+          "type": "workflow_binding_exists",
+          "target": "btn_order_checkout",
+          "passed": false,
+          "status": "FAIL",
+          "expected": "Button must have valid workflow binding",
+          "actual": "Component \"btn_order_checkout\" has broken/missing workflow binding",
+          "critical": true
+        }
+      ],
+      "findings": [
+        {
+          "findingId": "fnd_broken_wf_binding_btn_order_checkout",
+          "severity": "ERROR",
+          "category": "WORKFLOW",
+          "title": "Broken Workflow Binding",
+          "description": "Button / component \"btn_order_checkout\" references workflow \"wf_non_existent\" which does not exist.",
+          "target": "btn_order_checkout",
+          "evidence": "node.props.workflowId = \"wf_non_existent\""
+        },
+        {
+          "findingId": "fnd_post_post_order_wf",
+          "severity": "CRITICAL",
+          "category": "INTENT",
+          "title": "Postcondition Violation",
+          "description": "Button must have valid workflow binding",
+          "target": "btn_order_checkout",
+          "evidence": "Component \"btn_order_checkout\" has broken/missing workflow binding"
+        }
+      ],
+      "evidence": [
+        {
+          "evidenceId": "evi_snap_before",
+          "source": "schema_snapshot",
+          "targetId": "d8_7_test_proj",
+          "observedData": {
+            "pagesCount": 1,
+            "collectionsCount": 0,
+            "workflowsCount": 0,
+            "version": 7
+          },
+          "summary": "Baseline snapshot: 1 pages, version 7",
+          "timestamp": "2026-09-06T21:50:09.415Z"
+        },
+        {
+          "evidenceId": "evi_snap_after",
+          "source": "schema_snapshot",
+          "targetId": "d8_7_test_proj",
+          "observedData": {
+            "pagesCount": 1,
+            "collectionsCount": 0,
+            "workflowsCount": 0,
+            "version": 7
+          },
+          "summary": "Post-execution snapshot: 1 pages, version 7",
+          "timestamp": "2026-09-06T21:50:09.415Z"
+        },
+        {
+          "evidenceId": "evi_diff_summary",
+          "source": "before_after_diff",
+          "observedData": {
+            "addedPages": [],
+            "removedPages": [],
+            "modifiedPages": [
+              "page_home"
+            ],
+            "addedComponents": [
+              "btn_order_checkout"
+            ],
+            "removedComponents": [],
+            "modifiedComponents": [],
+            "addedCollections": [],
+            "modifiedCollections": [],
+            "addedWorkflows": [],
+            "modifiedWorkflows": []
+          },
+          "summary": "Diff detected: +1 components, ~0 components, +0 pages, +0 workflows",
+          "timestamp": "2026-09-06T21:50:09.415Z"
+        }
+      ],
+      "failures": [
+        {
+          "failureId": "fail_broken_wf_binding_btn_order_checkout",
+          "category": "WORKFLOW",
+          "reason": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
+          "affectedEntityId": "btn_order_checkout",
+          "isRecoverable": true,
+          "suggestedRecovery": "Bind component \"btn_order_checkout\" to a valid active workflow or register workflow \"wf_non_existent\"."
+        },
+        {
+          "failureId": "fail_post_post_order_wf",
+          "category": "POSTCONDITION",
+          "reason": "Postcondition \"Button must have valid workflow binding\" failed: Component \"btn_order_checkout\" has broken/missing workflow binding",
+          "affectedEntityId": "btn_order_checkout",
+          "isRecoverable": true
+        }
+      ],
+      "recoveryPlan": {
+        "recoveryId": "rec_1788731409416_iayq",
+        "failureId": "fail_broken_wf_binding_btn_order_checkout",
+        "strategy": "REBIND_WORKFLOW",
+        "description": "Rebind component \"btn_order_checkout\" to checkout or target workflow.",
+        "requiredOperations": [
+          {
+            "type": "update_component",
+            "targetId": "btn_order_checkout",
+            "props": {
+              "workflowId": "wf_checkout"
+            }
+          }
+        ],
+        "requiresApproval": false,
+        "riskLevel": "LOW",
+        "attemptsCount": 1,
+        "maxAttempts": 2
+      },
+      "summary": {
+        "totalChecks": 14,
+        "passedChecks": 11,
+        "failedChecks": 3,
+        "uncertainChecks": 0,
+        "criticalFailures": 1,
+        "scopeIntegrityPreserved": true,
+        "unexpectedMutationsCount": 0,
+        "securityInvariantsPreserved": true,
+        "intentFulfilled": false,
+        "conclusion": "Autonomous Verification FAILED: 3 assertion failure(s) detected across 2 diagnostic areas."
+      },
+      "trace": {
+        "traceId": "trc_ver_1788731409416_eear",
+        "verificationId": "ver_1788731409415_j5tsvj",
+        "projectVersionBefore": 7,
+        "projectVersionAfter": 7,
+        "stages": [
+          {
+            "stage": "collecting_evidence",
+            "timestamp": "2026-09-06T21:50:09.415Z",
+            "durationMs": 0,
+            "status": "OK",
+            "checksCount": 0
+          },
+          {
+            "stage": "checking_structure",
+            "timestamp": "2026-09-06T21:50:09.415Z",
+            "durationMs": 0,
+            "status": "OK",
+            "checksCount": 2
+          },
+          {
+            "stage": "checking_scope",
+            "timestamp": "2026-09-06T21:50:09.415Z",
+            "durationMs": 0,
+            "status": "OK",
+            "checksCount": 2
+          },
+          {
+            "stage": "checking_runtime",
+            "timestamp": "2026-09-06T21:50:09.415Z",
+            "durationMs": 0,
+            "status": "OK",
+            "checksCount": 2
+          },
+          {
+            "stage": "checking_workflows",
+            "timestamp": "2026-09-06T21:50:09.415Z",
+            "durationMs": 0,
+            "status": "FAIL",
+            "checksCount": 2
+          },
+          {
+            "stage": "checking_data",
+            "timestamp": "2026-09-06T21:50:09.415Z",
+            "durationMs": 0,
+            "status": "OK",
+            "checksCount": 1
+          },
+          {
+            "stage": "checking_security",
+            "timestamp": "2026-09-06T21:50:09.415Z",
+            "durationMs": 0,
+            "status": "OK",
+            "checksCount": 1
+          },
+          {
+            "stage": "checking_invariants",
+            "timestamp": "2026-09-06T21:50:09.415Z",
+            "durationMs": 0,
+            "status": "OK",
+            "checksCount": 2
+          },
+          {
+            "stage": "checking_intent",
+            "timestamp": "2026-09-06T21:50:09.415Z",
+            "durationMs": 0,
+            "status": "FAIL",
+            "checksCount": 2
+          }
+        ],
+        "finalStatus": "FAIL"
+      },
+      "timestamp": "2026-09-06T21:50:09.416Z",
+      "durationMs": 1
+    },
+    "intent": "Self-heal broken order button workflow"
+  },
+  "attempts": [],
+  "checkpoints": [
+    {
+      "checkpointId": "chk_pre_1",
+      "recoveryId": "rec_1788731409416_x6in",
+      "stepIndex": 0,
+      "projectSnapshot": {
+        "id": "d8_7_test_proj",
+        "name": "D8.7 Recovery Test App",
+        "version": 7,
+        "theme": {
+          "primaryColor": "#4F46E5",
+          "backgroundColor": "#FFFFFF",
+          "textColor": "#0F172A",
+          "borderRadius": "8px",
+          "colors": {
+            "primary": "#4F46E5",
+            "secondary": "#06B6D4",
+            "background": "#FFFFFF",
+            "foreground": "#0F172A",
+            "muted": "#64748B",
+            "border": "#E2E8F0"
+          },
+          "typography": {
+            "fontFamily": "Inter, sans-serif"
+          },
+          "radius": {
+            "sm": 4,
+            "md": 8,
+            "lg": 12
+          }
+        },
+        "tokens": [
+          {
+            "id": "token_color_primary",
+            "name": "Primary",
+            "category": "color",
+            "value": "#4F46E5",
+            "description": "Primary brand color"
+          },
+          {
+            "id": "token_color_secondary",
+            "name": "Secondary",
+            "category": "color",
+            "value": "#06B6D4",
+            "description": "Secondary accent color"
+          },
+          {
+            "id": "token_color_accent",
+            "name": "Accent",
+            "category": "color",
+            "value": "#8B5CF6",
+            "description": "Accent highlight color"
+          },
+          {
+            "id": "token_color_background",
+            "name": "Background",
+            "category": "color",
+            "value": "#FFFFFF",
+            "description": "Default canvas background"
+          },
+          {
+            "id": "token_color_surface",
+            "name": "Surface",
+            "category": "color",
+            "value": "#F8FAFC",
+            "description": "Card surface color"
+          },
+          {
+            "id": "token_color_text",
+            "name": "Text",
+            "category": "color",
+            "value": "#0F172A",
+            "description": "Primary text color"
+          },
+          {
+            "id": "token_color_muted",
+            "name": "Muted",
+            "category": "color",
+            "value": "#64748B",
+            "description": "Muted text and subtle borders"
+          },
+          {
+            "id": "token_color_border",
+            "name": "Border",
+            "category": "color",
+            "value": "#E2E8F0",
+            "description": "Default border stroke color"
+          },
+          {
+            "id": "token_color_success",
+            "name": "Success",
+            "category": "color",
+            "value": "#10B981",
+            "description": "Success alert color"
+          },
+          {
+            "id": "token_color_warning",
+            "name": "Warning",
+            "category": "color",
+            "value": "#F59E0B",
+            "description": "Warning alert color"
+          },
+          {
+            "id": "token_color_danger",
+            "name": "Danger",
+            "category": "color",
+            "value": "#EF4444",
+            "description": "Destructive / error color"
+          },
+          {
+            "id": "token_space_1",
+            "name": "Spacing 1 (4px)",
+            "category": "spacing",
+            "value": "4px"
+          },
+          {
+            "id": "token_space_2",
+            "name": "Spacing 2 (8px)",
+            "category": "spacing",
+            "value": "8px"
+          },
+          {
+            "id": "token_space_3",
+            "name": "Spacing 3 (12px)",
+            "category": "spacing",
+            "value": "12px"
+          },
+          {
+            "id": "token_space_4",
+            "name": "Spacing 4 (16px)",
+            "category": "spacing",
+            "value": "16px"
+          },
+          {
+            "id": "token_space_5",
+            "name": "Spacing 5 (20px)",
+            "category": "spacing",
+            "value": "20px"
+          },
+          {
+            "id": "token_space_6",
+            "name": "Spacing 6 (24px)",
+            "category": "spacing",
+            "value": "24px"
+          },
+          {
+            "id": "token_space_8",
+            "name": "Spacing 8 (32px)",
+            "category": "spacing",
+            "value": "32px"
+          },
+          {
+            "id": "token_space_10",
+            "name": "Spacing 10 (40px)",
+            "category": "spacing",
+            "value": "40px"
+          },
+          {
+            "id": "token_space_12",
+            "name": "Spacing 12 (48px)",
+            "category": "spacing",
+            "value": "48px"
+          },
+          {
+            "id": "token_space_16",
+            "name": "Spacing 16 (64px)",
+            "category": "spacing",
+            "value": "64px"
+          },
+          {
+            "id": "token_typo_display",
+            "name": "Display",
+            "category": "typography",
+            "value": "48px",
+            "description": "Display title size"
+          },
+          {
+            "id": "token_typo_h1",
+            "name": "H1",
+            "category": "typography",
+            "value": "36px",
+            "description": "Heading 1 size"
+          },
+          {
+            "id": "token_typo_h2",
+            "name": "H2",
+            "category": "typography",
+            "value": "30px",
+            "description": "Heading 2 size"
+          },
+          {
+            "id": "token_typo_h3",
+            "name": "H3",
+            "category": "typography",
+            "value": "24px",
+            "description": "Heading 3 size"
+          },
+          {
+            "id": "token_typo_body",
+            "name": "Body",
+            "category": "typography",
+            "value": "16px",
+            "description": "Body text size"
+          },
+          {
+            "id": "token_typo_small",
+            "name": "Small",
+            "category": "typography",
+            "value": "14px",
+            "description": "Small body text"
+          },
+          {
+            "id": "token_typo_caption",
+            "name": "Caption",
+            "category": "typography",
+            "value": "12px",
+            "description": "Caption / label text"
+          },
+          {
+            "id": "token_typo_button",
+            "name": "Button",
+            "category": "typography",
+            "value": "15px",
+            "description": "Button text size"
+          },
+          {
+            "id": "token_radius_none",
+            "name": "None",
+            "category": "radius",
+            "value": "0px"
+          },
+          {
+            "id": "token_radius_sm",
+            "name": "Small",
+            "category": "radius",
+            "value": "4px"
+          },
+          {
+            "id": "token_radius_md",
+            "name": "Medium",
+            "category": "radius",
+            "value": "8px"
+          },
+          {
+            "id": "token_radius_lg",
+            "name": "Large",
+            "category": "radius",
+            "value": "16px"
+          },
+          {
+            "id": "token_radius_full",
+            "name": "Full",
+            "category": "radius",
+            "value": "9999px"
+          },
+          {
+            "id": "token_shadow_none",
+            "name": "None",
+            "category": "shadow",
+            "value": "none"
+          },
+          {
+            "id": "token_shadow_sm",
+            "name": "Small",
+            "category": "shadow",
+            "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)"
+          },
+          {
+            "id": "token_shadow_md",
+            "name": "Medium",
+            "category": "shadow",
+            "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)"
+          },
+          {
+            "id": "token_shadow_lg",
+            "name": "Large",
+            "category": "shadow",
+            "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)"
+          }
+        ],
+        "assets": [
+          {
+            "id": "asset_default_sample",
+            "name": "Abstract Landscape",
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+            "url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+            "width": 600,
+            "height": 400,
+            "alt": "Sample abstract landscape"
+          }
+        ],
+        "components": [],
+        "collections": [],
+        "variables": [],
+        "dataSources": [],
+        "apiConnectors": [],
+        "authConfig": {
+          "provider": "mock",
+          "enabled": false,
+          "allowUserRegistration": true,
+          "persistSession": true
+        },
+        "environments": {
+          "activeEnvironment": "development",
+          "environments": {
+            "development": {
+              "name": "Development",
+              "isProduction": false,
+              "apiVariables": {},
+              "features": {}
+            },
+            "preview": {
+              "name": "Preview",
+              "isProduction": false,
+              "apiVariables": {},
+              "features": {}
+            },
+            "production": {
+              "name": "Production",
+              "isProduction": true,
+              "apiVariables": {},
+              "features": {}
+            }
+          }
+        },
+        "cloudConfig": {
+          "provider": "mock",
+          "projectUrl": "",
+          "anonKey": "",
+          "status": "disconnected"
+        },
+        "deploymentConfig": {
+          "deployments": []
+        },
+        "roles": [
+          {
+            "id": "admin",
+            "name": "Admin",
+            "description": "Full administrative access to manage users, data, and workflows",
+            "permissions": [
+              "*.*"
+            ],
+            "isSystem": true
+          },
+          {
+            "id": "role_owner",
+            "name": "Owner",
+            "description": "Full administrative access to project and all data",
+            "permissions": [
+              "*.*"
+            ],
+            "isSystem": true
+          },
+          {
+            "id": "role_admin",
+            "name": "Admin",
+            "description": "Administrative access to manage users, data, and workflows",
+            "permissions": [
+              "users.*",
+              "records.*",
+              "workflows.*",
+              "export.*"
+            ],
+            "isSystem": true
+          },
+          {
+            "id": "role_editor",
+            "name": "Editor",
+            "description": "Can view and modify collections and execute workflows",
+            "permissions": [
+              "records.create",
+              "records.read",
+              "records.update",
+              "workflows.execute"
+            ],
+            "isSystem": true
+          },
+          {
+            "id": "role_viewer",
+            "name": "Viewer",
+            "description": "Read-only access to records",
+            "permissions": [
+              "records.read"
+            ],
+            "isSystem": true
+          },
+          {
+            "id": "role_user",
+            "name": "User",
+            "description": "Standard authenticated application user",
+            "permissions": [
+              "records.read",
+              "records.create"
+            ],
+            "isSystem": true
+          }
+        ],
+        "permissions": [
+          {
+            "id": "perm_users_all",
+            "resource": "users",
+            "action": "*",
+            "description": "All user management operations"
+          },
+          {
+            "id": "perm_records_read",
+            "resource": "records",
+            "action": "read",
+            "description": "Read collection records"
+          },
+          {
+            "id": "perm_records_create",
+            "resource": "records",
+            "action": "create",
+            "description": "Create new records"
+          },
+          {
+            "id": "perm_records_update",
+            "resource": "records",
+            "action": "update",
+            "description": "Update existing records"
+          },
+          {
+            "id": "perm_records_delete",
+            "resource": "records",
+            "action": "delete",
+            "description": "Delete records"
+          },
+          {
+            "id": "perm_workflows_exec",
+            "resource": "workflows",
+            "action": "execute",
+            "description": "Trigger and execute workflows"
+          },
+          {
+            "id": "perm_export_data",
+            "resource": "export",
+            "action": "data",
+            "description": "Export records to CSV/JSON"
+          }
+        ],
+        "workflows": [],
+        "webhooks": {
+          "incoming": [],
+          "outgoing": []
+        },
+        "queries": [],
+        "dashboards": [],
+        "localization": {
+          "defaultLocale": "en",
+          "locales": [
+            "en",
+            "es",
+            "fr",
+            "de",
+            "ar",
+            "he"
+          ],
+          "direction": {
+            "en": "ltr",
+            "es": "ltr",
+            "fr": "ltr",
+            "de": "ltr",
+            "ar": "rtl",
+            "he": "rtl"
+          },
+          "translations": {
+            "en": {
+              "welcome": "Welcome",
+              "submit": "Submit",
+              "cancel": "Cancel",
+              "delete": "Delete"
+            },
+            "es": {
+              "welcome": "Bienvenido",
+              "submit": "Enviar",
+              "cancel": "Cancelar",
+              "delete": "Eliminar"
+            },
+            "fr": {
+              "welcome": "Bienvenue",
+              "submit": "Soumettre",
+              "cancel": "Annuler",
+              "delete": "Supprimer"
+            },
+            "de": {
+              "welcome": "Willkommen",
+              "submit": "Einreichen",
+              "cancel": "Abbrechen",
+              "delete": "Löschen"
+            },
+            "ar": {
+              "welcome": "أهلاً بك",
+              "submit": "إرسال",
+              "cancel": "إلغاء",
+              "delete": "حذف"
+            },
+            "he": {
+              "welcome": "ברוכים הבאים",
+              "submit": "שלח",
+              "cancel": "ביטול",
+              "delete": "מחק"
+            }
+          }
+        },
+        "auditLogs": [],
+        "templates": [],
+        "pages": [
+          {
+            "id": "page_home",
+            "name": "Home Page",
+            "slug": "/",
+            "root": {
+              "id": "root_1788731409414",
+              "type": "container",
+              "name": "Container",
+              "props": {},
+              "styles": {
+                "display": "flex",
+                "flexDirection": "column",
+                "width": "100%",
+                "minHeight": "400px",
+                "padding": "48px 32px",
+                "gap": "20px",
+                "backgroundColor": "#FFFFFF",
+                "borderRadius": "12px",
+                "border": "1px solid #E2E8F0",
+                "alignItems": "center",
+                "justifyContent": "center"
+              },
+              "locked": false,
+              "states": {},
+              "interactions": [],
+              "children": [
+                {
+                  "id": "text_1788731409415",
+                  "type": "text",
+                  "name": "Text",
+                  "props": {
+                    "text": "Welcome to your app"
+                  },
+                  "styles": {
+                    "fontSize": "24px",
+                    "fontWeight": "600",
+                    "color": "#0F172A",
+                    "textAlign": "center",
+                    "margin": "0 0 8px 0"
+                  },
+                  "locked": false,
+                  "states": {},
+                  "interactions": [],
+                  "children": [],
+                  "parentId": "root_1788731409414"
+                },
+                {
+                  "id": "btn_1788731409416",
+                  "type": "button",
+                  "name": "Button",
+                  "props": {
+                    "text": "Click me"
+                  },
+                  "styles": {
+                    "display": "inline-flex",
+                    "padding": "12px 24px",
+                    "borderRadius": "8px",
+                    "fontSize": "15px",
+                    "fontWeight": "600",
+                    "backgroundColor": "#4F46E5",
+                    "color": "#FFFFFF",
+                    "border": "none",
+                    "cursor": "pointer"
+                  },
+                  "locked": false,
+                  "states": {},
+                  "interactions": [],
+                  "children": [],
+                  "parentId": "root_1788731409414"
+                },
+                {
+                  "id": "btn_order_checkout",
+                  "type": "button",
+                  "name": "Order Button",
+                  "props": {
+                    "text": "Order Checkout",
+                    "workflowId": "wf_non_existent"
+                  },
+                  "styles": {
+                    "padding": "8px 16px"
+                  },
+                  "bindings": {},
+                  "locked": false,
+                  "states": {},
+                  "interactions": [],
+                  "parentId": "root_1788731409414",
+                  "children": []
+                }
+              ]
+            },
+            "isHome": true
+          }
+        ],
+        "aiMetadata": {
+          "enabled": true,
+          "settings": {
+            "provider": "mock",
+            "model": "gpt-4o",
+            "temperature": 0.2,
+            "maxTokens": 4096,
+            "safetyMode": "approval",
+            "autoApplyLowRisk": true,
+            "tokenBudget": 50000,
+            "agentMaxSteps": 15,
+            "maxRetries": 3
+          },
+          "generations": [
+            {
+              "id": "gen_1788731409414_l7z2m",
+              "prompt": "Add broken button",
+              "timestamp": "2026-09-06T21:50:09.415Z",
+              "status": "applied",
+              "mode": "generate",
+              "summary": {
+                "pagesCreated": 0,
+                "pagesModified": 1,
+                "componentsAdded": 1,
+                "componentsModified": 0,
+                "collectionsCreated": 0,
+                "workflowsCreated": 0,
+                "themesUpdated": 0
+              },
+              "operationIds": [
+                "op_broken_btn"
+              ],
+              "projectVersionBefore": 7,
+              "projectVersionAfter": 7,
+              "appliedAt": "2026-09-06T21:50:09.415Z"
+            }
+          ],
+          "conversations": [],
+          "memory": {
+            "preferences": {},
+            "conventions": [],
+            "preferredTerminology": {},
+            "notes": []
+          }
+        }
+      },
+      "completedStepIds": [],
+      "appliedOperations": [],
+      "timestamp": "2026-09-06T21:50:09.417Z",
+      "status": "BEFORE_RECOVERY"
+    },
+    {
+      "checkpointId": "chk_post_1",
+      "recoveryId": "rec_1788731409416_x6in",
+      "stepIndex": 2,
+      "projectSnapshot": {
+        "id": "d8_7_test_proj",
+        "name": "D8.7 Recovery Test App",
+        "version": 7,
+        "theme": {
+          "primaryColor": "#4F46E5",
+          "backgroundColor": "#FFFFFF",
+          "textColor": "#0F172A",
+          "borderRadius": "8px",
+          "colors": {
+            "primary": "#4F46E5",
+            "secondary": "#06B6D4",
+            "background": "#FFFFFF",
+            "foreground": "#0F172A",
+            "muted": "#64748B",
+            "border": "#E2E8F0"
+          },
+          "typography": {
+            "fontFamily": "Inter, sans-serif"
+          },
+          "radius": {
+            "sm": 4,
+            "md": 8,
+            "lg": 12
+          }
+        },
+        "tokens": [
+          {
+            "id": "token_color_primary",
+            "name": "Primary",
+            "category": "color",
+            "value": "#4F46E5",
+            "description": "Primary brand color"
+          },
+          {
+            "id": "token_color_secondary",
+            "name": "Secondary",
+            "category": "color",
+            "value": "#06B6D4",
+            "description": "Secondary accent color"
+          },
+          {
+            "id": "token_color_accent",
+            "name": "Accent",
+            "category": "color",
+            "value": "#8B5CF6",
+            "description": "Accent highlight color"
+          },
+          {
+            "id": "token_color_background",
+            "name": "Background",
+            "category": "color",
+            "value": "#FFFFFF",
+            "description": "Default canvas background"
+          },
+          {
+            "id": "token_color_surface",
+            "name": "Surface",
+            "category": "color",
+            "value": "#F8FAFC",
+            "description": "Card surface color"
+          },
+          {
+            "id": "token_color_text",
+            "name": "Text",
+            "category": "color",
+            "value": "#0F172A",
+            "description": "Primary text color"
+          },
+          {
+            "id": "token_color_muted",
+            "name": "Muted",
+            "category": "color",
+            "value": "#64748B",
+            "description": "Muted text and subtle borders"
+          },
+          {
+            "id": "token_color_border",
+            "name": "Border",
+            "category": "color",
+            "value": "#E2E8F0",
+            "description": "Default border stroke color"
+          },
+          {
+            "id": "token_color_success",
+            "name": "Success",
+            "category": "color",
+            "value": "#10B981",
+            "description": "Success alert color"
+          },
+          {
+            "id": "token_color_warning",
+            "name": "Warning",
+            "category": "color",
+            "value": "#F59E0B",
+            "description": "Warning alert color"
+          },
+          {
+            "id": "token_color_danger",
+            "name": "Danger",
+            "category": "color",
+            "value": "#EF4444",
+            "description": "Destructive / error color"
+          },
+          {
+            "id": "token_space_1",
+            "name": "Spacing 1 (4px)",
+            "category": "spacing",
+            "value": "4px"
+          },
+          {
+            "id": "token_space_2",
+            "name": "Spacing 2 (8px)",
+            "category": "spacing",
+            "value": "8px"
+          },
+          {
+            "id": "token_space_3",
+            "name": "Spacing 3 (12px)",
+            "category": "spacing",
+            "value": "12px"
+          },
+          {
+            "id": "token_space_4",
+            "name": "Spacing 4 (16px)",
+            "category": "spacing",
+            "value": "16px"
+          },
+          {
+            "id": "token_space_5",
+            "name": "Spacing 5 (20px)",
+            "category": "spacing",
+            "value": "20px"
+          },
+          {
+            "id": "token_space_6",
+            "name": "Spacing 6 (24px)",
+            "category": "spacing",
+            "value": "24px"
+          },
+          {
+            "id": "token_space_8",
+            "name": "Spacing 8 (32px)",
+            "category": "spacing",
+            "value": "32px"
+          },
+          {
+            "id": "token_space_10",
+            "name": "Spacing 10 (40px)",
+            "category": "spacing",
+            "value": "40px"
+          },
+          {
+            "id": "token_space_12",
+            "name": "Spacing 12 (48px)",
+            "category": "spacing",
+            "value": "48px"
+          },
+          {
+            "id": "token_space_16",
+            "name": "Spacing 16 (64px)",
+            "category": "spacing",
+            "value": "64px"
+          },
+          {
+            "id": "token_typo_display",
+            "name": "Display",
+            "category": "typography",
+            "value": "48px",
+            "description": "Display title size"
+          },
+          {
+            "id": "token_typo_h1",
+            "name": "H1",
+            "category": "typography",
+            "value": "36px",
+            "description": "Heading 1 size"
+          },
+          {
+            "id": "token_typo_h2",
+            "name": "H2",
+            "category": "typography",
+            "value": "30px",
+            "description": "Heading 2 size"
+          },
+          {
+            "id": "token_typo_h3",
+            "name": "H3",
+            "category": "typography",
+            "value": "24px",
+            "description": "Heading 3 size"
+          },
+          {
+            "id": "token_typo_body",
+            "name": "Body",
+            "category": "typography",
+            "value": "16px",
+            "description": "Body text size"
+          },
+          {
+            "id": "token_typo_small",
+            "name": "Small",
+            "category": "typography",
+            "value": "14px",
+            "description": "Small body text"
+          },
+          {
+            "id": "token_typo_caption",
+            "name": "Caption",
+            "category": "typography",
+            "value": "12px",
+            "description": "Caption / label text"
+          },
+          {
+            "id": "token_typo_button",
+            "name": "Button",
+            "category": "typography",
+            "value": "15px",
+            "description": "Button text size"
+          },
+          {
+            "id": "token_radius_none",
+            "name": "None",
+            "category": "radius",
+            "value": "0px"
+          },
+          {
+            "id": "token_radius_sm",
+            "name": "Small",
+            "category": "radius",
+            "value": "4px"
+          },
+          {
+            "id": "token_radius_md",
+            "name": "Medium",
+            "category": "radius",
+            "value": "8px"
+          },
+          {
+            "id": "token_radius_lg",
+            "name": "Large",
+            "category": "radius",
+            "value": "16px"
+          },
+          {
+            "id": "token_radius_full",
+            "name": "Full",
+            "category": "radius",
+            "value": "9999px"
+          },
+          {
+            "id": "token_shadow_none",
+            "name": "None",
+            "category": "shadow",
+            "value": "none"
+          },
+          {
+            "id": "token_shadow_sm",
+            "name": "Small",
+            "category": "shadow",
+            "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)"
+          },
+          {
+            "id": "token_shadow_md",
+            "name": "Medium",
+            "category": "shadow",
+            "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)"
+          },
+          {
+            "id": "token_shadow_lg",
+            "name": "Large",
+            "category": "shadow",
+            "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)"
+          }
+        ],
+        "assets": [
+          {
+            "id": "asset_default_sample",
+            "name": "Abstract Landscape",
+            "type": "image",
+            "src": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+            "url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+            "width": 600,
+            "height": 400,
+            "alt": "Sample abstract landscape"
+          }
+        ],
+        "components": [],
+        "collections": [],
+        "variables": [],
+        "dataSources": [],
+        "apiConnectors": [],
+        "authConfig": {
+          "provider": "mock",
+          "enabled": false,
+          "allowUserRegistration": true,
+          "persistSession": true
+        },
+        "environments": {
+          "activeEnvironment": "development",
+          "environments": {
+            "development": {
+              "name": "Development",
+              "isProduction": false,
+              "apiVariables": {},
+              "features": {}
+            },
+            "preview": {
+              "name": "Preview",
+              "isProduction": false,
+              "apiVariables": {},
+              "features": {}
+            },
+            "production": {
+              "name": "Production",
+              "isProduction": true,
+              "apiVariables": {},
+              "features": {}
+            }
+          }
+        },
+        "cloudConfig": {
+          "provider": "mock",
+          "projectUrl": "",
+          "anonKey": "",
+          "status": "disconnected"
+        },
+        "deploymentConfig": {
+          "deployments": []
+        },
+        "roles": [
+          {
+            "id": "admin",
+            "name": "Admin",
+            "description": "Full administrative access to manage users, data, and workflows",
+            "permissions": [
+              "*.*"
+            ],
+            "isSystem": true
+          },
+          {
+            "id": "role_owner",
+            "name": "Owner",
+            "description": "Full administrative access to project and all data",
+            "permissions": [
+              "*.*"
+            ],
+            "isSystem": true
+          },
+          {
+            "id": "role_admin",
+            "name": "Admin",
+            "description": "Administrative access to manage users, data, and workflows",
+            "permissions": [
+              "users.*",
+              "records.*",
+              "workflows.*",
+              "export.*"
+            ],
+            "isSystem": true
+          },
+          {
+            "id": "role_editor",
+            "name": "Editor",
+            "description": "Can view and modify collections and execute workflows",
+            "permissions": [
+              "records.create",
+              "records.read",
+              "records.update",
+              "workflows.execute"
+            ],
+            "isSystem": true
+          },
+          {
+            "id": "role_viewer",
+            "name": "Viewer",
+            "description": "Read-only access to records",
+            "permissions": [
+              "records.read"
+            ],
+            "isSystem": true
+          },
+          {
+            "id": "role_user",
+            "name": "User",
+            "description": "Standard authenticated application user",
+            "permissions": [
+              "records.read",
+              "records.create"
+            ],
+            "isSystem": true
+          }
+        ],
+        "permissions": [
+          {
+            "id": "perm_users_all",
+            "resource": "users",
+            "action": "*",
+            "description": "All user management operations"
+          },
+          {
+            "id": "perm_records_read",
+            "resource": "records",
+            "action": "read",
+            "description": "Read collection records"
+          },
+          {
+            "id": "perm_records_create",
+            "resource": "records",
+            "action": "create",
+            "description": "Create new records"
+          },
+          {
+            "id": "perm_records_update",
+            "resource": "records",
+            "action": "update",
+            "description": "Update existing records"
+          },
+          {
+            "id": "perm_records_delete",
+            "resource": "records",
+            "action": "delete",
+            "description": "Delete records"
+          },
+          {
+            "id": "perm_workflows_exec",
+            "resource": "workflows",
+            "action": "execute",
+            "description": "Trigger and execute workflows"
+          },
+          {
+            "id": "perm_export_data",
+            "resource": "export",
+            "action": "data",
+            "description": "Export records to CSV/JSON"
+          }
+        ],
+        "workflows": [
+          {
+            "id": "wf_non_existent",
+            "name": "Checkout Workflow",
+            "version": 1,
+            "nodes": [
+              {
+                "id": "node_1788731409416_1",
+                "type": "trigger",
+                "data": {
+                  "event": "click"
+                }
+              }
+            ],
+            "triggerType": "manual"
+          }
+        ],
+        "webhooks": {
+          "incoming": [],
+          "outgoing": []
+        },
+        "queries": [],
+        "dashboards": [],
+        "localization": {
+          "defaultLocale": "en",
+          "locales": [
+            "en",
+            "es",
+            "fr",
+            "de",
+            "ar",
+            "he"
+          ],
+          "direction": {
+            "en": "ltr",
+            "es": "ltr",
+            "fr": "ltr",
+            "de": "ltr",
+            "ar": "rtl",
+            "he": "rtl"
+          },
+          "translations": {
+            "en": {
+              "welcome": "Welcome",
+              "submit": "Submit",
+              "cancel": "Cancel",
+              "delete": "Delete"
+            },
+            "es": {
+              "welcome": "Bienvenido",
+              "submit": "Enviar",
+              "cancel": "Cancelar",
+              "delete": "Eliminar"
+            },
+            "fr": {
+              "welcome": "Bienvenue",
+              "submit": "Soumettre",
+              "cancel": "Annuler",
+              "delete": "Supprimer"
+            },
+            "de": {
+              "welcome": "Willkommen",
+              "submit": "Einreichen",
+              "cancel": "Abbrechen",
+              "delete": "Löschen"
+            },
+            "ar": {
+              "welcome": "أهلاً بك",
+              "submit": "إرسال",
+              "cancel": "إلغاء",
+              "delete": "حذف"
+            },
+            "he": {
+              "welcome": "ברוכים הבאים",
+              "submit": "שלח",
+              "cancel": "ביטול",
+              "delete": "מחק"
+            }
+          }
+        },
+        "auditLogs": [],
+        "templates": [],
+        "pages": [
+          {
+            "id": "page_home",
+            "name": "Home Page",
+            "slug": "/",
+            "root": {
+              "id": "root_1788731409414",
+              "type": "container",
+              "name": "Container",
+              "props": {},
+              "styles": {
+                "display": "flex",
+                "flexDirection": "column",
+                "width": "100%",
+                "minHeight": "400px",
+                "padding": "48px 32px",
+                "gap": "20px",
+                "backgroundColor": "#FFFFFF",
+                "borderRadius": "12px",
+                "border": "1px solid #E2E8F0",
+                "alignItems": "center",
+                "justifyContent": "center"
+              },
+              "locked": false,
+              "states": {},
+              "interactions": [],
+              "children": [
+                {
+                  "id": "text_1788731409415",
+                  "type": "text",
+                  "name": "Text",
+                  "props": {
+                    "text": "Welcome to your app"
+                  },
+                  "styles": {
+                    "fontSize": "24px",
+                    "fontWeight": "600",
+                    "color": "#0F172A",
+                    "textAlign": "center",
+                    "margin": "0 0 8px 0"
+                  },
+                  "locked": false,
+                  "states": {},
+                  "interactions": [],
+                  "children": [],
+                  "parentId": "root_1788731409414"
+                },
+                {
+                  "id": "btn_1788731409416",
+                  "type": "button",
+                  "name": "Button",
+                  "props": {
+                    "text": "Click me"
+                  },
+                  "styles": {
+                    "display": "inline-flex",
+                    "padding": "12px 24px",
+                    "borderRadius": "8px",
+                    "fontSize": "15px",
+                    "fontWeight": "600",
+                    "backgroundColor": "#4F46E5",
+                    "color": "#FFFFFF",
+                    "border": "none",
+                    "cursor": "pointer"
+                  },
+                  "locked": false,
+                  "states": {},
+                  "interactions": [],
+                  "children": [],
+                  "parentId": "root_1788731409414"
+                },
+                {
+                  "id": "btn_order_checkout",
+                  "type": "button",
+                  "name": "Order Button",
+                  "props": {
+                    "text": "Order Checkout",
+                    "workflowId": "wf_non_existent",
+                    "onClickWorkflow": "wf_non_existent"
+                  },
+                  "styles": {
+                    "padding": "8px 16px"
+                  },
+                  "bindings": {},
+                  "locked": false,
+                  "states": {},
+                  "interactions": [],
+                  "parentId": "root_1788731409414",
+                  "children": []
+                }
+              ]
+            },
+            "isHome": true
+          }
+        ],
+        "aiMetadata": {
+          "enabled": true,
+          "settings": {
+            "provider": "mock",
+            "model": "gpt-4o",
+            "temperature": 0.2,
+            "maxTokens": 4096,
+            "safetyMode": "approval",
+            "autoApplyLowRisk": true,
+            "tokenBudget": 50000,
+            "agentMaxSteps": 15,
+            "maxRetries": 3
+          },
+          "generations": [
+            {
+              "id": "gen_1788731409414_l7z2m",
+              "prompt": "Add broken button",
+              "timestamp": "2026-09-06T21:50:09.415Z",
+              "status": "applied",
+              "mode": "generate",
+              "summary": {
+                "pagesCreated": 0,
+                "pagesModified": 1,
+                "componentsAdded": 1,
+                "componentsModified": 0,
+                "collectionsCreated": 0,
+                "workflowsCreated": 0,
+                "themesUpdated": 0
+              },
+              "operationIds": [
+                "op_broken_btn"
+              ],
+              "projectVersionBefore": 7,
+              "projectVersionAfter": 7,
+              "appliedAt": "2026-09-06T21:50:09.415Z"
+            },
+            {
+              "id": "gen_1788731409417_zi3qp",
+              "prompt": "Autonomous recovery: Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
+              "timestamp": "2026-09-06T21:50:09.418Z",
+              "status": "applied",
+              "mode": "edit",
+              "summary": {
+                "pagesCreated": 0,
+                "pagesModified": 1,
+                "componentsAdded": 0,
+                "componentsModified": 0,
+                "collectionsCreated": 0,
+                "workflowsCreated": 1,
+                "themesUpdated": 0
+              },
+              "operationIds": [
+                "op_rec_wf_1788731409416_1_wldf",
+                "op_rec_bind_1788731409416_2_arhu"
+              ],
+              "projectVersionBefore": 7,
+              "projectVersionAfter": 7,
+              "appliedAt": "2026-09-06T21:50:09.418Z"
+            }
+          ],
+          "conversations": [],
+          "memory": {
+            "preferences": {},
+            "conventions": [],
+            "preferredTerminology": {},
+            "notes": []
+          }
+        }
+      },
+      "completedStepIds": [
+        "step_rec_wf_1",
+        "step_rec_bind_2"
+      ],
+      "appliedOperations": [
+        {
+          "id": "op_rec_wf_1788731409416_1_wldf",
+          "type": "create_workflow",
+          "description": "Recover missing workflow wf_non_existent",
+          "risk": "medium",
+          "reversible": true,
+          "workflow": {
+            "id": "wf_non_existent",
+            "name": "Checkout Workflow",
+            "version": 1,
+            "triggerType": "event",
+            "nodes": [
+              {
+                "id": "node_1788731409416_1",
+                "type": "trigger",
+                "data": {
+                  "event": "click"
+                }
+              }
+            ],
+            "edges": []
+          }
+        },
+        {
+          "id": "op_rec_bind_1788731409416_2_arhu",
+          "type": "update_component",
+          "pageId": "page_home",
+          "nodeId": "btn_order_checkout",
+          "props": {
+            "text": "Order Checkout",
+            "workflowId": "wf_non_existent",
+            "onClickWorkflow": "wf_non_existent"
+          },
+          "description": "Re-bind component btn_order_checkout to workflow wf_non_existent",
+          "risk": "low",
+          "reversible": true
+        }
+      ],
+      "timestamp": "2026-09-06T21:50:09.418Z",
+      "status": "AFTER_RECOVERY_MUTATION"
+    }
+  ],
+  "rollbacks": [],
+  "events": [
+    {
+      "id": "evt_1788731409416_3o47",
+      "type": "STATE_TRANSITION",
+      "state": "failure_received",
+      "timestamp": "2026-09-06T21:50:09.416Z",
+      "message": "Transitioned to state: failure_received"
+    },
+    {
+      "id": "evt_1788731409416_bm3b",
+      "type": "STATE_TRANSITION",
+      "state": "diagnosing",
+      "timestamp": "2026-09-06T21:50:09.416Z",
+      "message": "Transitioned to state: diagnosing"
+    },
+    {
+      "id": "evt_1788731409416_1vk1",
+      "type": "STATE_TRANSITION",
+      "state": "diagnosed",
+      "timestamp": "2026-09-06T21:50:09.416Z",
+      "message": "Transitioned to state: diagnosed"
+    },
+    {
+      "id": "evt_1788731409416_b57y",
+      "type": "STATE_TRANSITION",
+      "state": "planning",
+      "timestamp": "2026-09-06T21:50:09.416Z",
+      "message": "Transitioned to state: planning"
+    },
+    {
+      "id": "evt_1788731409417_hc18",
+      "type": "STATE_TRANSITION",
+      "state": "plan_validating",
+      "timestamp": "2026-09-06T21:50:09.417Z",
+      "message": "Transitioned to state: plan_validating"
+    },
+    {
+      "id": "evt_1788731409417_jd7m",
+      "type": "STATE_TRANSITION",
+      "state": "policy_check",
+      "timestamp": "2026-09-06T21:50:09.417Z",
+      "message": "Transitioned to state: policy_check"
+    },
+    {
+      "id": "evt_1788731409417_biei",
+      "type": "STATE_TRANSITION",
+      "state": "recovery_ready",
+      "timestamp": "2026-09-06T21:50:09.417Z",
+      "message": "Transitioned to state: recovery_ready"
+    },
+    {
+      "id": "evt_1788731409417_t3a3",
+      "type": "STATE_TRANSITION",
+      "state": "recovering",
+      "timestamp": "2026-09-06T21:50:09.417Z",
+      "message": "Transitioned to state: recovering"
+    },
+    {
+      "id": "evt_1788731409418_qsv7",
+      "type": "STATE_TRANSITION",
+      "state": "checkpointing",
+      "timestamp": "2026-09-06T21:50:09.418Z",
+      "message": "Transitioned to state: checkpointing"
+    },
+    {
+      "id": "evt_1788731409418_ckg9",
+      "type": "STATE_TRANSITION",
+      "state": "verifying_recovery",
+      "timestamp": "2026-09-06T21:50:09.418Z",
+      "message": "Transitioned to state: verifying_recovery"
+    },
+    {
+      "id": "evt_1788731409419_4p0o",
+      "type": "STATE_TRANSITION",
+      "state": "recovery_succeeded",
+      "timestamp": "2026-09-06T21:50:09.419Z",
+      "message": "Transitioned to state: recovery_succeeded"
+    },
+    {
+      "id": "evt_1788731409419_75d7",
+      "type": "STATE_TRANSITION",
+      "state": "completed",
+      "timestamp": "2026-09-06T21:50:09.419Z",
+      "message": "Transitioned to state: completed"
+    }
+  ],
+  "attemptCount": 1,
+  "maxAttempts": 3,
+  "isInterrupted": false,
+  "diagnosis": {
+    "diagnosisId": "diag_1788731409416_wplx",
+    "primaryCategory": "WORKFLOW",
+    "severity": "CRITICAL",
+    "whatFailed": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
+    "whereItFailed": "btn_order_checkout",
+    "whenItFailed": "2026-09-06T21:50:09.416Z",
+    "whatChanged": "Unknown prior state",
+    "whatWasExpected": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
+    "whatActuallyExists": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
+    "isRecoverable": true,
+    "eligibility": "CONDITIONALLY_RECOVERABLE",
+    "recommendedStrategy": "REPAIR_WORKFLOW",
+    "minimalChangeSummary": "Re-bind target workflow to button/trigger \"btn_order_checkout\"",
+    "riskAssessment": {
+      "level": "HIGH",
+      "score": 0.75,
+      "rationale": "High severity failure requiring structural or schema repair",
+      "factors": [
+        "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
+        "Postcondition \"Button must have valid workflow binding\" failed: Component \"btn_order_checkout\" has broken/missing workflow binding",
+        "All workflow definitions and component workflow bindings resolve cleanly — Actual: Workflow defects detected in 1 binding(s)"
+      ]
+    },
+    "confidence": 0.95,
+    "failures": [
+      {
+        "failureId": "fail_broken_wf_binding_btn_order_checkout",
+        "category": "WORKFLOW",
+        "severity": "CRITICAL",
+        "description": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
+        "rootCause": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
+        "affectedEntityId": "btn_order_checkout",
+        "isRecoverable": true,
+        "eligibility": "CONDITIONALLY_RECOVERABLE",
+        "sourceFailureId": "fail_broken_wf_binding_btn_order_checkout",
+        "timestamp": "2026-09-06T21:50:09.416Z"
+      },
+      {
+        "failureId": "fail_post_post_order_wf",
+        "category": "UNKNOWN",
+        "severity": "CRITICAL",
+        "description": "Postcondition \"Button must have valid workflow binding\" failed: Component \"btn_order_checkout\" has broken/missing workflow binding",
+        "rootCause": "Postcondition \"Button must have valid workflow binding\" failed: Component \"btn_order_checkout\" has broken/missing workflow binding",
+        "affectedEntityId": "btn_order_checkout",
+        "isRecoverable": true,
+        "eligibility": "CONDITIONALLY_RECOVERABLE",
+        "sourceFailureId": "fail_post_post_order_wf",
+        "timestamp": "2026-09-06T21:50:09.416Z"
+      },
+      {
+        "failureId": "fail_chk_chk_workflow_system_integrity",
+        "category": "WORKFLOW",
+        "severity": "HIGH",
+        "description": "All workflow definitions and component workflow bindings resolve cleanly — Actual: Workflow defects detected in 1 binding(s)",
+        "rootCause": "Expected: All workflow definitions and component workflow bindings resolve cleanly, Actual: Workflow defects detected in 1 binding(s)",
+        "affectedEntityId": "project.workflows",
+        "isRecoverable": true,
+        "eligibility": "RECOVERABLE",
+        "evidence": {
+          "expected": "All workflow definitions and component workflow bindings resolve cleanly",
+          "actual": "Workflow defects detected in 1 binding(s)"
+        },
+        "timestamp": "2026-09-06T21:50:09.416Z"
+      }
+    ],
+    "timestamp": "2026-09-06T21:50:09.416Z"
+  },
+  "plan": {
+    "recoveryId": "rec_1788731409416_olol",
+    "projectId": "d8_7_test_proj",
+    "projectVersion": 7,
+    "sourceFailureId": "fail_broken_wf_binding_btn_order_checkout",
+    "diagnosis": {
+      "diagnosisId": "diag_1788731409416_wplx",
+      "primaryCategory": "WORKFLOW",
+      "severity": "CRITICAL",
+      "whatFailed": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
+      "whereItFailed": "btn_order_checkout",
+      "whenItFailed": "2026-09-06T21:50:09.416Z",
+      "whatChanged": "Unknown prior state",
+      "whatWasExpected": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
+      "whatActuallyExists": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
+      "isRecoverable": true,
+      "eligibility": "CONDITIONALLY_RECOVERABLE",
+      "recommendedStrategy": "REPAIR_WORKFLOW",
+      "minimalChangeSummary": "Re-bind target workflow to button/trigger \"btn_order_checkout\"",
+      "riskAssessment": {
+        "level": "HIGH",
+        "score": 0.75,
+        "rationale": "High severity failure requiring structural or schema repair",
+        "factors": [
+          "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
+          "Postcondition \"Button must have valid workflow binding\" failed: Component \"btn_order_checkout\" has broken/missing workflow binding",
+          "All workflow definitions and component workflow bindings resolve cleanly — Actual: Workflow defects detected in 1 binding(s)"
+        ]
+      },
+      "confidence": 0.95,
+      "failures": [
+        {
+          "failureId": "fail_broken_wf_binding_btn_order_checkout",
+          "category": "WORKFLOW",
+          "severity": "CRITICAL",
+          "description": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
+          "rootCause": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
+          "affectedEntityId": "btn_order_checkout",
+          "isRecoverable": true,
+          "eligibility": "CONDITIONALLY_RECOVERABLE",
+          "sourceFailureId": "fail_broken_wf_binding_btn_order_checkout",
+          "timestamp": "2026-09-06T21:50:09.416Z"
+        },
+        {
+          "failureId": "fail_post_post_order_wf",
+          "category": "UNKNOWN",
+          "severity": "CRITICAL",
+          "description": "Postcondition \"Button must have valid workflow binding\" failed: Component \"btn_order_checkout\" has broken/missing workflow binding",
+          "rootCause": "Postcondition \"Button must have valid workflow binding\" failed: Component \"btn_order_checkout\" has broken/missing workflow binding",
+          "affectedEntityId": "btn_order_checkout",
+          "isRecoverable": true,
+          "eligibility": "CONDITIONALLY_RECOVERABLE",
+          "sourceFailureId": "fail_post_post_order_wf",
+          "timestamp": "2026-09-06T21:50:09.416Z"
+        },
+        {
+          "failureId": "fail_chk_chk_workflow_system_integrity",
+          "category": "WORKFLOW",
+          "severity": "HIGH",
+          "description": "All workflow definitions and component workflow bindings resolve cleanly — Actual: Workflow defects detected in 1 binding(s)",
+          "rootCause": "Expected: All workflow definitions and component workflow bindings resolve cleanly, Actual: Workflow defects detected in 1 binding(s)",
+          "affectedEntityId": "project.workflows",
+          "isRecoverable": true,
+          "eligibility": "RECOVERABLE",
+          "evidence": {
+            "expected": "All workflow definitions and component workflow bindings resolve cleanly",
+            "actual": "Workflow defects detected in 1 binding(s)"
+          },
+          "timestamp": "2026-09-06T21:50:09.416Z"
+        }
+      ],
+      "timestamp": "2026-09-06T21:50:09.416Z"
+    },
+    "strategy": "REPAIR_WORKFLOW",
+    "affectedScope": [
+      {
+        "type": "workflow",
+        "id": "wf_non_existent"
+      },
+      {
+        "type": "component",
+        "id": "btn_order_checkout"
+      }
+    ],
+    "expectedOutcome": "Self-heal 2 identified failures through targeted minimal mutations",
+    "steps": [
+      {
+        "stepId": "step_rec_wf_1",
+        "operationType": "create_workflow",
+        "target": {
+          "type": "workflow",
+          "id": "wf_non_existent"
+        },
+        "expectedPrecondition": "Workflow wf_non_existent does not exist",
+        "mutation": {
+          "id": "op_rec_wf_1788731409416_1_wldf",
+          "type": "create_workflow",
+          "description": "Recover missing workflow wf_non_existent",
+          "risk": "medium",
+          "reversible": true,
+          "workflow": {
+            "id": "wf_non_existent",
+            "name": "Checkout Workflow",
+            "version": 1,
+            "triggerType": "event",
+            "nodes": [
+              {
+                "id": "node_1788731409416_1",
+                "type": "trigger",
+                "data": {
+                  "event": "click"
+                }
+              }
+            ],
+            "edges": []
+          }
+        },
+        "expectedPostcondition": "Workflow wf_non_existent exists in project.workflows",
+        "risk": "MEDIUM",
+        "reversible": true,
+        "approvalRequired": false
+      },
+      {
+        "stepId": "step_rec_bind_2",
+        "operationType": "update_component",
+        "target": {
+          "type": "component",
+          "id": "btn_order_checkout"
+        },
+        "expectedPrecondition": "Component btn_order_checkout has broken workflow binding",
+        "mutation": {
+          "id": "op_rec_bind_1788731409416_2_arhu",
+          "type": "update_component",
+          "pageId": "page_home",
+          "nodeId": "btn_order_checkout",
+          "props": {
+            "text": "Order Checkout",
+            "workflowId": "wf_non_existent",
+            "onClickWorkflow": "wf_non_existent"
+          },
+          "description": "Re-bind component btn_order_checkout to workflow wf_non_existent",
+          "risk": "low",
+          "reversible": true
+        },
+        "expectedPostcondition": "Component btn_order_checkout is bound to workflow wf_non_existent",
+        "risk": "LOW",
+        "reversible": true,
+        "approvalRequired": false
+      }
+    ],
+    "risk": {
+      "level": "MEDIUM",
+      "score": 0.3,
+      "rationale": "Plan contains 2 recovery steps with max risk medium",
+      "factors": [
+        "create_workflow on wf_non_existent",
+        "update_component on btn_order_checkout"
+      ]
+    },
+    "estimatedMutationCount": 2,
+    "requiredApproval": false,
+    "policyConstraints": [],
+    "verificationRequirements": [
+      "Verify resolution of WORKFLOW: Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
+      "Verify resolution of UNKNOWN: Postcondition \"Button must have valid workflow binding\" failed: Component \"btn_order_checkout\" has broken/missing workflow binding",
+      "Verify resolution of WORKFLOW: All workflow definitions and component workflow bindings resolve cleanly — Actual: Workflow defects detected in 1 binding(s)"
+    ],
+    "rollbackStrategy": "RESTORE_SNAPSHOT",
+    "retryBudget": 2,
+    "createdAt": "2026-09-06T21:50:09.417Z",
+    "planVersion": 1,
+    "provenance": {
+      "creator": "AutonomousRecoveryEngine",
+      "timestamp": "2026-09-06T21:50:09.417Z"
+    }
+  }
+}
