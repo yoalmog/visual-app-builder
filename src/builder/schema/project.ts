@@ -16,8 +16,12 @@ export * from './rbac';
 export * from './query';
 export * from './webhook';
 export * from './ai';
+export * from './platform';
+export * from './platform-v9';
 
 export const PROJECT_SCHEMA_VERSION = 7;
+export { SCHEMA_VERSION, PROJECT_SCHEMA_VERSION_V8 } from './platform';
+export { SCHEMA_VERSION_V9, PROJECT_SCHEMA_VERSION_V9 } from './platform-v9';
 
 export type DesignTokenCategory = 'color' | 'spacing' | 'typography' | 'radius' | 'shadow';
 
@@ -230,6 +234,23 @@ export type AppProject = {
   templates?: any[];
   // Phase 7: AI Application Generation & Agent Builder
   aiMetadata?: import('./ai').AIProjectMetadata;
+  // Phase 8: Platform, Collaboration & Production Scale
+  organizationId?: string;
+  workspaceId?: string;
+  branch?: string;
+  projectVersion?: number;
+  comments?: import('./platform').Comment[];
+  branches?: import('./platform').Branch[];
+  reviews?: import('./platform').Review[];
+  plugins?: import('./platform').InstalledPlugin[];
+  releases?: import('./platform').Release[];
+  // Phase 9: Scale, Enterprise & Developer Ecosystem
+  regionId?: string;
+  cdnConfig?: import('./platform-v9').CDNConfig;
+  featureFlags?: import('./platform-v9').FeatureFlag[];
+  experiments?: import('./platform-v9').Experiment[];
+  enterprisePolicies?: import('./platform-v9').OrganizationSecurityPolicy;
   version: number;
+  schemaVersion?: number;
 };
 

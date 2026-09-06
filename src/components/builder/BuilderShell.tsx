@@ -10,6 +10,13 @@ import { LayersPanel } from './LayersPanel';
 import { PreviewMode } from './PreviewMode';
 import { ContextMenu } from './ContextMenu';
 import { useKeyboardShortcuts } from './useKeyboardShortcuts';
+import { OrganizationSettingsModal } from './platform/OrganizationSettingsModal';
+import { ScaleDashboardModal } from './platform/ScaleDashboardModal';
+import { EnterpriseSecurityModal } from './platform/EnterpriseSecurityModal';
+import { DeveloperPortalModal } from './platform/DeveloperPortalModal';
+import { ExperimentationModal } from './platform/ExperimentationModal';
+import { AdvancedDeploymentsModal } from './platform/AdvancedDeploymentsModal';
+import { usePlatformStore } from '@/builder/state/platform-store';
 
 interface BuilderShellProps {
   projectId: string;
@@ -23,6 +30,7 @@ export const BuilderShell: React.FC<BuilderShellProps> = ({ projectId }) => {
 
   useEffect(() => {
     initializeProject(projectId);
+    usePlatformStore.getState().initializePlatform(projectId);
   }, [projectId, initializeProject]);
 
   useKeyboardShortcuts();
@@ -60,6 +68,16 @@ export const BuilderShell: React.FC<BuilderShellProps> = ({ projectId }) => {
           onClose={() => setContextMenu(null)}
         />
       )}
+
+      {/* Organization Settings Modal */}
+      <OrganizationSettingsModal />
+
+      {/* Phase 9 Platform & Enterprise Modals */}
+      <ScaleDashboardModal />
+      <EnterpriseSecurityModal />
+      <DeveloperPortalModal />
+      <ExperimentationModal />
+      <AdvancedDeploymentsModal />
     </div>
   );
 };

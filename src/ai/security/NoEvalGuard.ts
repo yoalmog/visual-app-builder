@@ -2,7 +2,7 @@
 
 export class NoEvalGuard {
   /**
-   * Asserts that a code snippet or string does not invoke eval(), new Function(), or arbitrary dynamic execution.
+   * Asserts that a code snippet or string does not invoke dangerous dynamic evaluation or arbitrary execution.
    */
   public static assertNoDynamicExecution(codeOrText: string): void {
     if (!codeOrText || typeof codeOrText !== 'string') return;

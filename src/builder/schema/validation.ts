@@ -458,6 +458,16 @@ export const AppProjectSchema = z.object({
   templates: z.array(z.any()).optional(),
   // Phase 7: AI Application Generation & Agent Builder
   aiMetadata: z.any().optional(),
+  // Phase 8: Platform, Collaboration & Production Scale
+  organizationId: z.string().optional(),
+  workspaceId: z.string().optional(),
+  branch: z.string().optional(),
+  projectVersion: z.number().optional(),
+  comments: z.array(z.any()).optional(),
+  branches: z.array(z.any()).optional(),
+  reviews: z.array(z.any()).optional(),
+  plugins: z.array(z.any()).optional(),
+  releases: z.array(z.any()).optional(),
   version: z.number(),
 });
 

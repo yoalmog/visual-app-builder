@@ -3,6 +3,10 @@ import {
   Asset,
   DesignToken,
   PROJECT_SCHEMA_VERSION,
+  SCHEMA_VERSION,
+  PROJECT_SCHEMA_VERSION_V8,
+  SCHEMA_VERSION_V9,
+  PROJECT_SCHEMA_VERSION_V9,
   AuthConfig,
   EnvironmentConfig,
   CloudConfig,
@@ -11,7 +15,13 @@ import {
 import { ComponentNode } from '../schema/component';
 import { AppProjectSchema } from '../schema/validation';
 
-export { PROJECT_SCHEMA_VERSION };
+export {
+  PROJECT_SCHEMA_VERSION,
+  SCHEMA_VERSION,
+  PROJECT_SCHEMA_VERSION_V8,
+  SCHEMA_VERSION_V9,
+  PROJECT_SCHEMA_VERSION_V9,
+};
 
 export function getStorageKey(projectId: string): string {
   return `visual-builder-project-${projectId}`;
@@ -368,7 +378,8 @@ export function migrateProject(raw: any): AppProject {
 
   // Ensure pages array exists and each page has a valid normalized slug
   if (!Array.isArray(project.pages) || project.pages.length === 0) {
-    return createInitialProject(project.id || 'default');
+    const init = createInitialProject(project.id || 'default');
+    project.pages = init.pages;
   }
 
   project.pages = project.pages.map((p: any, idx: number) => {
@@ -387,6 +398,66 @@ export function migrateProject(raw: any): AppProject {
       authProtection: p.authProtection,
     };
   });
+
+  return project as AppProject;
+}
+
+export function migrateProjectToV8(raw: any): AppProject {
+  const base = migrateProject(raw);
+  const project: any = { ...raw, ...base };
+  project.version = SCHEMA_VERSION;
+
+  if (!project.organizationId) project.organizationId = raw?.organizationId || 'org_default';
+  if (!project.workspaceId) project.workspaceId = raw?.workspaceId || 'ws_default';
+  if (!project.branch) project.branch = raw?.branch || 'main';
+  if (typeof project.projectVersion !== 'number') project.projectVersion = raw?.projectVersion || 1;
+  if (!Array.isArray(project.comments)) project.comments = Array.isArray(raw?.comments) ? raw.comments : [];
+  if (!Array.isArray(project.branches) || project.branches.length === 0) {
+    project.branches = Array.isArray(raw?.branches) && raw.branches.length > 0 ? raw.branches : [
+      {
+        id: `branch_main_${project.id}`,
+        projectId: project.id,
+        name: 'main',
+        headCommitId: `commit_init_${project.id}`,
+        protected: false,
+        createdBy: 'system',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      },
+    ];
+  }
+  if (!Array.isArray(project.reviews)) project.reviews = Array.isArray(raw?.reviews) ? raw.reviews : [];
+  if (!Array.isArray(project.plugins)) project.plugins = Array.isArray(raw?.plugins) ? raw.plugins : [];
+  if (!Array.isArray(project.releases)) project.releases = Array.isArray(raw?.releases) ? raw.releases : [];
+
+  return project as AppProject;
+}
+
+export function migrateProjectToV9(raw: any): AppProject {
+  const v8 = migrateProjectToV8(raw);
+  const project: any = { ...raw, ...v8 };
+  project.id = project.id || raw?.id || 'default';
+  project.version = SCHEMA_VERSION_V9;
+  project.schemaVersion = SCHEMA_VERSION_V9;
+
+  if (!project.regionId) project.regionId = raw?.regionId || 'us-east-1';
+  if (!Array.isArray(project.featureFlags)) project.featureFlags = Array.isArray(raw?.featureFlags) ? raw.featureFlags : [];
+  if (!Array.isArray(project.experiments)) project.experiments = Array.isArray(raw?.experiments) ? raw.experiments : [];
+  if (!project.cdnConfig) {
+    project.cdnConfig = raw?.cdnConfig || {
+      distributionId: `dist_${project.id}`,
+      domain: `${project.id}.cdn.apexstudio.io`,
+      enabled: true,
+      edgeRegions: ['us-east-1', 'eu-central-1', 'ap-southeast-1'],
+      cachingRules: {
+        staticAssetsTtlSeconds: 3600,
+        publicPagesTtlSeconds: 60,
+        apiCacheTtlSeconds: 10,
+      },
+      headers: {},
+    };
+  }
+  if (!project.enterprisePolicies && raw?.enterprisePolicies) project.enterprisePolicies = raw.enterprisePolicies;
 
   return project as AppProject;
 }
@@ -425,15 +496,21 @@ export function loadProjectFromStorage(projectId: string): AppProject | null {
   }
 }
 
-export function createInitialProject(projectId = 'default'): AppProject {
+export function createInitialProject(
+  projectId = 'default',
+  schemaVersion: number = PROJECT_SCHEMA_VERSION
+): AppProject {
   const rootId = `root_${Date.now()}`;
   const textId = `text_${Date.now() + 1}`;
   const btnId = `btn_${Date.now() + 2}`;
 
-  return {
+  const isV8 = schemaVersion >= 8;
+  const isV9 = schemaVersion >= 9;
+
+  const project: AppProject = {
     id: projectId,
     name: 'My App',
-    version: PROJECT_SCHEMA_VERSION,
+    version: schemaVersion,
     theme: {
       primaryColor: '#4F46E5',
       backgroundColor: '#FFFFFF',
@@ -564,5 +641,49 @@ export function createInitialProject(projectId = 'default'): AppProject {
     ],
     aiMetadata: getDefaultAIMetadata(),
   };
+
+  if (isV8) {
+    project.organizationId = 'org_default';
+    project.workspaceId = 'ws_default';
+    project.branch = 'main';
+    project.projectVersion = 1;
+    project.comments = [];
+    project.branches = [
+      {
+        id: `branch_main_${projectId}`,
+        projectId: projectId,
+        name: 'main',
+        headCommitId: `commit_init_${projectId}`,
+        protected: false,
+        createdBy: 'system',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+      },
+    ];
+    project.reviews = [];
+    project.plugins = [];
+    project.releases = [];
+  }
+
+  if (isV9) {
+    (project as any).schemaVersion = schemaVersion;
+    project.regionId = 'us-east-1';
+    project.featureFlags = [];
+    project.experiments = [];
+    project.cdnConfig = {
+      distributionId: `dist_${projectId}`,
+      domain: `${projectId}.cdn.apexstudio.io`,
+      enabled: true,
+      edgeRegions: ['us-east-1', 'eu-central-1', 'ap-southeast-1'],
+      cachingRules: {
+        staticAssetsTtlSeconds: 3600,
+        publicPagesTtlSeconds: 60,
+        apiCacheTtlSeconds: 10,
+      },
+      headers: {},
+    };
+  }
+
+  return project;
 }
 

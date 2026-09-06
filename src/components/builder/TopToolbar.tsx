@@ -2,9 +2,12 @@
 
 import React from 'react';
 import { useBuilderStore } from '@/builder/state/builder-store';
+import { usePlatformStore } from '@/builder/state/platform-store';
 import { DeviceSelector } from './DeviceSelector';
 import { ZoomControls } from './ZoomControls';
 import { CloudStatusIndicator } from './CloudStatusIndicator';
+import { BranchSelector } from './platform/BranchSelector';
+import { CollabPresenceBar } from './platform/CollabPresenceBar';
 import { EnvironmentName } from '@/builder/schema/cloud';
 import {
   Undo2,
@@ -22,6 +25,11 @@ import {
   AlignCenterVertical,
   AlignEndVertical,
   FolderPlus,
+  Server,
+  ShieldAlert,
+  Code2,
+  SlidersHorizontal,
+  Rocket,
 } from 'lucide-react';
 
 const DistributeHorizontalIcon = ({ className = 'w-3.5 h-3.5' }: { className?: string }) => (
@@ -53,6 +61,12 @@ export const TopToolbar: React.FC = () => {
   const distributeSelectedNodes = useBuilderStore((s) => s.distributeSelectedNodes);
   const groupSelectedNodes = useBuilderStore((s) => s.groupSelectedNodes);
   const setActiveEnvironment = useBuilderStore((s) => s.setActiveEnvironment);
+  const setOrgSettingsOpen = usePlatformStore((s) => s.setOrgSettingsOpen);
+  const setScaleDashboardOpen = usePlatformStore((s) => s.setScaleDashboardOpen);
+  const setEnterpriseSecurityOpen = usePlatformStore((s) => s.setEnterpriseSecurityOpen);
+  const setDeveloperPortalOpen = usePlatformStore((s) => s.setDeveloperPortalOpen);
+  const setExperimentationOpen = usePlatformStore((s) => s.setExperimentationOpen);
+  const setAdvancedDeploymentsOpen = usePlatformStore((s) => s.setAdvancedDeploymentsOpen);
 
   const activeEnv = project.environments?.activeEnvironment || 'development';
 
@@ -83,6 +97,7 @@ export const TopToolbar: React.FC = () => {
           <span className="text-xs font-semibold text-slate-200 hover:text-white px-2 py-1 rounded bg-[#131620] border border-[#202534] max-w-[160px] truncate">
             {project.name}
           </span>
+          <BranchSelector />
         </div>
 
         {/* Undo / Redo */}
@@ -255,8 +270,11 @@ export const TopToolbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Right: Environment, Cloud Status, Save Status, Preview, Publish, Avatar */}
+      {/* Right: Environment, Cloud Status, Collab, Save Status, Preview, Publish, Avatar */}
       <div className="flex items-center gap-2.5 text-xs">
+        {/* Real-time Collaboration Presence */}
+        <CollabPresenceBar />
+
         {/* Environment Selector */}
         <div className="flex items-center bg-[#141724] border border-[#222738] rounded-lg px-2 py-0.5">
           <span className="text-[10px] text-slate-500 mr-1.5 uppercase font-bold">Env:</span>
@@ -280,6 +298,57 @@ export const TopToolbar: React.FC = () => {
 
         {/* Cloud Status Indicator */}
         <CloudStatusIndicator />
+
+        <div className="h-4 w-px bg-slate-800" />
+
+        {/* Phase 9 Platform Hub */}
+        <div className="hidden xl:flex items-center gap-1 bg-[#121520] border border-[#1F2433] rounded-lg p-0.5">
+          <button
+            data-testid="topbar-scale-btn"
+            onClick={() => setScaleDashboardOpen(true)}
+            className="flex items-center gap-1 px-2 py-1 rounded text-[11px] font-medium text-slate-300 hover:text-white hover:bg-[#1B2030] transition-colors"
+            title="Scale & Infrastructure Dashboard"
+          >
+            <Server className="w-3 h-3 text-cyan-400" />
+            <span>Scale</span>
+          </button>
+          <button
+            data-testid="topbar-enterprise-btn"
+            onClick={() => setEnterpriseSecurityOpen(true)}
+            className="flex items-center gap-1 px-2 py-1 rounded text-[11px] font-medium text-slate-300 hover:text-white hover:bg-[#1B2030] transition-colors"
+            title="Enterprise Security Center"
+          >
+            <ShieldAlert className="w-3 h-3 text-emerald-400" />
+            <span>Enterprise</span>
+          </button>
+          <button
+            data-testid="topbar-devportal-btn"
+            onClick={() => setDeveloperPortalOpen(true)}
+            className="flex items-center gap-1 px-2 py-1 rounded text-[11px] font-medium text-slate-300 hover:text-white hover:bg-[#1B2030] transition-colors"
+            title="Developer Portal"
+          >
+            <Code2 className="w-3 h-3 text-indigo-400" />
+            <span>Dev Portal</span>
+          </button>
+          <button
+            data-testid="topbar-experiments-btn"
+            onClick={() => setExperimentationOpen(true)}
+            className="flex items-center gap-1 px-2 py-1 rounded text-[11px] font-medium text-slate-300 hover:text-white hover:bg-[#1B2030] transition-colors"
+            title="Flags & Experiments"
+          >
+            <SlidersHorizontal className="w-3 h-3 text-amber-400" />
+            <span>Flags</span>
+          </button>
+          <button
+            data-testid="topbar-rollouts-btn"
+            onClick={() => setAdvancedDeploymentsOpen(true)}
+            className="flex items-center gap-1 px-2 py-1 rounded text-[11px] font-medium text-slate-300 hover:text-white hover:bg-[#1B2030] transition-colors"
+            title="Advanced Rollouts"
+          >
+            <Rocket className="w-3 h-3 text-purple-400" />
+            <span>Rollouts</span>
+          </button>
+        </div>
 
         <div className="h-4 w-px bg-slate-800" />
 
@@ -328,13 +397,15 @@ export const TopToolbar: React.FC = () => {
           <span className="hidden sm:inline">Publish</span>
         </button>
 
-        {/* User / Avatar Placeholder */}
-        <div
-          className="w-7 h-7 rounded-full bg-[#1A1F2D] border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white cursor-pointer"
-          title="User Profile"
+        {/* User / Organization Profile & Settings */}
+        <button
+          data-testid="org-settings-button"
+          onClick={() => setOrgSettingsOpen(true)}
+          className="w-7 h-7 rounded-full bg-[#1A1F2D] hover:bg-indigo-600/30 border border-slate-700 hover:border-indigo-500 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+          title="Organization & Team Settings"
         >
           <User className="w-3.5 h-3.5" />
-        </div>
+        </button>
       </div>
     </header>
   );

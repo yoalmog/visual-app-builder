@@ -16,6 +16,10 @@ import { RolesPanel } from './RolesPanel';
 import { TemplatesPanel } from './TemplatesPanel';
 import { LocalizationPanel } from './LocalizationPanel';
 import { AIBuilderPanel } from './AIBuilderPanel';
+import { CommentsPanel } from './platform/CommentsPanel';
+import { VersionControlPanel } from './platform/VersionControlPanel';
+import { DeploymentsPanel } from './platform/DeploymentsPanel';
+import { MarketplacePanel } from './platform/MarketplacePanel';
 import {
   Sparkles,
   Plus,
@@ -32,6 +36,10 @@ import {
   ShieldCheck,
   LayoutTemplate,
   Globe,
+  MessageSquare,
+  GitBranch,
+  UploadCloud,
+  Store,
 } from 'lucide-react';
 
 export type LeftSidebarTab =
@@ -49,7 +57,12 @@ export type LeftSidebarTab =
   | 'workflows'
   | 'roles'
   | 'templates'
-  | 'localization';
+  | 'localization'
+  | 'comments'
+  | 'version-control'
+  | 'deployments'
+  | 'marketplace';
+
 
 
 export const LeftSidebar: React.FC = () => {
@@ -263,6 +276,61 @@ export const LeftSidebar: React.FC = () => {
         >
           <Globe className="w-4 h-4" />
         </button>
+
+        <div className="w-6 h-[1px] bg-[#1B1E2B] my-1" />
+
+        {/* Phase 8 Activity Tabs */}
+        <button
+          data-testid="tab-comments"
+          onClick={() => setActiveTab('comments')}
+          className={`p-2 rounded-lg transition-colors ${
+            activeTab === 'comments'
+              ? 'bg-indigo-600 text-white shadow-sm'
+              : 'text-slate-400 hover:text-slate-200 hover:bg-[#141724]'
+          }`}
+          title="Comments & Mentions"
+        >
+          <MessageSquare className="w-4 h-4" />
+        </button>
+
+        <button
+          data-testid="tab-version-control"
+          onClick={() => setActiveTab('version-control')}
+          className={`p-2 rounded-lg transition-colors ${
+            activeTab === 'version-control'
+              ? 'bg-indigo-600 text-white shadow-sm'
+              : 'text-slate-400 hover:text-slate-200 hover:bg-[#141724]'
+          }`}
+          title="Version Control & Reviews"
+        >
+          <GitBranch className="w-4 h-4" />
+        </button>
+
+        <button
+          data-testid="tab-deployments"
+          onClick={() => setActiveTab('deployments')}
+          className={`p-2 rounded-lg transition-colors ${
+            activeTab === 'deployments'
+              ? 'bg-indigo-600 text-white shadow-sm'
+              : 'text-slate-400 hover:text-slate-200 hover:bg-[#141724]'
+          }`}
+          title="Deployments & Pipeline"
+        >
+          <UploadCloud className="w-4 h-4" />
+        </button>
+
+        <button
+          data-testid="tab-marketplace"
+          onClick={() => setActiveTab('marketplace')}
+          className={`p-2 rounded-lg transition-colors ${
+            activeTab === 'marketplace'
+              ? 'bg-indigo-600 text-white shadow-sm'
+              : 'text-slate-400 hover:text-slate-200 hover:bg-[#141724]'
+          }`}
+          title="Marketplace & Plugins"
+        >
+          <Store className="w-4 h-4" />
+        </button>
       </div>
 
       {/* Active Panel View */}
@@ -283,6 +351,10 @@ export const LeftSidebar: React.FC = () => {
         {activeTab === 'roles' && <RolesPanel />}
         {activeTab === 'templates' && <TemplatesPanel />}
         {activeTab === 'localization' && <LocalizationPanel />}
+        {activeTab === 'comments' && <CommentsPanel />}
+        {activeTab === 'version-control' && <VersionControlPanel />}
+        {activeTab === 'deployments' && <DeploymentsPanel />}
+        {activeTab === 'marketplace' && <MarketplacePanel />}
       </div>
     </div>
   );
