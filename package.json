@@ -71,6 +71,7 @@
     "zustand": "^4.5.5"
   },
   "devDependencies": {
+    "@types/autocannon": "^7.12.7",
     "@types/canvas-confetti": "^1.9.0",
     "@types/node": "^20.17.0",
     "@types/react": "^18.3.12",

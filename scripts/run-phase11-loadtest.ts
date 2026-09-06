@@ -117,7 +117,7 @@ export async function runLoadTests(): Promise<{
     const totalReqs = result.requests.total;
     const reqsSec = result.requests.average;
     const p50 = result.latency.p50;
-    const p95 = result.latency.p95 || (result.latency as any)['95'] || result.latency.p97_5 || 0;
+    const p95 = (result.latency as any).p95 || (result.latency as any)['95'] || result.latency.p97_5 || 0;
     const p99 = result.latency.p99 || (result.latency as any)['99'] || result.latency.max;
     const non2xx = result.non2xx;
     const errorRate = totalReqs > 0 ? (non2xx / totalReqs) * 100 : 0;
