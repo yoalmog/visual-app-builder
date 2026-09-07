@@ -123,6 +123,37 @@ export class MultiAgentSecurityAuditor {
     const secretAudit = this.auditSecrets(code);
     findings.push(...secretAudit.findings);
 
+    // 5. Prompt Injection & Adversarial Payloads
+    for (const item of this.ADVERSARIAL_PROMPT_PATTERNS) {
+      if (item.pattern.test(code)) {
+        findings.push({
+          findingId: `f_prompt_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
+          category: 'PROMPT_INJECTION',
+          severity: 'HIGH',
+          message: item.message,
+          target: context?.projectId || 'code_snippet',
+          snippet: this.extractSnippet(code, item.pattern),
+          remediation: 'Sanitize prompts and inputs. Disallow adversarial jailbreak patterns.',
+          detectedAt: new Date().toISOString(),
+        });
+      }
+    }
+
+    if (PromptInjectionDefense.containsInjectionAttempt(code)) {
+      if (!findings.some((f) => f.category === 'PROMPT_INJECTION')) {
+        findings.push({
+          findingId: `f_prompt_def_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
+          category: 'PROMPT_INJECTION',
+          severity: 'HIGH',
+          message: 'Suspicious prompt injection attack pattern detected',
+          target: context?.projectId || 'code_snippet',
+          snippet: code.slice(0, 100),
+          remediation: 'Sanitize prompt input against adversarial overrides.',
+          detectedAt: new Date().toISOString(),
+        });
+      }
+    }
+
     return this.buildResult(findings.length === 0, findings, startTime);
   }
 

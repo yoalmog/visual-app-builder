@@ -882,5 +882,62 @@
     "recoveryAttempt": "Security hard stop validated",
     "currentStatus": "RESOLVED",
     "resolvedAt": "2026-09-07T03:41:23.635Z"
+  },
+  {
+    "failureId": "F7-063",
+    "phase": "7.39",
+    "deliverable": "D7.39.2",
+    "timestamp": "2026-09-07T10:41:12.001Z",
+    "category": "TEST",
+    "severity": "HIGH",
+    "command": "npm test -- transaction",
+    "error": "Simulated rollback state mismatch during stress test",
+    "likelyCause": "Mock concurrency interruption",
+    "filesInvolved": [
+      "src/ai/history/AITransactionManager.ts"
+    ],
+    "currentStatus": "RESOLVED",
+    "recoveryAttempt": "Targeted test and regression passed clean",
+    "resolvedAt": "2026-09-07T10:41:12.043Z"
+  },
+  {
+    "failureId": "F7-064",
+    "phase": "7.39",
+    "deliverable": "D7.39.2",
+    "timestamp": "2026-09-07T10:41:12.060Z",
+    "category": "BUILD",
+    "severity": "CRITICAL",
+    "error": "Simulated unresolved compilation issue",
+    "filesInvolved": [],
+    "currentStatus": "RESOLVED",
+    "recoveryAttempt": "Resolved simulated failure",
+    "resolvedAt": "2026-09-07T10:41:12.071Z"
+  },
+  {
+    "failureId": "F7-065",
+    "phase": "7.39",
+    "timestamp": "2026-09-07T10:41:12.097Z",
+    "category": "SECURITY",
+    "severity": "CRITICAL",
+    "error": "NoEvalGuard violation caught in untrusted script input",
+    "likelyCause": "Prompt injection probe",
+    "filesInvolved": [],
+    "recoveryAttempt": "Security hard stop validated",
+    "currentStatus": "RESOLVED",
+    "resolvedAt": "2026-09-07T10:41:12.106Z"
+  },
+  {
+    "failureId": "F7-066",
+    "phase": "7.40",
+    "timestamp": "2026-09-07T10:41:14.184Z",
+    "category": "BUILD",
+    "severity": "HIGH",
+    "command": "npm run build",
+    "error": "Simulated next build asset trace failure",
+    "likelyCause": "File lock contention",
+    "filesInvolved": [],
+    "recoveryAttempt": "Build completed clean on retry",
+    "currentStatus": "RESOLVED",
+    "resolvedAt": "2026-09-07T10:41:14.192Z"
   }
 ]

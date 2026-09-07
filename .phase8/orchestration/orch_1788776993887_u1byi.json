@@ -1,0 +1,3427 @@
+{
+  "sessionId": "orch_1788776993887_u1byi",
+  "projectId": "cert_probe_D8.15",
+  "state": "COMPLETED",
+  "request": {
+    "prompt": "Create landing page header with nav links",
+    "projectId": "cert_probe_D8.15",
+    "autonomyLevel": 4,
+    "useSwarmConsensus": false
+  },
+  "artifacts": {
+    "traceId": "trace_orch_1788776993887_u1byi",
+    "breaches": [],
+    "securityScanResult": {
+      "safe": true,
+      "score": 10,
+      "riskLevel": "NONE",
+      "findings": [],
+      "quarantineRecommended": false,
+      "scanTimestamp": "2026-09-07T10:29:53.898Z",
+      "durationMs": 1
+    },
+    "goal": {
+      "id": "goal_1788776993891_epqth",
+      "version": "1.0.0",
+      "goalType": "CREATE_FEATURE",
+      "intent": "create",
+      "rawPrompt": "Create landing page header with nav links",
+      "normalizedGoal": "Create and provision header, link, links, page per specification",
+      "intentSummary": "Intent [CREATE] targeting [header, link, links, page]",
+      "requestedOutcome": "Verified create outcome affecting [pages] with updated Schema v7 representation.",
+      "targetEntities": [
+        "header",
+        "link",
+        "links",
+        "page"
+      ],
+      "affectedAreas": [
+        "pages"
+      ],
+      "explicitRequirements": [
+        "Explicit request: \"Create landing page header with nav links\""
+      ],
+      "inferredRequirements": [
+        "Preserve existing home page while adding new views"
+      ],
+      "assumptions": [
+        "Strict adherence to COMPONENT_REGISTRY types without arbitrary JSX injection",
+        "Changes are applied immutably through two-phase AITransactionManager"
+      ],
+      "unknowns": [],
+      "constraints": [
+        "Schema version 7 compatibility enforced",
+        "Hard stop: Zero eval(), new Function(), or arbitrary dynamic code execution allowed",
+        "Transactional atomic rollback guaranteed on failure"
+      ],
+      "ambiguities": [],
+      "ambiguityDetails": [],
+      "acceptanceCriteria": [
+        {
+          "id": "ac_1",
+          "description": "Verify presence and operational state of header",
+          "observableTarget": "header",
+          "expectedState": "present_and_configured",
+          "testable": true,
+          "provenance": "explicit"
+        },
+        {
+          "id": "ac_2",
+          "description": "Verify presence and operational state of link",
+          "observableTarget": "link",
+          "expectedState": "present_and_configured",
+          "testable": true,
+          "provenance": "explicit"
+        },
+        {
+          "id": "ac_3",
+          "description": "Verify presence and operational state of links",
+          "observableTarget": "links",
+          "expectedState": "present_and_configured",
+          "testable": true,
+          "provenance": "explicit"
+        },
+        {
+          "id": "ac_4",
+          "description": "Verify presence and operational state of page",
+          "observableTarget": "page",
+          "expectedState": "present_and_configured",
+          "testable": true,
+          "provenance": "explicit"
+        }
+      ],
+      "riskAssessment": "low",
+      "confidenceScore": 1,
+      "confidence": {
+        "score": 1,
+        "level": "HIGH",
+        "rationale": "High confidence: Clear intent, identified target entities, and zero major ambiguities."
+      },
+      "provenance": {
+        "source": "user_prompt",
+        "derivationMethod": "heuristic_nlp_goal_parser_v1",
+        "transformations": [
+          "clause_tokenization",
+          "entity_extraction",
+          "intent_normalization"
+        ],
+        "sanitized": false,
+        "secretsRedacted": false
+      },
+      "securityAssessment": {
+        "safe": true,
+        "secretsRedactedCount": 0
+      },
+      "timestamp": "2026-09-07T10:29:53.891Z"
+    },
+    "context": {
+      "items": [
+        {
+          "id": "ctx_page_page_home",
+          "rawEntityId": "page_home",
+          "source": "project.pages[page_home]",
+          "category": "page",
+          "priority": 2,
+          "relevanceScore": 0.9,
+          "content": "{\"id\":\"page_home\",\"name\":\"Home\",\"slug\":\"/\",\"nodeCount\":3,\"structure\":{\"type\":\"container\",\"name\":\"Container\",\"children\":[{\"type\":\"text\",\"name\":\"Text\",\"text\":\"Welcome to your app\"},{\"type\":\"button\",\"name\":\"Button\",\"text\":\"Click me\"}]}}",
+          "tokenCount": 59,
+          "freshnessTimestamp": "2026-09-07T10:29:53.894Z",
+          "derivationMethod": "ast_compression"
+        },
+        {
+          "id": "ctx_tokens",
+          "source": "project.tokens",
+          "category": "theme",
+          "priority": 2,
+          "relevanceScore": 0.7,
+          "content": "{\"totalTokens\":38,\"palette\":[{\"name\":\"Primary\",\"category\":\"color\",\"value\":\"#4F46E5\"},{\"name\":\"Secondary\",\"category\":\"color\",\"value\":\"#06B6D4\"},{\"name\":\"Accent\",\"category\":\"color\",\"value\":\"#8B5CF6\"},{\"name\":\"Background\",\"category\":\"color\",\"value\":\"#FFFFFF\"},{\"name\":\"Surface\",\"category\":\"color\",\"value\":\"#F8FAFC\"},{\"name\":\"Text\",\"category\":\"color\",\"value\":\"#0F172A\"},{\"name\":\"Muted\",\"category\":\"color\",\"value\":\"#64748B\"},{\"name\":\"Border\",\"category\":\"color\",\"value\":\"#E2E8F0\"},{\"name\":\"Success\",\"category\":\"color\",\"value\":\"#10B981\"},{\"name\":\"Warning\",\"category\":\"color\",\"value\":\"#F59E0B\"}]}",
+          "tokenCount": 147,
+          "freshnessTimestamp": "2026-09-07T10:29:53.894Z",
+          "derivationMethod": "theme_token_sample"
+        }
+      ],
+      "totalTokens": 206,
+      "truncatedCount": 0,
+      "summary": "Selected 2 context items (206 tokens) across [page, theme]. Pruned 0 low-priority items to satisfy 4000 budget ceiling.",
+      "categoriesIncluded": {
+        "page": 1,
+        "theme": 1
+      },
+      "duplicateEntityWarnings": [],
+      "formattedPromptContext": "<project_context>\n\n## PAGE CONTEXT\n- [project.pages[page_home]] (priority: 2, relevance: 0.9): {\"id\":\"page_home\",\"name\":\"Home\",\"slug\":\"/\",\"nodeCount\":3,\"structure\":{\"type\":\"container\",\"name\":\"Container\",\"children\":[{\"type\":\"text\",\"name\":\"Text\",\"text\":\"Welcome to your app\"},{\"type\":\"button\",\"name\":\"Button\",\"text\":\"Click me\"}]}}\n\n## THEME CONTEXT\n- [project.tokens] (priority: 2, relevance: 0.7): {\"totalTokens\":38,\"palette\":[{\"name\":\"Primary\",\"category\":\"color\",\"value\":\"#4F46E5\"},{\"name\":\"Secondary\",\"category\":\"color\",\"value\":\"#06B6D4\"},{\"name\":\"Accent\",\"category\":\"color\",\"value\":\"#8B5CF6\"},{\"name\":\"Background\",\"category\":\"color\",\"value\":\"#FFFFFF\"},{\"name\":\"Surface\",\"category\":\"color\",\"value\":\"#F8FAFC\"},{\"name\":\"Text\",\"category\":\"color\",\"value\":\"#0F172A\"},{\"name\":\"Muted\",\"category\":\"color\",\"value\":\"#64748B\"},{\"name\":\"Border\",\"category\":\"color\",\"value\":\"#E2E8F0\"},{\"name\":\"Success\",\"category\":\"color\",\"value\":\"#10B981\"},{\"name\":\"Warning\",\"category\":\"color\",\"value\":\"#F59E0B\"}]}\n\n</project_context>"
+    },
+    "guardrailPolicy": {
+      "policyId": "dgp-cert_probe_D8.15-1788776993895",
+      "projectId": "cert_probe_D8.15",
+      "synthesizedAt": "2026-09-07T10:29:53.895Z",
+      "riskTier": "LOW",
+      "rules": [
+        {
+          "ruleId": "rule-sec-eval-1788776993895-1",
+          "name": "No Arbitrary Eval or Dynamic Code",
+          "description": "Strict prohibition against dynamic code eval or Function constructors.",
+          "category": "SECURITY_INVARIANT",
+          "phase": "PRE_EXECUTION",
+          "severity": "CRITICAL",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "PROHIBITED_CODE_DETECTED"
+        },
+        {
+          "ruleId": "rule-sec-inj-1788776993895-2",
+          "name": "Prompt Injection Defense Invariant",
+          "description": "Rejects instructions containing adversarial prompt injection signatures.",
+          "category": "SECURITY_INVARIANT",
+          "phase": "PRE_EXECUTION",
+          "severity": "CRITICAL",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "PROHIBITED_CODE_DETECTED"
+        },
+        {
+          "ruleId": "rule-sec-cred-1788776993895-3",
+          "name": "Zero Credential Leakage Boundary",
+          "description": "Prevents leakage of sensitive API keys, tokens, or credentials in payload.",
+          "category": "SECURITY_INVARIANT",
+          "phase": "POST_EXECUTION",
+          "severity": "HIGH",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "CREDENTIAL_LEAKAGE"
+        },
+        {
+          "ruleId": "rule-perm-proj-1788776993895-4",
+          "name": "Strict Project Isolation Boundary",
+          "description": "Cross-project mutations or entity access are forbidden.",
+          "category": "PERMISSION_BOUNDARY",
+          "phase": "PRE_EXECUTION",
+          "severity": "CRITICAL",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "CROSS_PROJECT_ACCESS",
+          "threshold": 0
+        },
+        {
+          "ruleId": "rule-rate-mut-1788776993895-5",
+          "name": "Mutation Budget Ceiling Gate",
+          "description": "Limits total atomic mutations in single plan to 25.",
+          "category": "RATE_AND_BUDGET",
+          "phase": "PRE_EXECUTION",
+          "severity": "HIGH",
+          "enforcementAction": "CONTAIN_AND_PAUSE",
+          "isEnabled": true,
+          "condition": "MAX_MUTATIONS_EXCEEDED",
+          "threshold": 25
+        },
+        {
+          "ruleId": "rule-rate-live-1788776993895-6",
+          "name": "Live Execution Watchdog Throttling",
+          "description": "Throttles or pauses runaway loops exceeding operational cadence.",
+          "category": "RATE_AND_BUDGET",
+          "phase": "LIVE_EXECUTION",
+          "severity": "MEDIUM",
+          "enforcementAction": "THROTTLE",
+          "isEnabled": true,
+          "condition": "RATE_LIMIT_EXCEEDED",
+          "threshold": 10
+        },
+        {
+          "ruleId": "rule-blast-1788776993895-7",
+          "name": "Blast Radius Containment Guard",
+          "description": "Blocks mutations spilling into unrelated components or global scopes.",
+          "category": "BLAST_RADIUS",
+          "phase": "PRE_EXECUTION",
+          "severity": "HIGH",
+          "enforcementAction": "CONTAIN_AND_PAUSE",
+          "isEnabled": true,
+          "condition": "BLAST_RADIUS_BREACH"
+        },
+        {
+          "ruleId": "rule-schema-tamper-1788776993895-8",
+          "name": "Root Schema Preservation Invariant",
+          "description": "Protects root component hierarchy and default routes from destructive removal.",
+          "category": "SCHEMA_PRESERVATION",
+          "phase": "POST_EXECUTION",
+          "severity": "CRITICAL",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "SCHEMA_TAMPERING"
+        },
+        {
+          "ruleId": "rule-data-crit-1788776993895-9",
+          "name": "Critical Data Collection Shield",
+          "description": "Guards authentication, payment, and security collections from unauthorized modification.",
+          "category": "DATA_INTEGRITY",
+          "phase": "PRE_EXECUTION",
+          "severity": "CRITICAL",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "CRITICAL_COLLECTION_TOUCHED",
+          "targetEntities": [
+            "auth",
+            "users",
+            "passwords",
+            "payments",
+            "billing",
+            "admin_credentials"
+          ]
+        }
+      ],
+      "activeBlastRadiusEntities": [],
+      "maxAllowedMutations": 25,
+      "maxExecutionDurationMs": 45000,
+      "synthesizedFrom": {
+        "goalDescription": "Intent [CREATE] targeting [header, link, links, page]",
+        "pastIncidentCount": 0,
+        "operatorRole": "editor",
+        "environment": "development"
+      },
+      "version": 1
+    },
+    "tokenUsageReport": {
+      "promptTokens": 11,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "totalTokens": 11,
+      "estimatedCostUsd": 0.000004,
+      "modelId": "gemini-1.5-flash",
+      "compressionSavingsTokens": 0,
+      "compressionRatioPercent": 0,
+      "timestamp": "2026-09-07T10:29:53.896Z"
+    },
+    "plan": {
+      "planId": "plan_1788776993896_9sznd",
+      "goalId": "goal_1788776993891_epqth",
+      "planVersion": "1.0.0",
+      "title": "Plan for CREATE_FEATURE: Intent [CREATE] targeting [header, link, links, page]",
+      "objective": "Verified create outcome affecting [pages] with updated Schema v7 representation.",
+      "rationale": "Synthesized 3 ordered operations based on goal requirements and current project schema.",
+      "assumptions": [
+        "Strict adherence to COMPONENT_REGISTRY types without arbitrary JSX injection",
+        "Changes are applied immutably through two-phase AITransactionManager"
+      ],
+      "detailedAssumptions": [
+        {
+          "id": "assump_1",
+          "description": "Strict adherence to COMPONENT_REGISTRY types without arbitrary JSX injection",
+          "confidence": 0.85,
+          "evidenceSource": "project.pages[page_home]"
+        },
+        {
+          "id": "assump_2",
+          "description": "Changes are applied immutably through two-phase AITransactionManager",
+          "confidence": 0.85,
+          "evidenceSource": "project.tokens"
+        }
+      ],
+      "requirements": [
+        "Explicit request: \"Create landing page header with nav links\"",
+        "Preserve existing home page while adding new views"
+      ],
+      "constraints": [
+        "Schema version 7 compatibility enforced",
+        "Hard stop: Zero eval(), new Function(), or arbitrary dynamic code execution allowed",
+        "Transactional atomic rollback guaranteed on failure"
+      ],
+      "risks": [
+        "low"
+      ],
+      "steps": [
+        {
+          "stepId": "step_1",
+          "title": "Create Page \"Lding  heder wh nv links\"",
+          "description": "Create page \"Lding  heder wh nv links\" (lding-heder-wh-nv-links)",
+          "purpose": "Execute create_page to fulfill goal requirement",
+          "category": "create",
+          "operation": {
+            "id": "op_page_page_1788776993896",
+            "type": "create_page",
+            "description": "Create page \"Lding  heder wh nv links\" (lding-heder-wh-nv-links)",
+            "risk": "medium",
+            "reversible": true,
+            "pageId": "page_1788776993896",
+            "name": "Lding  heder wh nv links",
+            "slug": "lding-heder-wh-nv-links"
+          },
+          "dependencies": [],
+          "riskLevel": "medium",
+          "expectedResult": {
+            "entityType": "page",
+            "entityId": "page_1788776993896",
+            "expectedState": "exists"
+          },
+          "verificationStrategy": "route_exists",
+          "rollbackStrategy": "undo_operation",
+          "affectedEntities": [
+            "page_1788776993896"
+          ],
+          "acceptanceCriteriaIds": [
+            "ac_2",
+            "ac_3",
+            "ac_4"
+          ],
+          "requiredContext": [
+            "project.pages[page_home]",
+            "project.tokens"
+          ],
+          "confidence": 0.92,
+          "status": "ready",
+          "ordering": 1,
+          "provenance": {
+            "goalRequirementId": "Explicit request: \"Create landing page header with nav links\"",
+            "contextEvidenceSource": "project.pages[page_home]",
+            "rationale": "Derived from goal intent \"create\" and operation \"create_page\"",
+            "derivationMethod": "typed_operation_synthesis"
+          }
+        },
+        {
+          "stepId": "step_2",
+          "title": "Add Component \"Main Navigation\"",
+          "description": "Add navigation header to Lding  heder wh nv links",
+          "purpose": "Execute add_component to fulfill goal requirement",
+          "category": "create",
+          "operation": {
+            "id": "op_nav_page_1788776993896",
+            "type": "add_component",
+            "description": "Add navigation header to Lding  heder wh nv links",
+            "risk": "low",
+            "dependencies": [
+              "op_page_page_1788776993896"
+            ],
+            "reversible": true,
+            "pageId": "page_1788776993896",
+            "parentId": "root_page_1788776993896",
+            "node": {
+              "id": "nav_page_1788776993896",
+              "type": "navbar",
+              "name": "Main Navigation",
+              "props": {
+                "title": "Lding  heder wh nv links",
+                "links": [
+                  {
+                    "label": "Home",
+                    "url": "/"
+                  },
+                  {
+                    "label": "Dashboard",
+                    "url": "/dashboard"
+                  }
+                ]
+              },
+              "styles": {
+                "width": "100%",
+                "height": "64px",
+                "backgroundColor": "#0F172A",
+                "color": "#FFFFFF",
+                "display": "flex",
+                "alignItems": "center",
+                "justifyContent": "space-between",
+                "padding": "0 24px",
+                "borderRadius": "8px"
+              }
+            }
+          },
+          "dependencies": [
+            "step_1"
+          ],
+          "riskLevel": "low",
+          "expectedResult": {
+            "entityType": "component",
+            "entityId": "nav_page_1788776993896",
+            "expectedState": "present_in_tree"
+          },
+          "verificationStrategy": "tree_presence",
+          "rollbackStrategy": "undo_operation",
+          "affectedEntities": [
+            "page_1788776993896",
+            "nav_page_1788776993896"
+          ],
+          "acceptanceCriteriaIds": [
+            "ac_1",
+            "ac_2",
+            "ac_3",
+            "ac_4"
+          ],
+          "requiredContext": [
+            "project.pages[page_home]",
+            "project.tokens"
+          ],
+          "confidence": 0.92,
+          "status": "pending",
+          "ordering": 2,
+          "provenance": {
+            "goalRequirementId": "Explicit request: \"Create landing page header with nav links\"",
+            "contextEvidenceSource": "project.pages[page_home]",
+            "rationale": "Derived from goal intent \"create\" and operation \"add_component\"",
+            "derivationMethod": "typed_operation_synthesis"
+          }
+        },
+        {
+          "stepId": "step_3",
+          "title": "Add Component \"Lding  heder wh nv links Content\"",
+          "description": "Add content section to Lding  heder wh nv links",
+          "purpose": "Execute add_component to fulfill goal requirement",
+          "category": "create",
+          "operation": {
+            "id": "op_sec_page_1788776993896",
+            "type": "add_component",
+            "description": "Add content section to Lding  heder wh nv links",
+            "risk": "low",
+            "dependencies": [
+              "op_page_page_1788776993896"
+            ],
+            "reversible": true,
+            "pageId": "page_1788776993896",
+            "parentId": "root_page_1788776993896",
+            "node": {
+              "id": "sec_page_1788776993896",
+              "type": "section",
+              "name": "Lding  heder wh nv links Content",
+              "props": {},
+              "styles": {
+                "flex": "1",
+                "width": "100%",
+                "display": "flex",
+                "flexDirection": "column",
+                "gap": "24px",
+                "padding": "16px 0"
+              },
+              "children": [
+                {
+                  "id": "heading_page_1788776993896",
+                  "type": "heading",
+                  "name": "Page Title",
+                  "props": {
+                    "text": "Lding  heder wh nv links",
+                    "level": "h1"
+                  },
+                  "styles": {
+                    "fontSize": "28px",
+                    "fontWeight": "700",
+                    "color": "#0F172A",
+                    "margin": "0"
+                  }
+                },
+                {
+                  "id": "desc_page_1788776993896",
+                  "type": "paragraph",
+                  "name": "Description",
+                  "props": {
+                    "text": "Welcome to the Lding  heder wh nv links page."
+                  },
+                  "styles": {
+                    "fontSize": "15px",
+                    "color": "#64748B",
+                    "margin": "0"
+                  }
+                }
+              ]
+            }
+          },
+          "dependencies": [
+            "step_1"
+          ],
+          "riskLevel": "low",
+          "expectedResult": {
+            "entityType": "component",
+            "entityId": "sec_page_1788776993896",
+            "expectedState": "present_in_tree"
+          },
+          "verificationStrategy": "tree_presence",
+          "rollbackStrategy": "undo_operation",
+          "affectedEntities": [
+            "page_1788776993896",
+            "sec_page_1788776993896"
+          ],
+          "acceptanceCriteriaIds": [
+            "ac_2",
+            "ac_3",
+            "ac_4"
+          ],
+          "requiredContext": [
+            "project.pages[page_home]",
+            "project.tokens"
+          ],
+          "confidence": 0.92,
+          "status": "pending",
+          "ordering": 3,
+          "provenance": {
+            "goalRequirementId": "Explicit request: \"Create landing page header with nav links\"",
+            "contextEvidenceSource": "project.pages[page_home]",
+            "rationale": "Derived from goal intent \"create\" and operation \"add_component\"",
+            "derivationMethod": "typed_operation_synthesis"
+          }
+        }
+      ],
+      "confidenceScore": 0.95,
+      "confidenceLevel": "HIGH",
+      "confidenceAssessment": {
+        "score": 0.95,
+        "level": "HIGH",
+        "rationale": "Synthesized 3 ordered steps with 4/4 acceptance criteria covered."
+      },
+      "estimatedTokens": 700,
+      "createdAt": "2026-09-07T10:29:53.896Z",
+      "contextSummary": "Selected 2 context items (206 tokens) across [page, theme]. Pruned 0 low-priority items to satisfy 4000 budget ceiling.",
+      "acceptanceCoverage": [
+        {
+          "criterionId": "ac_1",
+          "description": "Verify presence and operational state of header",
+          "coverageStatus": "covered",
+          "addressedByStepIds": [
+            "step_2"
+          ],
+          "verificationDetails": "Verified by steps [step_2] using tree_presence"
+        },
+        {
+          "criterionId": "ac_2",
+          "description": "Verify presence and operational state of link",
+          "coverageStatus": "covered",
+          "addressedByStepIds": [
+            "step_1",
+            "step_2",
+            "step_3"
+          ],
+          "verificationDetails": "Verified by steps [step_1, step_2, step_3] using route_exists"
+        },
+        {
+          "criterionId": "ac_3",
+          "description": "Verify presence and operational state of links",
+          "coverageStatus": "covered",
+          "addressedByStepIds": [
+            "step_1",
+            "step_2",
+            "step_3"
+          ],
+          "verificationDetails": "Verified by steps [step_1, step_2, step_3] using route_exists"
+        },
+        {
+          "criterionId": "ac_4",
+          "description": "Verify presence and operational state of page",
+          "coverageStatus": "covered",
+          "addressedByStepIds": [
+            "step_1",
+            "step_2",
+            "step_3"
+          ],
+          "verificationDetails": "Verified by steps [step_1, step_2, step_3] using route_exists"
+        }
+      ],
+      "operationGroups": [
+        {
+          "groupId": "grp_ui",
+          "name": "User Interface Construction & Refinement",
+          "category": "UI_GROUP",
+          "purpose": "Create and update layout containers, pages, and UI components",
+          "stepIds": [
+            "step_1",
+            "step_2",
+            "step_3"
+          ],
+          "affectedEntities": [
+            "page_1788776993896",
+            "nav_page_1788776993896",
+            "sec_page_1788776993896"
+          ],
+          "risk": "low"
+        }
+      ],
+      "impactAnalysis": {
+        "overallImpact": "LOW",
+        "affectedPages": [
+          "page_1788776993896"
+        ],
+        "affectedComponents": [
+          "nav_page_1788776993896",
+          "sec_page_1788776993896"
+        ],
+        "affectedCollections": [],
+        "affectedWorkflows": [],
+        "schemaChanges": false,
+        "destructiveChanges": false
+      },
+      "unresolvedAmbiguities": [],
+      "missingContextDependencies": [],
+      "alternatives": [
+        {
+          "planId": "plan_1788776993896_9sznd_alt_minimal",
+          "title": "Minimal In-Place Modification (Recommended)",
+          "description": "Applies surgical in-place changes to existing components and schemas, minimizing risk.",
+          "advantages": [
+            "Zero unnecessary entity creation",
+            "Zero schema breaking risk",
+            "Fastest execution"
+          ],
+          "disadvantages": [
+            "May preserve legacy layout constraints"
+          ],
+          "estimatedRisk": "low",
+          "complexity": "LOW",
+          "confidenceScore": 0.92
+        },
+        {
+          "planId": "plan_1788776993896_9sznd_alt_modular",
+          "title": "Modular Reusable Sub-Component Structure",
+          "description": "Extracts newly generated elements into reusable standalone components.",
+          "advantages": [
+            "Higher reusability across multiple pages",
+            "Cleaner modular hierarchy"
+          ],
+          "disadvantages": [
+            "Adds more entity IDs to project hierarchy",
+            "Slightly higher risk"
+          ],
+          "estimatedRisk": "medium",
+          "complexity": "MEDIUM",
+          "confidenceScore": 0.82
+        }
+      ],
+      "recommendedPlanId": "plan_1788776993896_9sznd_alt_minimal",
+      "planStatus": "VALIDATED",
+      "diagnostics": {
+        "knownContextCount": 2,
+        "inferredContextCount": 1,
+        "unknownContextCount": 0,
+        "conflictingContextCount": 0,
+        "totalTokensEstimated": 700,
+        "dagCycleDetected": false,
+        "minimalChangeViolationsCount": 0,
+        "duplicateProposalsAvoided": 0,
+        "executionOrder": [
+          "step_1",
+          "step_2",
+          "step_3"
+        ]
+      }
+    },
+    "optimizationResult": {
+      "selectedCandidate": {
+        "selectionId": "sel_1788776993899_zai7",
+        "sessionId": "dec_sess_1788776993898_zbcj",
+        "projectId": "cert_probe_D8.15",
+        "selectedCandidateId": "cand_min_1788776993898",
+        "strategyType": "MINIMAL_CHANGE",
+        "candidateTitle": "Minimal Surgical Update",
+        "rationale": "Calculated total score 0.818 based on expected success (0.92), verification confidence (0.9), risk penalty (0), and reversibility bonus (0.1).",
+        "confidence": {
+          "score": 0.92,
+          "evidenceQuantity": 3,
+          "evidenceQuality": 0.9,
+          "recencyWeight": 0.9,
+          "contradictionPenalty": 0,
+          "rationale": "Minimal change has highest reversibility and lowest error probability"
+        },
+        "risk": "LOW",
+        "policyResult": {
+          "evaluated": true,
+          "allowed": true,
+          "effectiveLevel": 3,
+          "violatedRules": []
+        },
+        "approvalRequirement": {
+          "required": false,
+          "riskLevel": "LOW",
+          "environment": "development"
+        },
+        "alternativesConsideredCount": 4,
+        "status": "SELECTED",
+        "selectedAt": "2026-09-07T10:29:53.899Z"
+      },
+      "candidateScores": [
+        {
+          "totalScore": 0.818,
+          "breakdown": {
+            "expectedSuccess": 0.92,
+            "verificationConfidence": 0.9,
+            "historicalEffectiveness": 0.5,
+            "riskPenalty": 0,
+            "mutationScopeCost": 0.05,
+            "complexityPenalty": 0.05,
+            "executionCost": 0.0045,
+            "reversibilityBonus": 0.1,
+            "policyCompatibilityScore": 1,
+            "schemaCompatibilityScore": 1
+          },
+          "rationale": "Calculated total score 0.818 based on expected success (0.92), verification confidence (0.9), risk penalty (0), and reversibility bonus (0.1)."
+        },
+        {
+          "totalScore": 0.805,
+          "breakdown": {
+            "expectedSuccess": 0.88,
+            "verificationConfidence": 0.9,
+            "historicalEffectiveness": 0.5,
+            "riskPenalty": 0,
+            "mutationScopeCost": 0.05,
+            "complexityPenalty": 0.05,
+            "executionCost": 0.003,
+            "reversibilityBonus": 0.1,
+            "policyCompatibilityScore": 1,
+            "schemaCompatibilityScore": 1
+          },
+          "rationale": "Calculated total score 0.805 based on expected success (0.88), verification confidence (0.9), risk penalty (0), and reversibility bonus (0.1)."
+        },
+        {
+          "totalScore": 0.782,
+          "breakdown": {
+            "expectedSuccess": 0.82,
+            "verificationConfidence": 0.9,
+            "historicalEffectiveness": 0.5,
+            "riskPenalty": 0,
+            "mutationScopeCost": 0.05,
+            "complexityPenalty": 0.05,
+            "executionCost": 0.005000000000000001,
+            "reversibilityBonus": 0.1,
+            "policyCompatibilityScore": 1,
+            "schemaCompatibilityScore": 1
+          },
+          "rationale": "Calculated total score 0.782 based on expected success (0.82), verification confidence (0.9), risk penalty (0), and reversibility bonus (0.1)."
+        },
+        {
+          "totalScore": 0.812,
+          "breakdown": {
+            "expectedSuccess": 0.75,
+            "verificationConfidence": 0.9,
+            "historicalEffectiveness": 0.5,
+            "riskPenalty": 0,
+            "mutationScopeCost": 0,
+            "complexityPenalty": 0.05,
+            "executionCost": 0,
+            "reversibilityBonus": 0.1,
+            "policyCompatibilityScore": 1,
+            "schemaCompatibilityScore": 1
+          },
+          "rationale": "Calculated total score 0.812 based on expected success (0.75), verification confidence (0.9), risk penalty (0), and reversibility bonus (0.1)."
+        }
+      ]
+    },
+    "validationResult": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "hasCyclicDependencies": false,
+      "duplicateOperations": [],
+      "unsupportedOperations": [],
+      "missingDependencies": [],
+      "acceptanceCoverageGaps": [],
+      "securityViolations": []
+    },
+    "autonomyDecision": {
+      "requestedAutonomyLevel": 4,
+      "effectiveAutonomyLevel": 4,
+      "semanticLevel": "autonomous",
+      "decision": "ALLOW",
+      "approvalRequired": false,
+      "approvalRequirements": [],
+      "allowedActions": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ],
+      "deniedActions": [],
+      "riskLevel": "medium",
+      "policyViolations": [],
+      "constraints": [],
+      "ceilings": {
+        "maxOperationsPerTask": 50,
+        "maxAffectedEntities": 30,
+        "maxWorkflowChanges": 15,
+        "maxDataChanges": 15,
+        "maxRetries": 3,
+        "maxExecutionDurationMs": 60000,
+        "maxTokenBudget": 4000
+      },
+      "escalationRequirements": [],
+      "stopConditions": [],
+      "confidence": 0.95,
+      "confidenceTier": "HIGH",
+      "rationale": "Autonomous execution allowed under Level 4 (VERIFIED_AUTONOMY).",
+      "provenance": {
+        "evaluatedRules": [
+          "RULE_0_POLICY_VERSION",
+          "RULE_1_SECURITY_HARD_STOP",
+          "RULE_2_RBAC_AUTHORIZATION",
+          "RULE_3_SYSTEM_SAFETY_RISK",
+          "RULE_4_ENVIRONMENT_RESTRICTIONS",
+          "RULE_5_PROJECT_POLICY",
+          "RULE_6_PLAN_DAG_VALIDATION",
+          "RULE_7_CONFIDENCE_AMBIGUITY",
+          "RULE_8_CONTEXT_VALIDITY",
+          "RULE_9_CEILINGS_LIMITS"
+        ],
+        "securityCheckPassed": true,
+        "rbacCheckPassed": true,
+        "environmentRule": "ENV_DEVELOPMENT_CHECK",
+        "planValidationRule": "PLAN_DAG_VALIDATION",
+        "confidenceRule": "CONFIDENCE_GATING",
+        "ambiguityRule": "AMBIGUITY_GATING",
+        "evaluatorTimestamp": "2026-09-07T10:29:53.900Z"
+      },
+      "timestamp": "2026-09-07T10:29:53.900Z",
+      "policyVersion": "1.0.0"
+    },
+    "preGuardrailResult": {
+      "passed": true,
+      "policyId": "dgp-cert_probe_D8.15-1788776993895",
+      "projectId": "cert_probe_D8.15",
+      "phase": "PRE_EXECUTION",
+      "breaches": [],
+      "recommendedAction": "ALLOW",
+      "summary": "Pre-execution guardrails passed (6 evaluated).",
+      "timestamp": "2026-09-07T10:29:53.901Z",
+      "evaluatedRulesCount": 6,
+      "quarantineRequired": false
+    },
+    "hitlSession": {
+      "sessionId": "orch_1788776993887_u1byi",
+      "projectId": "cert_probe_D8.15",
+      "status": "MONITORING",
+      "autonomyLevel": 4,
+      "currentStepIndex": 0,
+      "totalSteps": 3,
+      "isDraining": false,
+      "activePlan": {
+        "planId": "plan_1788776993896_9sznd",
+        "goalId": "goal_1788776993891_epqth",
+        "planVersion": "1.0.0",
+        "title": "Plan for CREATE_FEATURE: Intent [CREATE] targeting [header, link, links, page]",
+        "objective": "Verified create outcome affecting [pages] with updated Schema v7 representation.",
+        "rationale": "Synthesized 3 ordered operations based on goal requirements and current project schema.",
+        "assumptions": [
+          "Strict adherence to COMPONENT_REGISTRY types without arbitrary JSX injection",
+          "Changes are applied immutably through two-phase AITransactionManager"
+        ],
+        "detailedAssumptions": [
+          {
+            "id": "assump_1",
+            "description": "Strict adherence to COMPONENT_REGISTRY types without arbitrary JSX injection",
+            "confidence": 0.85,
+            "evidenceSource": "project.pages[page_home]"
+          },
+          {
+            "id": "assump_2",
+            "description": "Changes are applied immutably through two-phase AITransactionManager",
+            "confidence": 0.85,
+            "evidenceSource": "project.tokens"
+          }
+        ],
+        "requirements": [
+          "Explicit request: \"Create landing page header with nav links\"",
+          "Preserve existing home page while adding new views"
+        ],
+        "constraints": [
+          "Schema version 7 compatibility enforced",
+          "Hard stop: Zero eval(), new Function(), or arbitrary dynamic code execution allowed",
+          "Transactional atomic rollback guaranteed on failure"
+        ],
+        "risks": [
+          "low"
+        ],
+        "steps": [
+          {
+            "stepId": "step_1",
+            "title": "Create Page \"Lding  heder wh nv links\"",
+            "description": "Create page \"Lding  heder wh nv links\" (lding-heder-wh-nv-links)",
+            "purpose": "Execute create_page to fulfill goal requirement",
+            "category": "create",
+            "operation": {
+              "id": "op_page_page_1788776993896",
+              "type": "create_page",
+              "description": "Create page \"Lding  heder wh nv links\" (lding-heder-wh-nv-links)",
+              "risk": "medium",
+              "reversible": true,
+              "pageId": "page_1788776993896",
+              "name": "Lding  heder wh nv links",
+              "slug": "lding-heder-wh-nv-links"
+            },
+            "dependencies": [],
+            "riskLevel": "medium",
+            "expectedResult": {
+              "entityType": "page",
+              "entityId": "page_1788776993896",
+              "expectedState": "exists"
+            },
+            "verificationStrategy": "route_exists",
+            "rollbackStrategy": "undo_operation",
+            "affectedEntities": [
+              "page_1788776993896"
+            ],
+            "acceptanceCriteriaIds": [
+              "ac_2",
+              "ac_3",
+              "ac_4"
+            ],
+            "requiredContext": [
+              "project.pages[page_home]",
+              "project.tokens"
+            ],
+            "confidence": 0.92,
+            "status": "ready",
+            "ordering": 1,
+            "provenance": {
+              "goalRequirementId": "Explicit request: \"Create landing page header with nav links\"",
+              "contextEvidenceSource": "project.pages[page_home]",
+              "rationale": "Derived from goal intent \"create\" and operation \"create_page\"",
+              "derivationMethod": "typed_operation_synthesis"
+            }
+          },
+          {
+            "stepId": "step_2",
+            "title": "Add Component \"Main Navigation\"",
+            "description": "Add navigation header to Lding  heder wh nv links",
+            "purpose": "Execute add_component to fulfill goal requirement",
+            "category": "create",
+            "operation": {
+              "id": "op_nav_page_1788776993896",
+              "type": "add_component",
+              "description": "Add navigation header to Lding  heder wh nv links",
+              "risk": "low",
+              "dependencies": [
+                "op_page_page_1788776993896"
+              ],
+              "reversible": true,
+              "pageId": "page_1788776993896",
+              "parentId": "root_page_1788776993896",
+              "node": {
+                "id": "nav_page_1788776993896",
+                "type": "navbar",
+                "name": "Main Navigation",
+                "props": {
+                  "title": "Lding  heder wh nv links",
+                  "links": [
+                    {
+                      "label": "Home",
+                      "url": "/"
+                    },
+                    {
+                      "label": "Dashboard",
+                      "url": "/dashboard"
+                    }
+                  ]
+                },
+                "styles": {
+                  "width": "100%",
+                  "height": "64px",
+                  "backgroundColor": "#0F172A",
+                  "color": "#FFFFFF",
+                  "display": "flex",
+                  "alignItems": "center",
+                  "justifyContent": "space-between",
+                  "padding": "0 24px",
+                  "borderRadius": "8px"
+                }
+              }
+            },
+            "dependencies": [
+              "step_1"
+            ],
+            "riskLevel": "low",
+            "expectedResult": {
+              "entityType": "component",
+              "entityId": "nav_page_1788776993896",
+              "expectedState": "present_in_tree"
+            },
+            "verificationStrategy": "tree_presence",
+            "rollbackStrategy": "undo_operation",
+            "affectedEntities": [
+              "page_1788776993896",
+              "nav_page_1788776993896"
+            ],
+            "acceptanceCriteriaIds": [
+              "ac_1",
+              "ac_2",
+              "ac_3",
+              "ac_4"
+            ],
+            "requiredContext": [
+              "project.pages[page_home]",
+              "project.tokens"
+            ],
+            "confidence": 0.92,
+            "status": "pending",
+            "ordering": 2,
+            "provenance": {
+              "goalRequirementId": "Explicit request: \"Create landing page header with nav links\"",
+              "contextEvidenceSource": "project.pages[page_home]",
+              "rationale": "Derived from goal intent \"create\" and operation \"add_component\"",
+              "derivationMethod": "typed_operation_synthesis"
+            }
+          },
+          {
+            "stepId": "step_3",
+            "title": "Add Component \"Lding  heder wh nv links Content\"",
+            "description": "Add content section to Lding  heder wh nv links",
+            "purpose": "Execute add_component to fulfill goal requirement",
+            "category": "create",
+            "operation": {
+              "id": "op_sec_page_1788776993896",
+              "type": "add_component",
+              "description": "Add content section to Lding  heder wh nv links",
+              "risk": "low",
+              "dependencies": [
+                "op_page_page_1788776993896"
+              ],
+              "reversible": true,
+              "pageId": "page_1788776993896",
+              "parentId": "root_page_1788776993896",
+              "node": {
+                "id": "sec_page_1788776993896",
+                "type": "section",
+                "name": "Lding  heder wh nv links Content",
+                "props": {},
+                "styles": {
+                  "flex": "1",
+                  "width": "100%",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "gap": "24px",
+                  "padding": "16px 0"
+                },
+                "children": [
+                  {
+                    "id": "heading_page_1788776993896",
+                    "type": "heading",
+                    "name": "Page Title",
+                    "props": {
+                      "text": "Lding  heder wh nv links",
+                      "level": "h1"
+                    },
+                    "styles": {
+                      "fontSize": "28px",
+                      "fontWeight": "700",
+                      "color": "#0F172A",
+                      "margin": "0"
+                    }
+                  },
+                  {
+                    "id": "desc_page_1788776993896",
+                    "type": "paragraph",
+                    "name": "Description",
+                    "props": {
+                      "text": "Welcome to the Lding  heder wh nv links page."
+                    },
+                    "styles": {
+                      "fontSize": "15px",
+                      "color": "#64748B",
+                      "margin": "0"
+                    }
+                  }
+                ]
+              }
+            },
+            "dependencies": [
+              "step_1"
+            ],
+            "riskLevel": "low",
+            "expectedResult": {
+              "entityType": "component",
+              "entityId": "sec_page_1788776993896",
+              "expectedState": "present_in_tree"
+            },
+            "verificationStrategy": "tree_presence",
+            "rollbackStrategy": "undo_operation",
+            "affectedEntities": [
+              "page_1788776993896",
+              "sec_page_1788776993896"
+            ],
+            "acceptanceCriteriaIds": [
+              "ac_2",
+              "ac_3",
+              "ac_4"
+            ],
+            "requiredContext": [
+              "project.pages[page_home]",
+              "project.tokens"
+            ],
+            "confidence": 0.92,
+            "status": "pending",
+            "ordering": 3,
+            "provenance": {
+              "goalRequirementId": "Explicit request: \"Create landing page header with nav links\"",
+              "contextEvidenceSource": "project.pages[page_home]",
+              "rationale": "Derived from goal intent \"create\" and operation \"add_component\"",
+              "derivationMethod": "typed_operation_synthesis"
+            }
+          }
+        ],
+        "confidenceScore": 0.95,
+        "confidenceLevel": "HIGH",
+        "confidenceAssessment": {
+          "score": 0.95,
+          "level": "HIGH",
+          "rationale": "Synthesized 3 ordered steps with 4/4 acceptance criteria covered."
+        },
+        "estimatedTokens": 700,
+        "createdAt": "2026-09-07T10:29:53.896Z",
+        "contextSummary": "Selected 2 context items (206 tokens) across [page, theme]. Pruned 0 low-priority items to satisfy 4000 budget ceiling.",
+        "acceptanceCoverage": [
+          {
+            "criterionId": "ac_1",
+            "description": "Verify presence and operational state of header",
+            "coverageStatus": "covered",
+            "addressedByStepIds": [
+              "step_2"
+            ],
+            "verificationDetails": "Verified by steps [step_2] using tree_presence"
+          },
+          {
+            "criterionId": "ac_2",
+            "description": "Verify presence and operational state of link",
+            "coverageStatus": "covered",
+            "addressedByStepIds": [
+              "step_1",
+              "step_2",
+              "step_3"
+            ],
+            "verificationDetails": "Verified by steps [step_1, step_2, step_3] using route_exists"
+          },
+          {
+            "criterionId": "ac_3",
+            "description": "Verify presence and operational state of links",
+            "coverageStatus": "covered",
+            "addressedByStepIds": [
+              "step_1",
+              "step_2",
+              "step_3"
+            ],
+            "verificationDetails": "Verified by steps [step_1, step_2, step_3] using route_exists"
+          },
+          {
+            "criterionId": "ac_4",
+            "description": "Verify presence and operational state of page",
+            "coverageStatus": "covered",
+            "addressedByStepIds": [
+              "step_1",
+              "step_2",
+              "step_3"
+            ],
+            "verificationDetails": "Verified by steps [step_1, step_2, step_3] using route_exists"
+          }
+        ],
+        "operationGroups": [
+          {
+            "groupId": "grp_ui",
+            "name": "User Interface Construction & Refinement",
+            "category": "UI_GROUP",
+            "purpose": "Create and update layout containers, pages, and UI components",
+            "stepIds": [
+              "step_1",
+              "step_2",
+              "step_3"
+            ],
+            "affectedEntities": [
+              "page_1788776993896",
+              "nav_page_1788776993896",
+              "sec_page_1788776993896"
+            ],
+            "risk": "low"
+          }
+        ],
+        "impactAnalysis": {
+          "overallImpact": "LOW",
+          "affectedPages": [
+            "page_1788776993896"
+          ],
+          "affectedComponents": [
+            "nav_page_1788776993896",
+            "sec_page_1788776993896"
+          ],
+          "affectedCollections": [],
+          "affectedWorkflows": [],
+          "schemaChanges": false,
+          "destructiveChanges": false
+        },
+        "unresolvedAmbiguities": [],
+        "missingContextDependencies": [],
+        "alternatives": [
+          {
+            "planId": "plan_1788776993896_9sznd_alt_minimal",
+            "title": "Minimal In-Place Modification (Recommended)",
+            "description": "Applies surgical in-place changes to existing components and schemas, minimizing risk.",
+            "advantages": [
+              "Zero unnecessary entity creation",
+              "Zero schema breaking risk",
+              "Fastest execution"
+            ],
+            "disadvantages": [
+              "May preserve legacy layout constraints"
+            ],
+            "estimatedRisk": "low",
+            "complexity": "LOW",
+            "confidenceScore": 0.92
+          },
+          {
+            "planId": "plan_1788776993896_9sznd_alt_modular",
+            "title": "Modular Reusable Sub-Component Structure",
+            "description": "Extracts newly generated elements into reusable standalone components.",
+            "advantages": [
+              "Higher reusability across multiple pages",
+              "Cleaner modular hierarchy"
+            ],
+            "disadvantages": [
+              "Adds more entity IDs to project hierarchy",
+              "Slightly higher risk"
+            ],
+            "estimatedRisk": "medium",
+            "complexity": "MEDIUM",
+            "confidenceScore": 0.82
+          }
+        ],
+        "recommendedPlanId": "plan_1788776993896_9sznd_alt_minimal",
+        "planStatus": "VALIDATED",
+        "diagnostics": {
+          "knownContextCount": 2,
+          "inferredContextCount": 1,
+          "unknownContextCount": 0,
+          "conflictingContextCount": 0,
+          "totalTokensEstimated": 700,
+          "dagCycleDetected": false,
+          "minimalChangeViolationsCount": 0,
+          "duplicateProposalsAvoided": 0,
+          "executionOrder": [
+            "step_1",
+            "step_2",
+            "step_3"
+          ]
+        }
+      },
+      "activeBreakpoints": [],
+      "hitBreakpoints": [],
+      "auditTrail": [
+        {
+          "auditId": "audit-1788776993901-m0bu9",
+          "sessionId": "orch_1788776993887_u1byi",
+          "projectId": "cert_probe_D8.15",
+          "actor": "SYSTEM",
+          "role": "SUPERVISOR",
+          "action": "START",
+          "justification": "Initialized HITL supervisor session.",
+          "hash": "db9db9f0f8d4c6d42ab295008b464cf339da7974b3b1091d28ff1af96600b423",
+          "timestamp": "2026-09-07T10:29:53.901Z"
+        }
+      ],
+      "startedAt": "2026-09-07T10:29:53.901Z",
+      "updatedAt": "2026-09-07T10:29:53.901Z"
+    },
+    "verificationResult": {
+      "verificationId": "ver_1788776993911_tlmkvn",
+      "status": "PASS",
+      "intent": "Intent [CREATE] targeting [header, link, links, page]",
+      "checks": [
+        {
+          "checkId": "chk_struct_root_page_home",
+          "type": "structural_page_root",
+          "target": "page_home",
+          "passed": true,
+          "status": "PASS",
+          "expected": "Page Home (page_home) has a valid root node",
+          "actual": "Root node present: root_1788776993885 (type: container)"
+        },
+        {
+          "checkId": "chk_struct_root_page_1788776993896",
+          "type": "structural_page_root",
+          "target": "page_1788776993896",
+          "passed": true,
+          "status": "PASS",
+          "expected": "Page Lding  heder wh nv links (page_1788776993896) has a valid root node",
+          "actual": "Root node present: root_page_1788776993896 (type: container)"
+        },
+        {
+          "checkId": "chk_structural_overall",
+          "type": "structural_hierarchy_integrity",
+          "target": "project.pages",
+          "passed": true,
+          "status": "PASS",
+          "expected": "All component hierarchies, IDs, and registry definitions are valid",
+          "actual": "Validated 8 components across 2 pages without structural defects"
+        },
+        {
+          "checkId": "chk_scope_isolation",
+          "type": "change_scope_isolation",
+          "target": "project",
+          "passed": true,
+          "status": "PASS",
+          "expected": "All mutations strictly confined to approved scope; zero unauthorized mutations",
+          "actual": "All mutations confirmed within approved scope"
+        },
+        {
+          "checkId": "chk_routes_resolvable",
+          "type": "routes_resolution",
+          "target": "project.pages",
+          "passed": true,
+          "status": "PASS",
+          "expected": "All page routes are unique and a default root route (\"/\") exists",
+          "actual": "Validated 2 distinct routes with root homepage"
+        },
+        {
+          "checkId": "chk_runtime_render_sim",
+          "type": "runtime_renderability_simulation",
+          "target": "project.pages",
+          "passed": true,
+          "status": "PASS",
+          "expected": "All components and properties resolve cleanly for runtime rendering",
+          "actual": "Successfully simulated render of 8 component nodes across 2 pages"
+        },
+        {
+          "checkId": "chk_workflow_system_integrity",
+          "type": "workflow_system_integrity",
+          "target": "project.workflows",
+          "passed": true,
+          "status": "PASS",
+          "expected": "All workflow definitions and component workflow bindings resolve cleanly",
+          "actual": "Validated 0 workflows and 0 component bindings"
+        },
+        {
+          "checkId": "chk_data_model_integrity",
+          "type": "data_model_consistency",
+          "target": "project.collections",
+          "passed": true,
+          "status": "PASS",
+          "expected": "All collections have unique names, valid fields, and resolved relationships",
+          "actual": "Validated 0 data collections without schema anomalies"
+        },
+        {
+          "checkId": "chk_security_invariants",
+          "type": "security_invariants_preserved",
+          "target": "project",
+          "passed": true,
+          "status": "PASS",
+          "expected": "Zero arbitrary code execution, zero arbitrary SQL, zero secret leakage",
+          "actual": "Verified all security invariants preserved clean"
+        },
+        {
+          "checkId": "chk_app_project_schema",
+          "type": "zod_schema_invariant",
+          "target": "project",
+          "passed": true,
+          "status": "PASS",
+          "expected": "Project schema strictly passes AppProjectSchema.safeParse",
+          "actual": "Project schema is 100% compliant with AppProjectSchema"
+        },
+        {
+          "checkId": "chk_serializability",
+          "type": "json_serializability_invariant",
+          "target": "project",
+          "passed": true,
+          "status": "PASS",
+          "expected": "Project object is acyclic and JSON-serializable",
+          "actual": "JSON serialization verified"
+        },
+        {
+          "checkId": "chk_overall_intent_fulfillment",
+          "type": "user_intent_fulfillment",
+          "target": "project",
+          "passed": true,
+          "status": "PASS",
+          "expected": "Application changes faithfully satisfy the stated user intent",
+          "actual": "User intent fulfilled by resulting project state"
+        }
+      ],
+      "findings": [],
+      "evidence": [
+        {
+          "evidenceId": "evi_snap_before",
+          "source": "schema_snapshot",
+          "targetId": "cert_probe_D8.15",
+          "observedData": {
+            "pagesCount": 1,
+            "collectionsCount": 0,
+            "workflowsCount": 0,
+            "version": 7
+          },
+          "summary": "Baseline snapshot: 1 pages, version 7",
+          "timestamp": "2026-09-07T10:29:53.911Z"
+        },
+        {
+          "evidenceId": "evi_snap_after",
+          "source": "schema_snapshot",
+          "targetId": "cert_probe_D8.15",
+          "observedData": {
+            "pagesCount": 2,
+            "collectionsCount": 0,
+            "workflowsCount": 0,
+            "version": 7
+          },
+          "summary": "Post-execution snapshot: 2 pages, version 7",
+          "timestamp": "2026-09-07T10:29:53.911Z"
+        },
+        {
+          "evidenceId": "evi_diff_summary",
+          "source": "before_after_diff",
+          "observedData": {
+            "addedPages": [
+              "page_1788776993896"
+            ],
+            "removedPages": [],
+            "modifiedPages": [],
+            "addedComponents": [
+              "root_page_1788776993896",
+              "nav_page_1788776993896",
+              "sec_page_1788776993896",
+              "heading_page_1788776993896",
+              "desc_page_1788776993896"
+            ],
+            "removedComponents": [],
+            "modifiedComponents": [],
+            "addedCollections": [],
+            "modifiedCollections": [],
+            "addedWorkflows": [],
+            "modifiedWorkflows": []
+          },
+          "summary": "Diff detected: +5 components, ~0 components, +1 pages, +0 workflows",
+          "timestamp": "2026-09-07T10:29:53.911Z"
+        }
+      ],
+      "failures": [],
+      "summary": {
+        "totalChecks": 12,
+        "passedChecks": 12,
+        "failedChecks": 0,
+        "uncertainChecks": 0,
+        "criticalFailures": 0,
+        "scopeIntegrityPreserved": true,
+        "unexpectedMutationsCount": 0,
+        "securityInvariantsPreserved": true,
+        "intentFulfilled": true,
+        "conclusion": "Autonomous Verification PASSED: 12/12 assertions verified with full evidence."
+      },
+      "trace": {
+        "traceId": "trc_ver_1788776993913_sihn",
+        "verificationId": "ver_1788776993911_tlmkvn",
+        "projectVersionBefore": 7,
+        "projectVersionAfter": 7,
+        "stages": [
+          {
+            "stage": "collecting_evidence",
+            "timestamp": "2026-09-07T10:29:53.911Z",
+            "durationMs": 0,
+            "status": "OK",
+            "checksCount": 0
+          },
+          {
+            "stage": "checking_structure",
+            "timestamp": "2026-09-07T10:29:53.911Z",
+            "durationMs": 0,
+            "status": "OK",
+            "checksCount": 3
+          },
+          {
+            "stage": "checking_scope",
+            "timestamp": "2026-09-07T10:29:53.911Z",
+            "durationMs": 0,
+            "status": "OK",
+            "checksCount": 1
+          },
+          {
+            "stage": "checking_runtime",
+            "timestamp": "2026-09-07T10:29:53.911Z",
+            "durationMs": 0,
+            "status": "OK",
+            "checksCount": 2
+          },
+          {
+            "stage": "checking_workflows",
+            "timestamp": "2026-09-07T10:29:53.911Z",
+            "durationMs": 0,
+            "status": "OK",
+            "checksCount": 1
+          },
+          {
+            "stage": "checking_data",
+            "timestamp": "2026-09-07T10:29:53.911Z",
+            "durationMs": 0,
+            "status": "OK",
+            "checksCount": 1
+          },
+          {
+            "stage": "checking_security",
+            "timestamp": "2026-09-07T10:29:53.911Z",
+            "durationMs": 0,
+            "status": "OK",
+            "checksCount": 1
+          },
+          {
+            "stage": "checking_invariants",
+            "timestamp": "2026-09-07T10:29:53.913Z",
+            "durationMs": 2,
+            "status": "OK",
+            "checksCount": 2
+          },
+          {
+            "stage": "checking_intent",
+            "timestamp": "2026-09-07T10:29:53.913Z",
+            "durationMs": 0,
+            "status": "OK",
+            "checksCount": 1
+          }
+        ],
+        "finalStatus": "PASS"
+      },
+      "timestamp": "2026-09-07T10:29:53.913Z",
+      "durationMs": 2
+    },
+    "postGuardrailResult": {
+      "passed": true,
+      "policyId": "dgp-cert_probe_D8.15-1788776993895",
+      "projectId": "cert_probe_D8.15",
+      "phase": "POST_EXECUTION",
+      "breaches": [],
+      "recommendedAction": "ALLOW",
+      "summary": "Post-execution invariants preserved cleanly.",
+      "timestamp": "2026-09-07T10:29:53.914Z",
+      "evaluatedRulesCount": 2,
+      "quarantineRequired": false
+    },
+    "explanation": {
+      "explanationId": "exp-trace_orch_1788776993887_u1byi-1788776993914",
+      "requestId": "req_exp_1788776993914",
+      "projectId": "cert_probe_D8.15",
+      "traceId": "trace_orch_1788776993887_u1byi",
+      "sessionId": "exp-session-1788776993914",
+      "state": "COMPLETED",
+      "status": "COMPLETED",
+      "summary": {
+        "headline": "Action evaluated without operations executed.",
+        "whyThisHappened": "Executed to fulfill the stated goal within established autonomy parameters.",
+        "whatWasExecuted": "Executed 0 operations across none. Status: NO_OPERATIONS.",
+        "whatWasVerified": "Verification skipped or not recorded",
+        "keyConstraints": [],
+        "riskAndPolicySummary": "Policy passed. Operation risk is within pre-authorized autonomy envelope; approval not required..",
+        "uncertaintiesSummary": "Uncertainties identified in: PARTIAL_TRACE"
+      },
+      "causalChain": {
+        "nodes": [],
+        "edges": [],
+        "rootNodeId": "none",
+        "terminalNodeId": "none",
+        "isComplete": false,
+        "brokenLinks": []
+      },
+      "approvalExplanation": {
+        "approvalRequired": false,
+        "approvalStatus": "NOT_REQUIRED",
+        "summary": "Operation risk is within pre-authorized autonomy envelope; approval not required.",
+        "evidenceIds": []
+      },
+      "executionExplanation": {
+        "operationsExecutedCount": 0,
+        "operationTypes": [],
+        "executionStatus": "NO_OPERATIONS",
+        "durationMs": 0,
+        "retriesCount": 0,
+        "rollbackOccurred": false,
+        "summary": "Executed 0 operations across none. Status: NO_OPERATIONS.",
+        "evidenceIds": []
+      },
+      "learningExplanation": {
+        "priorExperienceUsed": false,
+        "experienceCategories": [],
+        "relevantExperienceCount": 0,
+        "howExperienceInfluencedRanking": "No relevant prior experience applicable to this context.",
+        "experienceIsEvidenceNotAuthority": true,
+        "summary": "Prior experience was checked but did not alter candidate scores.",
+        "evidenceIds": []
+      },
+      "resultExplanation": {
+        "finalOutcome": "COMPLETED",
+        "whatActuallyHappened": "Executed 0 operations across none. Status: NO_OPERATIONS.",
+        "whatUserRequested": "Create landing page header with nav links",
+        "unresolvedIssues": [],
+        "evidenceIds": [
+          "ev-evt_1788776993888_start"
+        ]
+      },
+      "evidenceBundle": {
+        "bundleId": "bundle-exp-trace_orch_1788776993887_u1byi-1788776993914",
+        "projectId": "cert_probe_D8.15",
+        "traceId": "trace_orch_1788776993887_u1byi",
+        "references": [
+          {
+            "evidenceId": "ev-evt_1788776993888_start",
+            "type": "TRACE_EVENT",
+            "source": "EXECUTION_TRACE",
+            "sourceIdentifier": "evt_1788776993888_start",
+            "projectId": "cert_probe_D8.15",
+            "traceId": "trace_orch_1788776993887_u1byi",
+            "eventId": "evt_1788776993888_start",
+            "summary": "PLANNING_STARTED (SUCCESS)",
+            "strength": "STRONG",
+            "freshness": "RECENT",
+            "dataSnippet": {},
+            "timestamp": "2026-09-07T10:29:53.888Z"
+          }
+        ],
+        "totalCollected": 1,
+        "totalValid": 1,
+        "totalRedacted": 0,
+        "collectedAt": "2026-09-07T10:29:53.917Z"
+      },
+      "uncertainty": {
+        "hasUncertainty": true,
+        "categories": [
+          "PARTIAL_TRACE"
+        ],
+        "knownFacts": [
+          "1 authoritative execution events recorded"
+        ],
+        "unknownFactors": [
+          "Subsequent execution steps"
+        ],
+        "reasonsWhyUnknown": [
+          "Trace terminated prematurely"
+        ],
+        "impactOnReliability": "MEDIUM"
+      },
+      "confidence": {
+        "level": "LOW",
+        "evidenceCompleteness": "LOW",
+        "causalConfidence": "LOW",
+        "decisionConfidence": "MEDIUM",
+        "resultConfidence": "MEDIUM",
+        "rationale": "Confidence derived from 1 verified events and complete causal links."
+      },
+      "provenance": {
+        "creator": "EXPLAINABILITY_ENGINE",
+        "engineVersion": "1.0.0-d8.11",
+        "generatedAt": "2026-09-07T10:29:53.922Z",
+        "traceId": "trace_orch_1788776993887_u1byi",
+        "projectId": "cert_probe_D8.15",
+        "claims": [
+          {
+            "claim": "PLANNING_STARTED (SUCCESS)",
+            "source": "EXECUTION_TRACE",
+            "sourceType": "TRACE_EVENT",
+            "sourceIdentifier": "evt_1788776993888_start",
+            "timestamp": "2026-09-07T10:29:53.888Z",
+            "traceId": "trace_orch_1788776993887_u1byi",
+            "projectId": "cert_probe_D8.15",
+            "causalRelation": "DIRECT_EVENT_RECORD",
+            "evidenceStrength": "STRONG"
+          }
+        ],
+        "hash": "sha256-det-4a9b1cc1"
+      },
+      "redaction": {
+        "secretsRedactedCount": 0,
+        "sensitiveKeysRedactedCount": 0,
+        "sanitizedTextSnippetsCount": 0,
+        "redactedLabels": [],
+        "summary": "0 sensitive fields redacted; clean inputs."
+      },
+      "createdAt": "2026-09-07T10:29:53.914Z",
+      "completedAt": "2026-09-07T10:29:53.922Z"
+    },
+    "auditLedgerEntry": {
+      "entryId": "ledger_entry_53_1788776993926",
+      "sequenceNumber": 53,
+      "timestamp": "2026-09-07T10:29:53.926Z",
+      "eventType": "SESSION_COMPLETED",
+      "actorId": "orchestration_engine",
+      "actorRole": "editor",
+      "projectId": "cert_probe_D8.15",
+      "payloadHash": "c609162aae5f7a43cf88a9c862a5b29b127e323f859728e858c1cae4096591c0",
+      "previousHash": "ee51dd5e237f060009e46d8f2f544a592ba3a676ba7f3eca1698b451103ddb3b",
+      "currentHash": "beab3596fbb1c692f2869910e6c79b77081fadb29258dda21fcc5c72b16d14ec",
+      "signature": "44001025e3796404e7b37c3140adac9c3c22f7e53ab7c2a96f0fc368090d27cf",
+      "quarantined": false
+    },
+    "performanceProfile": {
+      "totalDurationMs": 0,
+      "stageBreakdown": [],
+      "percentiles": {
+        "p50Ms": 0,
+        "p90Ms": 0,
+        "p99Ms": 0
+      },
+      "hotspots": [],
+      "optimizationRecommendations": [],
+      "generatedAt": "2026-09-07T10:29:53.928Z"
+    },
+    "developmentReport": {
+      "sessionId": "orch_1788776993887_u1byi",
+      "projectId": "cert_probe_D8.15",
+      "goalSummary": "Intent [CREATE] targeting [header, link, links, page]",
+      "planSummary": "Plan for CREATE_FEATURE: Intent [CREATE] targeting [header, link, links, page]",
+      "environment": "development",
+      "operatorRole": "editor",
+      "autonomyLevel": 4,
+      "completedStepsCount": 3,
+      "totalStepsCount": 3,
+      "operationsSummary": [
+        "step_1: Create Page \"Lding  heder wh nv links\"",
+        "step_2: Add Component \"Main Navigation\"",
+        "step_3: Add Component \"Lding  heder wh nv links Content\""
+      ],
+      "verificationResults": [
+        {
+          "verificationId": "ver_1788776993911_tlmkvn",
+          "status": "PASS",
+          "intent": "Intent [CREATE] targeting [header, link, links, page]",
+          "checks": [
+            {
+              "checkId": "chk_struct_root_page_home",
+              "type": "structural_page_root",
+              "target": "page_home",
+              "passed": true,
+              "status": "PASS",
+              "expected": "Page Home (page_home) has a valid root node",
+              "actual": "Root node present: root_1788776993885 (type: container)"
+            },
+            {
+              "checkId": "chk_struct_root_page_1788776993896",
+              "type": "structural_page_root",
+              "target": "page_1788776993896",
+              "passed": true,
+              "status": "PASS",
+              "expected": "Page Lding  heder wh nv links (page_1788776993896) has a valid root node",
+              "actual": "Root node present: root_page_1788776993896 (type: container)"
+            },
+            {
+              "checkId": "chk_structural_overall",
+              "type": "structural_hierarchy_integrity",
+              "target": "project.pages",
+              "passed": true,
+              "status": "PASS",
+              "expected": "All component hierarchies, IDs, and registry definitions are valid",
+              "actual": "Validated 8 components across 2 pages without structural defects"
+            },
+            {
+              "checkId": "chk_scope_isolation",
+              "type": "change_scope_isolation",
+              "target": "project",
+              "passed": true,
+              "status": "PASS",
+              "expected": "All mutations strictly confined to approved scope; zero unauthorized mutations",
+              "actual": "All mutations confirmed within approved scope"
+            },
+            {
+              "checkId": "chk_routes_resolvable",
+              "type": "routes_resolution",
+              "target": "project.pages",
+              "passed": true,
+              "status": "PASS",
+              "expected": "All page routes are unique and a default root route (\"/\") exists",
+              "actual": "Validated 2 distinct routes with root homepage"
+            },
+            {
+              "checkId": "chk_runtime_render_sim",
+              "type": "runtime_renderability_simulation",
+              "target": "project.pages",
+              "passed": true,
+              "status": "PASS",
+              "expected": "All components and properties resolve cleanly for runtime rendering",
+              "actual": "Successfully simulated render of 8 component nodes across 2 pages"
+            },
+            {
+              "checkId": "chk_workflow_system_integrity",
+              "type": "workflow_system_integrity",
+              "target": "project.workflows",
+              "passed": true,
+              "status": "PASS",
+              "expected": "All workflow definitions and component workflow bindings resolve cleanly",
+              "actual": "Validated 0 workflows and 0 component bindings"
+            },
+            {
+              "checkId": "chk_data_model_integrity",
+              "type": "data_model_consistency",
+              "target": "project.collections",
+              "passed": true,
+              "status": "PASS",
+              "expected": "All collections have unique names, valid fields, and resolved relationships",
+              "actual": "Validated 0 data collections without schema anomalies"
+            },
+            {
+              "checkId": "chk_security_invariants",
+              "type": "security_invariants_preserved",
+              "target": "project",
+              "passed": true,
+              "status": "PASS",
+              "expected": "Zero arbitrary code execution, zero arbitrary SQL, zero secret leakage",
+              "actual": "Verified all security invariants preserved clean"
+            },
+            {
+              "checkId": "chk_app_project_schema",
+              "type": "zod_schema_invariant",
+              "target": "project",
+              "passed": true,
+              "status": "PASS",
+              "expected": "Project schema strictly passes AppProjectSchema.safeParse",
+              "actual": "Project schema is 100% compliant with AppProjectSchema"
+            },
+            {
+              "checkId": "chk_serializability",
+              "type": "json_serializability_invariant",
+              "target": "project",
+              "passed": true,
+              "status": "PASS",
+              "expected": "Project object is acyclic and JSON-serializable",
+              "actual": "JSON serialization verified"
+            },
+            {
+              "checkId": "chk_overall_intent_fulfillment",
+              "type": "user_intent_fulfillment",
+              "target": "project",
+              "passed": true,
+              "status": "PASS",
+              "expected": "Application changes faithfully satisfy the stated user intent",
+              "actual": "User intent fulfilled by resulting project state"
+            }
+          ],
+          "findings": [],
+          "evidence": [
+            {
+              "evidenceId": "evi_snap_before",
+              "source": "schema_snapshot",
+              "targetId": "cert_probe_D8.15",
+              "observedData": {
+                "pagesCount": 1,
+                "collectionsCount": 0,
+                "workflowsCount": 0,
+                "version": 7
+              },
+              "summary": "Baseline snapshot: 1 pages, version 7",
+              "timestamp": "2026-09-07T10:29:53.911Z"
+            },
+            {
+              "evidenceId": "evi_snap_after",
+              "source": "schema_snapshot",
+              "targetId": "cert_probe_D8.15",
+              "observedData": {
+                "pagesCount": 2,
+                "collectionsCount": 0,
+                "workflowsCount": 0,
+                "version": 7
+              },
+              "summary": "Post-execution snapshot: 2 pages, version 7",
+              "timestamp": "2026-09-07T10:29:53.911Z"
+            },
+            {
+              "evidenceId": "evi_diff_summary",
+              "source": "before_after_diff",
+              "observedData": {
+                "addedPages": [
+                  "page_1788776993896"
+                ],
+                "removedPages": [],
+                "modifiedPages": [],
+                "addedComponents": [
+                  "root_page_1788776993896",
+                  "nav_page_1788776993896",
+                  "sec_page_1788776993896",
+                  "heading_page_1788776993896",
+                  "desc_page_1788776993896"
+                ],
+                "removedComponents": [],
+                "modifiedComponents": [],
+                "addedCollections": [],
+                "modifiedCollections": [],
+                "addedWorkflows": [],
+                "modifiedWorkflows": []
+              },
+              "summary": "Diff detected: +5 components, ~0 components, +1 pages, +0 workflows",
+              "timestamp": "2026-09-07T10:29:53.911Z"
+            }
+          ],
+          "failures": [],
+          "summary": {
+            "totalChecks": 12,
+            "passedChecks": 12,
+            "failedChecks": 0,
+            "uncertainChecks": 0,
+            "criticalFailures": 0,
+            "scopeIntegrityPreserved": true,
+            "unexpectedMutationsCount": 0,
+            "securityInvariantsPreserved": true,
+            "intentFulfilled": true,
+            "conclusion": "Autonomous Verification PASSED: 12/12 assertions verified with full evidence."
+          },
+          "trace": {
+            "traceId": "trc_ver_1788776993913_sihn",
+            "verificationId": "ver_1788776993911_tlmkvn",
+            "projectVersionBefore": 7,
+            "projectVersionAfter": 7,
+            "stages": [
+              {
+                "stage": "collecting_evidence",
+                "timestamp": "2026-09-07T10:29:53.911Z",
+                "durationMs": 0,
+                "status": "OK",
+                "checksCount": 0
+              },
+              {
+                "stage": "checking_structure",
+                "timestamp": "2026-09-07T10:29:53.911Z",
+                "durationMs": 0,
+                "status": "OK",
+                "checksCount": 3
+              },
+              {
+                "stage": "checking_scope",
+                "timestamp": "2026-09-07T10:29:53.911Z",
+                "durationMs": 0,
+                "status": "OK",
+                "checksCount": 1
+              },
+              {
+                "stage": "checking_runtime",
+                "timestamp": "2026-09-07T10:29:53.911Z",
+                "durationMs": 0,
+                "status": "OK",
+                "checksCount": 2
+              },
+              {
+                "stage": "checking_workflows",
+                "timestamp": "2026-09-07T10:29:53.911Z",
+                "durationMs": 0,
+                "status": "OK",
+                "checksCount": 1
+              },
+              {
+                "stage": "checking_data",
+                "timestamp": "2026-09-07T10:29:53.911Z",
+                "durationMs": 0,
+                "status": "OK",
+                "checksCount": 1
+              },
+              {
+                "stage": "checking_security",
+                "timestamp": "2026-09-07T10:29:53.911Z",
+                "durationMs": 0,
+                "status": "OK",
+                "checksCount": 1
+              },
+              {
+                "stage": "checking_invariants",
+                "timestamp": "2026-09-07T10:29:53.913Z",
+                "durationMs": 2,
+                "status": "OK",
+                "checksCount": 2
+              },
+              {
+                "stage": "checking_intent",
+                "timestamp": "2026-09-07T10:29:53.913Z",
+                "durationMs": 0,
+                "status": "OK",
+                "checksCount": 1
+              }
+            ],
+            "finalStatus": "PASS"
+          },
+          "timestamp": "2026-09-07T10:29:53.913Z",
+          "durationMs": 2
+        }
+      ],
+      "regressionDetected": false,
+      "guardrailBreachesCount": 0,
+      "subsystemSummary": {
+        "securityAudit": "PASSED",
+        "goalUnderstanding": "SUCCESS",
+        "contextIntelligence": "SUCCESS",
+        "guardrailsSynthesis": "SUCCESS",
+        "planGeneration": "SUCCESS",
+        "swarmConsensus": "BYPASSED",
+        "decisionOptimization": "SUCCESS",
+        "planValidation": "SUCCESS",
+        "autonomyGating": "SUCCESS",
+        "hitlControl": "SUPERVISED",
+        "transactionExecution": "COMMITTED",
+        "liveWatchdog": "THROTTLED",
+        "verification": "PASSED",
+        "postGuardrail": "PASSED",
+        "adaptationRecovery": "NOT_NEEDED",
+        "timelineTracing": "RECORDED",
+        "explainability": "GENERATED",
+        "experienceLearning": "INGESTED",
+        "reportGeneration": "GENERATED",
+        "performanceProfiling": "PROFILED"
+      },
+      "finalStatus": "COMPLETED",
+      "remainingRisks": [
+        "low"
+      ],
+      "recommendedNextSteps": [
+        "Verify end-to-end application flow in live canvas preview",
+        "Confirm strict project isolation and security boundaries",
+        "Deploy preview deployment for manual stakeholder review"
+      ],
+      "traceId": "trace_orch_1788776993887_u1byi",
+      "provenanceHash": "7100fa2bde5342c17aa3c6d7049cf98a44ead03268bbd1dcb439b40377cdcd54",
+      "generatedAt": "2026-09-07T10:29:53.928Z"
+    }
+  },
+  "subsystemStatus": {
+    "securityAudit": "PASSED",
+    "goalUnderstanding": "SUCCESS",
+    "contextIntelligence": "SUCCESS",
+    "guardrailsSynthesis": "SUCCESS",
+    "planGeneration": "SUCCESS",
+    "swarmConsensus": "BYPASSED",
+    "decisionOptimization": "SUCCESS",
+    "planValidation": "SUCCESS",
+    "autonomyGating": "SUCCESS",
+    "hitlControl": "SUPERVISED",
+    "transactionExecution": "COMMITTED",
+    "liveWatchdog": "THROTTLED",
+    "verification": "PASSED",
+    "postGuardrail": "PASSED",
+    "adaptationRecovery": "NOT_NEEDED",
+    "timelineTracing": "RECORDED",
+    "explainability": "GENERATED",
+    "experienceLearning": "INGESTED",
+    "reportGeneration": "GENERATED",
+    "performanceProfiling": "PROFILED"
+  },
+  "currentProject": {
+    "id": "cert_probe_D8.15",
+    "name": "My App",
+    "version": 7,
+    "theme": {
+      "primaryColor": "#4F46E5",
+      "backgroundColor": "#FFFFFF",
+      "textColor": "#0F172A",
+      "borderRadius": "8px",
+      "colors": {
+        "primary": "#4F46E5",
+        "secondary": "#06B6D4",
+        "background": "#FFFFFF",
+        "foreground": "#0F172A",
+        "muted": "#64748B",
+        "border": "#E2E8F0"
+      },
+      "typography": {
+        "fontFamily": "Inter, sans-serif"
+      },
+      "radius": {
+        "sm": 4,
+        "md": 8,
+        "lg": 12
+      }
+    },
+    "tokens": [
+      {
+        "id": "token_color_primary",
+        "name": "Primary",
+        "category": "color",
+        "value": "#4F46E5",
+        "description": "Primary brand color"
+      },
+      {
+        "id": "token_color_secondary",
+        "name": "Secondary",
+        "category": "color",
+        "value": "#06B6D4",
+        "description": "Secondary accent color"
+      },
+      {
+        "id": "token_color_accent",
+        "name": "Accent",
+        "category": "color",
+        "value": "#8B5CF6",
+        "description": "Accent highlight color"
+      },
+      {
+        "id": "token_color_background",
+        "name": "Background",
+        "category": "color",
+        "value": "#FFFFFF",
+        "description": "Default canvas background"
+      },
+      {
+        "id": "token_color_surface",
+        "name": "Surface",
+        "category": "color",
+        "value": "#F8FAFC",
+        "description": "Card surface color"
+      },
+      {
+        "id": "token_color_text",
+        "name": "Text",
+        "category": "color",
+        "value": "#0F172A",
+        "description": "Primary text color"
+      },
+      {
+        "id": "token_color_muted",
+        "name": "Muted",
+        "category": "color",
+        "value": "#64748B",
+        "description": "Muted text and subtle borders"
+      },
+      {
+        "id": "token_color_border",
+        "name": "Border",
+        "category": "color",
+        "value": "#E2E8F0",
+        "description": "Default border stroke color"
+      },
+      {
+        "id": "token_color_success",
+        "name": "Success",
+        "category": "color",
+        "value": "#10B981",
+        "description": "Success alert color"
+      },
+      {
+        "id": "token_color_warning",
+        "name": "Warning",
+        "category": "color",
+        "value": "#F59E0B",
+        "description": "Warning alert color"
+      },
+      {
+        "id": "token_color_danger",
+        "name": "Danger",
+        "category": "color",
+        "value": "#EF4444",
+        "description": "Destructive / error color"
+      },
+      {
+        "id": "token_space_1",
+        "name": "Spacing 1 (4px)",
+        "category": "spacing",
+        "value": "4px"
+      },
+      {
+        "id": "token_space_2",
+        "name": "Spacing 2 (8px)",
+        "category": "spacing",
+        "value": "8px"
+      },
+      {
+        "id": "token_space_3",
+        "name": "Spacing 3 (12px)",
+        "category": "spacing",
+        "value": "12px"
+      },
+      {
+        "id": "token_space_4",
+        "name": "Spacing 4 (16px)",
+        "category": "spacing",
+        "value": "16px"
+      },
+      {
+        "id": "token_space_5",
+        "name": "Spacing 5 (20px)",
+        "category": "spacing",
+        "value": "20px"
+      },
+      {
+        "id": "token_space_6",
+        "name": "Spacing 6 (24px)",
+        "category": "spacing",
+        "value": "24px"
+      },
+      {
+        "id": "token_space_8",
+        "name": "Spacing 8 (32px)",
+        "category": "spacing",
+        "value": "32px"
+      },
+      {
+        "id": "token_space_10",
+        "name": "Spacing 10 (40px)",
+        "category": "spacing",
+        "value": "40px"
+      },
+      {
+        "id": "token_space_12",
+        "name": "Spacing 12 (48px)",
+        "category": "spacing",
+        "value": "48px"
+      },
+      {
+        "id": "token_space_16",
+        "name": "Spacing 16 (64px)",
+        "category": "spacing",
+        "value": "64px"
+      },
+      {
+        "id": "token_typo_display",
+        "name": "Display",
+        "category": "typography",
+        "value": "48px",
+        "description": "Display title size"
+      },
+      {
+        "id": "token_typo_h1",
+        "name": "H1",
+        "category": "typography",
+        "value": "36px",
+        "description": "Heading 1 size"
+      },
+      {
+        "id": "token_typo_h2",
+        "name": "H2",
+        "category": "typography",
+        "value": "30px",
+        "description": "Heading 2 size"
+      },
+      {
+        "id": "token_typo_h3",
+        "name": "H3",
+        "category": "typography",
+        "value": "24px",
+        "description": "Heading 3 size"
+      },
+      {
+        "id": "token_typo_body",
+        "name": "Body",
+        "category": "typography",
+        "value": "16px",
+        "description": "Body text size"
+      },
+      {
+        "id": "token_typo_small",
+        "name": "Small",
+        "category": "typography",
+        "value": "14px",
+        "description": "Small body text"
+      },
+      {
+        "id": "token_typo_caption",
+        "name": "Caption",
+        "category": "typography",
+        "value": "12px",
+        "description": "Caption / label text"
+      },
+      {
+        "id": "token_typo_button",
+        "name": "Button",
+        "category": "typography",
+        "value": "15px",
+        "description": "Button text size"
+      },
+      {
+        "id": "token_radius_none",
+        "name": "None",
+        "category": "radius",
+        "value": "0px"
+      },
+      {
+        "id": "token_radius_sm",
+        "name": "Small",
+        "category": "radius",
+        "value": "4px"
+      },
+      {
+        "id": "token_radius_md",
+        "name": "Medium",
+        "category": "radius",
+        "value": "8px"
+      },
+      {
+        "id": "token_radius_lg",
+        "name": "Large",
+        "category": "radius",
+        "value": "16px"
+      },
+      {
+        "id": "token_radius_full",
+        "name": "Full",
+        "category": "radius",
+        "value": "9999px"
+      },
+      {
+        "id": "token_shadow_none",
+        "name": "None",
+        "category": "shadow",
+        "value": "none"
+      },
+      {
+        "id": "token_shadow_sm",
+        "name": "Small",
+        "category": "shadow",
+        "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)"
+      },
+      {
+        "id": "token_shadow_md",
+        "name": "Medium",
+        "category": "shadow",
+        "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)"
+      },
+      {
+        "id": "token_shadow_lg",
+        "name": "Large",
+        "category": "shadow",
+        "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)"
+      }
+    ],
+    "assets": [
+      {
+        "id": "asset_default_sample",
+        "name": "Abstract Landscape",
+        "type": "image",
+        "src": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+        "url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+        "width": 600,
+        "height": 400,
+        "alt": "Sample abstract landscape"
+      }
+    ],
+    "components": [],
+    "collections": [],
+    "variables": [],
+    "dataSources": [],
+    "apiConnectors": [],
+    "authConfig": {
+      "provider": "mock",
+      "enabled": false,
+      "allowUserRegistration": true,
+      "persistSession": true
+    },
+    "environments": {
+      "activeEnvironment": "development",
+      "environments": {
+        "development": {
+          "name": "Development",
+          "isProduction": false,
+          "apiVariables": {},
+          "features": {}
+        },
+        "preview": {
+          "name": "Preview",
+          "isProduction": false,
+          "apiVariables": {},
+          "features": {}
+        },
+        "production": {
+          "name": "Production",
+          "isProduction": true,
+          "apiVariables": {},
+          "features": {}
+        }
+      }
+    },
+    "cloudConfig": {
+      "provider": "mock",
+      "projectUrl": "",
+      "anonKey": "",
+      "status": "disconnected"
+    },
+    "deploymentConfig": {
+      "deployments": []
+    },
+    "roles": [
+      {
+        "id": "admin",
+        "name": "Admin",
+        "description": "Full administrative access to manage users, data, and workflows",
+        "permissions": [
+          "*.*"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_owner",
+        "name": "Owner",
+        "description": "Full administrative access to project and all data",
+        "permissions": [
+          "*.*"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_admin",
+        "name": "Admin",
+        "description": "Administrative access to manage users, data, and workflows",
+        "permissions": [
+          "users.*",
+          "records.*",
+          "workflows.*",
+          "export.*"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_editor",
+        "name": "Editor",
+        "description": "Can view and modify collections and execute workflows",
+        "permissions": [
+          "records.create",
+          "records.read",
+          "records.update",
+          "workflows.execute"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_viewer",
+        "name": "Viewer",
+        "description": "Read-only access to records",
+        "permissions": [
+          "records.read"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_user",
+        "name": "User",
+        "description": "Standard authenticated application user",
+        "permissions": [
+          "records.read",
+          "records.create"
+        ],
+        "isSystem": true
+      }
+    ],
+    "permissions": [
+      {
+        "id": "perm_users_all",
+        "resource": "users",
+        "action": "*",
+        "description": "All user management operations"
+      },
+      {
+        "id": "perm_records_read",
+        "resource": "records",
+        "action": "read",
+        "description": "Read collection records"
+      },
+      {
+        "id": "perm_records_create",
+        "resource": "records",
+        "action": "create",
+        "description": "Create new records"
+      },
+      {
+        "id": "perm_records_update",
+        "resource": "records",
+        "action": "update",
+        "description": "Update existing records"
+      },
+      {
+        "id": "perm_records_delete",
+        "resource": "records",
+        "action": "delete",
+        "description": "Delete records"
+      },
+      {
+        "id": "perm_workflows_exec",
+        "resource": "workflows",
+        "action": "execute",
+        "description": "Trigger and execute workflows"
+      },
+      {
+        "id": "perm_export_data",
+        "resource": "export",
+        "action": "data",
+        "description": "Export records to CSV/JSON"
+      }
+    ],
+    "workflows": [],
+    "webhooks": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "queries": [],
+    "dashboards": [],
+    "localization": {
+      "defaultLocale": "en",
+      "locales": [
+        "en",
+        "es",
+        "fr",
+        "de",
+        "ar",
+        "he"
+      ],
+      "direction": {
+        "en": "ltr",
+        "es": "ltr",
+        "fr": "ltr",
+        "de": "ltr",
+        "ar": "rtl",
+        "he": "rtl"
+      },
+      "translations": {
+        "en": {
+          "welcome": "Welcome",
+          "submit": "Submit",
+          "cancel": "Cancel",
+          "delete": "Delete"
+        },
+        "es": {
+          "welcome": "Bienvenido",
+          "submit": "Enviar",
+          "cancel": "Cancelar",
+          "delete": "Eliminar"
+        },
+        "fr": {
+          "welcome": "Bienvenue",
+          "submit": "Soumettre",
+          "cancel": "Annuler",
+          "delete": "Supprimer"
+        },
+        "de": {
+          "welcome": "Willkommen",
+          "submit": "Einreichen",
+          "cancel": "Abbrechen",
+          "delete": "Löschen"
+        },
+        "ar": {
+          "welcome": "أهلاً بك",
+          "submit": "إرسال",
+          "cancel": "إلغاء",
+          "delete": "حذف"
+        },
+        "he": {
+          "welcome": "ברוכים הבאים",
+          "submit": "שלח",
+          "cancel": "ביטול",
+          "delete": "מחק"
+        }
+      }
+    },
+    "auditLogs": [],
+    "templates": [],
+    "pages": [
+      {
+        "id": "page_home",
+        "name": "Home",
+        "slug": "/",
+        "root": {
+          "id": "root_1788776993885",
+          "type": "container",
+          "name": "Container",
+          "props": {},
+          "styles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+            "minHeight": "400px",
+            "padding": "48px 32px",
+            "gap": "20px",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": "12px",
+            "border": "1px solid #E2E8F0",
+            "alignItems": "center",
+            "justifyContent": "center"
+          },
+          "locked": false,
+          "states": {},
+          "interactions": [],
+          "children": [
+            {
+              "id": "text_1788776993886",
+              "type": "text",
+              "name": "Text",
+              "props": {
+                "text": "Welcome to your app"
+              },
+              "styles": {
+                "fontSize": "24px",
+                "fontWeight": "600",
+                "color": "#0F172A",
+                "textAlign": "center",
+                "margin": "0 0 8px 0"
+              },
+              "locked": false,
+              "states": {},
+              "interactions": [],
+              "children": [],
+              "parentId": "root_1788776993885"
+            },
+            {
+              "id": "btn_1788776993887",
+              "type": "button",
+              "name": "Button",
+              "props": {
+                "text": "Click me"
+              },
+              "styles": {
+                "display": "inline-flex",
+                "padding": "12px 24px",
+                "borderRadius": "8px",
+                "fontSize": "15px",
+                "fontWeight": "600",
+                "backgroundColor": "#4F46E5",
+                "color": "#FFFFFF",
+                "border": "none",
+                "cursor": "pointer"
+              },
+              "locked": false,
+              "states": {},
+              "interactions": [],
+              "children": [],
+              "parentId": "root_1788776993885"
+            }
+          ]
+        }
+      },
+      {
+        "id": "page_1788776993896",
+        "name": "Lding  heder wh nv links",
+        "slug": "/lding-heder-wh-nv-links",
+        "root": {
+          "id": "root_page_1788776993896",
+          "type": "container",
+          "name": "Lding  heder wh nv links Root",
+          "props": {},
+          "styles": {
+            "minHeight": "100vh",
+            "width": "100%",
+            "backgroundColor": "#FFFFFF",
+            "padding": "24px",
+            "display": "flex",
+            "flexDirection": "column",
+            "gap": "16px"
+          },
+          "locked": false,
+          "states": {},
+          "interactions": [],
+          "children": [
+            {
+              "id": "nav_page_1788776993896",
+              "type": "navbar",
+              "name": "Main Navigation",
+              "props": {
+                "title": "Lding  heder wh nv links",
+                "links": [
+                  {
+                    "label": "Home",
+                    "url": "/"
+                  },
+                  {
+                    "label": "Dashboard",
+                    "url": "/dashboard"
+                  }
+                ]
+              },
+              "styles": {
+                "width": "100%",
+                "height": "64px",
+                "backgroundColor": "#0F172A",
+                "color": "#FFFFFF",
+                "display": "flex",
+                "alignItems": "center",
+                "justifyContent": "space-between",
+                "padding": "0 24px",
+                "borderRadius": "8px"
+              },
+              "bindings": {},
+              "locked": false,
+              "states": {},
+              "interactions": [],
+              "parentId": "root_page_1788776993896",
+              "children": []
+            },
+            {
+              "id": "sec_page_1788776993896",
+              "type": "section",
+              "name": "Lding  heder wh nv links Content",
+              "props": {},
+              "styles": {
+                "flex": "1",
+                "width": "100%",
+                "display": "flex",
+                "flexDirection": "column",
+                "gap": "24px",
+                "padding": "16px 0"
+              },
+              "bindings": {},
+              "locked": false,
+              "states": {},
+              "interactions": [],
+              "parentId": "root_page_1788776993896",
+              "children": [
+                {
+                  "id": "heading_page_1788776993896",
+                  "type": "heading",
+                  "name": "Page Title",
+                  "props": {
+                    "text": "Lding  heder wh nv links",
+                    "level": "h1"
+                  },
+                  "styles": {
+                    "fontSize": "28px",
+                    "fontWeight": "700",
+                    "color": "#0F172A",
+                    "margin": "0"
+                  },
+                  "bindings": {},
+                  "locked": false,
+                  "states": {},
+                  "interactions": [],
+                  "parentId": "sec_page_1788776993896",
+                  "children": []
+                },
+                {
+                  "id": "desc_page_1788776993896",
+                  "type": "paragraph",
+                  "name": "Description",
+                  "props": {
+                    "text": "Welcome to the Lding  heder wh nv links page."
+                  },
+                  "styles": {
+                    "fontSize": "15px",
+                    "color": "#64748B",
+                    "margin": "0"
+                  },
+                  "bindings": {},
+                  "locked": false,
+                  "states": {},
+                  "interactions": [],
+                  "parentId": "sec_page_1788776993896",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ],
+    "aiMetadata": {
+      "enabled": true,
+      "settings": {
+        "provider": "mock",
+        "model": "gpt-4o",
+        "temperature": 0.2,
+        "maxTokens": 4096,
+        "safetyMode": "approval",
+        "autoApplyLowRisk": true,
+        "tokenBudget": 50000,
+        "agentMaxSteps": 15,
+        "maxRetries": 3
+      },
+      "generations": [
+        {
+          "id": "gen_1788776993901_c0ewg",
+          "prompt": "Create landing page header with nav links",
+          "timestamp": "2026-09-07T10:29:53.906Z",
+          "status": "applied",
+          "mode": "generate",
+          "summary": {
+            "pagesCreated": 1,
+            "pagesModified": 0,
+            "componentsAdded": 5,
+            "componentsModified": 0,
+            "collectionsCreated": 0,
+            "workflowsCreated": 0,
+            "themesUpdated": 0
+          },
+          "operationIds": [
+            "op_page_page_1788776993896",
+            "op_nav_page_1788776993896",
+            "op_sec_page_1788776993896"
+          ],
+          "projectVersionBefore": 7,
+          "projectVersionAfter": 7,
+          "appliedAt": "2026-09-07T10:29:53.906Z"
+        }
+      ],
+      "conversations": [],
+      "memory": {
+        "preferences": {},
+        "conventions": [],
+        "preferredTerminology": {},
+        "notes": []
+      }
+    }
+  },
+  "initialProject": {
+    "id": "cert_probe_D8.15",
+    "name": "My App",
+    "version": 7,
+    "theme": {
+      "primaryColor": "#4F46E5",
+      "backgroundColor": "#FFFFFF",
+      "textColor": "#0F172A",
+      "borderRadius": "8px",
+      "colors": {
+        "primary": "#4F46E5",
+        "secondary": "#06B6D4",
+        "background": "#FFFFFF",
+        "foreground": "#0F172A",
+        "muted": "#64748B",
+        "border": "#E2E8F0"
+      },
+      "typography": {
+        "fontFamily": "Inter, sans-serif"
+      },
+      "radius": {
+        "sm": 4,
+        "md": 8,
+        "lg": 12
+      }
+    },
+    "tokens": [
+      {
+        "id": "token_color_primary",
+        "name": "Primary",
+        "category": "color",
+        "value": "#4F46E5",
+        "description": "Primary brand color"
+      },
+      {
+        "id": "token_color_secondary",
+        "name": "Secondary",
+        "category": "color",
+        "value": "#06B6D4",
+        "description": "Secondary accent color"
+      },
+      {
+        "id": "token_color_accent",
+        "name": "Accent",
+        "category": "color",
+        "value": "#8B5CF6",
+        "description": "Accent highlight color"
+      },
+      {
+        "id": "token_color_background",
+        "name": "Background",
+        "category": "color",
+        "value": "#FFFFFF",
+        "description": "Default canvas background"
+      },
+      {
+        "id": "token_color_surface",
+        "name": "Surface",
+        "category": "color",
+        "value": "#F8FAFC",
+        "description": "Card surface color"
+      },
+      {
+        "id": "token_color_text",
+        "name": "Text",
+        "category": "color",
+        "value": "#0F172A",
+        "description": "Primary text color"
+      },
+      {
+        "id": "token_color_muted",
+        "name": "Muted",
+        "category": "color",
+        "value": "#64748B",
+        "description": "Muted text and subtle borders"
+      },
+      {
+        "id": "token_color_border",
+        "name": "Border",
+        "category": "color",
+        "value": "#E2E8F0",
+        "description": "Default border stroke color"
+      },
+      {
+        "id": "token_color_success",
+        "name": "Success",
+        "category": "color",
+        "value": "#10B981",
+        "description": "Success alert color"
+      },
+      {
+        "id": "token_color_warning",
+        "name": "Warning",
+        "category": "color",
+        "value": "#F59E0B",
+        "description": "Warning alert color"
+      },
+      {
+        "id": "token_color_danger",
+        "name": "Danger",
+        "category": "color",
+        "value": "#EF4444",
+        "description": "Destructive / error color"
+      },
+      {
+        "id": "token_space_1",
+        "name": "Spacing 1 (4px)",
+        "category": "spacing",
+        "value": "4px"
+      },
+      {
+        "id": "token_space_2",
+        "name": "Spacing 2 (8px)",
+        "category": "spacing",
+        "value": "8px"
+      },
+      {
+        "id": "token_space_3",
+        "name": "Spacing 3 (12px)",
+        "category": "spacing",
+        "value": "12px"
+      },
+      {
+        "id": "token_space_4",
+        "name": "Spacing 4 (16px)",
+        "category": "spacing",
+        "value": "16px"
+      },
+      {
+        "id": "token_space_5",
+        "name": "Spacing 5 (20px)",
+        "category": "spacing",
+        "value": "20px"
+      },
+      {
+        "id": "token_space_6",
+        "name": "Spacing 6 (24px)",
+        "category": "spacing",
+        "value": "24px"
+      },
+      {
+        "id": "token_space_8",
+        "name": "Spacing 8 (32px)",
+        "category": "spacing",
+        "value": "32px"
+      },
+      {
+        "id": "token_space_10",
+        "name": "Spacing 10 (40px)",
+        "category": "spacing",
+        "value": "40px"
+      },
+      {
+        "id": "token_space_12",
+        "name": "Spacing 12 (48px)",
+        "category": "spacing",
+        "value": "48px"
+      },
+      {
+        "id": "token_space_16",
+        "name": "Spacing 16 (64px)",
+        "category": "spacing",
+        "value": "64px"
+      },
+      {
+        "id": "token_typo_display",
+        "name": "Display",
+        "category": "typography",
+        "value": "48px",
+        "description": "Display title size"
+      },
+      {
+        "id": "token_typo_h1",
+        "name": "H1",
+        "category": "typography",
+        "value": "36px",
+        "description": "Heading 1 size"
+      },
+      {
+        "id": "token_typo_h2",
+        "name": "H2",
+        "category": "typography",
+        "value": "30px",
+        "description": "Heading 2 size"
+      },
+      {
+        "id": "token_typo_h3",
+        "name": "H3",
+        "category": "typography",
+        "value": "24px",
+        "description": "Heading 3 size"
+      },
+      {
+        "id": "token_typo_body",
+        "name": "Body",
+        "category": "typography",
+        "value": "16px",
+        "description": "Body text size"
+      },
+      {
+        "id": "token_typo_small",
+        "name": "Small",
+        "category": "typography",
+        "value": "14px",
+        "description": "Small body text"
+      },
+      {
+        "id": "token_typo_caption",
+        "name": "Caption",
+        "category": "typography",
+        "value": "12px",
+        "description": "Caption / label text"
+      },
+      {
+        "id": "token_typo_button",
+        "name": "Button",
+        "category": "typography",
+        "value": "15px",
+        "description": "Button text size"
+      },
+      {
+        "id": "token_radius_none",
+        "name": "None",
+        "category": "radius",
+        "value": "0px"
+      },
+      {
+        "id": "token_radius_sm",
+        "name": "Small",
+        "category": "radius",
+        "value": "4px"
+      },
+      {
+        "id": "token_radius_md",
+        "name": "Medium",
+        "category": "radius",
+        "value": "8px"
+      },
+      {
+        "id": "token_radius_lg",
+        "name": "Large",
+        "category": "radius",
+        "value": "16px"
+      },
+      {
+        "id": "token_radius_full",
+        "name": "Full",
+        "category": "radius",
+        "value": "9999px"
+      },
+      {
+        "id": "token_shadow_none",
+        "name": "None",
+        "category": "shadow",
+        "value": "none"
+      },
+      {
+        "id": "token_shadow_sm",
+        "name": "Small",
+        "category": "shadow",
+        "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)"
+      },
+      {
+        "id": "token_shadow_md",
+        "name": "Medium",
+        "category": "shadow",
+        "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)"
+      },
+      {
+        "id": "token_shadow_lg",
+        "name": "Large",
+        "category": "shadow",
+        "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)"
+      }
+    ],
+    "assets": [
+      {
+        "id": "asset_default_sample",
+        "name": "Abstract Landscape",
+        "type": "image",
+        "src": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+        "url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+        "width": 600,
+        "height": 400,
+        "alt": "Sample abstract landscape"
+      }
+    ],
+    "components": [],
+    "collections": [],
+    "variables": [],
+    "dataSources": [],
+    "apiConnectors": [],
+    "authConfig": {
+      "provider": "mock",
+      "enabled": false,
+      "allowUserRegistration": true,
+      "persistSession": true
+    },
+    "environments": {
+      "activeEnvironment": "development",
+      "environments": {
+        "development": {
+          "name": "Development",
+          "isProduction": false,
+          "apiVariables": {},
+          "features": {}
+        },
+        "preview": {
+          "name": "Preview",
+          "isProduction": false,
+          "apiVariables": {},
+          "features": {}
+        },
+        "production": {
+          "name": "Production",
+          "isProduction": true,
+          "apiVariables": {},
+          "features": {}
+        }
+      }
+    },
+    "cloudConfig": {
+      "provider": "mock",
+      "projectUrl": "",
+      "anonKey": "",
+      "status": "disconnected"
+    },
+    "deploymentConfig": {
+      "deployments": []
+    },
+    "roles": [
+      {
+        "id": "admin",
+        "name": "Admin",
+        "description": "Full administrative access to manage users, data, and workflows",
+        "permissions": [
+          "*.*"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_owner",
+        "name": "Owner",
+        "description": "Full administrative access to project and all data",
+        "permissions": [
+          "*.*"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_admin",
+        "name": "Admin",
+        "description": "Administrative access to manage users, data, and workflows",
+        "permissions": [
+          "users.*",
+          "records.*",
+          "workflows.*",
+          "export.*"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_editor",
+        "name": "Editor",
+        "description": "Can view and modify collections and execute workflows",
+        "permissions": [
+          "records.create",
+          "records.read",
+          "records.update",
+          "workflows.execute"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_viewer",
+        "name": "Viewer",
+        "description": "Read-only access to records",
+        "permissions": [
+          "records.read"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_user",
+        "name": "User",
+        "description": "Standard authenticated application user",
+        "permissions": [
+          "records.read",
+          "records.create"
+        ],
+        "isSystem": true
+      }
+    ],
+    "permissions": [
+      {
+        "id": "perm_users_all",
+        "resource": "users",
+        "action": "*",
+        "description": "All user management operations"
+      },
+      {
+        "id": "perm_records_read",
+        "resource": "records",
+        "action": "read",
+        "description": "Read collection records"
+      },
+      {
+        "id": "perm_records_create",
+        "resource": "records",
+        "action": "create",
+        "description": "Create new records"
+      },
+      {
+        "id": "perm_records_update",
+        "resource": "records",
+        "action": "update",
+        "description": "Update existing records"
+      },
+      {
+        "id": "perm_records_delete",
+        "resource": "records",
+        "action": "delete",
+        "description": "Delete records"
+      },
+      {
+        "id": "perm_workflows_exec",
+        "resource": "workflows",
+        "action": "execute",
+        "description": "Trigger and execute workflows"
+      },
+      {
+        "id": "perm_export_data",
+        "resource": "export",
+        "action": "data",
+        "description": "Export records to CSV/JSON"
+      }
+    ],
+    "workflows": [],
+    "webhooks": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "queries": [],
+    "dashboards": [],
+    "localization": {
+      "defaultLocale": "en",
+      "locales": [
+        "en",
+        "es",
+        "fr",
+        "de",
+        "ar",
+        "he"
+      ],
+      "direction": {
+        "en": "ltr",
+        "es": "ltr",
+        "fr": "ltr",
+        "de": "ltr",
+        "ar": "rtl",
+        "he": "rtl"
+      },
+      "translations": {
+        "en": {
+          "welcome": "Welcome",
+          "submit": "Submit",
+          "cancel": "Cancel",
+          "delete": "Delete"
+        },
+        "es": {
+          "welcome": "Bienvenido",
+          "submit": "Enviar",
+          "cancel": "Cancelar",
+          "delete": "Eliminar"
+        },
+        "fr": {
+          "welcome": "Bienvenue",
+          "submit": "Soumettre",
+          "cancel": "Annuler",
+          "delete": "Supprimer"
+        },
+        "de": {
+          "welcome": "Willkommen",
+          "submit": "Einreichen",
+          "cancel": "Abbrechen",
+          "delete": "Löschen"
+        },
+        "ar": {
+          "welcome": "أهلاً بك",
+          "submit": "إرسال",
+          "cancel": "إلغاء",
+          "delete": "حذف"
+        },
+        "he": {
+          "welcome": "ברוכים הבאים",
+          "submit": "שלח",
+          "cancel": "ביטול",
+          "delete": "מחק"
+        }
+      }
+    },
+    "auditLogs": [],
+    "templates": [],
+    "pages": [
+      {
+        "id": "page_home",
+        "name": "Home",
+        "slug": "/",
+        "root": {
+          "id": "root_1788776993885",
+          "type": "container",
+          "name": "Container",
+          "props": {},
+          "styles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+            "minHeight": "400px",
+            "padding": "48px 32px",
+            "gap": "20px",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": "12px",
+            "border": "1px solid #E2E8F0",
+            "alignItems": "center",
+            "justifyContent": "center"
+          },
+          "locked": false,
+          "states": {},
+          "interactions": [],
+          "children": [
+            {
+              "id": "text_1788776993886",
+              "type": "text",
+              "name": "Text",
+              "props": {
+                "text": "Welcome to your app"
+              },
+              "styles": {
+                "fontSize": "24px",
+                "fontWeight": "600",
+                "color": "#0F172A",
+                "textAlign": "center",
+                "margin": "0 0 8px 0"
+              },
+              "locked": false,
+              "states": {},
+              "interactions": [],
+              "children": [],
+              "parentId": "root_1788776993885"
+            },
+            {
+              "id": "btn_1788776993887",
+              "type": "button",
+              "name": "Button",
+              "props": {
+                "text": "Click me"
+              },
+              "styles": {
+                "display": "inline-flex",
+                "padding": "12px 24px",
+                "borderRadius": "8px",
+                "fontSize": "15px",
+                "fontWeight": "600",
+                "backgroundColor": "#4F46E5",
+                "color": "#FFFFFF",
+                "border": "none",
+                "cursor": "pointer"
+              },
+              "locked": false,
+              "states": {},
+              "interactions": [],
+              "children": [],
+              "parentId": "root_1788776993885"
+            }
+          ]
+        }
+      }
+    ],
+    "aiMetadata": {
+      "enabled": true,
+      "settings": {
+        "provider": "mock",
+        "model": "gpt-4o",
+        "temperature": 0.2,
+        "maxTokens": 4096,
+        "safetyMode": "approval",
+        "autoApplyLowRisk": true,
+        "tokenBudget": 50000,
+        "agentMaxSteps": 15,
+        "maxRetries": 3
+      },
+      "generations": [],
+      "conversations": [],
+      "memory": {
+        "preferences": {},
+        "conventions": [],
+        "preferredTerminology": {},
+        "notes": []
+      }
+    }
+  },
+  "errors": [],
+  "warnings": [],
+  "startedAt": "2026-09-07T10:29:53.887Z",
+  "provenanceHash": "7100fa2bde5342c17aa3c6d7049cf98a44ead03268bbd1dcb439b40377cdcd54",
+  "completedAt": "2026-09-07T10:29:53.926Z",
+  "durationMs": 39
+}

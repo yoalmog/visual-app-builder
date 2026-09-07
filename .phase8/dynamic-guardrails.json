@@ -1,13 +1,13 @@
 {
   "policies": [
     {
-      "policyId": "dgp-cert_probe_D8.14-1788774067396",
-      "projectId": "cert_probe_D8.14",
-      "synthesizedAt": "2026-09-07T09:41:07.396Z",
+      "policyId": "dgp-proj_secure-1788777494355",
+      "projectId": "proj_secure",
+      "synthesizedAt": "2026-09-07T10:38:14.356Z",
       "riskTier": "LOW",
       "rules": [
         {
-          "ruleId": "rule-sec-eval-1788774067396-1",
+          "ruleId": "rule-sec-eval-1788777494355-1",
           "name": "No Arbitrary Eval or Dynamic Code",
           "description": "Strict prohibition against dynamic code eval or Function constructors.",
           "category": "SECURITY_INVARIANT",
@@ -18,7 +18,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-inj-1788774067396-2",
+          "ruleId": "rule-sec-inj-1788777494355-2",
           "name": "Prompt Injection Defense Invariant",
           "description": "Rejects instructions containing adversarial prompt injection signatures.",
           "category": "SECURITY_INVARIANT",
@@ -29,7 +29,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-cred-1788774067396-3",
+          "ruleId": "rule-sec-cred-1788777494355-3",
           "name": "Zero Credential Leakage Boundary",
           "description": "Prevents leakage of sensitive API keys, tokens, or credentials in payload.",
           "category": "SECURITY_INVARIANT",
@@ -40,7 +40,7 @@
           "condition": "CREDENTIAL_LEAKAGE"
         },
         {
-          "ruleId": "rule-perm-proj-1788774067396-4",
+          "ruleId": "rule-perm-proj-1788777494355-4",
           "name": "Strict Project Isolation Boundary",
           "description": "Cross-project mutations or entity access are forbidden.",
           "category": "PERMISSION_BOUNDARY",
@@ -52,7 +52,7 @@
           "threshold": 0
         },
         {
-          "ruleId": "rule-rate-mut-1788774067396-5",
+          "ruleId": "rule-rate-mut-1788777494355-5",
           "name": "Mutation Budget Ceiling Gate",
           "description": "Limits total atomic mutations in single plan to 25.",
           "category": "RATE_AND_BUDGET",
@@ -64,7 +64,7 @@
           "threshold": 25
         },
         {
-          "ruleId": "rule-rate-live-1788774067396-6",
+          "ruleId": "rule-rate-live-1788777494355-6",
           "name": "Live Execution Watchdog Throttling",
           "description": "Throttles or pauses runaway loops exceeding operational cadence.",
           "category": "RATE_AND_BUDGET",
@@ -76,7 +76,7 @@
           "threshold": 10
         },
         {
-          "ruleId": "rule-blast-1788774067396-7",
+          "ruleId": "rule-blast-1788777494355-7",
           "name": "Blast Radius Containment Guard",
           "description": "Blocks mutations spilling into unrelated components or global scopes.",
           "category": "BLAST_RADIUS",
@@ -87,7 +87,7 @@
           "condition": "BLAST_RADIUS_BREACH"
         },
         {
-          "ruleId": "rule-schema-tamper-1788774067396-8",
+          "ruleId": "rule-schema-tamper-1788777494355-8",
           "name": "Root Schema Preservation Invariant",
           "description": "Protects root component hierarchy and default routes from destructive removal.",
           "category": "SCHEMA_PRESERVATION",
@@ -98,7 +98,7 @@
           "condition": "SCHEMA_TAMPERING"
         },
         {
-          "ruleId": "rule-data-crit-1788774067396-9",
+          "ruleId": "rule-data-crit-1788777494355-9",
           "name": "Critical Data Collection Shield",
           "description": "Guards authentication, payment, and security collections from unauthorized modification.",
           "category": "DATA_INTEGRITY",
@@ -121,8 +121,9 @@
       "maxAllowedMutations": 25,
       "maxExecutionDurationMs": 45000,
       "synthesizedFrom": {
+        "goalDescription": "Intent [INSPECT] targeting [pricing, card]",
         "pastIncidentCount": 0,
-        "operatorRole": "developer",
+        "operatorRole": "editor",
         "environment": "development"
       },
       "version": 1
@@ -130,5 +131,5 @@
   ],
   "breachesCount": 0,
   "containmentCount": 0,
-  "updatedAt": "2026-09-07T09:41:07.397Z"
+  "updatedAt": "2026-09-07T10:38:14.356Z"
 }
