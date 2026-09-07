@@ -664,7 +664,7 @@ export class DecisionOptimizationEngine {
       const matchingExps = projectExps.filter(
         (e) =>
           e.outcome === 'SUCCESS' &&
-          candidate.operations.some((op) => e.features.operationTypes.includes(op.type))
+          candidate.operations.some((op) => e.features?.operationTypes?.includes(op.type))
       );
       if (matchingExps.length > 0) {
         const avgScore =
@@ -1445,4 +1445,35 @@ export class DecisionOptimizationEngine {
 
     return sanitized;
   }
+
+  public static optimizePlanCandidates(params: {
+    projectId: string;
+    goal: string;
+    basePlan?: any;
+    environment?: string;
+    project?: AppProject;
+  }): { selectedCandidate: DecisionSelection; candidateScores: DecisionScore[] } {
+    const proj = params.project || ({
+      id: params.projectId,
+      name: 'Default Project',
+      version: 1,
+      pages: [{ id: 'p1', name: 'Home', slug: '/', root: { id: 'root', type: 'page', props: {}, children: [] } }],
+    } as any);
+    const session = DecisionOptimizationEngine.createSession({
+      projectId: params.projectId,
+      projectVersion: proj.version || 1,
+      userIntent: params.goal,
+      environment: (params.environment as any) || 'development',
+      userAutonomyLevel: 3,
+      userRoles: ['developer'],
+    });
+    const candidates = DecisionOptimizationEngine.generateCandidates(session, proj);
+    session.candidates = candidates;
+    const selection = DecisionOptimizationEngine.selectDecision(session, proj);
+    return {
+      selectedCandidate: selection,
+      candidateScores: session.candidates.map((c) => c.score).filter(Boolean) as DecisionScore[],
+    };
+  }
 }
+

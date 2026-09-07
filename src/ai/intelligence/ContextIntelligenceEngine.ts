@@ -387,7 +387,7 @@ export class ContextIntelligenceEngine {
 
     if (type === 'page') {
       return (project.pages || []).some(
-        (p) => p.name.toLowerCase() === norm || p.slug.toLowerCase() === `/${norm}` || p.slug.toLowerCase() === norm
+        (p) => (p.name || '').toLowerCase() === norm || (p.slug?.toLowerCase() === `/${norm}` || p.slug?.toLowerCase() === norm) || ((p as any).path?.toLowerCase() === `/${norm}` || (p as any).path?.toLowerCase() === norm)
       );
     }
     if (type === 'collection') {

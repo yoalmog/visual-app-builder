@@ -22,7 +22,12 @@
     "verify:d8-7": "tsx scripts/verify-d8-7-autonomous-recovery.ts",
     "verify:d8-8": "tsx scripts/verify-d8-8-autonomous-learning.ts",
     "verify:d8-9": "tsx scripts/verify-d8-9-decision-optimization.ts",
-    "verify:d8-10": "tsx scripts/verify-d8-10-observability.ts"
+    "verify:d8-10": "tsx scripts/verify-d8-10-observability.ts",
+    "verify:d8-11": "tsx scripts/verify-d8-11-explainability.ts",
+    "verify:d8-12": "tsx scripts/verify-d8-12-controlled-adaptation.ts",
+    "verify:d8-13": "tsx scripts/verify-d8-13-hitl-control.ts",
+    "verify:d8-14": "tsx scripts/verify-d8-14-dynamic-guardrails.ts",
+    "verify:d8-15": "tsx scripts/verify-d8-15-unified-orchestration.ts"
   },
   "build": {
     "appId": "com.antigravity.visualappbuilder",

@@ -53,6 +53,8 @@ export class AISecretFilter {
         if (
           lowerKey.includes('secret') ||
           lowerKey.includes('password') ||
+          lowerKey.includes('pass') ||
+          lowerKey.includes('token') ||
           lowerKey.includes('privatekey') ||
           lowerKey.includes('apikey') ||
           lowerKey.includes('service_role')

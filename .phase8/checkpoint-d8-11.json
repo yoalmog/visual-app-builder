@@ -1,0 +1,728 @@
+{
+  "savedAt": "2026-09-07T09:31:52.768Z",
+  "totalCheckpoints": 38,
+  "checkpoints": [
+    [
+      "cp-exp-trace_orch_1788773510941_8u9u1-1788773511013-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773510941_8u9u1-1788773511013-1",
+        "explanationId": "exp-trace_orch_1788773510941_8u9u1-1788773511013",
+        "requestId": "req_exp_1788773511013",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773510941_8u9u1",
+        "sessionId": "exp-session-1788773511013",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:51.013Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773510941_8u9u1-1788773511013-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773510941_8u9u1-1788773511013-2",
+        "explanationId": "exp-trace_orch_1788773510941_8u9u1-1788773511013",
+        "requestId": "req_exp_1788773511013",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773510941_8u9u1",
+        "sessionId": "exp-session-1788773511013",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:51.015Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773511031_hy6nd-1788773511036-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773511031_hy6nd-1788773511036-1",
+        "explanationId": "exp-trace_orch_1788773511031_hy6nd-1788773511036",
+        "requestId": "req_exp_1788773511036",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773511031_hy6nd",
+        "sessionId": "exp-session-1788773511036",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:51.036Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773511031_hy6nd-1788773511036-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773511031_hy6nd-1788773511036-2",
+        "explanationId": "exp-trace_orch_1788773511031_hy6nd-1788773511036",
+        "requestId": "req_exp_1788773511036",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773511031_hy6nd",
+        "sessionId": "exp-session-1788773511036",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:51.037Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773511070_wosi2-1788773511075-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773511070_wosi2-1788773511075-1",
+        "explanationId": "exp-trace_orch_1788773511070_wosi2-1788773511075",
+        "requestId": "req_exp_1788773511075",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773511070_wosi2",
+        "sessionId": "exp-session-1788773511075",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:51.075Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773511070_wosi2-1788773511075-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773511070_wosi2-1788773511075-2",
+        "explanationId": "exp-trace_orch_1788773511070_wosi2-1788773511075",
+        "requestId": "req_exp_1788773511075",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773511070_wosi2",
+        "sessionId": "exp-session-1788773511075",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:51.076Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773511130_rsge3-1788773511137-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773511130_rsge3-1788773511137-1",
+        "explanationId": "exp-trace_orch_1788773511130_rsge3-1788773511137",
+        "requestId": "req_exp_1788773511137",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773511130_rsge3",
+        "sessionId": "exp-session-1788773511137",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:51.137Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773511130_rsge3-1788773511137-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773511130_rsge3-1788773511137-2",
+        "explanationId": "exp-trace_orch_1788773511130_rsge3-1788773511137",
+        "requestId": "req_exp_1788773511137",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773511130_rsge3",
+        "sessionId": "exp-session-1788773511137",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:51.138Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773511144_kkjgr-1788773511149-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773511144_kkjgr-1788773511149-1",
+        "explanationId": "exp-trace_orch_1788773511144_kkjgr-1788773511149",
+        "requestId": "req_exp_1788773511149",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773511144_kkjgr",
+        "sessionId": "exp-session-1788773511149",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:51.149Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773511144_kkjgr-1788773511149-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773511144_kkjgr-1788773511149-2",
+        "explanationId": "exp-trace_orch_1788773511144_kkjgr-1788773511149",
+        "requestId": "req_exp_1788773511149",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773511144_kkjgr",
+        "sessionId": "exp-session-1788773511149",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:51.151Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773511163_zbhnh-1788773511169-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773511163_zbhnh-1788773511169-1",
+        "explanationId": "exp-trace_orch_1788773511163_zbhnh-1788773511169",
+        "requestId": "req_exp_1788773511169",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773511163_zbhnh",
+        "sessionId": "exp-session-1788773511169",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:51.169Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773511163_zbhnh-1788773511169-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773511163_zbhnh-1788773511169-2",
+        "explanationId": "exp-trace_orch_1788773511163_zbhnh-1788773511169",
+        "requestId": "req_exp_1788773511169",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773511163_zbhnh",
+        "sessionId": "exp-session-1788773511169",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:51.171Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512435_rzw5p-1788773512440-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512435_rzw5p-1788773512440-1",
+        "explanationId": "exp-trace_orch_1788773512435_rzw5p-1788773512440",
+        "requestId": "req_exp_1788773512440",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512435_rzw5p",
+        "sessionId": "exp-session-1788773512440",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.440Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512435_rzw5p-1788773512440-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512435_rzw5p-1788773512440-2",
+        "explanationId": "exp-trace_orch_1788773512435_rzw5p-1788773512440",
+        "requestId": "req_exp_1788773512440",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512435_rzw5p",
+        "sessionId": "exp-session-1788773512440",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.441Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512458_j40cr-1788773512463-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512458_j40cr-1788773512463-1",
+        "explanationId": "exp-trace_orch_1788773512458_j40cr-1788773512463",
+        "requestId": "req_exp_1788773512463",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512458_j40cr",
+        "sessionId": "exp-session-1788773512463",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.463Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512458_j40cr-1788773512463-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512458_j40cr-1788773512463-2",
+        "explanationId": "exp-trace_orch_1788773512458_j40cr-1788773512463",
+        "requestId": "req_exp_1788773512463",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512458_j40cr",
+        "sessionId": "exp-session-1788773512463",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.464Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512471_4937i-1788773512483-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512471_4937i-1788773512483-1",
+        "explanationId": "exp-trace_orch_1788773512471_4937i-1788773512483",
+        "requestId": "req_exp_1788773512483",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512471_4937i",
+        "sessionId": "exp-session-1788773512483",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.483Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512471_4937i-1788773512483-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512471_4937i-1788773512483-2",
+        "explanationId": "exp-trace_orch_1788773512471_4937i-1788773512483",
+        "requestId": "req_exp_1788773512483",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512471_4937i",
+        "sessionId": "exp-session-1788773512483",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.485Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512494_rwo2w-1788773512507-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512494_rwo2w-1788773512507-1",
+        "explanationId": "exp-trace_orch_1788773512494_rwo2w-1788773512507",
+        "requestId": "req_exp_1788773512507",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512494_rwo2w",
+        "sessionId": "exp-session-1788773512507",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.507Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512494_rwo2w-1788773512507-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512494_rwo2w-1788773512507-2",
+        "explanationId": "exp-trace_orch_1788773512494_rwo2w-1788773512507",
+        "requestId": "req_exp_1788773512507",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512494_rwo2w",
+        "sessionId": "exp-session-1788773512507",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.508Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512598_ye5sy-1788773512611-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512598_ye5sy-1788773512611-1",
+        "explanationId": "exp-trace_orch_1788773512598_ye5sy-1788773512611",
+        "requestId": "req_exp_1788773512611",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512598_ye5sy",
+        "sessionId": "exp-session-1788773512611",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.611Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512598_ye5sy-1788773512611-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512598_ye5sy-1788773512611-2",
+        "explanationId": "exp-trace_orch_1788773512598_ye5sy-1788773512611",
+        "requestId": "req_exp_1788773512611",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512598_ye5sy",
+        "sessionId": "exp-session-1788773512611",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.612Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512623_qmgxu-1788773512628-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512623_qmgxu-1788773512628-1",
+        "explanationId": "exp-trace_orch_1788773512623_qmgxu-1788773512628",
+        "requestId": "req_exp_1788773512628",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512623_qmgxu",
+        "sessionId": "exp-session-1788773512628",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.628Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512623_qmgxu-1788773512628-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512623_qmgxu-1788773512628-2",
+        "explanationId": "exp-trace_orch_1788773512623_qmgxu-1788773512628",
+        "requestId": "req_exp_1788773512628",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512623_qmgxu",
+        "sessionId": "exp-session-1788773512628",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.629Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512642_vdmc4-1788773512647-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512642_vdmc4-1788773512647-1",
+        "explanationId": "exp-trace_orch_1788773512642_vdmc4-1788773512647",
+        "requestId": "req_exp_1788773512647",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512642_vdmc4",
+        "sessionId": "exp-session-1788773512647",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.647Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512642_vdmc4-1788773512647-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512642_vdmc4-1788773512647-2",
+        "explanationId": "exp-trace_orch_1788773512642_vdmc4-1788773512647",
+        "requestId": "req_exp_1788773512647",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512642_vdmc4",
+        "sessionId": "exp-session-1788773512647",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.648Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512657_nexf5-1788773512661-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512657_nexf5-1788773512661-1",
+        "explanationId": "exp-trace_orch_1788773512657_nexf5-1788773512661",
+        "requestId": "req_exp_1788773512661",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512657_nexf5",
+        "sessionId": "exp-session-1788773512661",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.661Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512657_nexf5-1788773512661-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512657_nexf5-1788773512661-2",
+        "explanationId": "exp-trace_orch_1788773512657_nexf5-1788773512661",
+        "requestId": "req_exp_1788773512661",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512657_nexf5",
+        "sessionId": "exp-session-1788773512661",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.662Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512670_wmgka-1788773512678-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512670_wmgka-1788773512678-1",
+        "explanationId": "exp-trace_orch_1788773512670_wmgka-1788773512678",
+        "requestId": "req_exp_1788773512678",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512670_wmgka",
+        "sessionId": "exp-session-1788773512678",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.678Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512670_wmgka-1788773512678-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512670_wmgka-1788773512678-2",
+        "explanationId": "exp-trace_orch_1788773512670_wmgka-1788773512678",
+        "requestId": "req_exp_1788773512678",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512670_wmgka",
+        "sessionId": "exp-session-1788773512678",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.679Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512687_z8xed-1788773512696-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512687_z8xed-1788773512696-1",
+        "explanationId": "exp-trace_orch_1788773512687_z8xed-1788773512696",
+        "requestId": "req_exp_1788773512696",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512687_z8xed",
+        "sessionId": "exp-session-1788773512696",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.696Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512687_z8xed-1788773512696-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512687_z8xed-1788773512696-2",
+        "explanationId": "exp-trace_orch_1788773512687_z8xed-1788773512696",
+        "requestId": "req_exp_1788773512696",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512687_z8xed",
+        "sessionId": "exp-session-1788773512696",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.697Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512728_270fh-1788773512733-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512728_270fh-1788773512733-1",
+        "explanationId": "exp-trace_orch_1788773512728_270fh-1788773512733",
+        "requestId": "req_exp_1788773512733",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512728_270fh",
+        "sessionId": "exp-session-1788773512733",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.733Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512728_270fh-1788773512733-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512728_270fh-1788773512733-2",
+        "explanationId": "exp-trace_orch_1788773512728_270fh-1788773512733",
+        "requestId": "req_exp_1788773512733",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512728_270fh",
+        "sessionId": "exp-session-1788773512733",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.734Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512742_y5tie-1788773512747-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512742_y5tie-1788773512747-1",
+        "explanationId": "exp-trace_orch_1788773512742_y5tie-1788773512747",
+        "requestId": "req_exp_1788773512747",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512742_y5tie",
+        "sessionId": "exp-session-1788773512747",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.747Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512742_y5tie-1788773512747-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512742_y5tie-1788773512747-2",
+        "explanationId": "exp-trace_orch_1788773512742_y5tie-1788773512747",
+        "requestId": "req_exp_1788773512747",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512742_y5tie",
+        "sessionId": "exp-session-1788773512747",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.748Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512756_lthjf-1788773512766-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512756_lthjf-1788773512766-1",
+        "explanationId": "exp-trace_orch_1788773512756_lthjf-1788773512766",
+        "requestId": "req_exp_1788773512766",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512756_lthjf",
+        "sessionId": "exp-session-1788773512766",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.766Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788773512756_lthjf-1788773512766-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788773512756_lthjf-1788773512766-2",
+        "explanationId": "exp-trace_orch_1788773512756_lthjf-1788773512766",
+        "requestId": "req_exp_1788773512766",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788773512756_lthjf",
+        "sessionId": "exp-session-1788773512766",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T09:31:52.767Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ]
+  ]
+}

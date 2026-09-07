@@ -1,0 +1,300 @@
+{
+  "sessionId": "orch_1788764527495_muol7",
+  "projectId": "proj_secure",
+  "state": "FAILED",
+  "request": {
+    "projectId": "proj_secure",
+    "prompt": "Add an accessible pricing card with feature list",
+    "operatorRole": "editor",
+    "dryRun": true
+  },
+  "artifacts": {
+    "traceId": "trace_orch_1788764527495_muol7",
+    "breaches": [],
+    "securityScanResult": {
+      "safe": true,
+      "score": 10,
+      "riskLevel": "NONE",
+      "findings": [],
+      "quarantineRecommended": false,
+      "scanTimestamp": "2026-09-07T07:02:07.499Z",
+      "durationMs": 0
+    },
+    "goal": {
+      "id": "goal_1788764527500_urodu",
+      "version": "1.0.0",
+      "goalType": "INSPECT",
+      "intent": "inspect",
+      "rawPrompt": "Add an accessible pricing card with feature list",
+      "normalizedGoal": "Execute inspect operation targeting pricing, card",
+      "intentSummary": "Intent [INSPECT] targeting [pricing, card]",
+      "requestedOutcome": "Verified inspect outcome affecting [components] with updated Schema v7 representation.",
+      "targetEntities": [
+        "pricing",
+        "card"
+      ],
+      "affectedAreas": [
+        "components"
+      ],
+      "explicitRequirements": [
+        "Explicit request: \"Add an accessible pricing card with feature list\""
+      ],
+      "inferredRequirements": [
+        "Preserve existing home page while adding new views"
+      ],
+      "assumptions": [
+        "Strict adherence to COMPONENT_REGISTRY types without arbitrary JSX injection",
+        "Changes are applied immutably through two-phase AITransactionManager",
+        "Default 3-tier pricing structure (Starter, Professional, Enterprise)"
+      ],
+      "unknowns": [],
+      "constraints": [
+        "Schema version 7 compatibility enforced",
+        "Hard stop: Zero eval(), new Function(), or arbitrary dynamic code execution allowed",
+        "Transactional atomic rollback guaranteed on failure"
+      ],
+      "ambiguities": [],
+      "ambiguityDetails": [],
+      "acceptanceCriteria": [
+        {
+          "id": "ac_1",
+          "description": "Verify presence and operational state of pricing",
+          "observableTarget": "pricing",
+          "expectedState": "present_and_configured",
+          "testable": true,
+          "provenance": "explicit"
+        },
+        {
+          "id": "ac_2",
+          "description": "Verify presence and operational state of card",
+          "observableTarget": "card",
+          "expectedState": "present_and_configured",
+          "testable": true,
+          "provenance": "explicit"
+        }
+      ],
+      "riskAssessment": "low",
+      "confidenceScore": 0.95,
+      "confidence": {
+        "score": 0.95,
+        "level": "HIGH",
+        "rationale": "High confidence: Clear intent, identified target entities, and zero major ambiguities."
+      },
+      "provenance": {
+        "source": "user_prompt",
+        "derivationMethod": "heuristic_nlp_goal_parser_v1",
+        "transformations": [
+          "clause_tokenization",
+          "entity_extraction",
+          "intent_normalization"
+        ],
+        "sanitized": false,
+        "secretsRedacted": false
+      },
+      "securityAssessment": {
+        "safe": true,
+        "secretsRedactedCount": 0
+      },
+      "timestamp": "2026-09-07T07:02:07.500Z"
+    },
+    "auditLedgerEntry": {
+      "entryId": "ledger_entry_4_1788764527501",
+      "sequenceNumber": 4,
+      "timestamp": "2026-09-07T07:02:07.501Z",
+      "eventType": "SESSION_FAILED",
+      "actorId": "orchestration_engine",
+      "actorRole": "editor",
+      "projectId": "proj_secure",
+      "payloadHash": "5b523b9f3f30913fba00f21762a41075e92d55e0198fc964bb4088cd493fccc1",
+      "previousHash": "01cc233caf224236ff6dffeef5613b2486ada55ba69517c7995a5974cd829c79",
+      "currentHash": "24ead761d0f8113d47418624d969e5c144d70f115a660513b32013bf3155bb27",
+      "signature": "072d0d71f64a76b8cbd5966c06065b9a3e1dc5f8d3d692ef9fc7537c6c81e6eb",
+      "quarantined": false
+    },
+    "developmentReport": {
+      "sessionId": "orch_1788764527495_muol7",
+      "projectId": "proj_secure",
+      "goalSummary": "Intent [INSPECT] targeting [pricing, card]",
+      "planSummary": "Autonomous Plan",
+      "environment": "development",
+      "operatorRole": "editor",
+      "autonomyLevel": 2,
+      "completedStepsCount": 0,
+      "totalStepsCount": 0,
+      "operationsSummary": [],
+      "verificationResults": [],
+      "regressionDetected": false,
+      "guardrailBreachesCount": 0,
+      "subsystemSummary": {
+        "securityAudit": "PENDING",
+        "goalUnderstanding": "SUCCESS",
+        "contextIntelligence": "PENDING",
+        "guardrailsSynthesis": "PENDING",
+        "planGeneration": "PENDING",
+        "decisionOptimization": "PENDING",
+        "planValidation": "PENDING",
+        "autonomyGating": "PENDING",
+        "hitlControl": "PENDING",
+        "transactionExecution": "PENDING",
+        "liveWatchdog": "PENDING",
+        "verification": "PENDING",
+        "postGuardrail": "PENDING",
+        "adaptationRecovery": "NOT_NEEDED",
+        "timelineTracing": "RECORDED",
+        "explainability": "PENDING",
+        "experienceLearning": "PENDING",
+        "reportGeneration": "PENDING"
+      },
+      "finalStatus": "FAILED",
+      "remainingRisks": [],
+      "recommendedNextSteps": [
+        "Verify end-to-end application flow in live canvas preview",
+        "Confirm strict project isolation and security boundaries",
+        "Deploy preview deployment for manual stakeholder review"
+      ],
+      "traceId": "trace_orch_1788764527495_muol7",
+      "provenanceHash": "2892d26b413d84952a176c8f5f61d3f61bd30b0f8e74fa1760283df963f5e2a4",
+      "generatedAt": "2026-09-07T07:02:07.503Z"
+    }
+  },
+  "subsystemStatus": {
+    "securityAudit": "PENDING",
+    "goalUnderstanding": "SUCCESS",
+    "contextIntelligence": "PENDING",
+    "guardrailsSynthesis": "PENDING",
+    "planGeneration": "PENDING",
+    "decisionOptimization": "PENDING",
+    "planValidation": "PENDING",
+    "autonomyGating": "PENDING",
+    "hitlControl": "PENDING",
+    "transactionExecution": "PENDING",
+    "liveWatchdog": "PENDING",
+    "verification": "PENDING",
+    "postGuardrail": "PENDING",
+    "adaptationRecovery": "NOT_NEEDED",
+    "timelineTracing": "RECORDED",
+    "explainability": "PENDING",
+    "experienceLearning": "PENDING",
+    "reportGeneration": "PENDING"
+  },
+  "currentProject": {
+    "id": "proj_secure",
+    "name": "Secure Enterprise App",
+    "version": 1,
+    "pages": [
+      {
+        "id": "page_home",
+        "name": "Home",
+        "path": "/",
+        "root": {
+          "id": "root_node",
+          "type": "container",
+          "props": {
+            "title": "Safe Container"
+          },
+          "styles": {
+            "backgroundColor": "#ffffff"
+          },
+          "children": [
+            {
+              "id": "btn_1",
+              "type": "button",
+              "props": {
+                "label": "Click Me",
+                "href": "https://example.com"
+              },
+              "styles": {
+                "color": "#000000"
+              },
+              "children": []
+            }
+          ]
+        }
+      }
+    ],
+    "components": [],
+    "workflows": [],
+    "apiEndpoints": [],
+    "databaseModels": [],
+    "roles": [],
+    "permissions": [],
+    "theme": {
+      "colors": {
+        "primary": "#6366f1"
+      }
+    },
+    "assets": [],
+    "settings": {
+      "title": "Secure App",
+      "description": "App with hardened security",
+      "environment": "development",
+      "authRequired": true
+    },
+    "createdAt": "2026-09-07T07:02:07.494Z",
+    "updatedAt": "2026-09-07T07:02:07.494Z"
+  },
+  "initialProject": {
+    "id": "proj_secure",
+    "name": "Secure Enterprise App",
+    "version": 1,
+    "pages": [
+      {
+        "id": "page_home",
+        "name": "Home",
+        "path": "/",
+        "root": {
+          "id": "root_node",
+          "type": "container",
+          "props": {
+            "title": "Safe Container"
+          },
+          "styles": {
+            "backgroundColor": "#ffffff"
+          },
+          "children": [
+            {
+              "id": "btn_1",
+              "type": "button",
+              "props": {
+                "label": "Click Me",
+                "href": "https://example.com"
+              },
+              "styles": {
+                "color": "#000000"
+              },
+              "children": []
+            }
+          ]
+        }
+      }
+    ],
+    "components": [],
+    "workflows": [],
+    "apiEndpoints": [],
+    "databaseModels": [],
+    "roles": [],
+    "permissions": [],
+    "theme": {
+      "colors": {
+        "primary": "#6366f1"
+      }
+    },
+    "assets": [],
+    "settings": {
+      "title": "Secure App",
+      "description": "App with hardened security",
+      "environment": "development",
+      "authRequired": true
+    },
+    "createdAt": "2026-09-07T07:02:07.494Z",
+    "updatedAt": "2026-09-07T07:02:07.494Z"
+  },
+  "errors": [
+    "Cannot read properties of undefined (reading 'toLowerCase')"
+  ],
+  "warnings": [],
+  "startedAt": "2026-09-07T07:02:07.496Z",
+  "provenanceHash": "2892d26b413d84952a176c8f5f61d3f61bd30b0f8e74fa1760283df963f5e2a4",
+  "completedAt": "2026-09-07T07:02:07.501Z",
+  "durationMs": 6
+}

@@ -839,5 +839,48 @@
     "recoveryAttempt": "Build completed clean on retry",
     "currentStatus": "RESOLVED",
     "resolvedAt": "2026-09-06T21:50:52.655Z"
+  },
+  {
+    "failureId": "F7-060",
+    "phase": "7.39",
+    "deliverable": "D7.39.2",
+    "timestamp": "2026-09-07T03:41:23.520Z",
+    "category": "TEST",
+    "severity": "HIGH",
+    "command": "npm test -- transaction",
+    "error": "Simulated rollback state mismatch during stress test",
+    "likelyCause": "Mock concurrency interruption",
+    "filesInvolved": [
+      "src/ai/history/AITransactionManager.ts"
+    ],
+    "currentStatus": "RESOLVED",
+    "recoveryAttempt": "Targeted test and regression passed clean",
+    "resolvedAt": "2026-09-07T03:41:23.561Z"
+  },
+  {
+    "failureId": "F7-061",
+    "phase": "7.39",
+    "deliverable": "D7.39.2",
+    "timestamp": "2026-09-07T03:41:23.583Z",
+    "category": "BUILD",
+    "severity": "CRITICAL",
+    "error": "Simulated unresolved compilation issue",
+    "filesInvolved": [],
+    "currentStatus": "RESOLVED",
+    "recoveryAttempt": "Resolved simulated failure",
+    "resolvedAt": "2026-09-07T03:41:23.595Z"
+  },
+  {
+    "failureId": "F7-062",
+    "phase": "7.39",
+    "timestamp": "2026-09-07T03:41:23.622Z",
+    "category": "SECURITY",
+    "severity": "CRITICAL",
+    "error": "NoEvalGuard violation caught in untrusted script input",
+    "likelyCause": "Prompt injection probe",
+    "filesInvolved": [],
+    "recoveryAttempt": "Security hard stop validated",
+    "currentStatus": "RESOLVED",
+    "resolvedAt": "2026-09-07T03:41:23.635Z"
   }
 ]

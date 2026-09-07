@@ -76,8 +76,8 @@
       "id": "D8.11",
       "name": "Explainability Engine",
       "status": "PASSED",
-      "testCommand": "npx tsx scripts/verify-phase8.ts",
-      "completedAt": "2026-09-06T21:50:30.699Z"
+      "testCommand": "npx tsx scripts/verify-d8-11-explainability.ts",
+      "completedAt": "2026-09-06T22:37:06.000Z"
     },
     {
       "id": "D8.12",

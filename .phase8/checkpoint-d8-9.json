@@ -2,7 +2,7 @@
   "checkpoint": "CP-D8.9",
   "workstream": "D8.9 — CONTROLLED DECISION OPTIMIZATION",
   "status": "VERIFIED",
-  "timestamp": "2026-09-06T21:50:18.774Z",
+  "timestamp": "2026-09-07T04:26:14.237Z",
   "testsPassed": 40,
   "totalTests": 40,
   "regressionBaselines": {

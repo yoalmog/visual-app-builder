@@ -1,10 +1,10 @@
 {
-  "sessionId": "dec_sess_1788731418767_s0nm",
+  "sessionId": "dec_sess_1788755174228_asga",
   "projectId": "proj_opt_01",
   "projectVersion": 7,
   "state": "CONTEXT_VALIDATED",
   "context": {
-    "contextId": "ctx_dec_sess_1788731418767_s0nm",
+    "contextId": "ctx_dec_sess_1788755174228_asga",
     "projectId": "proj_opt_01",
     "projectVersion": 7,
     "schemaVersion": 7,
@@ -59,15 +59,15 @@
       }
     ],
     "relevantExperienceIds": [
-      "exp_1788731418747_c53d",
-      "exp_1788731418734_yjt4",
-      "exp_1788731418730_zjze",
-      "exp_1788731418746_rcxb"
+      "exp_1788755174212_b7o4",
+      "exp_1788755174203_s01t",
+      "exp_1788755174199_lv9v",
+      "exp_1788755174211_f0do"
     ],
     "relevantPatternIds": [
       "pat_test_01"
     ],
-    "timestamp": "2026-09-06T21:50:18.767Z"
+    "timestamp": "2026-09-07T04:26:14.228Z"
   },
   "candidates": [],
   "filteredCandidates": [],
@@ -89,34 +89,34 @@
     "averageScore": 0
   },
   "trace": {
-    "traceId": "trace_dec_sess_1788731418767_s0nm",
-    "sessionId": "dec_sess_1788731418767_s0nm",
+    "traceId": "trace_dec_sess_1788755174228_asga",
+    "sessionId": "dec_sess_1788755174228_asga",
     "projectId": "proj_opt_01",
     "events": [
       {
-        "id": "evt_1788731418767",
+        "id": "evt_1788755174228",
         "state": "IDLE",
         "event": "DECISION_SESSION_INITIALIZED",
-        "message": "Decision optimization session dec_sess_1788731418767_s0nm initialized for project proj_opt_01",
-        "timestamp": "2026-09-06T21:50:18.767Z"
+        "message": "Decision optimization session dec_sess_1788755174228_asga initialized for project proj_opt_01",
+        "timestamp": "2026-09-07T04:26:14.228Z"
       },
       {
-        "id": "evt_1788731418767_71jo",
+        "id": "evt_1788755174228_vp72",
         "state": "CONTEXT_BUILDING",
         "event": "CONTEXT_BUILDING_STARTED",
         "message": "Building decision context and querying relevant historical experience",
-        "timestamp": "2026-09-06T21:50:18.767Z"
+        "timestamp": "2026-09-07T04:26:14.228Z"
       },
       {
-        "id": "evt_1788731418767_l3ti",
+        "id": "evt_1788755174228_j12c",
         "state": "CONTEXT_VALIDATED",
         "event": "CONTEXT_VALIDATED",
         "message": "Context validated with 4 historical experiences",
-        "timestamp": "2026-09-06T21:50:18.767Z"
+        "timestamp": "2026-09-07T04:26:14.228Z"
       }
     ],
-    "startedAt": "2026-09-06T21:50:18.767Z"
+    "startedAt": "2026-09-07T04:26:14.228Z"
   },
-  "createdAt": "2026-09-06T21:50:18.767Z",
-  "updatedAt": "2026-09-06T21:50:18.767Z"
+  "createdAt": "2026-09-07T04:26:14.228Z",
+  "updatedAt": "2026-09-07T04:26:14.228Z"
 }

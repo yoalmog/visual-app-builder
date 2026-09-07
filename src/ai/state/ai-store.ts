@@ -20,6 +20,64 @@ import { DecisionOptimizationEngine } from '../intelligence/DecisionOptimization
 import { DecisionSession, DecisionSelection } from '../intelligence/decision-types';
 import { ExecutionTimelineEngine } from '../observability/ExecutionTimelineEngine';
 import { ExecutionTimeline, ExecutionEvent } from '../observability/observability-types';
+import { ExplainabilityEngine } from '../explainability/ExplainabilityEngine';
+import { Explanation } from '../explainability/explainability-types';
+import { ControlledAdaptationEngine } from '../intelligence/ControlledAdaptationEngine';
+import {
+  AdaptationProposal,
+  AdaptationSession,
+  AdaptationComparison,
+  AdaptationFeedback,
+} from '../intelligence/adaptation-types';
+import { HumanControlCenter } from '../intelligence/HumanControlCenter';
+import {
+  HITLStatus,
+  HITLBreakpoint,
+  HITLSession,
+  ArbitrationDecision,
+  HITLExecutionResult,
+  PolicyConflict,
+  ArbitrationStrategy,
+  StepInterventionPayload,
+} from '../intelligence/hitl-types';
+import { IntelligentPlan, AutonomyLevel } from '../intelligence/types';
+import { DynamicGuardrailsEngine } from '../intelligence/DynamicGuardrailsEngine';
+import {
+  DynamicGuardrailPolicy,
+  GuardrailBreach,
+  GuardrailEvaluationResult,
+  SafetySynthesisContext,
+} from '../intelligence/guardrail-types';
+import { UnifiedOrchestrationEngine } from '../intelligence/UnifiedOrchestrationEngine';
+import {
+  OrchestrationSession,
+  UnifiedOrchestrationResult,
+  OrchestrationRequest,
+} from '../intelligence/orchestration-types';
+import { MultiAgentSecurityAuditor } from '../security/MultiAgentSecurityAuditor';
+import { CryptographicAuditLedger } from '../security/CryptographicAuditLedger';
+import {
+  SecurityScanResult,
+  LedgerVerificationResult,
+  SecurityAuditContext,
+} from '../security/security-types';
+import { PerformanceProfilerEngine } from '../performance/PerformanceProfilerEngine';
+import { IntelligentCacheEngine } from '../performance/IntelligentCacheEngine';
+import { TokenEconomicsEngine } from '../performance/TokenEconomicsEngine';
+import {
+  PipelinePerformanceProfile,
+  TokenUsageReport,
+  CacheStats,
+} from '../performance/performance-types';
+import { SwarmConsensusEngine } from '../swarm/SwarmConsensusEngine';
+import { SwarmPersonaRegistry } from '../swarm/SwarmPersonaRegistry';
+import {
+  SwarmConsensusResult,
+  AgentPersona,
+  SwarmConfig,
+} from '../swarm/swarm-types';
+import { PlatformCertificationEngine } from '../certification/PlatformCertificationEngine';
+import { PlatformCertificationReport } from '../certification/certification-types';
 
 export interface AIStoreState {
   isOpen: boolean;
@@ -48,11 +106,101 @@ export interface AIStoreState {
   activeTraceId: string | null;
   activeTimeline: ExecutionTimeline | null;
   timelineEvents: ExecutionEvent[];
+  explanationStatus: 'idle' | 'explaining' | 'completed' | 'uncertain' | 'blocked' | 'failed';
+  activeExplanation: Explanation | null;
+  explanationError: string | null;
+  adaptationStatus: 'idle' | 'proposing' | 'proposed' | 'awaiting_approval' | 'applying' | 'verified' | 'improved' | 'inconclusive' | 'regressed' | 'rolled_back' | 'blocked' | 'uncertain' | 'failed';
+  activeAdaptationProposals: AdaptationProposal[];
+  activeAdaptationSession: AdaptationSession | null;
+  activeAdaptationComparison: AdaptationComparison | null;
+  adaptationError: string | null;
+
+  // HITL State
+  hitlStatus: HITLStatus;
+  activeHitlSession: HITLSession | null;
+  activeBreakpoints: HITLBreakpoint[];
+  lastArbitrationDecision: ArbitrationDecision | null;
+  hitlError: string | null;
+
+  // Dynamic Guardrails State
+  activeGuardrailPolicy: DynamicGuardrailPolicy | null;
+  lastGuardrailEvaluation: GuardrailEvaluationResult | null;
+  guardrailBreaches: GuardrailBreach[];
+
+  // Unified Orchestration State
+  activeOrchestrationSession: OrchestrationSession | null;
+  lastOrchestrationResult: UnifiedOrchestrationResult | null;
+  orchestrationStatus: 'idle' | 'running' | 'completed' | 'failed' | 'awaiting_approval' | 'contained';
+
+  // Security State (D8.16)
+  securityStatus: 'clean' | 'warning' | 'quarantined' | 'auditing';
+  lastSecurityScan: SecurityScanResult | null;
+  ledgerIntegrity: LedgerVerificationResult | null;
+
+  // Performance & Token Economics State (D8.17)
+  performanceProfile: PipelinePerformanceProfile | null;
+  tokenUsageReport: TokenUsageReport | null;
+  cacheStats: CacheStats | null;
+
+  // Swarm Consensus State (D8.19)
+  activeSwarmResult: SwarmConsensusResult | null;
+  isSwarmDebating: boolean;
+  activeSwarmPersonas: AgentPersona[];
+
+  // Platform Certification State (D8.20)
+  certificationReport: PlatformCertificationReport | null;
+  isCertifying: boolean;
 
   // Actions
   setOpen: (open: boolean) => void;
   setMode: (mode: AIMode) => void;
   fetchTimeline: (traceId: string, projectId: string) => ExecutionTimeline | null;
+  explainTrace: (params: { traceId: string; projectId: string; userPrompt?: string }) => Promise<Explanation | undefined>;
+  clearExplanation: () => void;
+  proposeAdaptations: (params: { project: AppProject; maxCandidates?: number }) => Promise<AdaptationProposal[]>;
+  applyAdaptation: (params: { proposal: AdaptationProposal; project: AppProject; isApproved?: boolean }) => Promise<{ success: boolean; project?: AppProject; comparison?: AdaptationComparison; error?: string }>;
+  rollbackAdaptationSession: (params: { sessionId: string; project: AppProject }) => Promise<{ success: boolean; project?: AppProject; error?: string }>;
+  clearAdaptation: () => void;
+
+  // Guardrail Actions
+  synthesizeGuardrails: (context: SafetySynthesisContext) => DynamicGuardrailPolicy;
+  evaluatePreExecutionGuardrails: (params: { policyId: string; project: AppProject; planOrOperations: any; operatorRole?: string; targetEntities?: string[] }) => GuardrailEvaluationResult;
+  clearGuardrails: () => void;
+
+  // Orchestration Actions
+  runUnifiedOrchestration: (request: OrchestrationRequest, project: AppProject) => Promise<UnifiedOrchestrationResult>;
+  cancelOrchestrationSession: (sessionId: string) => void;
+  clearOrchestration: () => void;
+
+  // Security Actions (D8.16)
+  auditSecurity: (params: { target: any; type?: 'code' | 'prompt' | 'plan' | 'component' | 'project'; context?: SecurityAuditContext }) => SecurityScanResult;
+  verifySecurityLedger: () => LedgerVerificationResult;
+  clearSecurityQuarantine: () => void;
+
+  // Performance Actions (D8.17)
+  getPerformanceMetrics: () => PipelinePerformanceProfile;
+  getTokenEconomicsReport: (prompt: string, completion?: string) => TokenUsageReport;
+  getCacheStats: () => CacheStats;
+  clearCache: () => void;
+
+  // Swarm Consensus Actions (D8.19)
+  runSwarmDebate: (params: { goal: string; project: AppProject; config?: SwarmConfig }) => Promise<SwarmConsensusResult>;
+  getSwarmPersonas: () => AgentPersona[];
+  clearSwarm: () => void;
+
+  // Platform Certification Actions (D8.20)
+  runPlatformCertification: () => Promise<PlatformCertificationReport>;
+  loadPlatformCertification: () => PlatformCertificationReport | null;
+
+  // HITL Actions
+  startHitlExecution: (params: { sessionId?: string; project: AppProject; plan?: IntelligentPlan; autonomyLevel?: AutonomyLevel }) => Promise<HITLExecutionResult>;
+  pauseHitlExecution: (sessionId: string, reason?: string) => void;
+  resumeHitlExecution: (sessionId: string, project: AppProject) => Promise<HITLExecutionResult>;
+  stepNextHitl: (sessionId: string, project: AppProject, intervention?: StepInterventionPayload) => Promise<HITLExecutionResult>;
+  emergencyStopHitl: (sessionId: string, project: AppProject, operatorId: string, reason: string) => Promise<{ success: boolean; project?: AppProject }>;
+  arbitratePolicy: (params: { conflict: PolicyConflict; operatorRole: string; requestedStrategy?: ArbitrationStrategy; operatorId: string; justification: string; projectId?: string }) => ArbitrationDecision;
+  addHitlBreakpoint: (projectId: string, bp: Omit<HITLBreakpoint, 'id' | 'hitCount' | 'createdAt'>) => HITLBreakpoint;
+  removeHitlBreakpoint: (projectId: string, bpId: string) => void;
   sendMessage: (params: {
     prompt: string;
     project: AppProject;
@@ -118,10 +266,416 @@ export const useAIStore = create<AIStoreState>((set, get) => ({
   activeTraceId: null,
   activeTimeline: null,
   timelineEvents: [],
+  explanationStatus: 'idle',
+  activeExplanation: null,
+  explanationError: null,
+  adaptationStatus: 'idle',
+  activeAdaptationProposals: [],
+  activeAdaptationSession: null,
+  activeAdaptationComparison: null,
+  adaptationError: null,
+  hitlStatus: 'IDLE',
+  activeHitlSession: null,
+  activeBreakpoints: [],
+  lastArbitrationDecision: null,
+  hitlError: null,
+  activeGuardrailPolicy: null,
+  lastGuardrailEvaluation: null,
+  guardrailBreaches: [],
+  activeOrchestrationSession: null,
+  lastOrchestrationResult: null,
+  orchestrationStatus: 'idle',
+  securityStatus: 'clean',
+  lastSecurityScan: null,
+  ledgerIntegrity: null,
+  performanceProfile: null,
+  tokenUsageReport: null,
+  cacheStats: null,
+  activeSwarmResult: null,
+  isSwarmDebating: false,
+  activeSwarmPersonas: SwarmPersonaRegistry.getPersonas(),
+  certificationReport: null,
+  isCertifying: false,
 
   setOpen: (open: boolean) => set({ isOpen: open }),
   setMode: (mode: AIMode) => set({ mode }),
   fetchTimeline: (traceId: string, projectId: string) => ExecutionTimelineEngine.getTimeline(traceId, projectId),
+  explainTrace: async ({ traceId, projectId, userPrompt }) => {
+    set({ explanationStatus: 'explaining', explanationError: null });
+    try {
+      const explanation = await ExplainabilityEngine.explain({
+        requestId: `req_exp_${Date.now()}`,
+        projectId,
+        traceId,
+        userPrompt,
+        requestedAt: new Date().toISOString(),
+      });
+      set({
+        explanationStatus: explanation.status === 'COMPLETED' ? 'completed' : explanation.status === 'UNCERTAIN' ? 'uncertain' : explanation.status === 'BLOCKED' ? 'blocked' : 'failed',
+        activeExplanation: explanation,
+      });
+      return explanation;
+    } catch (err: any) {
+      const errorMsg = err?.message || 'Failed to generate explanation';
+      set({ explanationStatus: 'failed', explanationError: errorMsg });
+      return undefined;
+    }
+  },
+  clearExplanation: () => set({ activeExplanation: null, explanationStatus: 'idle', explanationError: null }),
+
+  proposeAdaptations: async ({ project, maxCandidates }) => {
+    set({ adaptationStatus: 'proposing', adaptationError: null });
+    try {
+      const proposals = await ControlledAdaptationEngine.proposeAdaptations({
+        project,
+        experienceLookbackCount: maxCandidates || 50,
+      });
+      set({
+        activeAdaptationProposals: proposals,
+        adaptationStatus: proposals.length > 0 ? 'proposed' : 'idle',
+      });
+      return proposals;
+    } catch (err: any) {
+      const errorMsg = err?.message || 'Failed to propose adaptations';
+      set({ adaptationStatus: 'failed', adaptationError: errorMsg });
+      return [];
+    }
+  },
+
+  applyAdaptation: async ({ proposal, project, isApproved }) => {
+    set({ adaptationStatus: 'applying', adaptationError: null });
+    try {
+      const res = await ControlledAdaptationEngine.applyAdaptation({
+        proposal,
+        project,
+        isApproved,
+      });
+
+      let nextStatus: AIStoreState['adaptationStatus'] = 'failed';
+      if (res.status === 'IMPROVED') nextStatus = 'improved';
+      else if (res.status === 'ACCEPTED') nextStatus = 'inconclusive';
+      else if (res.status === 'ROLLED_BACK') nextStatus = 'rolled_back';
+      else if (res.status === 'BLOCKED') nextStatus = 'blocked';
+      else if (res.status === 'UNCERTAIN') nextStatus = 'uncertain';
+
+      const session = ControlledAdaptationEngine.getSession(`sess-${proposal.adaptationId}`) || null;
+
+      set({
+        adaptationStatus: nextStatus,
+        activeAdaptationSession: session,
+        activeAdaptationComparison: res.comparison || null,
+        adaptationError: res.error || null,
+      });
+
+      return {
+        success: res.success,
+        project: res.updatedProject,
+        comparison: res.comparison,
+        error: res.error,
+      };
+    } catch (err: any) {
+      const errorMsg = err?.message || 'Adaptation application failed';
+      set({ adaptationStatus: 'failed', adaptationError: errorMsg });
+      return { success: false, error: errorMsg };
+    }
+  },
+
+  rollbackAdaptationSession: async ({ sessionId, project }) => {
+    set({ adaptationStatus: 'applying', adaptationError: null });
+    try {
+      const res = await ControlledAdaptationEngine.rollbackAdaptation({
+        sessionId,
+        project,
+      });
+      set({
+        adaptationStatus: res.success ? 'rolled_back' : 'failed',
+        adaptationError: res.rollback.error || null,
+      });
+      return {
+        success: res.success,
+        project: res.restoredProject,
+        error: res.rollback.error,
+      };
+    } catch (err: any) {
+      const errorMsg = err?.message || 'Adaptation rollback failed';
+      set({ adaptationStatus: 'failed', adaptationError: errorMsg });
+      return { success: false, error: errorMsg };
+    }
+  },
+
+  clearAdaptation: () => set({
+    adaptationStatus: 'idle',
+    activeAdaptationProposals: [],
+    activeAdaptationSession: null,
+    activeAdaptationComparison: null,
+    adaptationError: null,
+  }),
+
+  synthesizeGuardrails: (context: SafetySynthesisContext) => {
+    const policy = DynamicGuardrailsEngine.synthesizePolicy(context);
+    set({ activeGuardrailPolicy: policy });
+    return policy;
+  },
+
+  evaluatePreExecutionGuardrails: (params: any) => {
+    const result = DynamicGuardrailsEngine.evaluatePreExecution({
+      policyId: params.policyId,
+      project: params.project || ({ id: 'default', pages: [] } as any),
+      planOrOperations: params.planOrOperations,
+      operatorRole: params.operatorRole || 'editor',
+    });
+    set({ lastGuardrailEvaluation: result, guardrailBreaches: result.breaches });
+    return result;
+  },
+
+  clearGuardrails: () => {
+    set({ activeGuardrailPolicy: null, lastGuardrailEvaluation: null, guardrailBreaches: [] });
+  },
+
+  runUnifiedOrchestration: async (request: OrchestrationRequest, project: AppProject) => {
+    set({ orchestrationStatus: 'running' });
+    try {
+      const result = await UnifiedOrchestrationEngine.orchestrate(request, project);
+      const session = UnifiedOrchestrationEngine.getSession(result.sessionId) || null;
+      set({
+        activeOrchestrationSession: session,
+        lastOrchestrationResult: result,
+        orchestrationStatus: result.success
+          ? 'completed'
+          : result.status === 'AWAITING_APPROVAL'
+          ? 'awaiting_approval'
+          : result.status === 'CONTAINED_AND_ROLLED_BACK'
+          ? 'contained'
+          : 'failed',
+      });
+      return result;
+    } catch (err: any) {
+      set({ orchestrationStatus: 'failed', error: err.message });
+      throw err;
+    }
+  },
+
+  cancelOrchestrationSession: (sessionId: string) => {
+    UnifiedOrchestrationEngine.cancelSession(sessionId);
+    const session = UnifiedOrchestrationEngine.getSession(sessionId) || null;
+    set({ activeOrchestrationSession: session, orchestrationStatus: 'failed' });
+  },
+
+  clearOrchestration: () => {
+    set({
+      activeOrchestrationSession: null,
+      lastOrchestrationResult: null,
+      orchestrationStatus: 'idle',
+    });
+  },
+
+  auditSecurity: ({ target, type = 'code', context }) => {
+    set({ securityStatus: 'auditing' });
+    let scanResult: SecurityScanResult;
+    switch (type) {
+      case 'prompt':
+        scanResult = MultiAgentSecurityAuditor.auditAgentPrompt(target, context?.actorRole, context);
+        break;
+      case 'plan':
+        scanResult = MultiAgentSecurityAuditor.auditPlan(target, context);
+        break;
+      case 'component':
+        scanResult = MultiAgentSecurityAuditor.auditComponent(target, context);
+        break;
+      case 'project':
+        scanResult = MultiAgentSecurityAuditor.auditProject(target, context);
+        break;
+      case 'code':
+      default:
+        scanResult = MultiAgentSecurityAuditor.auditCodeString(typeof target === 'string' ? target : JSON.stringify(target), context);
+        break;
+    }
+
+    const newStatus = scanResult.quarantineRecommended
+      ? 'quarantined'
+      : !scanResult.safe
+      ? 'warning'
+      : 'clean';
+
+    set({ securityStatus: newStatus, lastSecurityScan: scanResult });
+    return scanResult;
+  },
+
+  verifySecurityLedger: () => {
+    const integrity = CryptographicAuditLedger.verifyLedgerIntegrity();
+    set({ ledgerIntegrity: integrity });
+    return integrity;
+  },
+
+  clearSecurityQuarantine: () => {
+    set({ securityStatus: 'clean', lastSecurityScan: null });
+  },
+
+  getPerformanceMetrics: () => {
+    const profile = PerformanceProfilerEngine.computeProfile();
+    set({ performanceProfile: profile });
+    return profile;
+  },
+
+  getTokenEconomicsReport: (prompt: string, completion?: string) => {
+    const report = TokenEconomicsEngine.buildUsageReport({ prompt, completion });
+    set({ tokenUsageReport: report });
+    return report;
+  },
+
+  getCacheStats: () => {
+    const stats = IntelligentCacheEngine.getStats();
+    set({ cacheStats: stats });
+    return stats;
+  },
+
+  clearCache: () => {
+    IntelligentCacheEngine.clear();
+    set({ cacheStats: IntelligentCacheEngine.getStats() });
+  },
+
+  runSwarmDebate: async ({ goal, project, config }) => {
+    set({ isSwarmDebating: true });
+    try {
+      const result = await SwarmConsensusEngine.runDebate({ goal, project, config });
+      set({ activeSwarmResult: result, isSwarmDebating: false });
+      return result;
+    } catch (err) {
+      set({ isSwarmDebating: false });
+      throw err;
+    }
+  },
+
+  getSwarmPersonas: () => {
+    const personas = SwarmPersonaRegistry.getPersonas();
+    set({ activeSwarmPersonas: personas });
+    return personas;
+  },
+
+  clearSwarm: () => {
+    SwarmPersonaRegistry.reset();
+    set({
+      activeSwarmResult: null,
+      isSwarmDebating: false,
+      activeSwarmPersonas: SwarmPersonaRegistry.getPersonas(),
+    });
+  },
+
+  runPlatformCertification: async () => {
+    set({ isCertifying: true });
+    try {
+      const report = await PlatformCertificationEngine.runPlatformCertification();
+      set({ certificationReport: report, isCertifying: false });
+      return report;
+    } catch (err) {
+      set({ isCertifying: false });
+      throw err;
+    }
+  },
+
+  loadPlatformCertification: () => {
+    const report = PlatformCertificationEngine.getLatestCertification();
+    if (report) {
+      set({ certificationReport: report });
+    }
+    return report;
+  },
+
+  startHitlExecution: async ({ sessionId, project, plan, autonomyLevel }) => {
+    set({ hitlStatus: 'MONITORING', hitlError: null });
+    try {
+      const session = HumanControlCenter.createSession({
+        sessionId,
+        projectId: project.id,
+        plan,
+        autonomyLevel,
+      });
+      set({ activeHitlSession: session, activeBreakpoints: session.activeBreakpoints });
+      const res = await HumanControlCenter.startExecution(session.sessionId, project);
+      set({
+        hitlStatus: res.status,
+        activeHitlSession: HumanControlCenter.getSession(session.sessionId) || null,
+        hitlError: res.error || null,
+      });
+      return res;
+    } catch (err: any) {
+      const errorMsg = err?.message || 'HITL execution failed';
+      set({ hitlStatus: 'INTERVENING', hitlError: errorMsg });
+      return { success: false, status: 'INTERVENING', currentStepIndex: 0, totalSteps: 0, error: errorMsg };
+    }
+  },
+
+  pauseHitlExecution: (sessionId: string, reason?: string) => {
+    try {
+      const session = HumanControlCenter.pauseExecution(sessionId, reason);
+      set({ hitlStatus: session.status, activeHitlSession: session });
+    } catch {}
+  },
+
+  resumeHitlExecution: async (sessionId: string, project: AppProject) => {
+    set({ hitlStatus: 'MONITORING', hitlError: null });
+    try {
+      const res = await HumanControlCenter.resumeExecution(sessionId, project);
+      set({
+        hitlStatus: res.status,
+        activeHitlSession: HumanControlCenter.getSession(sessionId) || null,
+        hitlError: res.error || null,
+      });
+      return res;
+    } catch (err: any) {
+      const errorMsg = err?.message || 'HITL resume failed';
+      set({ hitlStatus: 'INTERVENING', hitlError: errorMsg });
+      return { success: false, status: 'INTERVENING', currentStepIndex: 0, totalSteps: 0, error: errorMsg };
+    }
+  },
+
+  stepNextHitl: async (sessionId: string, project: AppProject, intervention?: StepInterventionPayload) => {
+    set({ hitlStatus: 'STEPPING', hitlError: null });
+    try {
+      const res = await HumanControlCenter.stepNext(sessionId, project, intervention);
+      set({
+        hitlStatus: res.status,
+        activeHitlSession: HumanControlCenter.getSession(sessionId) || null,
+        hitlError: res.error || null,
+      });
+      return res;
+    } catch (err: any) {
+      const errorMsg = err?.message || 'Step execution failed';
+      set({ hitlStatus: 'INTERVENING', hitlError: errorMsg });
+      return { success: false, status: 'INTERVENING', currentStepIndex: 0, totalSteps: 0, error: errorMsg };
+    }
+  },
+
+  emergencyStopHitl: async (sessionId: string, project: AppProject, operatorId: string, reason: string) => {
+    try {
+      const res = await HumanControlCenter.emergencyStop(sessionId, project, operatorId, reason);
+      set({
+        hitlStatus: 'EMERGENCY_STOPPED',
+        activeHitlSession: HumanControlCenter.getSession(sessionId) || null,
+      });
+      return { success: res.success, project: res.restoredProject };
+    } catch (err: any) {
+      return { success: false };
+    }
+  },
+
+  arbitratePolicy: (params) => {
+    const decision = HumanControlCenter.arbitratePolicyConflict(params);
+    set({ lastArbitrationDecision: decision });
+    return decision;
+  },
+
+  addHitlBreakpoint: (projectId, bp) => {
+    const newBp = HumanControlCenter.addBreakpoint(projectId, bp);
+    set({ activeBreakpoints: HumanControlCenter.getBreakpoints(projectId) });
+    return newBp;
+  },
+
+  removeHitlBreakpoint: (projectId, bpId) => {
+    HumanControlCenter.removeBreakpoint(projectId, bpId);
+    set({ activeBreakpoints: HumanControlCenter.getBreakpoints(projectId) });
+  },
+
 
   sendMessage: async ({ prompt, project, activePageId, selectedNode, environment }) => {
     const userMsg: AIMessage = {

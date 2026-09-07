@@ -1,6 +1,7 @@
 // Phase 8: Intelligent Autonomous Development Platform Type Definitions
 import { AIOperation } from '../operations/AIOperation';
 import { AIRisk } from '../../builder/schema/ai';
+export type { AIRisk };
 import { AppProject } from '../../builder/schema/project';
 import { Role } from '../../builder/schema/rbac';
 
@@ -386,7 +387,7 @@ export interface AutonomyEvaluationParams {
   project?: AppProject;
   requestedLevel?: AutonomyLevel | SemanticAutonomyLevel;
   environment?: AutonomyEnvironment;
-  userRoles?: Role[];
+  userRoles?: (Role | string)[];
   projectPolicy?: ProjectAutonomyPolicy;
   humanOverride?: HumanOverrideDirective;
   policyVersion?: string;
@@ -503,16 +504,24 @@ export interface DevelopmentSession {
 
 export interface AIDevelopmentReport {
   sessionId: string;
+  projectId?: string;
   goalSummary: string;
   planSummary: string;
+  environment?: string;
+  operatorRole?: string;
+  autonomyLevel?: number;
   completedStepsCount: number;
   totalStepsCount: number;
   operationsSummary: string[];
-  verificationResults: AutonomousVerificationResult[];
+  verificationResults: AutonomousVerificationResult[] | any[];
   regressionDetected: boolean;
-  finalStatus: SessionExecutionState;
+  guardrailBreachesCount?: number;
+  subsystemSummary?: any;
+  finalStatus: SessionExecutionState | string;
   remainingRisks: string[];
   recommendedNextSteps: string[];
+  traceId?: string;
+  provenanceHash?: string;
   generatedAt: string;
 }
 
@@ -751,8 +760,20 @@ export type * from './verification-types';
 export type * from './recovery-types';
 export type * from './learning-types';
 export type * from './decision-types';
+export type * from '../explainability/explainability-types';
+export type * from './adaptation-types';
+export type * from './hitl-types';
+export type * from './guardrail-types';
+export type * from './orchestration-types';
 export { AutonomousLearningEngine } from './AutonomousLearningEngine';
 export { ExperienceStore } from './ExperienceStore';
 export { DecisionOptimizationEngine } from './DecisionOptimizationEngine';
 export { ExecutionTimelineEngine } from '../observability/ExecutionTimelineEngine';
 export { ExecutionEventStore } from '../observability/ExecutionEventStore';
+export { ExplainabilityEngine } from '../explainability/ExplainabilityEngine';
+export { ExplanationStore } from '../explainability/ExplanationStore';
+export { ControlledAdaptationEngine } from './ControlledAdaptationEngine';
+export { HumanControlCenter } from './HumanControlCenter';
+export { DynamicGuardrailsEngine } from './DynamicGuardrailsEngine';
+export { UnifiedOrchestrationEngine } from './UnifiedOrchestrationEngine';
+

@@ -1,413 +1,596 @@
 [
   {
-    "id": "exp_high_score",
-    "projectId": "proj_exp_boost",
-    "category": "EXECUTION_SUCCESS",
-    "outcome": "SUCCESS",
+    "id": "exp-fail-1",
+    "projectId": "proj-guardrail-test",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
+    "description": "Past failure 1",
+    "successScore": 0.2,
     "validity": "VALID",
-    "description": "Add button",
-    "context": {
-      "projectId": "proj_exp_boost",
-      "projectVersion": 1,
-      "schemaVersion": 7,
-      "environment": "development",
-      "autonomyLevel": 3
-    },
-    "features": {
-      "version": "1.0",
-      "operationTypes": [
-        "add_component"
-      ],
-      "componentTypes": [
-        "button"
-      ],
-      "mutationCount": 1,
-      "operationCount": 1,
-      "riskLevel": "LOW",
-      "approvalRequired": false,
-      "rollbackOccurred": false,
-      "tags": [
-        "button"
-      ]
-    },
-    "provenance": {
-      "source": "execution",
-      "projectId": "proj_exp_boost",
-      "projectVersion": 1,
-      "schemaVersion": 7,
-      "environment": "development",
-      "actor": "developer",
-      "timestamp": "2026-09-06T21:50:18.690Z",
-      "sanitized": true
-    },
-    "evidence": [
-      "Verified button addition"
-    ],
-    "timesMatched": 1,
-    "successScore": 0.95,
-    "createdAt": "2026-09-06T21:50:18.690Z",
-    "updatedAt": "2026-09-06T21:50:18.690Z"
-  },
-  {
-    "id": "exp_1788731418730_zjze",
-    "projectId": "proj_opt_01",
-    "category": "EXECUTION_SUCCESS",
-    "outcome": "SUCCESS",
-    "validity": "VALID",
-    "description": "Successfully executed 1 operations",
-    "context": {
-      "projectId": "proj_opt_01",
-      "projectVersion": 7,
-      "schemaVersion": 7,
-      "environment": "development"
-    },
-    "features": {
-      "version": "1.0.0",
-      "operationTypes": [
-        "add_component"
-      ],
-      "componentTypes": [
-        "button"
-      ],
-      "mutationCount": 1,
-      "operationCount": 1,
-      "riskLevel": "LOW",
-      "approvalRequired": false,
-      "executionDurationMs": 30,
-      "rollbackOccurred": false,
-      "tags": [
-        "execution_success"
-      ]
-    },
-    "provenance": {
-      "source": "execution",
-      "projectId": "proj_opt_01",
-      "projectVersion": 7,
-      "schemaVersion": 7,
-      "environment": "development",
-      "actor": "AutonomousLearningEngine",
-      "timestamp": "2026-09-06T21:50:18.730Z",
-      "sanitized": true,
-      "sanitizationNotes": [
-        "Redacted secrets and injection patterns"
-      ]
-    },
-    "evidence": [
-      "All operations committed cleanly"
-    ],
-    "associatedOperations": [
-      {
-        "id": "op_btn_tx",
-        "type": "add_component",
-        "pageId": "page_home",
-        "parentId": "root_1788731418677",
-        "node": {
-          "id": "btn_tx_node",
-          "type": "button",
-          "name": "Tx Button",
-          "props": {
-            "label": "Click"
-          },
-          "children": []
-        },
-        "description": "Add Tx Button",
-        "risk": "low",
-        "reversible": true
-      }
-    ],
     "timesMatched": 0,
-    "successScore": 0.8,
-    "createdAt": "2026-09-06T21:50:18.730Z",
-    "updatedAt": "2026-09-06T21:50:18.730Z"
+    "updatedAt": "2026-09-07T09:32:05.542Z"
   },
   {
-    "id": "exp_1788731418734_yjt4",
-    "projectId": "proj_opt_01",
-    "category": "EXECUTION_SUCCESS",
-    "outcome": "SUCCESS",
+    "id": "exp-fail-2",
+    "projectId": "proj-guardrail-test",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
+    "description": "Past failure 2",
+    "successScore": 0.1,
     "validity": "VALID",
-    "description": "Successfully executed 1 operations",
-    "context": {
-      "projectId": "proj_opt_01",
-      "projectVersion": 7,
-      "schemaVersion": 7,
-      "environment": "development"
-    },
-    "features": {
-      "version": "1.0.0",
-      "operationTypes": [
-        "add_component"
-      ],
-      "componentTypes": [
-        "button"
-      ],
-      "mutationCount": 1,
-      "operationCount": 1,
-      "riskLevel": "LOW",
-      "approvalRequired": false,
-      "executionDurationMs": 2,
-      "rollbackOccurred": false,
-      "tags": [
-        "execution_success"
-      ]
-    },
-    "provenance": {
-      "source": "execution",
-      "projectId": "proj_opt_01",
-      "projectVersion": 7,
-      "schemaVersion": 7,
-      "environment": "development",
-      "actor": "AutonomousLearningEngine",
-      "timestamp": "2026-09-06T21:50:18.734Z",
-      "sanitized": true,
-      "sanitizationNotes": [
-        "Redacted secrets and injection patterns"
-      ]
-    },
-    "evidence": [
-      "All operations committed cleanly"
-    ],
-    "associatedOperations": [
-      {
-        "id": "op_btn_verif",
-        "type": "add_component",
-        "pageId": "page_home",
-        "parentId": "root_1788731418677",
-        "node": {
-          "id": "btn_verif_node",
-          "type": "button",
-          "name": "Verif Button",
-          "props": {
-            "label": "Verified"
-          },
-          "children": []
-        },
-        "description": "Add Verif Button",
-        "risk": "low",
-        "reversible": true
-      }
-    ],
     "timesMatched": 0,
-    "successScore": 0.8,
-    "createdAt": "2026-09-06T21:50:18.734Z",
-    "updatedAt": "2026-09-06T21:50:18.734Z"
+    "updatedAt": "2026-09-07T09:32:05.543Z"
   },
   {
-    "id": "exp_1788731418746_rcxb",
-    "projectId": "proj_opt_01",
-    "category": "USER_CORRECTION",
+    "id": "exp-fail-3",
+    "projectId": "proj-guardrail-test",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
+    "description": "Past failure 3",
+    "successScore": 0.3,
+    "validity": "VALID",
+    "timesMatched": 0,
+    "updatedAt": "2026-09-07T09:32:05.543Z"
+  },
+  {
+    "id": "exp-guard-cont-1788773525610-cnap",
+    "projectId": "proj-guardrail-test",
+    "category": "EXECUTION_FAILURE",
     "outcome": "FAILURE",
     "validity": "VALID",
-    "description": "User rejected recommendation cand_user_choice: User corrected decision: User requested comprehensive navbar instead",
+    "description": "Guardrail breach prevented: Tx Rollback Guard - Critical error",
+    "successScore": 0.1,
     "context": {
-      "projectId": "proj_opt_01",
-      "projectVersion": 7,
-      "schemaVersion": 7,
-      "environment": "development"
-    },
-    "features": {
-      "version": "1.0.0",
-      "operationTypes": [],
-      "componentTypes": [],
-      "mutationCount": 0,
-      "operationCount": 0,
-      "riskLevel": "LOW",
-      "approvalRequired": false,
-      "rollbackOccurred": false,
-      "tags": [
-        "user_correction"
-      ]
-    },
-    "provenance": {
-      "source": "user_feedback",
-      "projectId": "proj_opt_01",
-      "projectVersion": 7,
-      "schemaVersion": 7,
-      "environment": "development",
-      "actor": "AutonomousLearningEngine",
-      "timestamp": "2026-09-06T21:50:18.746Z",
-      "sanitized": true,
-      "sanitizationNotes": [
-        "Redacted secrets and injection patterns"
-      ]
-    },
-    "evidence": [
-      "recommendationId:cand_user_choice",
-      "User corrected decision: User requested comprehensive navbar instead"
-    ],
-    "timesMatched": 0,
-    "successScore": 0.2,
-    "createdAt": "2026-09-06T21:50:18.746Z",
-    "updatedAt": "2026-09-06T21:50:18.746Z"
-  },
-  {
-    "id": "exp_1788731418747_c53d",
-    "projectId": "proj_opt_01",
-    "category": "EXECUTION_SUCCESS",
-    "outcome": "SUCCESS",
-    "validity": "VALID",
-    "description": "Successfully executed 0 operations",
-    "context": {
-      "projectId": "proj_opt_01",
-      "projectVersion": 7,
-      "schemaVersion": 7,
-      "environment": "development"
-    },
-    "features": {
-      "version": "1.0.0",
-      "operationTypes": [],
-      "componentTypes": [],
-      "mutationCount": 0,
-      "operationCount": 0,
-      "riskLevel": "LOW",
-      "approvalRequired": false,
-      "executionDurationMs": 45,
-      "rollbackOccurred": false,
-      "tags": [
-        "execution_success"
-      ]
-    },
-    "provenance": {
-      "source": "execution",
-      "projectId": "proj_opt_01",
-      "projectVersion": 7,
-      "schemaVersion": 7,
-      "environment": "development",
-      "actor": "AutonomousLearningEngine",
-      "timestamp": "2026-09-06T21:50:18.747Z",
-      "sanitized": true,
-      "sanitizationNotes": [
-        "Redacted secrets and injection patterns"
-      ]
-    },
-    "evidence": [
-      "All operations committed cleanly"
-    ],
-    "associatedOperations": [],
-    "timesMatched": 0,
-    "successScore": 0.8,
-    "createdAt": "2026-09-06T21:50:18.747Z",
-    "updatedAt": "2026-09-06T21:50:18.747Z"
-  },
-  {
-    "id": "exp_proj_A_only",
-    "projectId": "proj_A_source",
-    "category": "EXECUTION_SUCCESS",
-    "outcome": "SUCCESS",
-    "validity": "VALID",
-    "description": "Secret feature in Proj A",
-    "context": {
-      "projectId": "proj_A_source",
+      "projectId": "proj-guardrail-test",
       "projectVersion": 1,
-      "schemaVersion": 7,
-      "environment": "development",
-      "autonomyLevel": 3
+      "schemaVersion": 1,
+      "environment": "development"
     },
     "features": {
-      "version": "1.0",
+      "version": "1.0.0",
       "operationTypes": [
-        "add_component"
+        "modify_component"
       ],
       "componentTypes": [
-        "secret_node"
+        "Container"
       ],
       "mutationCount": 1,
       "operationCount": 1,
-      "riskLevel": "LOW",
+      "riskLevel": "HIGH",
       "approvalRequired": false,
-      "rollbackOccurred": false,
+      "rollbackOccurred": true,
       "tags": [
-        "secret"
+        "guardrail",
+        "containment"
       ]
     },
     "provenance": {
       "source": "execution",
-      "projectId": "proj_A_source",
+      "projectId": "proj-guardrail-test",
       "projectVersion": 1,
-      "schemaVersion": 7,
+      "schemaVersion": 1,
       "environment": "development",
-      "actor": "developer",
-      "timestamp": "2026-09-06T21:50:18.759Z",
+      "actor": "system",
+      "timestamp": "2026-09-07T09:32:05.612Z",
       "sanitized": true
     },
     "evidence": [
-      "Secret evidence"
+      "r-1"
     ],
-    "timesMatched": 1,
-    "successScore": 0.99,
-    "createdAt": "2026-09-06T21:50:18.759Z",
-    "updatedAt": "2026-09-06T21:50:18.759Z"
+    "timesMatched": 0,
+    "updatedAt": "2026-09-07T09:32:05.612Z"
   },
   {
-    "id": "exp_1788731418773_63g3",
-    "projectId": "proj_d8_9_e2e",
-    "category": "EXECUTION_SUCCESS",
-    "outcome": "SUCCESS",
+    "id": "exp-guard-cont-1788773525616-xrxw",
+    "projectId": "proj-guardrail-test",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
     "validity": "VALID",
-    "description": "Successfully executed 1 operations",
+    "description": "Guardrail breach prevented: Pause Guard - Rate limit breach",
+    "successScore": 0.1,
     "context": {
-      "projectId": "proj_d8_9_e2e",
-      "projectVersion": 7,
-      "schemaVersion": 7,
+      "projectId": "proj-guardrail-test",
+      "projectVersion": 1,
+      "schemaVersion": 1,
       "environment": "development"
     },
     "features": {
       "version": "1.0.0",
       "operationTypes": [
-        "add_component"
+        "modify_component"
       ],
       "componentTypes": [
-        "button"
+        "Container"
       ],
       "mutationCount": 1,
       "operationCount": 1,
-      "riskLevel": "LOW",
+      "riskLevel": "HIGH",
       "approvalRequired": false,
-      "executionDurationMs": 2,
-      "rollbackOccurred": false,
+      "rollbackOccurred": true,
       "tags": [
-        "execution_success"
+        "guardrail",
+        "containment"
       ]
     },
     "provenance": {
       "source": "execution",
-      "projectId": "proj_d8_9_e2e",
-      "projectVersion": 7,
-      "schemaVersion": 7,
+      "projectId": "proj-guardrail-test",
+      "projectVersion": 1,
+      "schemaVersion": 1,
       "environment": "development",
-      "actor": "AutonomousLearningEngine",
-      "timestamp": "2026-09-06T21:50:18.773Z",
-      "sanitized": true,
-      "sanitizationNotes": [
-        "Redacted secrets and injection patterns"
-      ]
+      "actor": "system",
+      "timestamp": "2026-09-07T09:32:05.617Z",
+      "sanitized": true
     },
     "evidence": [
-      "All operations committed cleanly"
-    ],
-    "associatedOperations": [
-      {
-        "id": "op_e2e_btn",
-        "type": "add_component",
-        "pageId": "page_home",
-        "parentId": "root_1788731418770",
-        "node": {
-          "id": "btn_e2e_cta",
-          "type": "button",
-          "name": "CTA Button",
-          "props": {
-            "label": "Get Started Now"
-          },
-          "children": []
-        },
-        "description": "Add CTA Button",
-        "risk": "low",
-        "reversible": true
-      }
+      "r-2"
     ],
     "timesMatched": 0,
-    "successScore": 0.8,
-    "createdAt": "2026-09-06T21:50:18.773Z",
-    "updatedAt": "2026-09-06T21:50:18.773Z"
+    "updatedAt": "2026-09-07T09:32:05.617Z"
+  },
+  {
+    "id": "exp-guard-cont-1788773525619-ieyx",
+    "projectId": "proj-guardrail-test",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
+    "validity": "VALID",
+    "description": "Guardrail breach prevented: Telemetry Guard - Emitted breach",
+    "successScore": 0.1,
+    "context": {
+      "projectId": "proj-guardrail-test",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development"
+    },
+    "features": {
+      "version": "1.0.0",
+      "operationTypes": [
+        "modify_component"
+      ],
+      "componentTypes": [
+        "Container"
+      ],
+      "mutationCount": 1,
+      "operationCount": 1,
+      "riskLevel": "HIGH",
+      "approvalRequired": false,
+      "rollbackOccurred": true,
+      "tags": [
+        "guardrail",
+        "containment"
+      ]
+    },
+    "provenance": {
+      "source": "execution",
+      "projectId": "proj-guardrail-test",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development",
+      "actor": "system",
+      "timestamp": "2026-09-07T09:32:05.621Z",
+      "sanitized": true
+    },
+    "evidence": [
+      "r-3"
+    ],
+    "timesMatched": 0,
+    "updatedAt": "2026-09-07T09:32:05.621Z"
+  },
+  {
+    "id": "exp-guard-cont-1788773525624-yej6",
+    "projectId": "proj-guardrail-test",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
+    "validity": "VALID",
+    "description": "Guardrail breach prevented: Learning Reinforce Guard - Root component damaged",
+    "successScore": 0.1,
+    "context": {
+      "projectId": "proj-guardrail-test",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development"
+    },
+    "features": {
+      "version": "1.0.0",
+      "operationTypes": [
+        "modify_component"
+      ],
+      "componentTypes": [
+        "Container"
+      ],
+      "mutationCount": 1,
+      "operationCount": 1,
+      "riskLevel": "HIGH",
+      "approvalRequired": false,
+      "rollbackOccurred": true,
+      "tags": [
+        "guardrail",
+        "containment"
+      ]
+    },
+    "provenance": {
+      "source": "execution",
+      "projectId": "proj-guardrail-test",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development",
+      "actor": "system",
+      "timestamp": "2026-09-07T09:32:05.625Z",
+      "sanitized": true
+    },
+    "evidence": [
+      "r-4"
+    ],
+    "timesMatched": 0,
+    "updatedAt": "2026-09-07T09:32:05.625Z"
+  },
+  {
+    "id": "exp-guard-cont-1788773525629-phlr",
+    "projectId": "proj-guardrail-test",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
+    "validity": "VALID",
+    "description": "Guardrail breach prevented: Hash Test - Warning",
+    "successScore": 0.1,
+    "context": {
+      "projectId": "proj-guardrail-test",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development"
+    },
+    "features": {
+      "version": "1.0.0",
+      "operationTypes": [
+        "modify_component"
+      ],
+      "componentTypes": [
+        "Container"
+      ],
+      "mutationCount": 1,
+      "operationCount": 1,
+      "riskLevel": "HIGH",
+      "approvalRequired": false,
+      "rollbackOccurred": true,
+      "tags": [
+        "guardrail",
+        "containment"
+      ]
+    },
+    "provenance": {
+      "source": "execution",
+      "projectId": "proj-guardrail-test",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development",
+      "actor": "system",
+      "timestamp": "2026-09-07T09:32:05.631Z",
+      "sanitized": true
+    },
+    "evidence": [
+      "r-5"
+    ],
+    "timesMatched": 0,
+    "updatedAt": "2026-09-07T09:32:05.631Z"
+  },
+  {
+    "id": "exp-guard-cont-1788773525656-x6m7",
+    "projectId": "proj-guardrail-test",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
+    "validity": "VALID",
+    "description": "Guardrail breach prevented: Prov Guard - Prov",
+    "successScore": 0.1,
+    "context": {
+      "projectId": "proj-guardrail-test",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development"
+    },
+    "features": {
+      "version": "1.0.0",
+      "operationTypes": [
+        "modify_component"
+      ],
+      "componentTypes": [
+        "Container"
+      ],
+      "mutationCount": 1,
+      "operationCount": 1,
+      "riskLevel": "HIGH",
+      "approvalRequired": false,
+      "rollbackOccurred": true,
+      "tags": [
+        "guardrail",
+        "containment"
+      ]
+    },
+    "provenance": {
+      "source": "execution",
+      "projectId": "proj-guardrail-test",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development",
+      "actor": "system",
+      "timestamp": "2026-09-07T09:32:05.658Z",
+      "sanitized": true
+    },
+    "evidence": [
+      "r-prov"
+    ],
+    "timesMatched": 0,
+    "updatedAt": "2026-09-07T09:32:05.658Z"
+  },
+  {
+    "id": "exp-guard-cont-1788773525685-899e",
+    "projectId": "proj-e2e-guardrails",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
+    "validity": "VALID",
+    "description": "Guardrail breach prevented: Critical Invariant - Critical failure",
+    "successScore": 0.1,
+    "context": {
+      "projectId": "proj-e2e-guardrails",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development"
+    },
+    "features": {
+      "version": "1.0.0",
+      "operationTypes": [
+        "modify_component"
+      ],
+      "componentTypes": [
+        "Container"
+      ],
+      "mutationCount": 1,
+      "operationCount": 1,
+      "riskLevel": "HIGH",
+      "approvalRequired": false,
+      "rollbackOccurred": true,
+      "tags": [
+        "guardrail",
+        "containment"
+      ]
+    },
+    "provenance": {
+      "source": "execution",
+      "projectId": "proj-e2e-guardrails",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development",
+      "actor": "system",
+      "timestamp": "2026-09-07T09:32:05.686Z",
+      "sanitized": true
+    },
+    "evidence": [
+      "r-crit"
+    ],
+    "timesMatched": 0,
+    "updatedAt": "2026-09-07T09:32:05.686Z"
+  },
+  {
+    "id": "exp-guard-cont-1788773525689-o1uf",
+    "projectId": "proj-e2e-guardrails",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
+    "validity": "VALID",
+    "description": "Guardrail breach prevented: Live Containment Watchdog - Runaway execution loop detected",
+    "successScore": 0.1,
+    "context": {
+      "projectId": "proj-e2e-guardrails",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development"
+    },
+    "features": {
+      "version": "1.0.0",
+      "operationTypes": [
+        "modify_component"
+      ],
+      "componentTypes": [
+        "Container"
+      ],
+      "mutationCount": 1,
+      "operationCount": 1,
+      "riskLevel": "HIGH",
+      "approvalRequired": false,
+      "rollbackOccurred": true,
+      "tags": [
+        "guardrail",
+        "containment"
+      ]
+    },
+    "provenance": {
+      "source": "execution",
+      "projectId": "proj-e2e-guardrails",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development",
+      "actor": "system",
+      "timestamp": "2026-09-07T09:32:05.690Z",
+      "sanitized": true
+    },
+    "evidence": [
+      "r-pause"
+    ],
+    "timesMatched": 0,
+    "updatedAt": "2026-09-07T09:32:05.690Z"
+  },
+  {
+    "id": "exp-guard-cont-1788773525697-sndq",
+    "projectId": "proj-e2e-guardrails",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
+    "validity": "VALID",
+    "description": "Guardrail breach prevented: Observability Log Guard - Injected dangerous instruction",
+    "successScore": 0.1,
+    "context": {
+      "projectId": "proj-e2e-guardrails",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development"
+    },
+    "features": {
+      "version": "1.0.0",
+      "operationTypes": [
+        "modify_component"
+      ],
+      "componentTypes": [
+        "Container"
+      ],
+      "mutationCount": 1,
+      "operationCount": 1,
+      "riskLevel": "HIGH",
+      "approvalRequired": false,
+      "rollbackOccurred": true,
+      "tags": [
+        "guardrail",
+        "containment"
+      ]
+    },
+    "provenance": {
+      "source": "execution",
+      "projectId": "proj-e2e-guardrails",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development",
+      "actor": "system",
+      "timestamp": "2026-09-07T09:32:05.699Z",
+      "sanitized": true
+    },
+    "evidence": [
+      "r-obs"
+    ],
+    "timesMatched": 0,
+    "updatedAt": "2026-09-07T09:32:05.699Z"
+  },
+  {
+    "id": "exp-guard-cont-1788773525701-4vge",
+    "projectId": "proj-e2e-guardrails",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
+    "validity": "VALID",
+    "description": "Guardrail breach prevented: Self-Healing Shield - Schema disruption avoided",
+    "successScore": 0.1,
+    "context": {
+      "projectId": "proj-e2e-guardrails",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development"
+    },
+    "features": {
+      "version": "1.0.0",
+      "operationTypes": [
+        "modify_component"
+      ],
+      "componentTypes": [
+        "Container"
+      ],
+      "mutationCount": 1,
+      "operationCount": 1,
+      "riskLevel": "HIGH",
+      "approvalRequired": false,
+      "rollbackOccurred": true,
+      "tags": [
+        "guardrail",
+        "containment"
+      ]
+    },
+    "provenance": {
+      "source": "execution",
+      "projectId": "proj-e2e-guardrails",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development",
+      "actor": "system",
+      "timestamp": "2026-09-07T09:32:05.703Z",
+      "sanitized": true
+    },
+    "evidence": [
+      "r-learn"
+    ],
+    "timesMatched": 0,
+    "updatedAt": "2026-09-07T09:32:05.703Z"
+  },
+  {
+    "id": "exp-f1",
+    "projectId": "proj-recurring-failure",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
+    "description": "F1",
+    "successScore": 0.1,
+    "validity": "VALID",
+    "timesMatched": 0,
+    "updatedAt": "2026-09-07T09:32:05.715Z"
+  },
+  {
+    "id": "exp-f2",
+    "projectId": "proj-recurring-failure",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
+    "description": "F2",
+    "successScore": 0.2,
+    "validity": "VALID",
+    "timesMatched": 0,
+    "updatedAt": "2026-09-07T09:32:05.716Z"
+  },
+  {
+    "id": "exp-f3",
+    "projectId": "proj-recurring-failure",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
+    "description": "F3",
+    "successScore": 0.1,
+    "validity": "VALID",
+    "timesMatched": 0,
+    "updatedAt": "2026-09-07T09:32:05.717Z"
+  },
+  {
+    "id": "exp-guard-cont-1788773525723-k2w6",
+    "projectId": "proj-e2e-guardrails",
+    "category": "EXECUTION_FAILURE",
+    "outcome": "FAILURE",
+    "validity": "VALID",
+    "description": "Guardrail breach prevented: Audit Trail Shield - Boundary breach",
+    "successScore": 0.1,
+    "context": {
+      "projectId": "proj-e2e-guardrails",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development"
+    },
+    "features": {
+      "version": "1.0.0",
+      "operationTypes": [
+        "modify_component"
+      ],
+      "componentTypes": [
+        "Container"
+      ],
+      "mutationCount": 1,
+      "operationCount": 1,
+      "riskLevel": "HIGH",
+      "approvalRequired": false,
+      "rollbackOccurred": true,
+      "tags": [
+        "guardrail",
+        "containment"
+      ]
+    },
+    "provenance": {
+      "source": "execution",
+      "projectId": "proj-e2e-guardrails",
+      "projectVersion": 1,
+      "schemaVersion": 1,
+      "environment": "development",
+      "actor": "system",
+      "timestamp": "2026-09-07T09:32:05.724Z",
+      "sanitized": true
+    },
+    "evidence": [
+      "r-audit"
+    ],
+    "timesMatched": 0,
+    "updatedAt": "2026-09-07T09:32:05.725Z"
   }
 ]

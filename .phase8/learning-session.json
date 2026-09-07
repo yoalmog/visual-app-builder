@@ -1,5 +1,5 @@
 {
-  "sessionId": "learn_sess_1788731411578_ejck",
+  "sessionId": "learn_sess_1788755166296_4ss2",
   "projectId": "proj_learn_01",
   "projectVersion": 7,
   "state": "analyzing",
@@ -7,37 +7,37 @@
   "recommendations": [],
   "checkpoints": [
     {
-      "checkpointId": "chk_1788731411579_yw8p",
-      "sessionId": "learn_sess_1788731411578_ejck",
+      "checkpointId": "chk_1788755166297_es9e",
+      "sessionId": "learn_sess_1788755166296_4ss2",
       "state": "analyzing",
       "projectId": "proj_learn_01",
       "projectVersion": 7,
       "experienceCount": 13,
       "recommendationsCount": 0,
-      "timestamp": "2026-09-06T21:50:11.579Z"
+      "timestamp": "2026-09-07T04:26:06.297Z"
     }
   ],
   "trace": {
-    "traceId": "trace_learn_sess_1788731411578_ejck",
-    "sessionId": "learn_sess_1788731411578_ejck",
+    "traceId": "trace_learn_sess_1788755166296_4ss2",
+    "sessionId": "learn_sess_1788755166296_4ss2",
     "projectId": "proj_learn_01",
     "events": [
       {
-        "id": "evt_1788731411578",
+        "id": "evt_1788755166296",
         "state": "idle",
         "event": "LEARNING_SESSION_STARTED",
-        "message": "Learning session learn_sess_1788731411578_ejck initialized for project proj_learn_01",
-        "timestamp": "2026-09-06T21:50:11.578Z"
+        "message": "Learning session learn_sess_1788755166296_4ss2 initialized for project proj_learn_01",
+        "timestamp": "2026-09-07T04:26:06.296Z"
       },
       {
-        "id": "evt_1788731411578_rasx",
+        "id": "evt_1788755166296_js6c",
         "state": "analyzing",
         "event": "ANALYSIS_IN_PROGRESS",
         "message": "Crunching data",
-        "timestamp": "2026-09-06T21:50:11.578Z"
+        "timestamp": "2026-09-07T04:26:06.296Z"
       }
     ],
-    "startedAt": "2026-09-06T21:50:11.578Z"
+    "startedAt": "2026-09-07T04:26:06.296Z"
   },
   "metrics": {
     "totalExperiences": 14,
@@ -46,6 +46,6 @@
     "recommendationsRejected": 0,
     "patternsDetected": 0
   },
-  "startedAt": "2026-09-06T21:50:11.578Z",
-  "updatedAt": "2026-09-06T21:50:11.578Z"
+  "startedAt": "2026-09-07T04:26:06.296Z",
+  "updatedAt": "2026-09-07T04:26:06.296Z"
 }

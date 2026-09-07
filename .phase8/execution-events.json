@@ -1,1679 +1,328 @@
 {
-  "savedAt": "2026-09-06T21:50:20.912Z",
-  "totalEvents": 80,
-  "eventsRedactedCount": 1,
+  "savedAt": "2026-09-07T09:32:05.724Z",
+  "totalEvents": 11,
+  "eventsRedactedCount": 0,
   "eventsDroppedCount": 0,
   "events": [
     {
-      "eventId": "evt_1788731420746_1",
-      "sequenceNumber": 1,
+      "eventId": "evt-guard-contain-1788773525610",
+      "sequenceNumber": 1788773525610,
       "timestamp": {
-        "iso": "2026-09-06T21:50:20.746Z",
-        "epochMs": 1788731420746
+        "iso": "2026-09-07T09:32:05.610Z",
+        "epochMs": 1788773525610
       },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420745_kfgkd",
-        "sessionId": "sess_001",
-        "projectId": "test-project-a",
-        "requestId": "req_001"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420748_2",
-      "sequenceNumber": 2,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.748Z",
-        "epochMs": 1788731420748
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420748_qgdf9",
-        "sessionId": "sess_002",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420750_3",
-      "sequenceNumber": 3,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.750Z",
-        "epochMs": 1788731420750
-      },
-      "eventType": "CONTEXT_BUILD_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420748_qgdf9",
-        "sessionId": "sess_002",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "pageCount": 1
-      }
-    },
-    {
-      "eventId": "evt_1788731420751_4",
-      "sequenceNumber": 4,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.751Z",
-        "epochMs": 1788731420751
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420751_cqbet",
-        "sessionId": "sess_004",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420754_5",
-      "sequenceNumber": 5,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.754Z",
-        "epochMs": 1788731420754
-      },
-      "eventType": "INTENT_CLASSIFICATION_STARTED",
-      "status": "STARTED",
-      "source": "AI_PLANNER",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420751_cqbet",
-        "sessionId": "sess_004",
-        "projectId": "test-project-a"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420755_6",
-      "sequenceNumber": 6,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.755Z",
-        "epochMs": 1788731420755
-      },
-      "eventType": "INTENT_CLASSIFIED",
-      "status": "COMPLETED",
-      "source": "AI_PLANNER",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420751_cqbet",
-        "sessionId": "sess_004",
-        "projectId": "test-project-a"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420756_7",
-      "sequenceNumber": 7,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.756Z",
-        "epochMs": 1788731420756
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420756_vg23l",
-        "sessionId": "sess_005",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420757_8",
-      "sequenceNumber": 8,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.757Z",
-        "epochMs": 1788731420757
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420757_vzfuz",
-        "sessionId": "sess_006",
-        "projectId": "test-project-a",
-        "requestId": "req_chain_001"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420759_9",
-      "sequenceNumber": 9,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.759Z",
-        "epochMs": 1788731420759
-      },
-      "eventType": "OPERATION_COMPLETED",
-      "status": "COMPLETED",
-      "source": "EXECUTION_ENGINE",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420757_vzfuz",
-        "sessionId": "sess_006",
-        "projectId": "test-project-a",
-        "requestId": "req_chain_001",
-        "decisionId": "dec_001",
-        "transactionId": "tx_001",
-        "operationId": "op_001",
-        "verificationId": "ver_001"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420760_10",
-      "sequenceNumber": 10,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.760Z",
-        "epochMs": 1788731420760
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420760_gor1q",
-        "sessionId": "sess_007",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420761_11",
-      "sequenceNumber": 11,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.761Z",
-        "epochMs": 1788731420761
-      },
-      "eventType": "DECISION_SELECTED",
-      "status": "COMPLETED",
+      "eventType": "SAFETY_VIOLATION_DETECTED",
+      "status": "BLOCKED",
       "source": "DECISION_ENGINE",
-      "severity": "INFO",
+      "severity": "CRITICAL",
       "correlation": {
-        "traceId": "tr_1788731420760_gor1q",
-        "sessionId": "sess_007",
-        "projectId": "test-project-a"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420762_12",
-      "sequenceNumber": 12,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.762Z",
-        "epochMs": 1788731420762
-      },
-      "eventType": "TRANSACTION_STARTED",
-      "status": "STARTED",
-      "source": "TRANSACTION_MANAGER",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420760_gor1q",
-        "sessionId": "sess_007",
-        "projectId": "test-project-a"
-      },
-      "causality": {
-        "causeType": "DECISION",
-        "causedByEventId": "evt_1788731420761_11",
-        "description": "Transaction initiated because candidate strategy was selected"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420763_13",
-      "sequenceNumber": 13,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.763Z",
-        "epochMs": 1788731420763
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420763_8cycg",
-        "sessionId": "sess_008",
-        "projectId": "test-project-a"
+        "traceId": "trc-guard-cont-1788773525610-cnap",
+        "sessionId": "sess-guard-proj-guardrail-test",
+        "projectId": "proj-guardrail-test"
       },
       "metadata": {
-        "environment": "development"
+        "containmentId": "cont-1788773525610-cnap",
+        "ruleId": "r-1",
+        "ruleName": "Tx Rollback Guard",
+        "category": "DATA_INTEGRITY",
+        "action": "BLOCK_AND_ROLLBACK",
+        "reason": "Critical error"
+      },
+      "outcome": {
+        "status": "BLOCKED",
+        "summary": "Containment engaged: BLOCK_AND_ROLLBACK on rule Tx Rollback Guard"
       }
     },
     {
-      "eventId": "evt_1788731420765_14",
-      "sequenceNumber": 14,
+      "eventId": "evt-guard-contain-1788773525616",
+      "sequenceNumber": 1788773525616,
       "timestamp": {
-        "iso": "2026-09-06T21:50:20.765Z",
-        "epochMs": 1788731420765
+        "iso": "2026-09-07T09:32:05.616Z",
+        "epochMs": 1788773525616
       },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420765_d7ro2",
-        "sessionId": "sess_009",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420767_15",
-      "sequenceNumber": 15,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.767Z",
-        "epochMs": 1788731420767
-      },
-      "eventType": "VERIFICATION_PASSED",
-      "status": "PASSED",
-      "source": "VERIFICATION_ENGINE",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420765_d7ro2",
-        "sessionId": "sess_009",
-        "projectId": "test-project-a"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420769_16",
-      "sequenceNumber": 16,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.769Z",
-        "epochMs": 1788731420769
-      },
-      "eventType": "TRACE_COMPLETED",
-      "status": "PASSED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420765_d7ro2",
-        "sessionId": "sess_009",
-        "projectId": "test-project-a"
-      },
-      "duration": {
-        "durationMs": 3
-      },
-      "metadata": {
-        "completeness": "COMPLETE",
-        "hotspotsCount": 0
-      }
-    },
-    {
-      "eventId": "evt_1788731420771_17",
-      "sequenceNumber": 17,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.771Z",
-        "epochMs": 1788731420771
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420771_ta6jp",
-        "sessionId": "sess_010",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420772_18",
-      "sequenceNumber": 18,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.772Z",
-        "epochMs": 1788731420772
-      },
-      "eventType": "PLAN_VALIDATED",
-      "status": "COMPLETED",
-      "source": "AI_PLANNER",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420771_ta6jp",
-        "sessionId": "sess_010",
-        "projectId": "test-project-a"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420776_19",
-      "sequenceNumber": 19,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.776Z",
-        "epochMs": 1788731420776
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420776_j67sp",
-        "sessionId": "sess_012",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420777_20",
-      "sequenceNumber": 20,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.777Z",
-        "epochMs": 1788731420777
-      },
-      "eventType": "TRANSACTION_COMMITTED",
-      "status": "COMPLETED",
-      "source": "TRANSACTION_MANAGER",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420776_j67sp",
-        "sessionId": "sess_012",
-        "projectId": "test-project-a"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420779_21",
-      "sequenceNumber": 21,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.779Z",
-        "epochMs": 1788731420779
-      },
-      "eventType": "CHECKPOINT_CREATED",
-      "status": "COMPLETED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420776_j67sp",
-        "sessionId": "sess_012",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "checkpointId": "chk_1788731420779_1",
-        "stage": "TRANSACTION"
-      }
-    },
-    {
-      "eventId": "evt_1788731420780_22",
-      "sequenceNumber": 22,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.780Z",
-        "epochMs": 1788731420780
-      },
-      "eventType": "CHECKPOINT_RESTORED",
-      "status": "UNCERTAIN",
-      "source": "SYSTEM",
-      "severity": "MEDIUM",
-      "correlation": {
-        "traceId": "tr_1788731420776_j67sp",
-        "sessionId": "sess_012",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "checkpointId": "chk_1788731420779_1",
-        "ambiguity": "Transaction or verification active during crash"
-      }
-    },
-    {
-      "eventId": "evt_1788731420789_23",
-      "sequenceNumber": 23,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.789Z",
-        "epochMs": 1788731420789
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420789_wqr1c",
-        "sessionId": "sess_013",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420790_24",
-      "sequenceNumber": 24,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.790Z",
-        "epochMs": 1788731420790
-      },
-      "eventType": "TRANSACTION_STARTED",
-      "status": "STARTED",
-      "source": "TRANSACTION_MANAGER",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420789_wqr1c",
-        "sessionId": "sess_013",
-        "projectId": "test-project-a"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420791_25",
-      "sequenceNumber": 25,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.791Z",
-        "epochMs": 1788731420791
-      },
-      "eventType": "CHECKPOINT_CREATED",
-      "status": "COMPLETED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420789_wqr1c",
-        "sessionId": "sess_013",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "checkpointId": "chk_1788731420791_1",
-        "stage": "TRANSACTION"
-      }
-    },
-    {
-      "eventId": "evt_1788731420792_26",
-      "sequenceNumber": 26,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.792Z",
-        "epochMs": 1788731420792
-      },
-      "eventType": "CHECKPOINT_RESTORED",
-      "status": "UNCERTAIN",
-      "source": "SYSTEM",
-      "severity": "MEDIUM",
-      "correlation": {
-        "traceId": "tr_1788731420789_wqr1c",
-        "sessionId": "sess_013",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "checkpointId": "chk_1788731420791_1",
-        "ambiguity": "Transaction or verification active during crash"
-      }
-    },
-    {
-      "eventId": "evt_unique_12345",
-      "sequenceNumber": 9999,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.794Z",
-        "epochMs": 1788731420794
-      },
-      "eventType": "OPERATION_STARTED",
-      "status": "STARTED",
-      "source": "EXECUTION_ENGINE",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_fixed",
-        "sessionId": "sess_fixed",
-        "projectId": "test-project-a"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420796_27",
-      "sequenceNumber": 27,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.796Z",
-        "epochMs": 1788731420796
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420796_cfyog",
-        "sessionId": "sess_015",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420798_28",
-      "sequenceNumber": 28,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.798Z",
-        "epochMs": 1788731420798
-      },
-      "eventType": "OPERATION_FAILED",
-      "status": "FAILED",
-      "source": "EXECUTION_ENGINE",
-      "severity": "MEDIUM",
-      "correlation": {
-        "traceId": "tr_1788731420796_cfyog",
-        "sessionId": "sess_015",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "attempt": 1,
-        "reason": "Temporary timeout"
-      }
-    },
-    {
-      "eventId": "evt_1788731420800_29",
-      "sequenceNumber": 29,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.800Z",
-        "epochMs": 1788731420800
-      },
-      "eventType": "OPERATION_COMPLETED",
-      "status": "COMPLETED",
-      "source": "EXECUTION_ENGINE",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420796_cfyog",
-        "sessionId": "sess_015",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "attempt": 2,
-        "recovered": true
-      }
-    },
-    {
-      "eventId": "evt_1788731420802_30",
-      "sequenceNumber": 30,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.802Z",
-        "epochMs": 1788731420802
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420802_k9m1i",
-        "sessionId": "sess_016",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420803_31",
-      "sequenceNumber": 31,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.803Z",
-        "epochMs": 1788731420803
-      },
-      "eventType": "TRANSACTION_ROLLED_BACK",
-      "status": "ROLLED_BACK",
-      "source": "TRANSACTION_MANAGER",
+      "eventType": "SAFETY_VIOLATION_DETECTED",
+      "status": "BLOCKED",
+      "source": "DECISION_ENGINE",
       "severity": "HIGH",
       "correlation": {
-        "traceId": "tr_1788731420802_k9m1i",
-        "sessionId": "sess_016",
-        "projectId": "test-project-a",
-        "transactionId": "gen_rolled_back_001"
+        "traceId": "trc-guard-cont-1788773525616-xrxw",
+        "sessionId": "hitl-sess-proj-guardrail-test-1788773525615",
+        "projectId": "proj-guardrail-test"
       },
       "metadata": {
-        "reason": "Step post-condition failure"
+        "containmentId": "cont-1788773525616-xrxw",
+        "ruleId": "r-2",
+        "ruleName": "Pause Guard",
+        "category": "RATE_AND_BUDGET",
+        "action": "CONTAIN_AND_PAUSE",
+        "reason": "Rate limit breach"
+      },
+      "outcome": {
+        "status": "BLOCKED",
+        "summary": "Containment engaged: CONTAIN_AND_PAUSE on rule Pause Guard"
       }
     },
     {
-      "eventId": "evt_1788731420805_32",
-      "sequenceNumber": 32,
+      "eventId": "evt-guard-contain-1788773525619",
+      "sequenceNumber": 1788773525619,
       "timestamp": {
-        "iso": "2026-09-06T21:50:20.805Z",
-        "epochMs": 1788731420805
+        "iso": "2026-09-07T09:32:05.619Z",
+        "epochMs": 1788773525619
       },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
+      "eventType": "SAFETY_VIOLATION_DETECTED",
+      "status": "BLOCKED",
+      "source": "DECISION_ENGINE",
+      "severity": "CRITICAL",
       "correlation": {
-        "traceId": "tr_1788731420805_7k7vb",
-        "sessionId": "sess_017",
-        "projectId": "test-project-a"
+        "traceId": "trc-guard-cont-1788773525619-ieyx",
+        "sessionId": "sess-guard-proj-guardrail-test",
+        "projectId": "proj-guardrail-test"
       },
       "metadata": {
-        "environment": "development"
+        "containmentId": "cont-1788773525619-ieyx",
+        "ruleId": "r-3",
+        "ruleName": "Telemetry Guard",
+        "category": "SECURITY_INVARIANT",
+        "action": "BLOCK_AND_ROLLBACK",
+        "reason": "Emitted breach"
+      },
+      "outcome": {
+        "status": "BLOCKED",
+        "summary": "Containment engaged: BLOCK_AND_ROLLBACK on rule Telemetry Guard"
       }
     },
     {
-      "eventId": "evt_1788731420806_33",
-      "sequenceNumber": 33,
+      "eventId": "evt-guard-contain-1788773525624",
+      "sequenceNumber": 1788773525624,
       "timestamp": {
-        "iso": "2026-09-06T21:50:20.806Z",
-        "epochMs": 1788731420806
+        "iso": "2026-09-07T09:32:05.624Z",
+        "epochMs": 1788773525624
       },
-      "eventType": "VERIFICATION_PASSED",
-      "status": "PASSED",
-      "source": "VERIFICATION_ENGINE",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420805_7k7vb",
-        "sessionId": "sess_017",
-        "projectId": "test-project-a",
-        "verificationId": "ver_clean_001"
-      },
-      "metadata": {},
-      "evidence": {
-        "summary": "All 4 postcondition checks passed",
-        "passedChecks": 4,
-        "totalChecks": 4,
-        "dimensions": [
-          "SCHEMA",
-          "DOM_HIERARCHY",
-          "PROPS",
-          "SEMANTIC"
-        ]
-      }
-    },
-    {
-      "eventId": "evt_1788731420807_34",
-      "sequenceNumber": 34,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.807Z",
-        "epochMs": 1788731420807
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420807_ewhjk",
-        "sessionId": "sess_018",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420809_35",
-      "sequenceNumber": 35,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.809Z",
-        "epochMs": 1788731420809
-      },
-      "eventType": "OPERATION_COMPLETED",
-      "status": "COMPLETED",
-      "source": "EXECUTION_ENGINE",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420807_ewhjk",
-        "sessionId": "sess_018",
-        "projectId": "test-project-a"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420810_36",
-      "sequenceNumber": 36,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.810Z",
-        "epochMs": 1788731420810
-      },
-      "eventType": "VERIFICATION_FAILED",
-      "status": "FAILED",
-      "source": "VERIFICATION_ENGINE",
+      "eventType": "SAFETY_VIOLATION_DETECTED",
+      "status": "BLOCKED",
+      "source": "DECISION_ENGINE",
       "severity": "HIGH",
       "correlation": {
-        "traceId": "tr_1788731420807_ewhjk",
-        "sessionId": "sess_018",
-        "projectId": "test-project-a"
+        "traceId": "trc-guard-cont-1788773525624-yej6",
+        "sessionId": "sess-guard-proj-guardrail-test",
+        "projectId": "proj-guardrail-test"
       },
-      "metadata": {},
-      "evidence": {
-        "summary": "Component missing required button child",
-        "passedChecks": 2,
-        "totalChecks": 3
+      "metadata": {
+        "containmentId": "cont-1788773525624-yej6",
+        "ruleId": "r-4",
+        "ruleName": "Learning Reinforce Guard",
+        "category": "SCHEMA_PRESERVATION",
+        "action": "BLOCK_AND_ROLLBACK",
+        "reason": "Root component damaged"
+      },
+      "outcome": {
+        "status": "BLOCKED",
+        "summary": "Containment engaged: BLOCK_AND_ROLLBACK on rule Learning Reinforce Guard"
       }
     },
     {
-      "eventId": "evt_1788731420811_37",
-      "sequenceNumber": 37,
+      "eventId": "evt-guard-contain-1788773525629",
+      "sequenceNumber": 1788773525629,
       "timestamp": {
-        "iso": "2026-09-06T21:50:20.811Z",
-        "epochMs": 1788731420811
+        "iso": "2026-09-07T09:32:05.629Z",
+        "epochMs": 1788773525629
       },
-      "eventType": "TRACE_FAILED",
-      "status": "FAILED",
-      "source": "SYSTEM",
+      "eventType": "SAFETY_VIOLATION_DETECTED",
+      "status": "BLOCKED",
+      "source": "DECISION_ENGINE",
       "severity": "HIGH",
       "correlation": {
-        "traceId": "tr_1788731420807_ewhjk",
-        "sessionId": "sess_018",
-        "projectId": "test-project-a"
-      },
-      "duration": {
-        "durationMs": 3
+        "traceId": "trc-guard-cont-1788773525629-phlr",
+        "sessionId": "sess-guard-proj-guardrail-test",
+        "projectId": "proj-guardrail-test"
       },
       "metadata": {
-        "completeness": "FAILED",
-        "hotspotsCount": 0
+        "containmentId": "cont-1788773525629-phlr",
+        "ruleId": "r-5",
+        "ruleName": "Hash Test",
+        "category": "DATA_INTEGRITY",
+        "action": "WARN",
+        "reason": "Warning"
+      },
+      "outcome": {
+        "status": "BLOCKED",
+        "summary": "Containment engaged: WARN on rule Hash Test"
       }
     },
     {
-      "eventId": "evt_1788731420812_38",
-      "sequenceNumber": 38,
+      "eventId": "evt-guard-contain-1788773525656",
+      "sequenceNumber": 1788773525656,
       "timestamp": {
-        "iso": "2026-09-06T21:50:20.812Z",
-        "epochMs": 1788731420812
+        "iso": "2026-09-07T09:32:05.656Z",
+        "epochMs": 1788773525656
       },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420812_m0bp4",
-        "sessionId": "sess_019",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420814_39",
-      "sequenceNumber": 39,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.814Z",
-        "epochMs": 1788731420814
-      },
-      "eventType": "RECOVERY_STARTED",
-      "status": "STARTED",
-      "source": "RECOVERY_ENGINE",
-      "severity": "MEDIUM",
-      "correlation": {
-        "traceId": "tr_1788731420812_m0bp4",
-        "sessionId": "sess_019",
-        "projectId": "test-project-a"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420815_40",
-      "sequenceNumber": 40,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.815Z",
-        "epochMs": 1788731420815
-      },
-      "eventType": "RECOVERY_COMPLETED",
-      "status": "COMPLETED",
-      "source": "RECOVERY_ENGINE",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420812_m0bp4",
-        "sessionId": "sess_019",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "strategy": "REGENERATE_COMPONENT"
-      }
-    },
-    {
-      "eventId": "evt_1788731420818_41",
-      "sequenceNumber": 41,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.818Z",
-        "epochMs": 1788731420818
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420818_1caxs",
-        "sessionId": "sess_020",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420819_42",
-      "sequenceNumber": 42,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.819Z",
-        "epochMs": 1788731420819
-      },
-      "eventType": "DECISION_SELECTED",
-      "status": "COMPLETED",
+      "eventType": "SAFETY_VIOLATION_DETECTED",
+      "status": "BLOCKED",
       "source": "DECISION_ENGINE",
-      "severity": "INFO",
+      "severity": "HIGH",
       "correlation": {
-        "traceId": "tr_1788731420818_1caxs",
-        "sessionId": "sess_020",
-        "projectId": "test-project-a"
+        "traceId": "trc-guard-cont-1788773525656-x6m7",
+        "sessionId": "sess-guard-proj-guardrail-test",
+        "projectId": "proj-guardrail-test"
       },
       "metadata": {
-        "candidatesCount": 3,
-        "confidence": 0.92,
-        "strategyType": "INSERT_COMPONENT_HIERARCHICAL"
+        "containmentId": "cont-1788773525656-x6m7",
+        "ruleId": "r-prov",
+        "ruleName": "Prov Guard",
+        "category": "DATA_INTEGRITY",
+        "action": "BLOCK_AND_ROLLBACK",
+        "reason": "Prov"
+      },
+      "outcome": {
+        "status": "BLOCKED",
+        "summary": "Containment engaged: BLOCK_AND_ROLLBACK on rule Prov Guard"
       }
     },
     {
-      "eventId": "evt_1788731420821_43",
-      "sequenceNumber": 43,
+      "eventId": "evt-guard-contain-1788773525685",
+      "sequenceNumber": 1788773525685,
       "timestamp": {
-        "iso": "2026-09-06T21:50:20.821Z",
-        "epochMs": 1788731420821
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420821_jgdbz",
-        "sessionId": "sess_021",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420822_44",
-      "sequenceNumber": 44,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.822Z",
-        "epochMs": 1788731420822
-      },
-      "eventType": "EXPERIENCE_RECORDED",
-      "status": "COMPLETED",
-      "source": "LEARNING_ENGINE",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420821_jgdbz",
-        "sessionId": "sess_021",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "experienceCategory": "VERIFICATION_SUCCESS"
-      }
-    },
-    {
-      "eventId": "evt_1788731420823_45",
-      "sequenceNumber": 45,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.823Z",
-        "epochMs": 1788731420823
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420823_wmw6n",
-        "sessionId": "sess_022",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420825_46",
-      "sequenceNumber": 46,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.825Z",
-        "epochMs": 1788731420825
-      },
-      "eventType": "PLAN_CREATED",
-      "status": "COMPLETED",
-      "source": "AI_PLANNER",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420823_wmw6n",
-        "sessionId": "sess_022",
-        "projectId": "test-project-a"
-      },
-      "duration": {
-        "durationMs": 450
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420826_47",
-      "sequenceNumber": 47,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.826Z",
-        "epochMs": 1788731420826
-      },
-      "eventType": "OPERATION_COMPLETED",
-      "status": "COMPLETED",
-      "source": "EXECUTION_ENGINE",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420823_wmw6n",
-        "sessionId": "sess_022",
-        "projectId": "test-project-a"
-      },
-      "duration": {
-        "durationMs": 250
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420827_48",
-      "sequenceNumber": 48,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.827Z",
-        "epochMs": 1788731420827
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420827_io8o0",
-        "sessionId": "sess_023",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420829_49",
-      "sequenceNumber": 49,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.829Z",
-        "epochMs": 1788731420829
-      },
-      "eventType": "PLAN_CREATED",
-      "status": "COMPLETED",
-      "source": "AI_PLANNER",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420827_io8o0",
-        "sessionId": "sess_023",
-        "projectId": "test-project-a"
-      },
-      "duration": {
-        "durationMs": 2200
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420830_50",
-      "sequenceNumber": 50,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.830Z",
-        "epochMs": 1788731420830
-      },
-      "eventType": "TRACE_COMPLETED",
-      "status": "COMPLETED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420827_io8o0",
-        "sessionId": "sess_023",
-        "projectId": "test-project-a"
-      },
-      "duration": {
-        "durationMs": 3
-      },
-      "metadata": {
-        "completeness": "PARTIAL",
-        "hotspotsCount": 1
-      }
-    },
-    {
-      "eventId": "evt_1788731420833_51",
-      "sequenceNumber": 51,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.833Z",
-        "epochMs": 1788731420833
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420833_qk3ox",
-        "sessionId": "sess_024",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420834_52",
-      "sequenceNumber": 52,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.834Z",
-        "epochMs": 1788731420834
-      },
-      "eventType": "OPERATION_COMPLETED",
-      "status": "COMPLETED",
-      "source": "EXECUTION_ENGINE",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420833_qk3ox",
-        "sessionId": "sess_024",
-        "projectId": "test-project-a"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420836_53",
-      "sequenceNumber": 53,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.836Z",
-        "epochMs": 1788731420836
-      },
-      "eventType": "TRACE_COMPLETED",
-      "status": "COMPLETED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420833_qk3ox",
-        "sessionId": "sess_024",
-        "projectId": "test-project-a"
-      },
-      "duration": {
-        "durationMs": 3
-      },
-      "metadata": {
-        "completeness": "PARTIAL",
-        "hotspotsCount": 0
-      }
-    },
-    {
-      "eventId": "evt_1788731420837_54",
-      "sequenceNumber": 54,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.837Z",
-        "epochMs": 1788731420837
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420837_zdxp3",
-        "sessionId": "sess_025",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420840_55",
-      "sequenceNumber": 55,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.840Z",
-        "epochMs": 1788731420840
-      },
-      "eventType": "TRACE_TRUNCATED",
-      "status": "COMPLETED",
-      "source": "SYSTEM",
-      "severity": "MEDIUM",
-      "correlation": {
-        "traceId": "tr_1788731420837_zdxp3",
-        "sessionId": "sess_025",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "reason": "Exceeded event retention limit"
-      }
-    },
-    {
-      "eventId": "evt_1788731420841_56",
-      "sequenceNumber": 56,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.841Z",
-        "epochMs": 1788731420841
-      },
-      "eventType": "TRACE_COMPLETED",
-      "status": "COMPLETED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420837_zdxp3",
-        "sessionId": "sess_025",
-        "projectId": "test-project-a"
-      },
-      "duration": {
-        "durationMs": 4
-      },
-      "metadata": {
-        "completeness": "TRUNCATED",
-        "hotspotsCount": 0
-      }
-    },
-    {
-      "eventId": "evt_1788731420842_57",
-      "sequenceNumber": 57,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.842Z",
-        "epochMs": 1788731420842
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420842_wekyj",
-        "sessionId": "sess_026",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420844_58",
-      "sequenceNumber": 58,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.844Z",
-        "epochMs": 1788731420844
-      },
-      "eventType": "VERIFICATION_UNCERTAIN",
-      "status": "UNCERTAIN",
-      "source": "VERIFICATION_ENGINE",
-      "severity": "MEDIUM",
-      "correlation": {
-        "traceId": "tr_1788731420842_wekyj",
-        "sessionId": "sess_026",
-        "projectId": "test-project-a"
-      },
-      "metadata": {},
-      "evidence": {
-        "summary": "Dynamic runtime expression cannot be statically proven"
-      }
-    },
-    {
-      "eventId": "evt_1788731420845_59",
-      "sequenceNumber": 59,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.845Z",
-        "epochMs": 1788731420845
-      },
-      "eventType": "TRACE_COMPLETED",
-      "status": "COMPLETED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420842_wekyj",
-        "sessionId": "sess_026",
-        "projectId": "test-project-a"
-      },
-      "duration": {
-        "durationMs": 3
-      },
-      "metadata": {
-        "completeness": "PARTIAL",
-        "hotspotsCount": 0
-      }
-    },
-    {
-      "eventId": "evt_1788731420846_60",
-      "sequenceNumber": 60,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.846Z",
-        "epochMs": 1788731420846
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420846_gpxt5",
-        "sessionId": "sess_projA",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420849_61",
-      "sequenceNumber": 61,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.849Z",
-        "epochMs": 1788731420849
-      },
-      "eventType": "PLAN_CREATED",
-      "status": "COMPLETED",
-      "source": "AI_PLANNER",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420846_gpxt5",
-        "sessionId": "sess_projA",
-        "projectId": "test-project-a"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420851_62",
-      "sequenceNumber": 62,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.851Z",
-        "epochMs": 1788731420851
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420851_102qn",
-        "sessionId": "sess_028",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420853_63",
-      "sequenceNumber": 63,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.853Z",
-        "epochMs": 1788731420853
-      },
-      "eventType": "OPERATION_STARTED",
-      "status": "STARTED",
-      "source": "EXECUTION_ENGINE",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420851_102qn",
-        "sessionId": "sess_028",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "apiKey": "[REDACTED]",
-        "authHeader": "Bearer [REDACTED_SECRET]",
-        "safeParam": "my-clean-value"
-      },
-      "redacted": true
-    },
-    {
-      "eventId": "evt_1788731420854_64",
-      "sequenceNumber": 64,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.854Z",
-        "epochMs": 1788731420854
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420854_650bx",
-        "sessionId": "sess_029",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420856_65",
-      "sequenceNumber": 65,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.856Z",
-        "epochMs": 1788731420856
-      },
-      "eventType": "CONTEXT_BUILD_COMPLETED",
-      "status": "COMPLETED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420854_650bx",
-        "sessionId": "sess_029",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "untrustedInput": "[BLOCKED_EXECUTION]console.log(\"hacked\"))[BLOCKED_SQL] users;"
-      }
-    },
-    {
-      "eventId": "evt_1788731420858_66",
-      "sequenceNumber": 66,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.858Z",
-        "epochMs": 1788731420858
-      },
-      "eventType": "POLICY_CHECK_PASSED",
-      "status": "PASSED",
-      "source": "POLICY_MANAGER",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_fake",
-        "sessionId": "sess_fake",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "overrideAutonomy": 5,
-        "bypassAll": true
-      }
-    },
-    {
-      "eventId": "evt_1788731420860_67",
-      "sequenceNumber": 67,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.860Z",
-        "epochMs": 1788731420860
-      },
-      "eventType": "TRANSACTION_COMMITTED",
-      "status": "COMPLETED",
-      "source": "TRANSACTION_MANAGER",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_tx",
-        "sessionId": "sess_tx",
-        "projectId": "test-project-a"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420887_68",
-      "sequenceNumber": 68,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.887Z",
-        "epochMs": 1788731420887
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420887_sjrei",
-        "sessionId": "sess_inject",
-        "projectId": "test-project-a"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420890_69",
-      "sequenceNumber": 69,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.890Z",
-        "epochMs": 1788731420890
-      },
-      "eventType": "TRACE_STARTED",
-      "status": "STARTED",
-      "source": "SYSTEM",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420890_b4ezo",
-        "sessionId": "sess_e2e_040",
-        "projectId": "test-project-a",
-        "requestId": "req_e2e_040"
-      },
-      "metadata": {
-        "environment": "development"
-      }
-    },
-    {
-      "eventId": "evt_1788731420892_70",
-      "sequenceNumber": 70,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.892Z",
-        "epochMs": 1788731420892
-      },
-      "eventType": "REQUEST_RECEIVED",
-      "status": "STARTED",
-      "source": "USER",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420890_b4ezo",
-        "sessionId": "sess_e2e_040",
-        "projectId": "test-project-a",
-        "requestId": "req_e2e_040"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420893_71",
-      "sequenceNumber": 71,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.893Z",
-        "epochMs": 1788731420893
-      },
-      "eventType": "PLAN_CREATED",
-      "status": "COMPLETED",
-      "source": "AI_PLANNER",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420890_b4ezo",
-        "sessionId": "sess_e2e_040",
-        "projectId": "test-project-a"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420895_72",
-      "sequenceNumber": 72,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.895Z",
-        "epochMs": 1788731420895
-      },
-      "eventType": "DECISION_SELECTED",
-      "status": "COMPLETED",
+        "iso": "2026-09-07T09:32:05.685Z",
+        "epochMs": 1788773525685
+      },
+      "eventType": "SAFETY_VIOLATION_DETECTED",
+      "status": "BLOCKED",
       "source": "DECISION_ENGINE",
-      "severity": "INFO",
+      "severity": "CRITICAL",
       "correlation": {
-        "traceId": "tr_1788731420890_b4ezo",
-        "sessionId": "sess_e2e_040",
-        "projectId": "test-project-a"
+        "traceId": "trc-guard-cont-1788773525685-899e",
+        "sessionId": "sess-guard-proj-e2e-guardrails",
+        "projectId": "proj-e2e-guardrails"
       },
       "metadata": {
-        "candidatesCount": 2,
-        "confidence": 0.95
+        "containmentId": "cont-1788773525685-899e",
+        "ruleId": "r-crit",
+        "ruleName": "Critical Invariant",
+        "category": "SECURITY_INVARIANT",
+        "action": "BLOCK_AND_ROLLBACK",
+        "reason": "Critical failure"
+      },
+      "outcome": {
+        "status": "BLOCKED",
+        "summary": "Containment engaged: BLOCK_AND_ROLLBACK on rule Critical Invariant"
       }
     },
     {
-      "eventId": "evt_1788731420896_73",
-      "sequenceNumber": 73,
+      "eventId": "evt-guard-contain-1788773525689",
+      "sequenceNumber": 1788773525689,
       "timestamp": {
-        "iso": "2026-09-06T21:50:20.896Z",
-        "epochMs": 1788731420896
+        "iso": "2026-09-07T09:32:05.689Z",
+        "epochMs": 1788773525689
       },
-      "eventType": "POLICY_CHECK_PASSED",
-      "status": "PASSED",
-      "source": "POLICY_MANAGER",
-      "severity": "INFO",
+      "eventType": "SAFETY_VIOLATION_DETECTED",
+      "status": "BLOCKED",
+      "source": "DECISION_ENGINE",
+      "severity": "HIGH",
       "correlation": {
-        "traceId": "tr_1788731420890_b4ezo",
-        "sessionId": "sess_e2e_040",
-        "projectId": "test-project-a"
+        "traceId": "trc-guard-cont-1788773525689-o1uf",
+        "sessionId": "hitl-sess-proj-e2e-guardrails-1788773525689",
+        "projectId": "proj-e2e-guardrails"
       },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420898_74",
-      "sequenceNumber": 74,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.898Z",
-        "epochMs": 1788731420898
+      "metadata": {
+        "containmentId": "cont-1788773525689-o1uf",
+        "ruleId": "r-pause",
+        "ruleName": "Live Containment Watchdog",
+        "category": "RATE_AND_BUDGET",
+        "action": "CONTAIN_AND_PAUSE",
+        "reason": "Runaway execution loop detected"
       },
-      "eventType": "TRANSACTION_STARTED",
-      "status": "STARTED",
-      "source": "TRANSACTION_MANAGER",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420890_b4ezo",
-        "sessionId": "sess_e2e_040",
-        "projectId": "test-project-a",
-        "transactionId": "tx_e2e_040"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420900_75",
-      "sequenceNumber": 75,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.900Z",
-        "epochMs": 1788731420900
-      },
-      "eventType": "OPERATION_STARTED",
-      "status": "STARTED",
-      "source": "EXECUTION_ENGINE",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420890_b4ezo",
-        "sessionId": "sess_e2e_040",
-        "projectId": "test-project-a",
-        "operationId": "op_e2e_040"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420905_76",
-      "sequenceNumber": 76,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.905Z",
-        "epochMs": 1788731420905
-      },
-      "eventType": "OPERATION_COMPLETED",
-      "status": "COMPLETED",
-      "source": "EXECUTION_ENGINE",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420890_b4ezo",
-        "sessionId": "sess_e2e_040",
-        "projectId": "test-project-a",
-        "operationId": "op_e2e_040"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420906_77",
-      "sequenceNumber": 77,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.906Z",
-        "epochMs": 1788731420906
-      },
-      "eventType": "TRANSACTION_COMMITTED",
-      "status": "COMPLETED",
-      "source": "TRANSACTION_MANAGER",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420890_b4ezo",
-        "sessionId": "sess_e2e_040",
-        "projectId": "test-project-a",
-        "transactionId": "gen_1788731420902_929vv"
-      },
-      "metadata": {}
-    },
-    {
-      "eventId": "evt_1788731420910_78",
-      "sequenceNumber": 78,
-      "timestamp": {
-        "iso": "2026-09-06T21:50:20.910Z",
-        "epochMs": 1788731420910
-      },
-      "eventType": "VERIFICATION_PASSED",
-      "status": "PASSED",
-      "source": "VERIFICATION_ENGINE",
-      "severity": "INFO",
-      "correlation": {
-        "traceId": "tr_1788731420890_b4ezo",
-        "sessionId": "sess_e2e_040",
-        "projectId": "test-project-a"
-      },
-      "metadata": {},
-      "evidence": {
-        "summary": "Page update verified",
-        "passedChecks": 12,
-        "totalChecks": 12
+      "outcome": {
+        "status": "BLOCKED",
+        "summary": "Containment engaged: CONTAIN_AND_PAUSE on rule Live Containment Watchdog"
       }
     },
     {
-      "eventId": "evt_1788731420912_79",
-      "sequenceNumber": 79,
+      "eventId": "evt-guard-contain-1788773525697",
+      "sequenceNumber": 1788773525697,
       "timestamp": {
-        "iso": "2026-09-06T21:50:20.912Z",
-        "epochMs": 1788731420912
+        "iso": "2026-09-07T09:32:05.697Z",
+        "epochMs": 1788773525697
       },
-      "eventType": "TRACE_COMPLETED",
-      "status": "PASSED",
-      "source": "SYSTEM",
-      "severity": "INFO",
+      "eventType": "SAFETY_VIOLATION_DETECTED",
+      "status": "BLOCKED",
+      "source": "DECISION_ENGINE",
+      "severity": "CRITICAL",
       "correlation": {
-        "traceId": "tr_1788731420890_b4ezo",
-        "sessionId": "sess_e2e_040",
-        "projectId": "test-project-a",
-        "requestId": "req_e2e_040"
-      },
-      "duration": {
-        "durationMs": 22
+        "traceId": "trc-guard-cont-1788773525697-sndq",
+        "sessionId": "sess-guard-proj-e2e-guardrails",
+        "projectId": "proj-e2e-guardrails"
       },
       "metadata": {
-        "completeness": "COMPLETE",
-        "hotspotsCount": 0
+        "containmentId": "cont-1788773525697-sndq",
+        "ruleId": "r-obs",
+        "ruleName": "Observability Log Guard",
+        "category": "SECURITY_INVARIANT",
+        "action": "BLOCK_AND_ROLLBACK",
+        "reason": "Injected dangerous instruction"
+      },
+      "outcome": {
+        "status": "BLOCKED",
+        "summary": "Containment engaged: BLOCK_AND_ROLLBACK on rule Observability Log Guard"
+      }
+    },
+    {
+      "eventId": "evt-guard-contain-1788773525702",
+      "sequenceNumber": 1788773525702,
+      "timestamp": {
+        "iso": "2026-09-07T09:32:05.701Z",
+        "epochMs": 1788773525702
+      },
+      "eventType": "SAFETY_VIOLATION_DETECTED",
+      "status": "BLOCKED",
+      "source": "DECISION_ENGINE",
+      "severity": "HIGH",
+      "correlation": {
+        "traceId": "trc-guard-cont-1788773525701-4vge",
+        "sessionId": "sess-guard-proj-e2e-guardrails",
+        "projectId": "proj-e2e-guardrails"
+      },
+      "metadata": {
+        "containmentId": "cont-1788773525701-4vge",
+        "ruleId": "r-learn",
+        "ruleName": "Self-Healing Shield",
+        "category": "SCHEMA_PRESERVATION",
+        "action": "BLOCK_AND_ROLLBACK",
+        "reason": "Schema disruption avoided"
+      },
+      "outcome": {
+        "status": "BLOCKED",
+        "summary": "Containment engaged: BLOCK_AND_ROLLBACK on rule Self-Healing Shield"
+      }
+    },
+    {
+      "eventId": "evt-guard-contain-1788773525723",
+      "sequenceNumber": 1788773525723,
+      "timestamp": {
+        "iso": "2026-09-07T09:32:05.723Z",
+        "epochMs": 1788773525723
+      },
+      "eventType": "SAFETY_VIOLATION_DETECTED",
+      "status": "BLOCKED",
+      "source": "DECISION_ENGINE",
+      "severity": "CRITICAL",
+      "correlation": {
+        "traceId": "trc-guard-cont-1788773525723-k2w6",
+        "sessionId": "sess-guard-proj-e2e-guardrails",
+        "projectId": "proj-e2e-guardrails"
+      },
+      "metadata": {
+        "containmentId": "cont-1788773525723-k2w6",
+        "ruleId": "r-audit",
+        "ruleName": "Audit Trail Shield",
+        "category": "PERMISSION_BOUNDARY",
+        "action": "BLOCK_AND_ROLLBACK",
+        "reason": "Boundary breach"
+      },
+      "outcome": {
+        "status": "BLOCKED",
+        "summary": "Containment engaged: BLOCK_AND_ROLLBACK on rule Audit Trail Shield"
       }
     }
   ],
-  "checkpoints": [
-    [
-      "chk_1788731420779_1",
-      {
-        "checkpointId": "chk_1788731420779_1",
-        "traceId": "tr_1788731420776_j67sp",
-        "timestamp": "2026-09-06T21:50:20.779Z",
-        "stage": "TRANSACTION",
-        "sequenceNumber": 20,
-        "lastCommittedEventId": "evt_1788731420777_20",
-        "transactionState": "COMMITTED",
-        "verificationState": "PENDING",
-        "metadata": {
-          "stepIndex": 1
-        }
-      }
-    ],
-    [
-      "chk_1788731420791_1",
-      {
-        "checkpointId": "chk_1788731420791_1",
-        "traceId": "tr_1788731420789_wqr1c",
-        "timestamp": "2026-09-06T21:50:20.791Z",
-        "stage": "TRANSACTION",
-        "sequenceNumber": 24,
-        "lastCommittedEventId": "evt_1788731420790_24",
-        "transactionState": "ACTIVE",
-        "verificationState": "PENDING",
-        "metadata": {
-          "interrupted": true
-        }
-      }
-    ]
-  ]
+  "checkpoints": []
 }

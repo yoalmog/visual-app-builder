@@ -1,0 +1,20 @@
+{
+  "checkpoint": "CP-D8.13",
+  "workstream": "D8.13 — Human-in-the-Loop Control Center & Policy Arbitration Engine",
+  "status": "VERIFIED",
+  "timestamp": "2026-09-07T06:27:01.386Z",
+  "totalTests": 74,
+  "passedTests": 74,
+  "failedTests": 0,
+  "verifiedCapabilities": [
+    "HITL Session Lifecycle (start, pause, resume, step, cancel)",
+    "Conditional Breakpoints (entityId, riskLevel, actionType, mutationBudget)",
+    "Live Step Stepping & Parameter Intervention",
+    "Emergency Stop (Kill-Switch) with Atomic Rollback",
+    "Dual-Control Gating (Four-Eyes Principle)",
+    "Policy Arbitration Matrix & Security Invariant Hard Stops",
+    "Break-Glass Cryptographic Overrides",
+    "Immutable Audit Trail & SHA-256 Provenance Hashes",
+    "Closed-Loop Reinforcement to D8.8 Learning and D8.10 Observability"
+  ]
+}

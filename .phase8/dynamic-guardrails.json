@@ -1,0 +1,134 @@
+{
+  "policies": [
+    {
+      "policyId": "dgp-cert_probe_D8.14-1788774067396",
+      "projectId": "cert_probe_D8.14",
+      "synthesizedAt": "2026-09-07T09:41:07.396Z",
+      "riskTier": "LOW",
+      "rules": [
+        {
+          "ruleId": "rule-sec-eval-1788774067396-1",
+          "name": "No Arbitrary Eval or Dynamic Code",
+          "description": "Strict prohibition against dynamic code eval or Function constructors.",
+          "category": "SECURITY_INVARIANT",
+          "phase": "PRE_EXECUTION",
+          "severity": "CRITICAL",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "PROHIBITED_CODE_DETECTED"
+        },
+        {
+          "ruleId": "rule-sec-inj-1788774067396-2",
+          "name": "Prompt Injection Defense Invariant",
+          "description": "Rejects instructions containing adversarial prompt injection signatures.",
+          "category": "SECURITY_INVARIANT",
+          "phase": "PRE_EXECUTION",
+          "severity": "CRITICAL",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "PROHIBITED_CODE_DETECTED"
+        },
+        {
+          "ruleId": "rule-sec-cred-1788774067396-3",
+          "name": "Zero Credential Leakage Boundary",
+          "description": "Prevents leakage of sensitive API keys, tokens, or credentials in payload.",
+          "category": "SECURITY_INVARIANT",
+          "phase": "POST_EXECUTION",
+          "severity": "HIGH",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "CREDENTIAL_LEAKAGE"
+        },
+        {
+          "ruleId": "rule-perm-proj-1788774067396-4",
+          "name": "Strict Project Isolation Boundary",
+          "description": "Cross-project mutations or entity access are forbidden.",
+          "category": "PERMISSION_BOUNDARY",
+          "phase": "PRE_EXECUTION",
+          "severity": "CRITICAL",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "CROSS_PROJECT_ACCESS",
+          "threshold": 0
+        },
+        {
+          "ruleId": "rule-rate-mut-1788774067396-5",
+          "name": "Mutation Budget Ceiling Gate",
+          "description": "Limits total atomic mutations in single plan to 25.",
+          "category": "RATE_AND_BUDGET",
+          "phase": "PRE_EXECUTION",
+          "severity": "HIGH",
+          "enforcementAction": "CONTAIN_AND_PAUSE",
+          "isEnabled": true,
+          "condition": "MAX_MUTATIONS_EXCEEDED",
+          "threshold": 25
+        },
+        {
+          "ruleId": "rule-rate-live-1788774067396-6",
+          "name": "Live Execution Watchdog Throttling",
+          "description": "Throttles or pauses runaway loops exceeding operational cadence.",
+          "category": "RATE_AND_BUDGET",
+          "phase": "LIVE_EXECUTION",
+          "severity": "MEDIUM",
+          "enforcementAction": "THROTTLE",
+          "isEnabled": true,
+          "condition": "RATE_LIMIT_EXCEEDED",
+          "threshold": 10
+        },
+        {
+          "ruleId": "rule-blast-1788774067396-7",
+          "name": "Blast Radius Containment Guard",
+          "description": "Blocks mutations spilling into unrelated components or global scopes.",
+          "category": "BLAST_RADIUS",
+          "phase": "PRE_EXECUTION",
+          "severity": "HIGH",
+          "enforcementAction": "CONTAIN_AND_PAUSE",
+          "isEnabled": true,
+          "condition": "BLAST_RADIUS_BREACH"
+        },
+        {
+          "ruleId": "rule-schema-tamper-1788774067396-8",
+          "name": "Root Schema Preservation Invariant",
+          "description": "Protects root component hierarchy and default routes from destructive removal.",
+          "category": "SCHEMA_PRESERVATION",
+          "phase": "POST_EXECUTION",
+          "severity": "CRITICAL",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "SCHEMA_TAMPERING"
+        },
+        {
+          "ruleId": "rule-data-crit-1788774067396-9",
+          "name": "Critical Data Collection Shield",
+          "description": "Guards authentication, payment, and security collections from unauthorized modification.",
+          "category": "DATA_INTEGRITY",
+          "phase": "PRE_EXECUTION",
+          "severity": "CRITICAL",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "CRITICAL_COLLECTION_TOUCHED",
+          "targetEntities": [
+            "auth",
+            "users",
+            "passwords",
+            "payments",
+            "billing",
+            "admin_credentials"
+          ]
+        }
+      ],
+      "activeBlastRadiusEntities": [],
+      "maxAllowedMutations": 25,
+      "maxExecutionDurationMs": 45000,
+      "synthesizedFrom": {
+        "pastIncidentCount": 0,
+        "operatorRole": "developer",
+        "environment": "development"
+      },
+      "version": 1
+    }
+  ],
+  "breachesCount": 0,
+  "containmentCount": 0,
+  "updatedAt": "2026-09-07T09:41:07.397Z"
+}

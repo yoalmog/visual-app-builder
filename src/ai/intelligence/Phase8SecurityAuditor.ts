@@ -1,67 +1,43 @@
 // D8.16: Phase 8 Security Auditor
 // Static code and plan security scanner preventing dynamic execution, path traversal, injection, and secret leakage.
+// Fully integrated with MultiAgentSecurityAuditor for deep AST, RBAC, obfuscation, and isolation analysis.
 
-import { NoEvalGuard } from '../security/NoEvalGuard';
-import { AISecretFilter } from '../security/AISecretFilter';
-import { PromptInjectionDefense } from '../security/PromptInjectionDefense';
 import { IntelligentPlan } from './types';
+import { MultiAgentSecurityAuditor } from '../security/MultiAgentSecurityAuditor';
+import { SecurityScanResult } from '../security/security-types';
 
 export class Phase8SecurityAuditor {
-  private static readonly DISALLOWED_PATTERNS = [
-    /\beval\s*\(/i,
-    /\bnew\s+Function\s*\(/i,
-    /\bchild_process\b/i,
-    /\bexecSync\s*\(/i,
-    /\bspawnSync\s*\(/i,
-    /\.\.\//, // Path traversal attempt
-    /\/etc\/passwd/i,
-    /\bDROP\s+TABLE\b/i,
-  ];
-
   /**
    * Scans a string for dangerous execution or injection patterns.
+   * Backward-compatible interface returning { safe: boolean; violations: string[] }.
    */
   public static auditCodeString(input: string): { safe: boolean; violations: string[] } {
-    const violations: string[] = [];
-
-    for (const pattern of this.DISALLOWED_PATTERNS) {
-      if (pattern.test(input)) {
-        violations.push(`Security violation detected matching pattern: ${pattern.source}`);
-      }
-    }
-
-    if (PromptInjectionDefense.containsInjectionAttempt(input)) {
-      violations.push('Prompt injection signature detected');
-    }
-
+    const scan = MultiAgentSecurityAuditor.auditCodeString(input);
     return {
-      safe: violations.length === 0,
-      violations,
+      safe: scan.safe,
+      violations: scan.findings.map((f) => `${f.message} (${f.severity})`),
     };
   }
 
   /**
    * Audits an entire intelligent plan before execution.
+   * Backward-compatible interface returning { safe: boolean; violations: string[] }.
    */
   public static auditPlan(plan: IntelligentPlan): { safe: boolean; violations: string[] } {
-    const violations: string[] = [];
-
-    const planStr = JSON.stringify(plan);
-    const codeAudit = this.auditCodeString(planStr);
-    if (!codeAudit.safe) {
-      violations.push(...codeAudit.violations);
-    }
-
-    // Ensure all steps have reversible or snapshot rollback
-    for (const step of plan.steps) {
-      if (!['undo_operation', 'restore_snapshot', 'prune_orphaned_entity'].includes(step.rollbackStrategy)) {
-        violations.push(`Step ${step.stepId} declared unsafe rollback strategy: ${step.rollbackStrategy}`);
-      }
-    }
-
+    const scan = MultiAgentSecurityAuditor.auditPlan(plan);
     return {
-      safe: violations.length === 0,
-      violations,
+      safe: scan.safe,
+      violations: scan.findings.map((f) => `${f.message} (${f.severity})`),
     };
+  }
+
+  /**
+   * Deep multi-agent security audit returning complete SecurityScanResult.
+   */
+  public static deepAudit(planOrCode: IntelligentPlan | string): SecurityScanResult {
+    if (typeof planOrCode === 'string') {
+      return MultiAgentSecurityAuditor.auditCodeString(planOrCode);
+    }
+    return MultiAgentSecurityAuditor.auditPlan(planOrCode);
   }
 }

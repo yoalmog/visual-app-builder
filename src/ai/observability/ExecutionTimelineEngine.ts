@@ -691,6 +691,49 @@ export class ExecutionTimelineEngine {
   }
 
   /**
+   * Retrieves an execution trace with project isolation validation.
+   */
+  public static getTrace(traceId: ExecutionTraceId, projectId?: string): ExecutionTrace | undefined {
+    const trace = this.activeTraces.get(traceId);
+    if (trace) {
+      if (projectId && trace.projectId !== projectId) {
+        return undefined; // Reject cross-project access
+      }
+      return trace;
+    }
+
+    if (!projectId) return undefined;
+    const storedEvents = ExecutionEventStore.getEventsForTrace(traceId, projectId);
+    if (storedEvents.length === 0) return undefined;
+
+    return {
+      traceId,
+      projectId,
+      sessionId: storedEvents[0].correlation.sessionId,
+      startTime: storedEvents[0].timestamp.epochMs,
+      status: 'COMPLETED',
+      completeness: storedEvents.some((e) => e.eventType === 'VERIFICATION_PASSED') ? 'COMPLETE' : 'PARTIAL',
+      context: { environment: 'development', autonomyLevel: 2, projectVersion: 1 },
+      events: storedEvents,
+      spans: [],
+      metrics: {
+        latency: { totalDurationMs: 0, planningDurationMs: 0, decisionDurationMs: 0, policyDurationMs: 0, approvalWaitMs: 0, transactionDurationMs: 0, operationDurationMs: 0, verificationDurationMs: 0, recoveryDurationMs: 0, providerDurationMs: 0 },
+        operations: { totalOperations: 0, completedOperations: 0, failedOperations: 0, retriedOperations: 0 },
+        failures: { failureCount: 0, rollbackCount: 0, policyRejections: 0, approvalRejections: 0 },
+        verification: { verificationCount: 0, verificationPassed: true, checksTotal: 0, checksPassed: 0, unexpectedMutations: 0 },
+        recovery: { recoveryTriggered: false, recoveryAttempts: 0, recoverySucceeded: false },
+        decisions: { candidatesConsidered: 0, decisionConfidence: 1.0, decisionRisk: 'LOW' },
+        resources: { affectedResourceTypes: [], affectedResourceIds: [], pageCount: 0, componentCount: 0 },
+        totalEvents: storedEvents.length,
+        eventsDropped: 0,
+        eventsRedacted: 0,
+      },
+      checkpoints: [],
+    };
+  }
+
+
+  /**
    * Queries stored traces and events.
    */
   public static query(query: ExecutionTimelineQuery): ExecutionTimelineQueryResult {

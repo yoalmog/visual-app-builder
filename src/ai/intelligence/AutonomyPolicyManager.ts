@@ -20,6 +20,7 @@ import { PlanValidationEngine } from './PlanValidationEngine';
 import { OperationPermissions } from '../operations/OperationPermissions';
 import { PromptInjectionDefense } from '../security/PromptInjectionDefense';
 import { AISecretFilter } from '../security/AISecretFilter';
+import { Role } from '../../builder/schema/rbac';
 
 export class AutonomyPolicyManager {
   public static readonly POLICY_VERSION = '1.0.0';
@@ -320,7 +321,19 @@ export class AutonomyPolicyManager {
     evaluatedRules.push('RULE_2_RBAC_AUTHORIZATION');
     if (params.userRoles) {
       const ops = (params.plan?.steps || []).map((s) => s.operation).filter(Boolean);
-      const authResult = OperationPermissions.authorizeOperations(ops, params.userRoles);
+      const roles: Role[] = params.userRoles.map((r: any) =>
+        typeof r === 'string'
+          ? ({
+              id: r,
+              name: r,
+              permissions:
+                r === 'viewer'
+                  ? ['pages.read', 'components.read']
+                  : ['*'],
+            } as Role)
+          : r
+      );
+      const authResult = OperationPermissions.authorizeOperations(ops, roles);
       if (!authResult.authorized) {
         rbacCheckPassed = false;
         for (const unauth of authResult.unauthorizedOperations) {

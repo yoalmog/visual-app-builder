@@ -1,0 +1,2257 @@
+{
+  "sessionId": "orch_1788761749267_c1s11",
+  "projectId": "test_proj_orch_1",
+  "state": "COMPLETED",
+  "request": {
+    "projectId": "test_proj_orch_1",
+    "prompt": "Retrieve test",
+    "dryRun": true
+  },
+  "artifacts": {
+    "traceId": "trace_orch_1788761749267_c1s11",
+    "breaches": [],
+    "goal": {
+      "id": "goal_1788761749268_8oh9v",
+      "version": "1.0.0",
+      "goalType": "CREATE_FEATURE",
+      "intent": "test",
+      "rawPrompt": "Retrieve test",
+      "normalizedGoal": "Execute test operation targeting target elements",
+      "intentSummary": "Intent [TEST] targeting [general layout]",
+      "requestedOutcome": "Verified test outcome affecting [components] with updated Schema v7 representation.",
+      "targetEntities": [],
+      "affectedAreas": [
+        "components"
+      ],
+      "explicitRequirements": [
+        "Explicit request: \"Retrieve test\""
+      ],
+      "inferredRequirements": [
+        "Preserve existing home page while adding new views"
+      ],
+      "assumptions": [
+        "Strict adherence to COMPONENT_REGISTRY types without arbitrary JSX injection",
+        "Changes are applied immutably through two-phase AITransactionManager"
+      ],
+      "unknowns": [],
+      "constraints": [
+        "Schema version 7 compatibility enforced",
+        "Hard stop: Zero eval(), new Function(), or arbitrary dynamic code execution allowed",
+        "Transactional atomic rollback guaranteed on failure"
+      ],
+      "ambiguities": [],
+      "ambiguityDetails": [],
+      "acceptanceCriteria": [
+        {
+          "id": "ac_1",
+          "description": "Verify project schema passes Schema v7 structural validation",
+          "observableTarget": "project.version",
+          "expectedState": "v7_valid",
+          "testable": true,
+          "provenance": "inferred"
+        }
+      ],
+      "riskAssessment": "low",
+      "confidenceScore": 0.95,
+      "confidence": {
+        "score": 0.95,
+        "level": "HIGH",
+        "rationale": "High confidence: Clear intent, identified target entities, and zero major ambiguities."
+      },
+      "provenance": {
+        "source": "user_prompt",
+        "derivationMethod": "heuristic_nlp_goal_parser_v1",
+        "transformations": [
+          "clause_tokenization",
+          "entity_extraction",
+          "intent_normalization"
+        ],
+        "sanitized": false,
+        "secretsRedacted": false
+      },
+      "securityAssessment": {
+        "safe": true,
+        "secretsRedactedCount": 0
+      },
+      "timestamp": "2026-09-07T06:15:49.268Z"
+    },
+    "context": {
+      "items": [
+        {
+          "id": "ctx_page_page_home",
+          "rawEntityId": "page_home",
+          "source": "project.pages[page_home]",
+          "category": "page",
+          "priority": 2,
+          "relevanceScore": 0.9,
+          "content": "{\"id\":\"page_home\",\"name\":\"Home\",\"slug\":\"/\",\"nodeCount\":3,\"structure\":{\"type\":\"container\",\"name\":\"Container\",\"children\":[{\"type\":\"text\",\"name\":\"Text\",\"text\":\"Welcome to your app\"},{\"type\":\"button\",\"name\":\"Button\",\"text\":\"Click me\"}]}}",
+          "tokenCount": 59,
+          "freshnessTimestamp": "2026-09-07T06:15:49.268Z",
+          "derivationMethod": "ast_compression"
+        },
+        {
+          "id": "ctx_tokens",
+          "source": "project.tokens",
+          "category": "theme",
+          "priority": 2,
+          "relevanceScore": 0.7,
+          "content": "{\"totalTokens\":38,\"palette\":[{\"name\":\"Primary\",\"category\":\"color\",\"value\":\"#4F46E5\"},{\"name\":\"Secondary\",\"category\":\"color\",\"value\":\"#06B6D4\"},{\"name\":\"Accent\",\"category\":\"color\",\"value\":\"#8B5CF6\"},{\"name\":\"Background\",\"category\":\"color\",\"value\":\"#FFFFFF\"},{\"name\":\"Surface\",\"category\":\"color\",\"value\":\"#F8FAFC\"},{\"name\":\"Text\",\"category\":\"color\",\"value\":\"#0F172A\"},{\"name\":\"Muted\",\"category\":\"color\",\"value\":\"#64748B\"},{\"name\":\"Border\",\"category\":\"color\",\"value\":\"#E2E8F0\"},{\"name\":\"Success\",\"category\":\"color\",\"value\":\"#10B981\"},{\"name\":\"Warning\",\"category\":\"color\",\"value\":\"#F59E0B\"}]}",
+          "tokenCount": 147,
+          "freshnessTimestamp": "2026-09-07T06:15:49.268Z",
+          "derivationMethod": "theme_token_sample"
+        }
+      ],
+      "totalTokens": 206,
+      "truncatedCount": 0,
+      "summary": "Selected 2 context items (206 tokens) across [page, theme]. Pruned 0 low-priority items to satisfy 4000 budget ceiling.",
+      "categoriesIncluded": {
+        "page": 1,
+        "theme": 1
+      },
+      "duplicateEntityWarnings": [],
+      "formattedPromptContext": "<project_context>\n\n## PAGE CONTEXT\n- [project.pages[page_home]] (priority: 2, relevance: 0.9): {\"id\":\"page_home\",\"name\":\"Home\",\"slug\":\"/\",\"nodeCount\":3,\"structure\":{\"type\":\"container\",\"name\":\"Container\",\"children\":[{\"type\":\"text\",\"name\":\"Text\",\"text\":\"Welcome to your app\"},{\"type\":\"button\",\"name\":\"Button\",\"text\":\"Click me\"}]}}\n\n## THEME CONTEXT\n- [project.tokens] (priority: 2, relevance: 0.7): {\"totalTokens\":38,\"palette\":[{\"name\":\"Primary\",\"category\":\"color\",\"value\":\"#4F46E5\"},{\"name\":\"Secondary\",\"category\":\"color\",\"value\":\"#06B6D4\"},{\"name\":\"Accent\",\"category\":\"color\",\"value\":\"#8B5CF6\"},{\"name\":\"Background\",\"category\":\"color\",\"value\":\"#FFFFFF\"},{\"name\":\"Surface\",\"category\":\"color\",\"value\":\"#F8FAFC\"},{\"name\":\"Text\",\"category\":\"color\",\"value\":\"#0F172A\"},{\"name\":\"Muted\",\"category\":\"color\",\"value\":\"#64748B\"},{\"name\":\"Border\",\"category\":\"color\",\"value\":\"#E2E8F0\"},{\"name\":\"Success\",\"category\":\"color\",\"value\":\"#10B981\"},{\"name\":\"Warning\",\"category\":\"color\",\"value\":\"#F59E0B\"}]}\n\n</project_context>"
+    },
+    "guardrailPolicy": {
+      "policyId": "dgp-test_proj_orch_1-1788761749268",
+      "projectId": "test_proj_orch_1",
+      "synthesizedAt": "2026-09-07T06:15:49.268Z",
+      "riskTier": "LOW",
+      "rules": [
+        {
+          "ruleId": "rule-sec-eval-1788761749268-1",
+          "name": "No Arbitrary Eval or Dynamic Code",
+          "description": "Strict prohibition against dynamic code eval or Function constructors.",
+          "category": "SECURITY_INVARIANT",
+          "phase": "PRE_EXECUTION",
+          "severity": "CRITICAL",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "PROHIBITED_CODE_DETECTED"
+        },
+        {
+          "ruleId": "rule-sec-inj-1788761749268-2",
+          "name": "Prompt Injection Defense Invariant",
+          "description": "Rejects instructions containing adversarial prompt injection signatures.",
+          "category": "SECURITY_INVARIANT",
+          "phase": "PRE_EXECUTION",
+          "severity": "CRITICAL",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "PROHIBITED_CODE_DETECTED"
+        },
+        {
+          "ruleId": "rule-sec-cred-1788761749268-3",
+          "name": "Zero Credential Leakage Boundary",
+          "description": "Prevents leakage of sensitive API keys, tokens, or credentials in payload.",
+          "category": "SECURITY_INVARIANT",
+          "phase": "POST_EXECUTION",
+          "severity": "HIGH",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "CREDENTIAL_LEAKAGE"
+        },
+        {
+          "ruleId": "rule-perm-proj-1788761749268-4",
+          "name": "Strict Project Isolation Boundary",
+          "description": "Cross-project mutations or entity access are forbidden.",
+          "category": "PERMISSION_BOUNDARY",
+          "phase": "PRE_EXECUTION",
+          "severity": "CRITICAL",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "CROSS_PROJECT_ACCESS",
+          "threshold": 0
+        },
+        {
+          "ruleId": "rule-rate-mut-1788761749268-5",
+          "name": "Mutation Budget Ceiling Gate",
+          "description": "Limits total atomic mutations in single plan to 25.",
+          "category": "RATE_AND_BUDGET",
+          "phase": "PRE_EXECUTION",
+          "severity": "HIGH",
+          "enforcementAction": "CONTAIN_AND_PAUSE",
+          "isEnabled": true,
+          "condition": "MAX_MUTATIONS_EXCEEDED",
+          "threshold": 25
+        },
+        {
+          "ruleId": "rule-rate-live-1788761749268-6",
+          "name": "Live Execution Watchdog Throttling",
+          "description": "Throttles or pauses runaway loops exceeding operational cadence.",
+          "category": "RATE_AND_BUDGET",
+          "phase": "LIVE_EXECUTION",
+          "severity": "MEDIUM",
+          "enforcementAction": "THROTTLE",
+          "isEnabled": true,
+          "condition": "RATE_LIMIT_EXCEEDED",
+          "threshold": 10
+        },
+        {
+          "ruleId": "rule-blast-1788761749268-7",
+          "name": "Blast Radius Containment Guard",
+          "description": "Blocks mutations spilling into unrelated components or global scopes.",
+          "category": "BLAST_RADIUS",
+          "phase": "PRE_EXECUTION",
+          "severity": "HIGH",
+          "enforcementAction": "CONTAIN_AND_PAUSE",
+          "isEnabled": true,
+          "condition": "BLAST_RADIUS_BREACH"
+        },
+        {
+          "ruleId": "rule-schema-tamper-1788761749268-8",
+          "name": "Root Schema Preservation Invariant",
+          "description": "Protects root component hierarchy and default routes from destructive removal.",
+          "category": "SCHEMA_PRESERVATION",
+          "phase": "POST_EXECUTION",
+          "severity": "CRITICAL",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "SCHEMA_TAMPERING"
+        },
+        {
+          "ruleId": "rule-data-crit-1788761749268-9",
+          "name": "Critical Data Collection Shield",
+          "description": "Guards authentication, payment, and security collections from unauthorized modification.",
+          "category": "DATA_INTEGRITY",
+          "phase": "PRE_EXECUTION",
+          "severity": "CRITICAL",
+          "enforcementAction": "BLOCK_AND_ROLLBACK",
+          "isEnabled": true,
+          "condition": "CRITICAL_COLLECTION_TOUCHED",
+          "targetEntities": [
+            "auth",
+            "users",
+            "passwords",
+            "payments",
+            "billing",
+            "admin_credentials"
+          ]
+        }
+      ],
+      "activeBlastRadiusEntities": [],
+      "maxAllowedMutations": 25,
+      "maxExecutionDurationMs": 45000,
+      "synthesizedFrom": {
+        "goalDescription": "Intent [TEST] targeting [general layout]",
+        "pastIncidentCount": 1,
+        "operatorRole": "editor",
+        "environment": "development"
+      },
+      "version": 1
+    },
+    "plan": {
+      "planId": "plan_1788761749269_fo263",
+      "goalId": "goal_1788761749268_8oh9v",
+      "planVersion": "1.0.0",
+      "title": "Plan for CREATE_FEATURE: Intent [TEST] targeting [general layout]",
+      "objective": "Verified test outcome affecting [components] with updated Schema v7 representation.",
+      "rationale": "Synthesized 1 ordered operations based on goal requirements and current project schema.",
+      "assumptions": [
+        "Strict adherence to COMPONENT_REGISTRY types without arbitrary JSX injection",
+        "Changes are applied immutably through two-phase AITransactionManager"
+      ],
+      "detailedAssumptions": [
+        {
+          "id": "assump_1",
+          "description": "Strict adherence to COMPONENT_REGISTRY types without arbitrary JSX injection",
+          "confidence": 0.85,
+          "evidenceSource": "project.pages[page_home]"
+        },
+        {
+          "id": "assump_2",
+          "description": "Changes are applied immutably through two-phase AITransactionManager",
+          "confidence": 0.85,
+          "evidenceSource": "project.tokens"
+        }
+      ],
+      "requirements": [
+        "Explicit request: \"Retrieve test\"",
+        "Preserve existing home page while adding new views"
+      ],
+      "constraints": [
+        "Schema version 7 compatibility enforced",
+        "Hard stop: Zero eval(), new Function(), or arbitrary dynamic code execution allowed",
+        "Transactional atomic rollback guaranteed on failure"
+      ],
+      "risks": [
+        "low"
+      ],
+      "steps": [
+        {
+          "stepId": "step_1",
+          "title": "Add Component \"FeatureSection\"",
+          "description": "Add Feature section container",
+          "purpose": "Execute add_component to fulfill goal requirement",
+          "category": "create",
+          "operation": {
+            "id": "op_add_1788761749269",
+            "type": "add_component",
+            "pageId": "page_home",
+            "parentId": "root_1788761749128",
+            "node": {
+              "id": "cmp_1788761749269",
+              "name": "FeatureSection",
+              "type": "container",
+              "props": {},
+              "styles": {
+                "width": "100%",
+                "padding": "24px"
+              },
+              "children": []
+            },
+            "description": "Add Feature section container",
+            "risk": "low",
+            "reversible": true
+          },
+          "dependencies": [],
+          "riskLevel": "low",
+          "expectedResult": {
+            "entityType": "component",
+            "entityId": "cmp_1788761749269",
+            "expectedState": "present_in_tree"
+          },
+          "verificationStrategy": "tree_presence",
+          "rollbackStrategy": "undo_operation",
+          "affectedEntities": [
+            "page_home",
+            "cmp_1788761749269"
+          ],
+          "acceptanceCriteriaIds": [
+            "ac_1"
+          ],
+          "requiredContext": [
+            "project.pages[page_home]",
+            "project.tokens"
+          ],
+          "confidence": 0.92,
+          "status": "ready",
+          "ordering": 1,
+          "provenance": {
+            "goalRequirementId": "Explicit request: \"Retrieve test\"",
+            "contextEvidenceSource": "project.pages[page_home]",
+            "rationale": "Derived from goal intent \"test\" and operation \"add_component\"",
+            "derivationMethod": "typed_operation_synthesis"
+          }
+        }
+      ],
+      "confidenceScore": 0.95,
+      "confidenceLevel": "HIGH",
+      "confidenceAssessment": {
+        "score": 0.95,
+        "level": "HIGH",
+        "rationale": "Synthesized 1 ordered steps with 1/1 acceptance criteria covered."
+      },
+      "estimatedTokens": 400,
+      "createdAt": "2026-09-07T06:15:49.269Z",
+      "contextSummary": "Selected 2 context items (206 tokens) across [page, theme]. Pruned 0 low-priority items to satisfy 4000 budget ceiling.",
+      "acceptanceCoverage": [
+        {
+          "criterionId": "ac_1",
+          "description": "Verify project schema passes Schema v7 structural validation",
+          "coverageStatus": "covered",
+          "addressedByStepIds": [
+            "step_1"
+          ],
+          "verificationDetails": "Verified by steps [step_1] using tree_presence"
+        }
+      ],
+      "operationGroups": [
+        {
+          "groupId": "grp_ui",
+          "name": "User Interface Construction & Refinement",
+          "category": "UI_GROUP",
+          "purpose": "Create and update layout containers, pages, and UI components",
+          "stepIds": [
+            "step_1"
+          ],
+          "affectedEntities": [
+            "page_home",
+            "cmp_1788761749269"
+          ],
+          "risk": "low"
+        }
+      ],
+      "impactAnalysis": {
+        "overallImpact": "LOW",
+        "affectedPages": [],
+        "affectedComponents": [
+          "cmp_1788761749269"
+        ],
+        "affectedCollections": [],
+        "affectedWorkflows": [],
+        "schemaChanges": false,
+        "destructiveChanges": false
+      },
+      "unresolvedAmbiguities": [],
+      "missingContextDependencies": [],
+      "alternatives": [
+        {
+          "planId": "plan_1788761749269_fo263_alt_minimal",
+          "title": "Minimal In-Place Modification (Recommended)",
+          "description": "Applies surgical in-place changes to existing components and schemas, minimizing risk.",
+          "advantages": [
+            "Zero unnecessary entity creation",
+            "Zero schema breaking risk",
+            "Fastest execution"
+          ],
+          "disadvantages": [
+            "May preserve legacy layout constraints"
+          ],
+          "estimatedRisk": "low",
+          "complexity": "LOW",
+          "confidenceScore": 0.92
+        },
+        {
+          "planId": "plan_1788761749269_fo263_alt_modular",
+          "title": "Modular Reusable Sub-Component Structure",
+          "description": "Extracts newly generated elements into reusable standalone components.",
+          "advantages": [
+            "Higher reusability across multiple pages",
+            "Cleaner modular hierarchy"
+          ],
+          "disadvantages": [
+            "Adds more entity IDs to project hierarchy",
+            "Slightly higher risk"
+          ],
+          "estimatedRisk": "medium",
+          "complexity": "MEDIUM",
+          "confidenceScore": 0.82
+        }
+      ],
+      "recommendedPlanId": "plan_1788761749269_fo263_alt_minimal",
+      "planStatus": "VALIDATED",
+      "diagnostics": {
+        "knownContextCount": 2,
+        "inferredContextCount": 1,
+        "unknownContextCount": 0,
+        "conflictingContextCount": 0,
+        "totalTokensEstimated": 400,
+        "dagCycleDetected": false,
+        "minimalChangeViolationsCount": 0,
+        "duplicateProposalsAvoided": 0,
+        "executionOrder": [
+          "step_1"
+        ]
+      }
+    },
+    "optimizationResult": {
+      "selectedCandidate": {
+        "selectionId": "sel_1788761749269_gdp1",
+        "sessionId": "dec_sess_1788761749269_2doh",
+        "projectId": "test_proj_orch_1",
+        "selectedCandidateId": "cand_min_1788761749269",
+        "strategyType": "MINIMAL_CHANGE",
+        "candidateTitle": "Minimal Surgical Update",
+        "rationale": "Calculated total score 0.818 based on expected success (0.92), verification confidence (0.9), risk penalty (0), and reversibility bonus (0.1).",
+        "confidence": {
+          "score": 0.92,
+          "evidenceQuantity": 3,
+          "evidenceQuality": 0.9,
+          "recencyWeight": 0.9,
+          "contradictionPenalty": 0,
+          "rationale": "Minimal change has highest reversibility and lowest error probability"
+        },
+        "risk": "LOW",
+        "policyResult": {
+          "evaluated": true,
+          "allowed": true,
+          "effectiveLevel": 3,
+          "violatedRules": []
+        },
+        "approvalRequirement": {
+          "required": false,
+          "riskLevel": "LOW",
+          "environment": "development"
+        },
+        "alternativesConsideredCount": 4,
+        "status": "SELECTED",
+        "selectedAt": "2026-09-07T06:15:49.269Z"
+      },
+      "candidateScores": [
+        {
+          "totalScore": 0.818,
+          "breakdown": {
+            "expectedSuccess": 0.92,
+            "verificationConfidence": 0.9,
+            "historicalEffectiveness": 0.5,
+            "riskPenalty": 0,
+            "mutationScopeCost": 0.05,
+            "complexityPenalty": 0.05,
+            "executionCost": 0.0045,
+            "reversibilityBonus": 0.1,
+            "policyCompatibilityScore": 1,
+            "schemaCompatibilityScore": 1
+          },
+          "rationale": "Calculated total score 0.818 based on expected success (0.92), verification confidence (0.9), risk penalty (0), and reversibility bonus (0.1)."
+        },
+        {
+          "totalScore": 0.805,
+          "breakdown": {
+            "expectedSuccess": 0.88,
+            "verificationConfidence": 0.9,
+            "historicalEffectiveness": 0.5,
+            "riskPenalty": 0,
+            "mutationScopeCost": 0.05,
+            "complexityPenalty": 0.05,
+            "executionCost": 0.003,
+            "reversibilityBonus": 0.1,
+            "policyCompatibilityScore": 1,
+            "schemaCompatibilityScore": 1
+          },
+          "rationale": "Calculated total score 0.805 based on expected success (0.88), verification confidence (0.9), risk penalty (0), and reversibility bonus (0.1)."
+        },
+        {
+          "totalScore": 0.782,
+          "breakdown": {
+            "expectedSuccess": 0.82,
+            "verificationConfidence": 0.9,
+            "historicalEffectiveness": 0.5,
+            "riskPenalty": 0,
+            "mutationScopeCost": 0.05,
+            "complexityPenalty": 0.05,
+            "executionCost": 0.005000000000000001,
+            "reversibilityBonus": 0.1,
+            "policyCompatibilityScore": 1,
+            "schemaCompatibilityScore": 1
+          },
+          "rationale": "Calculated total score 0.782 based on expected success (0.82), verification confidence (0.9), risk penalty (0), and reversibility bonus (0.1)."
+        },
+        {
+          "totalScore": 0.812,
+          "breakdown": {
+            "expectedSuccess": 0.75,
+            "verificationConfidence": 0.9,
+            "historicalEffectiveness": 0.5,
+            "riskPenalty": 0,
+            "mutationScopeCost": 0,
+            "complexityPenalty": 0.05,
+            "executionCost": 0,
+            "reversibilityBonus": 0.1,
+            "policyCompatibilityScore": 1,
+            "schemaCompatibilityScore": 1
+          },
+          "rationale": "Calculated total score 0.812 based on expected success (0.75), verification confidence (0.9), risk penalty (0), and reversibility bonus (0.1)."
+        }
+      ]
+    },
+    "validationResult": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "hasCyclicDependencies": false,
+      "duplicateOperations": [],
+      "unsupportedOperations": [],
+      "missingDependencies": [],
+      "acceptanceCoverageGaps": [],
+      "securityViolations": []
+    },
+    "autonomyDecision": {
+      "requestedAutonomyLevel": 4,
+      "effectiveAutonomyLevel": 4,
+      "semanticLevel": "autonomous",
+      "decision": "ALLOW",
+      "approvalRequired": false,
+      "approvalRequirements": [],
+      "allowedActions": [
+        "step_1"
+      ],
+      "deniedActions": [],
+      "riskLevel": "low",
+      "policyViolations": [],
+      "constraints": [],
+      "ceilings": {
+        "maxOperationsPerTask": 50,
+        "maxAffectedEntities": 30,
+        "maxWorkflowChanges": 15,
+        "maxDataChanges": 15,
+        "maxRetries": 3,
+        "maxExecutionDurationMs": 60000,
+        "maxTokenBudget": 4000
+      },
+      "escalationRequirements": [],
+      "stopConditions": [],
+      "confidence": 0.95,
+      "confidenceTier": "HIGH",
+      "rationale": "Autonomous execution allowed under Level 4 (VERIFIED_AUTONOMY).",
+      "provenance": {
+        "evaluatedRules": [
+          "RULE_0_POLICY_VERSION",
+          "RULE_1_SECURITY_HARD_STOP",
+          "RULE_2_RBAC_AUTHORIZATION",
+          "RULE_3_SYSTEM_SAFETY_RISK",
+          "RULE_4_ENVIRONMENT_RESTRICTIONS",
+          "RULE_5_PROJECT_POLICY",
+          "RULE_6_PLAN_DAG_VALIDATION",
+          "RULE_7_CONFIDENCE_AMBIGUITY",
+          "RULE_8_CONTEXT_VALIDITY",
+          "RULE_9_CEILINGS_LIMITS"
+        ],
+        "securityCheckPassed": true,
+        "rbacCheckPassed": true,
+        "environmentRule": "ENV_DEVELOPMENT_CHECK",
+        "planValidationRule": "PLAN_DAG_VALIDATION",
+        "confidenceRule": "CONFIDENCE_GATING",
+        "ambiguityRule": "AMBIGUITY_GATING",
+        "evaluatorTimestamp": "2026-09-07T06:15:49.269Z"
+      },
+      "timestamp": "2026-09-07T06:15:49.269Z",
+      "policyVersion": "1.0.0"
+    },
+    "preGuardrailResult": {
+      "passed": true,
+      "policyId": "dgp-test_proj_orch_1-1788761749268",
+      "projectId": "test_proj_orch_1",
+      "phase": "PRE_EXECUTION",
+      "breaches": [],
+      "recommendedAction": "ALLOW",
+      "summary": "Pre-execution guardrails passed (6 evaluated).",
+      "timestamp": "2026-09-07T06:15:49.269Z",
+      "evaluatedRulesCount": 6,
+      "quarantineRequired": false
+    },
+    "hitlSession": {
+      "sessionId": "orch_1788761749267_c1s11",
+      "projectId": "test_proj_orch_1",
+      "status": "MONITORING",
+      "autonomyLevel": 4,
+      "currentStepIndex": 0,
+      "totalSteps": 1,
+      "isDraining": false,
+      "activePlan": {
+        "planId": "plan_1788761749269_fo263",
+        "goalId": "goal_1788761749268_8oh9v",
+        "planVersion": "1.0.0",
+        "title": "Plan for CREATE_FEATURE: Intent [TEST] targeting [general layout]",
+        "objective": "Verified test outcome affecting [components] with updated Schema v7 representation.",
+        "rationale": "Synthesized 1 ordered operations based on goal requirements and current project schema.",
+        "assumptions": [
+          "Strict adherence to COMPONENT_REGISTRY types without arbitrary JSX injection",
+          "Changes are applied immutably through two-phase AITransactionManager"
+        ],
+        "detailedAssumptions": [
+          {
+            "id": "assump_1",
+            "description": "Strict adherence to COMPONENT_REGISTRY types without arbitrary JSX injection",
+            "confidence": 0.85,
+            "evidenceSource": "project.pages[page_home]"
+          },
+          {
+            "id": "assump_2",
+            "description": "Changes are applied immutably through two-phase AITransactionManager",
+            "confidence": 0.85,
+            "evidenceSource": "project.tokens"
+          }
+        ],
+        "requirements": [
+          "Explicit request: \"Retrieve test\"",
+          "Preserve existing home page while adding new views"
+        ],
+        "constraints": [
+          "Schema version 7 compatibility enforced",
+          "Hard stop: Zero eval(), new Function(), or arbitrary dynamic code execution allowed",
+          "Transactional atomic rollback guaranteed on failure"
+        ],
+        "risks": [
+          "low"
+        ],
+        "steps": [
+          {
+            "stepId": "step_1",
+            "title": "Add Component \"FeatureSection\"",
+            "description": "Add Feature section container",
+            "purpose": "Execute add_component to fulfill goal requirement",
+            "category": "create",
+            "operation": {
+              "id": "op_add_1788761749269",
+              "type": "add_component",
+              "pageId": "page_home",
+              "parentId": "root_1788761749128",
+              "node": {
+                "id": "cmp_1788761749269",
+                "name": "FeatureSection",
+                "type": "container",
+                "props": {},
+                "styles": {
+                  "width": "100%",
+                  "padding": "24px"
+                },
+                "children": []
+              },
+              "description": "Add Feature section container",
+              "risk": "low",
+              "reversible": true
+            },
+            "dependencies": [],
+            "riskLevel": "low",
+            "expectedResult": {
+              "entityType": "component",
+              "entityId": "cmp_1788761749269",
+              "expectedState": "present_in_tree"
+            },
+            "verificationStrategy": "tree_presence",
+            "rollbackStrategy": "undo_operation",
+            "affectedEntities": [
+              "page_home",
+              "cmp_1788761749269"
+            ],
+            "acceptanceCriteriaIds": [
+              "ac_1"
+            ],
+            "requiredContext": [
+              "project.pages[page_home]",
+              "project.tokens"
+            ],
+            "confidence": 0.92,
+            "status": "ready",
+            "ordering": 1,
+            "provenance": {
+              "goalRequirementId": "Explicit request: \"Retrieve test\"",
+              "contextEvidenceSource": "project.pages[page_home]",
+              "rationale": "Derived from goal intent \"test\" and operation \"add_component\"",
+              "derivationMethod": "typed_operation_synthesis"
+            }
+          }
+        ],
+        "confidenceScore": 0.95,
+        "confidenceLevel": "HIGH",
+        "confidenceAssessment": {
+          "score": 0.95,
+          "level": "HIGH",
+          "rationale": "Synthesized 1 ordered steps with 1/1 acceptance criteria covered."
+        },
+        "estimatedTokens": 400,
+        "createdAt": "2026-09-07T06:15:49.269Z",
+        "contextSummary": "Selected 2 context items (206 tokens) across [page, theme]. Pruned 0 low-priority items to satisfy 4000 budget ceiling.",
+        "acceptanceCoverage": [
+          {
+            "criterionId": "ac_1",
+            "description": "Verify project schema passes Schema v7 structural validation",
+            "coverageStatus": "covered",
+            "addressedByStepIds": [
+              "step_1"
+            ],
+            "verificationDetails": "Verified by steps [step_1] using tree_presence"
+          }
+        ],
+        "operationGroups": [
+          {
+            "groupId": "grp_ui",
+            "name": "User Interface Construction & Refinement",
+            "category": "UI_GROUP",
+            "purpose": "Create and update layout containers, pages, and UI components",
+            "stepIds": [
+              "step_1"
+            ],
+            "affectedEntities": [
+              "page_home",
+              "cmp_1788761749269"
+            ],
+            "risk": "low"
+          }
+        ],
+        "impactAnalysis": {
+          "overallImpact": "LOW",
+          "affectedPages": [],
+          "affectedComponents": [
+            "cmp_1788761749269"
+          ],
+          "affectedCollections": [],
+          "affectedWorkflows": [],
+          "schemaChanges": false,
+          "destructiveChanges": false
+        },
+        "unresolvedAmbiguities": [],
+        "missingContextDependencies": [],
+        "alternatives": [
+          {
+            "planId": "plan_1788761749269_fo263_alt_minimal",
+            "title": "Minimal In-Place Modification (Recommended)",
+            "description": "Applies surgical in-place changes to existing components and schemas, minimizing risk.",
+            "advantages": [
+              "Zero unnecessary entity creation",
+              "Zero schema breaking risk",
+              "Fastest execution"
+            ],
+            "disadvantages": [
+              "May preserve legacy layout constraints"
+            ],
+            "estimatedRisk": "low",
+            "complexity": "LOW",
+            "confidenceScore": 0.92
+          },
+          {
+            "planId": "plan_1788761749269_fo263_alt_modular",
+            "title": "Modular Reusable Sub-Component Structure",
+            "description": "Extracts newly generated elements into reusable standalone components.",
+            "advantages": [
+              "Higher reusability across multiple pages",
+              "Cleaner modular hierarchy"
+            ],
+            "disadvantages": [
+              "Adds more entity IDs to project hierarchy",
+              "Slightly higher risk"
+            ],
+            "estimatedRisk": "medium",
+            "complexity": "MEDIUM",
+            "confidenceScore": 0.82
+          }
+        ],
+        "recommendedPlanId": "plan_1788761749269_fo263_alt_minimal",
+        "planStatus": "VALIDATED",
+        "diagnostics": {
+          "knownContextCount": 2,
+          "inferredContextCount": 1,
+          "unknownContextCount": 0,
+          "conflictingContextCount": 0,
+          "totalTokensEstimated": 400,
+          "dagCycleDetected": false,
+          "minimalChangeViolationsCount": 0,
+          "duplicateProposalsAvoided": 0,
+          "executionOrder": [
+            "step_1"
+          ]
+        }
+      },
+      "activeBreakpoints": [
+        {
+          "name": "Stop on critical",
+          "minRiskLevel": "critical",
+          "isEnabled": true,
+          "id": "bp-test_proj_orch_1-1788761749195-1",
+          "hitCount": 1,
+          "createdAt": "2026-09-07T06:15:49.195Z"
+        }
+      ],
+      "hitBreakpoints": [],
+      "auditTrail": [
+        {
+          "auditId": "audit-1788761749269-yx38q",
+          "sessionId": "orch_1788761749267_c1s11",
+          "projectId": "test_proj_orch_1",
+          "actor": "SYSTEM",
+          "role": "SUPERVISOR",
+          "action": "START",
+          "justification": "Initialized HITL supervisor session.",
+          "hash": "d9b4515fa5ac366d917e79ed9aeadf5fbb80f69096f88823d4f5f1150a9930fe",
+          "timestamp": "2026-09-07T06:15:49.269Z"
+        }
+      ],
+      "startedAt": "2026-09-07T06:15:49.269Z",
+      "updatedAt": "2026-09-07T06:15:49.269Z"
+    },
+    "explanation": {
+      "explanationId": "exp-trace_orch_1788761749267_c1s11-1788761749269",
+      "requestId": "req_exp_1788761749269",
+      "projectId": "test_proj_orch_1",
+      "traceId": "trace_orch_1788761749267_c1s11",
+      "sessionId": "exp-session-1788761749269",
+      "state": "COMPLETED",
+      "status": "COMPLETED",
+      "summary": {
+        "headline": "Action evaluated without operations executed.",
+        "whyThisHappened": "Executed to fulfill the stated goal within established autonomy parameters.",
+        "whatWasExecuted": "Executed 0 operations across none. Status: NO_OPERATIONS.",
+        "whatWasVerified": "Verification skipped or not recorded",
+        "keyConstraints": [],
+        "riskAndPolicySummary": "Policy passed. Operation risk is within pre-authorized autonomy envelope; approval not required..",
+        "uncertaintiesSummary": "Uncertainties identified in: PARTIAL_TRACE"
+      },
+      "causalChain": {
+        "nodes": [],
+        "edges": [],
+        "rootNodeId": "none",
+        "terminalNodeId": "none",
+        "isComplete": false,
+        "brokenLinks": []
+      },
+      "approvalExplanation": {
+        "approvalRequired": false,
+        "approvalStatus": "NOT_REQUIRED",
+        "summary": "Operation risk is within pre-authorized autonomy envelope; approval not required.",
+        "evidenceIds": []
+      },
+      "executionExplanation": {
+        "operationsExecutedCount": 0,
+        "operationTypes": [],
+        "executionStatus": "NO_OPERATIONS",
+        "durationMs": 0,
+        "retriesCount": 0,
+        "rollbackOccurred": false,
+        "summary": "Executed 0 operations across none. Status: NO_OPERATIONS.",
+        "evidenceIds": []
+      },
+      "learningExplanation": {
+        "priorExperienceUsed": false,
+        "experienceCategories": [],
+        "relevantExperienceCount": 0,
+        "howExperienceInfluencedRanking": "No relevant prior experience applicable to this context.",
+        "experienceIsEvidenceNotAuthority": true,
+        "summary": "Prior experience was checked but did not alter candidate scores.",
+        "evidenceIds": []
+      },
+      "resultExplanation": {
+        "finalOutcome": "COMPLETED",
+        "whatActuallyHappened": "Executed 0 operations across none. Status: NO_OPERATIONS.",
+        "whatUserRequested": "Retrieve test",
+        "unresolvedIssues": [],
+        "evidenceIds": [
+          "ev-evt_1788761749267_start"
+        ]
+      },
+      "evidenceBundle": {
+        "bundleId": "bundle-exp-trace_orch_1788761749267_c1s11-1788761749269",
+        "projectId": "test_proj_orch_1",
+        "traceId": "trace_orch_1788761749267_c1s11",
+        "references": [
+          {
+            "evidenceId": "ev-evt_1788761749267_start",
+            "type": "TRACE_EVENT",
+            "source": "EXECUTION_TRACE",
+            "sourceIdentifier": "evt_1788761749267_start",
+            "projectId": "test_proj_orch_1",
+            "traceId": "trace_orch_1788761749267_c1s11",
+            "eventId": "evt_1788761749267_start",
+            "summary": "PLANNING_STARTED (SUCCESS)",
+            "strength": "STRONG",
+            "freshness": "RECENT",
+            "dataSnippet": {},
+            "timestamp": "2026-09-07T06:15:49.267Z"
+          }
+        ],
+        "totalCollected": 1,
+        "totalValid": 1,
+        "totalRedacted": 0,
+        "collectedAt": "2026-09-07T06:15:49.271Z"
+      },
+      "uncertainty": {
+        "hasUncertainty": true,
+        "categories": [
+          "PARTIAL_TRACE"
+        ],
+        "knownFacts": [
+          "1 authoritative execution events recorded"
+        ],
+        "unknownFactors": [
+          "Subsequent execution steps"
+        ],
+        "reasonsWhyUnknown": [
+          "Trace terminated prematurely"
+        ],
+        "impactOnReliability": "MEDIUM"
+      },
+      "confidence": {
+        "level": "LOW",
+        "evidenceCompleteness": "LOW",
+        "causalConfidence": "LOW",
+        "decisionConfidence": "MEDIUM",
+        "resultConfidence": "MEDIUM",
+        "rationale": "Confidence derived from 1 verified events and complete causal links."
+      },
+      "provenance": {
+        "creator": "EXPLAINABILITY_ENGINE",
+        "engineVersion": "1.0.0-d8.11",
+        "generatedAt": "2026-09-07T06:15:49.271Z",
+        "traceId": "trace_orch_1788761749267_c1s11",
+        "projectId": "test_proj_orch_1",
+        "claims": [
+          {
+            "claim": "PLANNING_STARTED (SUCCESS)",
+            "source": "EXECUTION_TRACE",
+            "sourceType": "TRACE_EVENT",
+            "sourceIdentifier": "evt_1788761749267_start",
+            "timestamp": "2026-09-07T06:15:49.267Z",
+            "traceId": "trace_orch_1788761749267_c1s11",
+            "projectId": "test_proj_orch_1",
+            "causalRelation": "DIRECT_EVENT_RECORD",
+            "evidenceStrength": "STRONG"
+          }
+        ],
+        "hash": "sha256-det-7e84c35c"
+      },
+      "redaction": {
+        "secretsRedactedCount": 0,
+        "sensitiveKeysRedactedCount": 0,
+        "sanitizedTextSnippetsCount": 0,
+        "redactedLabels": [],
+        "summary": "0 sensitive fields redacted; clean inputs."
+      },
+      "createdAt": "2026-09-07T06:15:49.269Z",
+      "completedAt": "2026-09-07T06:15:49.271Z"
+    },
+    "developmentReport": {
+      "sessionId": "orch_1788761749267_c1s11",
+      "projectId": "test_proj_orch_1",
+      "goalSummary": "Intent [TEST] targeting [general layout]",
+      "planSummary": "Plan for CREATE_FEATURE: Intent [TEST] targeting [general layout]",
+      "environment": "development",
+      "operatorRole": "editor",
+      "autonomyLevel": 2,
+      "completedStepsCount": 1,
+      "totalStepsCount": 1,
+      "operationsSummary": [
+        "step_1: Add Component \"FeatureSection\""
+      ],
+      "verificationResults": [],
+      "regressionDetected": false,
+      "guardrailBreachesCount": 0,
+      "subsystemSummary": {
+        "goalUnderstanding": "SUCCESS",
+        "contextIntelligence": "SUCCESS",
+        "guardrailsSynthesis": "SUCCESS",
+        "planGeneration": "SUCCESS",
+        "decisionOptimization": "SUCCESS",
+        "planValidation": "SUCCESS",
+        "autonomyGating": "SUCCESS",
+        "hitlControl": "SUPERVISED",
+        "transactionExecution": "SKIPPED",
+        "liveWatchdog": "PENDING",
+        "verification": "SKIPPED",
+        "postGuardrail": "SKIPPED",
+        "adaptationRecovery": "NOT_NEEDED",
+        "timelineTracing": "RECORDED",
+        "explainability": "GENERATED",
+        "experienceLearning": "SKIPPED",
+        "reportGeneration": "GENERATED"
+      },
+      "finalStatus": "COMPLETED",
+      "remainingRisks": [
+        "low"
+      ],
+      "recommendedNextSteps": [
+        "Verify end-to-end application flow in live canvas preview",
+        "Confirm strict project isolation and security boundaries",
+        "Deploy preview deployment for manual stakeholder review"
+      ],
+      "traceId": "trace_orch_1788761749267_c1s11",
+      "provenanceHash": "4a53b506f1de6b3e02394cee2a8b7dae63a7e67a9e21e5c6291639bb69209326",
+      "generatedAt": "2026-09-07T06:15:49.273Z"
+    }
+  },
+  "subsystemStatus": {
+    "goalUnderstanding": "SUCCESS",
+    "contextIntelligence": "SUCCESS",
+    "guardrailsSynthesis": "SUCCESS",
+    "planGeneration": "SUCCESS",
+    "decisionOptimization": "SUCCESS",
+    "planValidation": "SUCCESS",
+    "autonomyGating": "SUCCESS",
+    "hitlControl": "SUPERVISED",
+    "transactionExecution": "SKIPPED",
+    "liveWatchdog": "PENDING",
+    "verification": "SKIPPED",
+    "postGuardrail": "SKIPPED",
+    "adaptationRecovery": "NOT_NEEDED",
+    "timelineTracing": "RECORDED",
+    "explainability": "GENERATED",
+    "experienceLearning": "SKIPPED",
+    "reportGeneration": "GENERATED"
+  },
+  "currentProject": {
+    "id": "test_proj_orch_1",
+    "name": "My App",
+    "version": 7,
+    "theme": {
+      "primaryColor": "#4F46E5",
+      "backgroundColor": "#FFFFFF",
+      "textColor": "#0F172A",
+      "borderRadius": "8px",
+      "colors": {
+        "primary": "#4F46E5",
+        "secondary": "#06B6D4",
+        "background": "#FFFFFF",
+        "foreground": "#0F172A",
+        "muted": "#64748B",
+        "border": "#E2E8F0"
+      },
+      "typography": {
+        "fontFamily": "Inter, sans-serif"
+      },
+      "radius": {
+        "sm": 4,
+        "md": 8,
+        "lg": 12
+      }
+    },
+    "tokens": [
+      {
+        "id": "token_color_primary",
+        "name": "Primary",
+        "category": "color",
+        "value": "#4F46E5",
+        "description": "Primary brand color"
+      },
+      {
+        "id": "token_color_secondary",
+        "name": "Secondary",
+        "category": "color",
+        "value": "#06B6D4",
+        "description": "Secondary accent color"
+      },
+      {
+        "id": "token_color_accent",
+        "name": "Accent",
+        "category": "color",
+        "value": "#8B5CF6",
+        "description": "Accent highlight color"
+      },
+      {
+        "id": "token_color_background",
+        "name": "Background",
+        "category": "color",
+        "value": "#FFFFFF",
+        "description": "Default canvas background"
+      },
+      {
+        "id": "token_color_surface",
+        "name": "Surface",
+        "category": "color",
+        "value": "#F8FAFC",
+        "description": "Card surface color"
+      },
+      {
+        "id": "token_color_text",
+        "name": "Text",
+        "category": "color",
+        "value": "#0F172A",
+        "description": "Primary text color"
+      },
+      {
+        "id": "token_color_muted",
+        "name": "Muted",
+        "category": "color",
+        "value": "#64748B",
+        "description": "Muted text and subtle borders"
+      },
+      {
+        "id": "token_color_border",
+        "name": "Border",
+        "category": "color",
+        "value": "#E2E8F0",
+        "description": "Default border stroke color"
+      },
+      {
+        "id": "token_color_success",
+        "name": "Success",
+        "category": "color",
+        "value": "#10B981",
+        "description": "Success alert color"
+      },
+      {
+        "id": "token_color_warning",
+        "name": "Warning",
+        "category": "color",
+        "value": "#F59E0B",
+        "description": "Warning alert color"
+      },
+      {
+        "id": "token_color_danger",
+        "name": "Danger",
+        "category": "color",
+        "value": "#EF4444",
+        "description": "Destructive / error color"
+      },
+      {
+        "id": "token_space_1",
+        "name": "Spacing 1 (4px)",
+        "category": "spacing",
+        "value": "4px"
+      },
+      {
+        "id": "token_space_2",
+        "name": "Spacing 2 (8px)",
+        "category": "spacing",
+        "value": "8px"
+      },
+      {
+        "id": "token_space_3",
+        "name": "Spacing 3 (12px)",
+        "category": "spacing",
+        "value": "12px"
+      },
+      {
+        "id": "token_space_4",
+        "name": "Spacing 4 (16px)",
+        "category": "spacing",
+        "value": "16px"
+      },
+      {
+        "id": "token_space_5",
+        "name": "Spacing 5 (20px)",
+        "category": "spacing",
+        "value": "20px"
+      },
+      {
+        "id": "token_space_6",
+        "name": "Spacing 6 (24px)",
+        "category": "spacing",
+        "value": "24px"
+      },
+      {
+        "id": "token_space_8",
+        "name": "Spacing 8 (32px)",
+        "category": "spacing",
+        "value": "32px"
+      },
+      {
+        "id": "token_space_10",
+        "name": "Spacing 10 (40px)",
+        "category": "spacing",
+        "value": "40px"
+      },
+      {
+        "id": "token_space_12",
+        "name": "Spacing 12 (48px)",
+        "category": "spacing",
+        "value": "48px"
+      },
+      {
+        "id": "token_space_16",
+        "name": "Spacing 16 (64px)",
+        "category": "spacing",
+        "value": "64px"
+      },
+      {
+        "id": "token_typo_display",
+        "name": "Display",
+        "category": "typography",
+        "value": "48px",
+        "description": "Display title size"
+      },
+      {
+        "id": "token_typo_h1",
+        "name": "H1",
+        "category": "typography",
+        "value": "36px",
+        "description": "Heading 1 size"
+      },
+      {
+        "id": "token_typo_h2",
+        "name": "H2",
+        "category": "typography",
+        "value": "30px",
+        "description": "Heading 2 size"
+      },
+      {
+        "id": "token_typo_h3",
+        "name": "H3",
+        "category": "typography",
+        "value": "24px",
+        "description": "Heading 3 size"
+      },
+      {
+        "id": "token_typo_body",
+        "name": "Body",
+        "category": "typography",
+        "value": "16px",
+        "description": "Body text size"
+      },
+      {
+        "id": "token_typo_small",
+        "name": "Small",
+        "category": "typography",
+        "value": "14px",
+        "description": "Small body text"
+      },
+      {
+        "id": "token_typo_caption",
+        "name": "Caption",
+        "category": "typography",
+        "value": "12px",
+        "description": "Caption / label text"
+      },
+      {
+        "id": "token_typo_button",
+        "name": "Button",
+        "category": "typography",
+        "value": "15px",
+        "description": "Button text size"
+      },
+      {
+        "id": "token_radius_none",
+        "name": "None",
+        "category": "radius",
+        "value": "0px"
+      },
+      {
+        "id": "token_radius_sm",
+        "name": "Small",
+        "category": "radius",
+        "value": "4px"
+      },
+      {
+        "id": "token_radius_md",
+        "name": "Medium",
+        "category": "radius",
+        "value": "8px"
+      },
+      {
+        "id": "token_radius_lg",
+        "name": "Large",
+        "category": "radius",
+        "value": "16px"
+      },
+      {
+        "id": "token_radius_full",
+        "name": "Full",
+        "category": "radius",
+        "value": "9999px"
+      },
+      {
+        "id": "token_shadow_none",
+        "name": "None",
+        "category": "shadow",
+        "value": "none"
+      },
+      {
+        "id": "token_shadow_sm",
+        "name": "Small",
+        "category": "shadow",
+        "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)"
+      },
+      {
+        "id": "token_shadow_md",
+        "name": "Medium",
+        "category": "shadow",
+        "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)"
+      },
+      {
+        "id": "token_shadow_lg",
+        "name": "Large",
+        "category": "shadow",
+        "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)"
+      }
+    ],
+    "assets": [
+      {
+        "id": "asset_default_sample",
+        "name": "Abstract Landscape",
+        "type": "image",
+        "src": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+        "url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+        "width": 600,
+        "height": 400,
+        "alt": "Sample abstract landscape"
+      }
+    ],
+    "components": [],
+    "collections": [],
+    "variables": [],
+    "dataSources": [],
+    "apiConnectors": [],
+    "authConfig": {
+      "provider": "mock",
+      "enabled": false,
+      "allowUserRegistration": true,
+      "persistSession": true
+    },
+    "environments": {
+      "activeEnvironment": "development",
+      "environments": {
+        "development": {
+          "name": "Development",
+          "isProduction": false,
+          "apiVariables": {},
+          "features": {}
+        },
+        "preview": {
+          "name": "Preview",
+          "isProduction": false,
+          "apiVariables": {},
+          "features": {}
+        },
+        "production": {
+          "name": "Production",
+          "isProduction": true,
+          "apiVariables": {},
+          "features": {}
+        }
+      }
+    },
+    "cloudConfig": {
+      "provider": "mock",
+      "projectUrl": "",
+      "anonKey": "",
+      "status": "disconnected"
+    },
+    "deploymentConfig": {
+      "deployments": []
+    },
+    "roles": [
+      {
+        "id": "admin",
+        "name": "Admin",
+        "description": "Full administrative access to manage users, data, and workflows",
+        "permissions": [
+          "*.*"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_owner",
+        "name": "Owner",
+        "description": "Full administrative access to project and all data",
+        "permissions": [
+          "*.*"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_admin",
+        "name": "Admin",
+        "description": "Administrative access to manage users, data, and workflows",
+        "permissions": [
+          "users.*",
+          "records.*",
+          "workflows.*",
+          "export.*"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_editor",
+        "name": "Editor",
+        "description": "Can view and modify collections and execute workflows",
+        "permissions": [
+          "records.create",
+          "records.read",
+          "records.update",
+          "workflows.execute"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_viewer",
+        "name": "Viewer",
+        "description": "Read-only access to records",
+        "permissions": [
+          "records.read"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_user",
+        "name": "User",
+        "description": "Standard authenticated application user",
+        "permissions": [
+          "records.read",
+          "records.create"
+        ],
+        "isSystem": true
+      }
+    ],
+    "permissions": [
+      {
+        "id": "perm_users_all",
+        "resource": "users",
+        "action": "*",
+        "description": "All user management operations"
+      },
+      {
+        "id": "perm_records_read",
+        "resource": "records",
+        "action": "read",
+        "description": "Read collection records"
+      },
+      {
+        "id": "perm_records_create",
+        "resource": "records",
+        "action": "create",
+        "description": "Create new records"
+      },
+      {
+        "id": "perm_records_update",
+        "resource": "records",
+        "action": "update",
+        "description": "Update existing records"
+      },
+      {
+        "id": "perm_records_delete",
+        "resource": "records",
+        "action": "delete",
+        "description": "Delete records"
+      },
+      {
+        "id": "perm_workflows_exec",
+        "resource": "workflows",
+        "action": "execute",
+        "description": "Trigger and execute workflows"
+      },
+      {
+        "id": "perm_export_data",
+        "resource": "export",
+        "action": "data",
+        "description": "Export records to CSV/JSON"
+      }
+    ],
+    "workflows": [],
+    "webhooks": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "queries": [],
+    "dashboards": [],
+    "localization": {
+      "defaultLocale": "en",
+      "locales": [
+        "en",
+        "es",
+        "fr",
+        "de",
+        "ar",
+        "he"
+      ],
+      "direction": {
+        "en": "ltr",
+        "es": "ltr",
+        "fr": "ltr",
+        "de": "ltr",
+        "ar": "rtl",
+        "he": "rtl"
+      },
+      "translations": {
+        "en": {
+          "welcome": "Welcome",
+          "submit": "Submit",
+          "cancel": "Cancel",
+          "delete": "Delete"
+        },
+        "es": {
+          "welcome": "Bienvenido",
+          "submit": "Enviar",
+          "cancel": "Cancelar",
+          "delete": "Eliminar"
+        },
+        "fr": {
+          "welcome": "Bienvenue",
+          "submit": "Soumettre",
+          "cancel": "Annuler",
+          "delete": "Supprimer"
+        },
+        "de": {
+          "welcome": "Willkommen",
+          "submit": "Einreichen",
+          "cancel": "Abbrechen",
+          "delete": "Löschen"
+        },
+        "ar": {
+          "welcome": "أهلاً بك",
+          "submit": "إرسال",
+          "cancel": "إلغاء",
+          "delete": "حذف"
+        },
+        "he": {
+          "welcome": "ברוכים הבאים",
+          "submit": "שלח",
+          "cancel": "ביטול",
+          "delete": "מחק"
+        }
+      }
+    },
+    "auditLogs": [],
+    "templates": [],
+    "pages": [
+      {
+        "id": "page_home",
+        "name": "Home",
+        "slug": "/",
+        "root": {
+          "id": "root_1788761749128",
+          "type": "container",
+          "name": "Container",
+          "props": {},
+          "styles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+            "minHeight": "400px",
+            "padding": "48px 32px",
+            "gap": "20px",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": "12px",
+            "border": "1px solid #E2E8F0",
+            "alignItems": "center",
+            "justifyContent": "center"
+          },
+          "locked": false,
+          "states": {},
+          "interactions": [],
+          "children": [
+            {
+              "id": "text_1788761749129",
+              "type": "text",
+              "name": "Text",
+              "props": {
+                "text": "Welcome to your app"
+              },
+              "styles": {
+                "fontSize": "24px",
+                "fontWeight": "600",
+                "color": "#0F172A",
+                "textAlign": "center",
+                "margin": "0 0 8px 0"
+              },
+              "locked": false,
+              "states": {},
+              "interactions": [],
+              "children": [],
+              "parentId": "root_1788761749128"
+            },
+            {
+              "id": "btn_1788761749130",
+              "type": "button",
+              "name": "Button",
+              "props": {
+                "text": "Click me"
+              },
+              "styles": {
+                "display": "inline-flex",
+                "padding": "12px 24px",
+                "borderRadius": "8px",
+                "fontSize": "15px",
+                "fontWeight": "600",
+                "backgroundColor": "#4F46E5",
+                "color": "#FFFFFF",
+                "border": "none",
+                "cursor": "pointer"
+              },
+              "locked": false,
+              "states": {},
+              "interactions": [],
+              "children": [],
+              "parentId": "root_1788761749128"
+            }
+          ]
+        }
+      }
+    ],
+    "aiMetadata": {
+      "enabled": true,
+      "settings": {
+        "provider": "mock",
+        "model": "gpt-4o",
+        "temperature": 0.2,
+        "maxTokens": 4096,
+        "safetyMode": "approval",
+        "autoApplyLowRisk": true,
+        "tokenBudget": 50000,
+        "agentMaxSteps": 15,
+        "maxRetries": 3
+      },
+      "generations": [],
+      "conversations": [],
+      "memory": {
+        "preferences": {},
+        "conventions": [],
+        "preferredTerminology": {},
+        "notes": []
+      }
+    }
+  },
+  "initialProject": {
+    "id": "test_proj_orch_1",
+    "name": "My App",
+    "version": 7,
+    "theme": {
+      "primaryColor": "#4F46E5",
+      "backgroundColor": "#FFFFFF",
+      "textColor": "#0F172A",
+      "borderRadius": "8px",
+      "colors": {
+        "primary": "#4F46E5",
+        "secondary": "#06B6D4",
+        "background": "#FFFFFF",
+        "foreground": "#0F172A",
+        "muted": "#64748B",
+        "border": "#E2E8F0"
+      },
+      "typography": {
+        "fontFamily": "Inter, sans-serif"
+      },
+      "radius": {
+        "sm": 4,
+        "md": 8,
+        "lg": 12
+      }
+    },
+    "tokens": [
+      {
+        "id": "token_color_primary",
+        "name": "Primary",
+        "category": "color",
+        "value": "#4F46E5",
+        "description": "Primary brand color"
+      },
+      {
+        "id": "token_color_secondary",
+        "name": "Secondary",
+        "category": "color",
+        "value": "#06B6D4",
+        "description": "Secondary accent color"
+      },
+      {
+        "id": "token_color_accent",
+        "name": "Accent",
+        "category": "color",
+        "value": "#8B5CF6",
+        "description": "Accent highlight color"
+      },
+      {
+        "id": "token_color_background",
+        "name": "Background",
+        "category": "color",
+        "value": "#FFFFFF",
+        "description": "Default canvas background"
+      },
+      {
+        "id": "token_color_surface",
+        "name": "Surface",
+        "category": "color",
+        "value": "#F8FAFC",
+        "description": "Card surface color"
+      },
+      {
+        "id": "token_color_text",
+        "name": "Text",
+        "category": "color",
+        "value": "#0F172A",
+        "description": "Primary text color"
+      },
+      {
+        "id": "token_color_muted",
+        "name": "Muted",
+        "category": "color",
+        "value": "#64748B",
+        "description": "Muted text and subtle borders"
+      },
+      {
+        "id": "token_color_border",
+        "name": "Border",
+        "category": "color",
+        "value": "#E2E8F0",
+        "description": "Default border stroke color"
+      },
+      {
+        "id": "token_color_success",
+        "name": "Success",
+        "category": "color",
+        "value": "#10B981",
+        "description": "Success alert color"
+      },
+      {
+        "id": "token_color_warning",
+        "name": "Warning",
+        "category": "color",
+        "value": "#F59E0B",
+        "description": "Warning alert color"
+      },
+      {
+        "id": "token_color_danger",
+        "name": "Danger",
+        "category": "color",
+        "value": "#EF4444",
+        "description": "Destructive / error color"
+      },
+      {
+        "id": "token_space_1",
+        "name": "Spacing 1 (4px)",
+        "category": "spacing",
+        "value": "4px"
+      },
+      {
+        "id": "token_space_2",
+        "name": "Spacing 2 (8px)",
+        "category": "spacing",
+        "value": "8px"
+      },
+      {
+        "id": "token_space_3",
+        "name": "Spacing 3 (12px)",
+        "category": "spacing",
+        "value": "12px"
+      },
+      {
+        "id": "token_space_4",
+        "name": "Spacing 4 (16px)",
+        "category": "spacing",
+        "value": "16px"
+      },
+      {
+        "id": "token_space_5",
+        "name": "Spacing 5 (20px)",
+        "category": "spacing",
+        "value": "20px"
+      },
+      {
+        "id": "token_space_6",
+        "name": "Spacing 6 (24px)",
+        "category": "spacing",
+        "value": "24px"
+      },
+      {
+        "id": "token_space_8",
+        "name": "Spacing 8 (32px)",
+        "category": "spacing",
+        "value": "32px"
+      },
+      {
+        "id": "token_space_10",
+        "name": "Spacing 10 (40px)",
+        "category": "spacing",
+        "value": "40px"
+      },
+      {
+        "id": "token_space_12",
+        "name": "Spacing 12 (48px)",
+        "category": "spacing",
+        "value": "48px"
+      },
+      {
+        "id": "token_space_16",
+        "name": "Spacing 16 (64px)",
+        "category": "spacing",
+        "value": "64px"
+      },
+      {
+        "id": "token_typo_display",
+        "name": "Display",
+        "category": "typography",
+        "value": "48px",
+        "description": "Display title size"
+      },
+      {
+        "id": "token_typo_h1",
+        "name": "H1",
+        "category": "typography",
+        "value": "36px",
+        "description": "Heading 1 size"
+      },
+      {
+        "id": "token_typo_h2",
+        "name": "H2",
+        "category": "typography",
+        "value": "30px",
+        "description": "Heading 2 size"
+      },
+      {
+        "id": "token_typo_h3",
+        "name": "H3",
+        "category": "typography",
+        "value": "24px",
+        "description": "Heading 3 size"
+      },
+      {
+        "id": "token_typo_body",
+        "name": "Body",
+        "category": "typography",
+        "value": "16px",
+        "description": "Body text size"
+      },
+      {
+        "id": "token_typo_small",
+        "name": "Small",
+        "category": "typography",
+        "value": "14px",
+        "description": "Small body text"
+      },
+      {
+        "id": "token_typo_caption",
+        "name": "Caption",
+        "category": "typography",
+        "value": "12px",
+        "description": "Caption / label text"
+      },
+      {
+        "id": "token_typo_button",
+        "name": "Button",
+        "category": "typography",
+        "value": "15px",
+        "description": "Button text size"
+      },
+      {
+        "id": "token_radius_none",
+        "name": "None",
+        "category": "radius",
+        "value": "0px"
+      },
+      {
+        "id": "token_radius_sm",
+        "name": "Small",
+        "category": "radius",
+        "value": "4px"
+      },
+      {
+        "id": "token_radius_md",
+        "name": "Medium",
+        "category": "radius",
+        "value": "8px"
+      },
+      {
+        "id": "token_radius_lg",
+        "name": "Large",
+        "category": "radius",
+        "value": "16px"
+      },
+      {
+        "id": "token_radius_full",
+        "name": "Full",
+        "category": "radius",
+        "value": "9999px"
+      },
+      {
+        "id": "token_shadow_none",
+        "name": "None",
+        "category": "shadow",
+        "value": "none"
+      },
+      {
+        "id": "token_shadow_sm",
+        "name": "Small",
+        "category": "shadow",
+        "value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)"
+      },
+      {
+        "id": "token_shadow_md",
+        "name": "Medium",
+        "category": "shadow",
+        "value": "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)"
+      },
+      {
+        "id": "token_shadow_lg",
+        "name": "Large",
+        "category": "shadow",
+        "value": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1)"
+      }
+    ],
+    "assets": [
+      {
+        "id": "asset_default_sample",
+        "name": "Abstract Landscape",
+        "type": "image",
+        "src": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+        "url": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+        "width": 600,
+        "height": 400,
+        "alt": "Sample abstract landscape"
+      }
+    ],
+    "components": [],
+    "collections": [],
+    "variables": [],
+    "dataSources": [],
+    "apiConnectors": [],
+    "authConfig": {
+      "provider": "mock",
+      "enabled": false,
+      "allowUserRegistration": true,
+      "persistSession": true
+    },
+    "environments": {
+      "activeEnvironment": "development",
+      "environments": {
+        "development": {
+          "name": "Development",
+          "isProduction": false,
+          "apiVariables": {},
+          "features": {}
+        },
+        "preview": {
+          "name": "Preview",
+          "isProduction": false,
+          "apiVariables": {},
+          "features": {}
+        },
+        "production": {
+          "name": "Production",
+          "isProduction": true,
+          "apiVariables": {},
+          "features": {}
+        }
+      }
+    },
+    "cloudConfig": {
+      "provider": "mock",
+      "projectUrl": "",
+      "anonKey": "",
+      "status": "disconnected"
+    },
+    "deploymentConfig": {
+      "deployments": []
+    },
+    "roles": [
+      {
+        "id": "admin",
+        "name": "Admin",
+        "description": "Full administrative access to manage users, data, and workflows",
+        "permissions": [
+          "*.*"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_owner",
+        "name": "Owner",
+        "description": "Full administrative access to project and all data",
+        "permissions": [
+          "*.*"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_admin",
+        "name": "Admin",
+        "description": "Administrative access to manage users, data, and workflows",
+        "permissions": [
+          "users.*",
+          "records.*",
+          "workflows.*",
+          "export.*"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_editor",
+        "name": "Editor",
+        "description": "Can view and modify collections and execute workflows",
+        "permissions": [
+          "records.create",
+          "records.read",
+          "records.update",
+          "workflows.execute"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_viewer",
+        "name": "Viewer",
+        "description": "Read-only access to records",
+        "permissions": [
+          "records.read"
+        ],
+        "isSystem": true
+      },
+      {
+        "id": "role_user",
+        "name": "User",
+        "description": "Standard authenticated application user",
+        "permissions": [
+          "records.read",
+          "records.create"
+        ],
+        "isSystem": true
+      }
+    ],
+    "permissions": [
+      {
+        "id": "perm_users_all",
+        "resource": "users",
+        "action": "*",
+        "description": "All user management operations"
+      },
+      {
+        "id": "perm_records_read",
+        "resource": "records",
+        "action": "read",
+        "description": "Read collection records"
+      },
+      {
+        "id": "perm_records_create",
+        "resource": "records",
+        "action": "create",
+        "description": "Create new records"
+      },
+      {
+        "id": "perm_records_update",
+        "resource": "records",
+        "action": "update",
+        "description": "Update existing records"
+      },
+      {
+        "id": "perm_records_delete",
+        "resource": "records",
+        "action": "delete",
+        "description": "Delete records"
+      },
+      {
+        "id": "perm_workflows_exec",
+        "resource": "workflows",
+        "action": "execute",
+        "description": "Trigger and execute workflows"
+      },
+      {
+        "id": "perm_export_data",
+        "resource": "export",
+        "action": "data",
+        "description": "Export records to CSV/JSON"
+      }
+    ],
+    "workflows": [],
+    "webhooks": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "queries": [],
+    "dashboards": [],
+    "localization": {
+      "defaultLocale": "en",
+      "locales": [
+        "en",
+        "es",
+        "fr",
+        "de",
+        "ar",
+        "he"
+      ],
+      "direction": {
+        "en": "ltr",
+        "es": "ltr",
+        "fr": "ltr",
+        "de": "ltr",
+        "ar": "rtl",
+        "he": "rtl"
+      },
+      "translations": {
+        "en": {
+          "welcome": "Welcome",
+          "submit": "Submit",
+          "cancel": "Cancel",
+          "delete": "Delete"
+        },
+        "es": {
+          "welcome": "Bienvenido",
+          "submit": "Enviar",
+          "cancel": "Cancelar",
+          "delete": "Eliminar"
+        },
+        "fr": {
+          "welcome": "Bienvenue",
+          "submit": "Soumettre",
+          "cancel": "Annuler",
+          "delete": "Supprimer"
+        },
+        "de": {
+          "welcome": "Willkommen",
+          "submit": "Einreichen",
+          "cancel": "Abbrechen",
+          "delete": "Löschen"
+        },
+        "ar": {
+          "welcome": "أهلاً بك",
+          "submit": "إرسال",
+          "cancel": "إلغاء",
+          "delete": "حذف"
+        },
+        "he": {
+          "welcome": "ברוכים הבאים",
+          "submit": "שלח",
+          "cancel": "ביטול",
+          "delete": "מחק"
+        }
+      }
+    },
+    "auditLogs": [],
+    "templates": [],
+    "pages": [
+      {
+        "id": "page_home",
+        "name": "Home",
+        "slug": "/",
+        "root": {
+          "id": "root_1788761749128",
+          "type": "container",
+          "name": "Container",
+          "props": {},
+          "styles": {
+            "display": "flex",
+            "flexDirection": "column",
+            "width": "100%",
+            "minHeight": "400px",
+            "padding": "48px 32px",
+            "gap": "20px",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": "12px",
+            "border": "1px solid #E2E8F0",
+            "alignItems": "center",
+            "justifyContent": "center"
+          },
+          "locked": false,
+          "states": {},
+          "interactions": [],
+          "children": [
+            {
+              "id": "text_1788761749129",
+              "type": "text",
+              "name": "Text",
+              "props": {
+                "text": "Welcome to your app"
+              },
+              "styles": {
+                "fontSize": "24px",
+                "fontWeight": "600",
+                "color": "#0F172A",
+                "textAlign": "center",
+                "margin": "0 0 8px 0"
+              },
+              "locked": false,
+              "states": {},
+              "interactions": [],
+              "children": [],
+              "parentId": "root_1788761749128"
+            },
+            {
+              "id": "btn_1788761749130",
+              "type": "button",
+              "name": "Button",
+              "props": {
+                "text": "Click me"
+              },
+              "styles": {
+                "display": "inline-flex",
+                "padding": "12px 24px",
+                "borderRadius": "8px",
+                "fontSize": "15px",
+                "fontWeight": "600",
+                "backgroundColor": "#4F46E5",
+                "color": "#FFFFFF",
+                "border": "none",
+                "cursor": "pointer"
+              },
+              "locked": false,
+              "states": {},
+              "interactions": [],
+              "children": [],
+              "parentId": "root_1788761749128"
+            }
+          ]
+        }
+      }
+    ],
+    "aiMetadata": {
+      "enabled": true,
+      "settings": {
+        "provider": "mock",
+        "model": "gpt-4o",
+        "temperature": 0.2,
+        "maxTokens": 4096,
+        "safetyMode": "approval",
+        "autoApplyLowRisk": true,
+        "tokenBudget": 50000,
+        "agentMaxSteps": 15,
+        "maxRetries": 3
+      },
+      "generations": [],
+      "conversations": [],
+      "memory": {
+        "preferences": {},
+        "conventions": [],
+        "preferredTerminology": {},
+        "notes": []
+      }
+    }
+  },
+  "errors": [],
+  "warnings": [],
+  "startedAt": "2026-09-07T06:15:49.267Z",
+  "provenanceHash": "4a53b506f1de6b3e02394cee2a8b7dae63a7e67a9e21e5c6291639bb69209326",
+  "completedAt": "2026-09-07T06:15:49.272Z",
+  "durationMs": 5
+}

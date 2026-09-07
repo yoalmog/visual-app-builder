@@ -1,0 +1,19 @@
+{
+  "checkpoint": "CP-D8.14",
+  "workstream": "D8.14 — Dynamic Guardrails & Safety Policy Synthesis Engine",
+  "status": "VERIFIED",
+  "timestamp": "2026-09-07T09:32:05.731Z",
+  "totalTests": 74,
+  "passedTests": 74,
+  "failedTests": 0,
+  "verifiedCapabilities": [
+    "Dynamic Policy Synthesis from Risk, Role, and ExperienceStore History",
+    "Mandatory Hard Security Invariants (Eval, Prompt Injection, Secrets, Isolation)",
+    "Pre-Execution Invariant Gating (Mutation Ceilings, Blast Radius, Collections)",
+    "Live Execution Watchdog (Rate Throttling, Timeout Containment)",
+    "Post-Execution Invariant Verification (Root Node Protection, Credential Leaks)",
+    "Automated Real-Time Containment with AITransactionManager Rollback",
+    "HITL Session Pausing & Telemetry Linking into ExecutionEventStore",
+    "Deterministic Cryptographic SHA-256 Provenance & Audit Trails"
+  ]
+}

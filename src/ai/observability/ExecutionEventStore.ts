@@ -81,6 +81,10 @@ export class ExecutionEventStore {
     return { success: true, event: sanitizedEvent };
   }
 
+  public static query(params: any): ExecutionTimelineQueryResult {
+    return this.queryEvents(params.filter ? params : { filter: params });
+  }
+
   /**
    * Queries events with mandatory project isolation and multi-dimensional filtering.
    */
@@ -170,6 +174,14 @@ export class ExecutionEventStore {
     // Strict isolation: only return events matching both traceId AND projectId
     return this.events.filter((e) => e.correlation.traceId === traceId && e.correlation.projectId === projectId);
   }
+
+  /**
+   * Alias for getEventsForTrace for D8.11 explainability engine.
+   */
+  public static getTraceEvents(traceId: ExecutionTraceId, projectId: string): ExecutionEvent[] {
+    return this.getEventsForTrace(traceId, projectId);
+  }
+
 
   /**
    * Checks whether any cross-project event exists for the given trace.

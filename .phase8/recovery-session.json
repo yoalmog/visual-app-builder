@@ -1,6 +1,6 @@
 {
-  "sessionId": "recsess_1788731409416_rule",
-  "recoveryId": "rec_1788731409416_x6in",
+  "sessionId": "recsess_1788752539963_szfg",
+  "recoveryId": "rec_1788752539963_sdtq",
   "projectId": "d8_7_test_proj",
   "projectVersionBefore": 7,
   "currentState": "completed",
@@ -516,7 +516,7 @@
           "name": "Home Page",
           "slug": "/",
           "root": {
-            "id": "root_1788731409414",
+            "id": "root_1788752539961",
             "type": "container",
             "name": "Container",
             "props": {},
@@ -538,7 +538,7 @@
             "interactions": [],
             "children": [
               {
-                "id": "text_1788731409415",
+                "id": "text_1788752539962",
                 "type": "text",
                 "name": "Text",
                 "props": {
@@ -555,10 +555,10 @@
                 "states": {},
                 "interactions": [],
                 "children": [],
-                "parentId": "root_1788731409414"
+                "parentId": "root_1788752539961"
               },
               {
-                "id": "btn_1788731409416",
+                "id": "btn_1788752539963",
                 "type": "button",
                 "name": "Button",
                 "props": {
@@ -579,7 +579,7 @@
                 "states": {},
                 "interactions": [],
                 "children": [],
-                "parentId": "root_1788731409414"
+                "parentId": "root_1788752539961"
               },
               {
                 "id": "btn_order_checkout",
@@ -596,7 +596,7 @@
                 "locked": false,
                 "states": {},
                 "interactions": [],
-                "parentId": "root_1788731409414",
+                "parentId": "root_1788752539961",
                 "children": []
               }
             ]
@@ -619,9 +619,9 @@
         },
         "generations": [
           {
-            "id": "gen_1788731409414_l7z2m",
+            "id": "gen_1788752539961_9200g",
             "prompt": "Add broken button",
-            "timestamp": "2026-09-06T21:50:09.415Z",
+            "timestamp": "2026-09-07T03:42:19.961Z",
             "status": "applied",
             "mode": "generate",
             "summary": {
@@ -638,7 +638,7 @@
             ],
             "projectVersionBefore": 7,
             "projectVersionAfter": 7,
-            "appliedAt": "2026-09-06T21:50:09.415Z"
+            "appliedAt": "2026-09-07T03:42:19.961Z"
           }
         ],
         "conversations": [],
@@ -651,7 +651,7 @@
       }
     },
     "verificationResult": {
-      "verificationId": "ver_1788731409415_j5tsvj",
+      "verificationId": "ver_1788752539961_h43cjt",
       "status": "FAIL",
       "intent": "Create working order button with workflow",
       "checks": [
@@ -662,7 +662,7 @@
           "passed": true,
           "status": "PASS",
           "expected": "Page Home Page (page_home) has a valid root node",
-          "actual": "Root node present: root_1788731409414 (type: container)"
+          "actual": "Root node present: root_1788752539961 (type: container)"
         },
         {
           "checkId": "chk_structural_overall",
@@ -815,7 +815,7 @@
             "version": 7
           },
           "summary": "Baseline snapshot: 1 pages, version 7",
-          "timestamp": "2026-09-06T21:50:09.415Z"
+          "timestamp": "2026-09-07T03:42:19.961Z"
         },
         {
           "evidenceId": "evi_snap_after",
@@ -828,7 +828,7 @@
             "version": 7
           },
           "summary": "Post-execution snapshot: 1 pages, version 7",
-          "timestamp": "2026-09-06T21:50:09.415Z"
+          "timestamp": "2026-09-07T03:42:19.961Z"
         },
         {
           "evidenceId": "evi_diff_summary",
@@ -850,7 +850,7 @@
             "modifiedWorkflows": []
           },
           "summary": "Diff detected: +1 components, ~0 components, +0 pages, +0 workflows",
-          "timestamp": "2026-09-06T21:50:09.415Z"
+          "timestamp": "2026-09-07T03:42:19.962Z"
         }
       ],
       "failures": [
@@ -871,7 +871,7 @@
         }
       ],
       "recoveryPlan": {
-        "recoveryId": "rec_1788731409416_iayq",
+        "recoveryId": "rec_1788752539963_h7vi",
         "failureId": "fail_broken_wf_binding_btn_order_checkout",
         "strategy": "REBIND_WORKFLOW",
         "description": "Rebind component \"btn_order_checkout\" to checkout or target workflow.",
@@ -902,79 +902,79 @@
         "conclusion": "Autonomous Verification FAILED: 3 assertion failure(s) detected across 2 diagnostic areas."
       },
       "trace": {
-        "traceId": "trc_ver_1788731409416_eear",
-        "verificationId": "ver_1788731409415_j5tsvj",
+        "traceId": "trc_ver_1788752539963_6olh",
+        "verificationId": "ver_1788752539961_h43cjt",
         "projectVersionBefore": 7,
         "projectVersionAfter": 7,
         "stages": [
           {
             "stage": "collecting_evidence",
-            "timestamp": "2026-09-06T21:50:09.415Z",
-            "durationMs": 0,
+            "timestamp": "2026-09-07T03:42:19.962Z",
+            "durationMs": 1,
             "status": "OK",
             "checksCount": 0
           },
           {
             "stage": "checking_structure",
-            "timestamp": "2026-09-06T21:50:09.415Z",
+            "timestamp": "2026-09-07T03:42:19.962Z",
             "durationMs": 0,
             "status": "OK",
             "checksCount": 2
           },
           {
             "stage": "checking_scope",
-            "timestamp": "2026-09-06T21:50:09.415Z",
+            "timestamp": "2026-09-07T03:42:19.962Z",
             "durationMs": 0,
             "status": "OK",
             "checksCount": 2
           },
           {
             "stage": "checking_runtime",
-            "timestamp": "2026-09-06T21:50:09.415Z",
+            "timestamp": "2026-09-07T03:42:19.962Z",
             "durationMs": 0,
             "status": "OK",
             "checksCount": 2
           },
           {
             "stage": "checking_workflows",
-            "timestamp": "2026-09-06T21:50:09.415Z",
+            "timestamp": "2026-09-07T03:42:19.962Z",
             "durationMs": 0,
             "status": "FAIL",
             "checksCount": 2
           },
           {
             "stage": "checking_data",
-            "timestamp": "2026-09-06T21:50:09.415Z",
+            "timestamp": "2026-09-07T03:42:19.962Z",
             "durationMs": 0,
             "status": "OK",
             "checksCount": 1
           },
           {
             "stage": "checking_security",
-            "timestamp": "2026-09-06T21:50:09.415Z",
+            "timestamp": "2026-09-07T03:42:19.962Z",
             "durationMs": 0,
             "status": "OK",
             "checksCount": 1
           },
           {
             "stage": "checking_invariants",
-            "timestamp": "2026-09-06T21:50:09.415Z",
+            "timestamp": "2026-09-07T03:42:19.962Z",
             "durationMs": 0,
             "status": "OK",
             "checksCount": 2
           },
           {
             "stage": "checking_intent",
-            "timestamp": "2026-09-06T21:50:09.415Z",
-            "durationMs": 0,
+            "timestamp": "2026-09-07T03:42:19.963Z",
+            "durationMs": 1,
             "status": "FAIL",
             "checksCount": 2
           }
         ],
         "finalStatus": "FAIL"
       },
-      "timestamp": "2026-09-06T21:50:09.416Z",
-      "durationMs": 1
+      "timestamp": "2026-09-07T03:42:19.963Z",
+      "durationMs": 2
     },
     "intent": "Self-heal broken order button workflow"
   },
@@ -982,7 +982,7 @@
   "checkpoints": [
     {
       "checkpointId": "chk_pre_1",
-      "recoveryId": "rec_1788731409416_x6in",
+      "recoveryId": "rec_1788752539963_sdtq",
       "stepIndex": 0,
       "projectSnapshot": {
         "id": "d8_7_test_proj",
@@ -1493,7 +1493,7 @@
             "name": "Home Page",
             "slug": "/",
             "root": {
-              "id": "root_1788731409414",
+              "id": "root_1788752539961",
               "type": "container",
               "name": "Container",
               "props": {},
@@ -1515,7 +1515,7 @@
               "interactions": [],
               "children": [
                 {
-                  "id": "text_1788731409415",
+                  "id": "text_1788752539962",
                   "type": "text",
                   "name": "Text",
                   "props": {
@@ -1532,10 +1532,10 @@
                   "states": {},
                   "interactions": [],
                   "children": [],
-                  "parentId": "root_1788731409414"
+                  "parentId": "root_1788752539961"
                 },
                 {
-                  "id": "btn_1788731409416",
+                  "id": "btn_1788752539963",
                   "type": "button",
                   "name": "Button",
                   "props": {
@@ -1556,7 +1556,7 @@
                   "states": {},
                   "interactions": [],
                   "children": [],
-                  "parentId": "root_1788731409414"
+                  "parentId": "root_1788752539961"
                 },
                 {
                   "id": "btn_order_checkout",
@@ -1573,7 +1573,7 @@
                   "locked": false,
                   "states": {},
                   "interactions": [],
-                  "parentId": "root_1788731409414",
+                  "parentId": "root_1788752539961",
                   "children": []
                 }
               ]
@@ -1596,9 +1596,9 @@
           },
           "generations": [
             {
-              "id": "gen_1788731409414_l7z2m",
+              "id": "gen_1788752539961_9200g",
               "prompt": "Add broken button",
-              "timestamp": "2026-09-06T21:50:09.415Z",
+              "timestamp": "2026-09-07T03:42:19.961Z",
               "status": "applied",
               "mode": "generate",
               "summary": {
@@ -1615,7 +1615,7 @@
               ],
               "projectVersionBefore": 7,
               "projectVersionAfter": 7,
-              "appliedAt": "2026-09-06T21:50:09.415Z"
+              "appliedAt": "2026-09-07T03:42:19.961Z"
             }
           ],
           "conversations": [],
@@ -1629,12 +1629,12 @@
       },
       "completedStepIds": [],
       "appliedOperations": [],
-      "timestamp": "2026-09-06T21:50:09.417Z",
+      "timestamp": "2026-09-07T03:42:19.965Z",
       "status": "BEFORE_RECOVERY"
     },
     {
       "checkpointId": "chk_post_1",
-      "recoveryId": "rec_1788731409416_x6in",
+      "recoveryId": "rec_1788752539963_sdtq",
       "stepIndex": 2,
       "projectSnapshot": {
         "id": "d8_7_test_proj",
@@ -2080,7 +2080,7 @@
             "version": 1,
             "nodes": [
               {
-                "id": "node_1788731409416_1",
+                "id": "node_1788752539964_1",
                 "type": "trigger",
                 "data": {
                   "event": "click"
@@ -2161,7 +2161,7 @@
             "name": "Home Page",
             "slug": "/",
             "root": {
-              "id": "root_1788731409414",
+              "id": "root_1788752539961",
               "type": "container",
               "name": "Container",
               "props": {},
@@ -2183,7 +2183,7 @@
               "interactions": [],
               "children": [
                 {
-                  "id": "text_1788731409415",
+                  "id": "text_1788752539962",
                   "type": "text",
                   "name": "Text",
                   "props": {
@@ -2200,10 +2200,10 @@
                   "states": {},
                   "interactions": [],
                   "children": [],
-                  "parentId": "root_1788731409414"
+                  "parentId": "root_1788752539961"
                 },
                 {
-                  "id": "btn_1788731409416",
+                  "id": "btn_1788752539963",
                   "type": "button",
                   "name": "Button",
                   "props": {
@@ -2224,7 +2224,7 @@
                   "states": {},
                   "interactions": [],
                   "children": [],
-                  "parentId": "root_1788731409414"
+                  "parentId": "root_1788752539961"
                 },
                 {
                   "id": "btn_order_checkout",
@@ -2242,7 +2242,7 @@
                   "locked": false,
                   "states": {},
                   "interactions": [],
-                  "parentId": "root_1788731409414",
+                  "parentId": "root_1788752539961",
                   "children": []
                 }
               ]
@@ -2265,9 +2265,9 @@
           },
           "generations": [
             {
-              "id": "gen_1788731409414_l7z2m",
+              "id": "gen_1788752539961_9200g",
               "prompt": "Add broken button",
-              "timestamp": "2026-09-06T21:50:09.415Z",
+              "timestamp": "2026-09-07T03:42:19.961Z",
               "status": "applied",
               "mode": "generate",
               "summary": {
@@ -2284,12 +2284,12 @@
               ],
               "projectVersionBefore": 7,
               "projectVersionAfter": 7,
-              "appliedAt": "2026-09-06T21:50:09.415Z"
+              "appliedAt": "2026-09-07T03:42:19.961Z"
             },
             {
-              "id": "gen_1788731409417_zi3qp",
+              "id": "gen_1788752539965_e65ea",
               "prompt": "Autonomous recovery: Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
-              "timestamp": "2026-09-06T21:50:09.418Z",
+              "timestamp": "2026-09-07T03:42:19.966Z",
               "status": "applied",
               "mode": "edit",
               "summary": {
@@ -2302,12 +2302,12 @@
                 "themesUpdated": 0
               },
               "operationIds": [
-                "op_rec_wf_1788731409416_1_wldf",
-                "op_rec_bind_1788731409416_2_arhu"
+                "op_rec_wf_1788752539964_1_uha9",
+                "op_rec_bind_1788752539964_2_0fqm"
               ],
               "projectVersionBefore": 7,
               "projectVersionAfter": 7,
-              "appliedAt": "2026-09-06T21:50:09.418Z"
+              "appliedAt": "2026-09-07T03:42:19.966Z"
             }
           ],
           "conversations": [],
@@ -2325,7 +2325,7 @@
       ],
       "appliedOperations": [
         {
-          "id": "op_rec_wf_1788731409416_1_wldf",
+          "id": "op_rec_wf_1788752539964_1_uha9",
           "type": "create_workflow",
           "description": "Recover missing workflow wf_non_existent",
           "risk": "medium",
@@ -2337,7 +2337,7 @@
             "triggerType": "event",
             "nodes": [
               {
-                "id": "node_1788731409416_1",
+                "id": "node_1788752539964_1",
                 "type": "trigger",
                 "data": {
                   "event": "click"
@@ -2348,7 +2348,7 @@
           }
         },
         {
-          "id": "op_rec_bind_1788731409416_2_arhu",
+          "id": "op_rec_bind_1788752539964_2_0fqm",
           "type": "update_component",
           "pageId": "page_home",
           "nodeId": "btn_order_checkout",
@@ -2362,94 +2362,94 @@
           "reversible": true
         }
       ],
-      "timestamp": "2026-09-06T21:50:09.418Z",
+      "timestamp": "2026-09-07T03:42:19.966Z",
       "status": "AFTER_RECOVERY_MUTATION"
     }
   ],
   "rollbacks": [],
   "events": [
     {
-      "id": "evt_1788731409416_3o47",
+      "id": "evt_1788752539963_bg3h",
       "type": "STATE_TRANSITION",
       "state": "failure_received",
-      "timestamp": "2026-09-06T21:50:09.416Z",
+      "timestamp": "2026-09-07T03:42:19.963Z",
       "message": "Transitioned to state: failure_received"
     },
     {
-      "id": "evt_1788731409416_bm3b",
+      "id": "evt_1788752539964_qa4h",
       "type": "STATE_TRANSITION",
       "state": "diagnosing",
-      "timestamp": "2026-09-06T21:50:09.416Z",
+      "timestamp": "2026-09-07T03:42:19.964Z",
       "message": "Transitioned to state: diagnosing"
     },
     {
-      "id": "evt_1788731409416_1vk1",
+      "id": "evt_1788752539964_sav2",
       "type": "STATE_TRANSITION",
       "state": "diagnosed",
-      "timestamp": "2026-09-06T21:50:09.416Z",
+      "timestamp": "2026-09-07T03:42:19.964Z",
       "message": "Transitioned to state: diagnosed"
     },
     {
-      "id": "evt_1788731409416_b57y",
+      "id": "evt_1788752539964_ufet",
       "type": "STATE_TRANSITION",
       "state": "planning",
-      "timestamp": "2026-09-06T21:50:09.416Z",
+      "timestamp": "2026-09-07T03:42:19.964Z",
       "message": "Transitioned to state: planning"
     },
     {
-      "id": "evt_1788731409417_hc18",
+      "id": "evt_1788752539964_23da",
       "type": "STATE_TRANSITION",
       "state": "plan_validating",
-      "timestamp": "2026-09-06T21:50:09.417Z",
+      "timestamp": "2026-09-07T03:42:19.964Z",
       "message": "Transitioned to state: plan_validating"
     },
     {
-      "id": "evt_1788731409417_jd7m",
+      "id": "evt_1788752539964_3rxw",
       "type": "STATE_TRANSITION",
       "state": "policy_check",
-      "timestamp": "2026-09-06T21:50:09.417Z",
+      "timestamp": "2026-09-07T03:42:19.964Z",
       "message": "Transitioned to state: policy_check"
     },
     {
-      "id": "evt_1788731409417_biei",
+      "id": "evt_1788752539964_4efe",
       "type": "STATE_TRANSITION",
       "state": "recovery_ready",
-      "timestamp": "2026-09-06T21:50:09.417Z",
+      "timestamp": "2026-09-07T03:42:19.964Z",
       "message": "Transitioned to state: recovery_ready"
     },
     {
-      "id": "evt_1788731409417_t3a3",
+      "id": "evt_1788752539965_mcjp",
       "type": "STATE_TRANSITION",
       "state": "recovering",
-      "timestamp": "2026-09-06T21:50:09.417Z",
+      "timestamp": "2026-09-07T03:42:19.965Z",
       "message": "Transitioned to state: recovering"
     },
     {
-      "id": "evt_1788731409418_qsv7",
+      "id": "evt_1788752539966_wqiw",
       "type": "STATE_TRANSITION",
       "state": "checkpointing",
-      "timestamp": "2026-09-06T21:50:09.418Z",
+      "timestamp": "2026-09-07T03:42:19.966Z",
       "message": "Transitioned to state: checkpointing"
     },
     {
-      "id": "evt_1788731409418_ckg9",
+      "id": "evt_1788752539966_ffmp",
       "type": "STATE_TRANSITION",
       "state": "verifying_recovery",
-      "timestamp": "2026-09-06T21:50:09.418Z",
+      "timestamp": "2026-09-07T03:42:19.966Z",
       "message": "Transitioned to state: verifying_recovery"
     },
     {
-      "id": "evt_1788731409419_4p0o",
+      "id": "evt_1788752539967_qcq3",
       "type": "STATE_TRANSITION",
       "state": "recovery_succeeded",
-      "timestamp": "2026-09-06T21:50:09.419Z",
+      "timestamp": "2026-09-07T03:42:19.967Z",
       "message": "Transitioned to state: recovery_succeeded"
     },
     {
-      "id": "evt_1788731409419_75d7",
+      "id": "evt_1788752539967_j3d6",
       "type": "STATE_TRANSITION",
       "state": "completed",
-      "timestamp": "2026-09-06T21:50:09.419Z",
+      "timestamp": "2026-09-07T03:42:19.967Z",
       "message": "Transitioned to state: completed"
     }
   ],
@@ -2457,12 +2457,12 @@
   "maxAttempts": 3,
   "isInterrupted": false,
   "diagnosis": {
-    "diagnosisId": "diag_1788731409416_wplx",
+    "diagnosisId": "diag_1788752539964_why1",
     "primaryCategory": "WORKFLOW",
     "severity": "CRITICAL",
     "whatFailed": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
     "whereItFailed": "btn_order_checkout",
-    "whenItFailed": "2026-09-06T21:50:09.416Z",
+    "whenItFailed": "2026-09-07T03:42:19.963Z",
     "whatChanged": "Unknown prior state",
     "whatWasExpected": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
     "whatActuallyExists": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
@@ -2492,7 +2492,7 @@
         "isRecoverable": true,
         "eligibility": "CONDITIONALLY_RECOVERABLE",
         "sourceFailureId": "fail_broken_wf_binding_btn_order_checkout",
-        "timestamp": "2026-09-06T21:50:09.416Z"
+        "timestamp": "2026-09-07T03:42:19.963Z"
       },
       {
         "failureId": "fail_post_post_order_wf",
@@ -2504,7 +2504,7 @@
         "isRecoverable": true,
         "eligibility": "CONDITIONALLY_RECOVERABLE",
         "sourceFailureId": "fail_post_post_order_wf",
-        "timestamp": "2026-09-06T21:50:09.416Z"
+        "timestamp": "2026-09-07T03:42:19.963Z"
       },
       {
         "failureId": "fail_chk_chk_workflow_system_integrity",
@@ -2519,23 +2519,23 @@
           "expected": "All workflow definitions and component workflow bindings resolve cleanly",
           "actual": "Workflow defects detected in 1 binding(s)"
         },
-        "timestamp": "2026-09-06T21:50:09.416Z"
+        "timestamp": "2026-09-07T03:42:19.964Z"
       }
     ],
-    "timestamp": "2026-09-06T21:50:09.416Z"
+    "timestamp": "2026-09-07T03:42:19.964Z"
   },
   "plan": {
-    "recoveryId": "rec_1788731409416_olol",
+    "recoveryId": "rec_1788752539964_kydd",
     "projectId": "d8_7_test_proj",
     "projectVersion": 7,
     "sourceFailureId": "fail_broken_wf_binding_btn_order_checkout",
     "diagnosis": {
-      "diagnosisId": "diag_1788731409416_wplx",
+      "diagnosisId": "diag_1788752539964_why1",
       "primaryCategory": "WORKFLOW",
       "severity": "CRITICAL",
       "whatFailed": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
       "whereItFailed": "btn_order_checkout",
-      "whenItFailed": "2026-09-06T21:50:09.416Z",
+      "whenItFailed": "2026-09-07T03:42:19.963Z",
       "whatChanged": "Unknown prior state",
       "whatWasExpected": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
       "whatActuallyExists": "Broken workflow binding on component \"btn_order_checkout\": Workflow \"wf_non_existent\" not found.",
@@ -2565,7 +2565,7 @@
           "isRecoverable": true,
           "eligibility": "CONDITIONALLY_RECOVERABLE",
           "sourceFailureId": "fail_broken_wf_binding_btn_order_checkout",
-          "timestamp": "2026-09-06T21:50:09.416Z"
+          "timestamp": "2026-09-07T03:42:19.963Z"
         },
         {
           "failureId": "fail_post_post_order_wf",
@@ -2577,7 +2577,7 @@
           "isRecoverable": true,
           "eligibility": "CONDITIONALLY_RECOVERABLE",
           "sourceFailureId": "fail_post_post_order_wf",
-          "timestamp": "2026-09-06T21:50:09.416Z"
+          "timestamp": "2026-09-07T03:42:19.963Z"
         },
         {
           "failureId": "fail_chk_chk_workflow_system_integrity",
@@ -2592,10 +2592,10 @@
             "expected": "All workflow definitions and component workflow bindings resolve cleanly",
             "actual": "Workflow defects detected in 1 binding(s)"
           },
-          "timestamp": "2026-09-06T21:50:09.416Z"
+          "timestamp": "2026-09-07T03:42:19.964Z"
         }
       ],
-      "timestamp": "2026-09-06T21:50:09.416Z"
+      "timestamp": "2026-09-07T03:42:19.964Z"
     },
     "strategy": "REPAIR_WORKFLOW",
     "affectedScope": [
@@ -2619,7 +2619,7 @@
         },
         "expectedPrecondition": "Workflow wf_non_existent does not exist",
         "mutation": {
-          "id": "op_rec_wf_1788731409416_1_wldf",
+          "id": "op_rec_wf_1788752539964_1_uha9",
           "type": "create_workflow",
           "description": "Recover missing workflow wf_non_existent",
           "risk": "medium",
@@ -2631,7 +2631,7 @@
             "triggerType": "event",
             "nodes": [
               {
-                "id": "node_1788731409416_1",
+                "id": "node_1788752539964_1",
                 "type": "trigger",
                 "data": {
                   "event": "click"
@@ -2655,7 +2655,7 @@
         },
         "expectedPrecondition": "Component btn_order_checkout has broken workflow binding",
         "mutation": {
-          "id": "op_rec_bind_1788731409416_2_arhu",
+          "id": "op_rec_bind_1788752539964_2_0fqm",
           "type": "update_component",
           "pageId": "page_home",
           "nodeId": "btn_order_checkout",
@@ -2693,11 +2693,11 @@
     ],
     "rollbackStrategy": "RESTORE_SNAPSHOT",
     "retryBudget": 2,
-    "createdAt": "2026-09-06T21:50:09.417Z",
+    "createdAt": "2026-09-07T03:42:19.964Z",
     "planVersion": 1,
     "provenance": {
       "creator": "AutonomousRecoveryEngine",
-      "timestamp": "2026-09-06T21:50:09.417Z"
+      "timestamp": "2026-09-07T03:42:19.964Z"
     }
   }
 }
