@@ -1,6 +1,6 @@
 {
-  "certificationId": "CERT-PH8-1788777225096",
-  "timestamp": "2026-09-07T10:33:45.096Z",
+  "certificationId": "CERT-PH8-1788800442867",
+  "timestamp": "2026-09-07T17:00:42.867Z",
   "overallStatus": "CERTIFIED",
   "certifiedSubsystemsCount": 19,
   "totalSubsystemsCount": 19,
@@ -10,7 +10,7 @@
       "name": "Goal Understanding Engine",
       "category": "COGNITIVE",
       "status": "CERTIFIED",
-      "latencyMs": 0,
+      "latencyMs": 1,
       "invariantsChecked": [
         "Goal classification",
         "Entity extraction",
@@ -38,7 +38,7 @@
       "name": "Intelligent Plan Generator",
       "category": "COGNITIVE",
       "status": "CERTIFIED",
-      "latencyMs": 1,
+      "latencyMs": 0,
       "invariantsChecked": [
         "Plan steps synthesis",
         "Rollback strategy attachment",
@@ -66,7 +66,7 @@
       "name": "Adaptive Execution Engine",
       "category": "COGNITIVE",
       "status": "CERTIFIED",
-      "latencyMs": 4,
+      "latencyMs": 9,
       "invariantsChecked": [
         "Autonomous plan execution",
         "Execution result telemetry",
@@ -93,7 +93,7 @@
       "name": "Autonomous Recovery & Failure Injection",
       "category": "ENTERPRISE",
       "status": "CERTIFIED",
-      "latencyMs": 6,
+      "latencyMs": 1,
       "invariantsChecked": [
         "Failure injection detection",
         "Self-healing rollback",
@@ -163,7 +163,7 @@
       "name": "Controlled Adaptation Engine",
       "category": "OPTIMIZATION",
       "status": "CERTIFIED",
-      "latencyMs": 0,
+      "latencyMs": 1,
       "invariantsChecked": [
         "Adaptation proposals generation",
         "Candidate validation",
@@ -205,7 +205,7 @@
       "name": "Unified Orchestration Engine",
       "category": "ENTERPRISE",
       "status": "CERTIFIED",
-      "latencyMs": 17,
+      "latencyMs": 19,
       "invariantsChecked": [
         "Unified lifecycle session initialization",
         "Subsystem status reporting",
@@ -273,7 +273,7 @@
   ],
   "grandCycle": {
     "status": "COMPLETED",
-    "sessionId": "orch_1788777225131_kdapc",
+    "sessionId": "orch_1788800442904_6zgdi",
     "goalTitle": "Build an enterprise SaaS customer portal with profile management and billing plans",
     "executionLatencyMs": 16,
     "swarmConsensusReached": true,
@@ -281,7 +281,7 @@
     "winningProposalRole": "ARCHITECT",
     "guardrailsPassed": true,
     "securityRiskScore": 10,
-    "merkleAuditRoot": "fe48ef17c1aa8b4e6426908ef7c009d7e8cb0bcb391d7b7bb1c674f2ac3ffa74",
+    "merkleAuditRoot": "9bf03cece8d02c469f2b658690511bfb49a8fd86f79cbd6c485ea244b83a1276",
     "tokenSavingsPercent": 32,
     "tokenReport": {
       "estimatedCostUsd": 0.000008
@@ -299,6 +299,6 @@
     "phase7_39": "PASS",
     "phase7_40": "PASS"
   },
-  "platformSeal": "d97536a52b2e0c7ca11a0805d08bb6aec3880ea909bcdac4a38492c63357c216",
+  "platformSeal": "569fd8ba5d63ceb05c54146ba29617d3a8775361c5a53f57ceb74d1323830d65",
   "certifiedBy": "Antigravity Autonomous Platform Certification Engine v1.0.0"
 }

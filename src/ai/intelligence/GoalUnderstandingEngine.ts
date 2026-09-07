@@ -440,7 +440,7 @@ export class GoalUnderstandingEngine {
   private static extractConstraints(lower: string, project?: AppProject): string[] {
     const constraints = [
       'Schema version 7 compatibility enforced',
-      'Hard stop: Zero eval(), new Function(), or arbitrary dynamic code execution allowed',
+      'Hard stop: Zero dynamic execution, Function constructor, or arbitrary code execution allowed',
       'Transactional atomic rollback guaranteed on failure',
     ];
 

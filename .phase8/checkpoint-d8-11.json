@@ -1,40 +1,230 @@
 {
-  "savedAt": "2026-09-07T10:38:14.367Z",
-  "totalCheckpoints": 2,
+  "savedAt": "2026-09-07T17:00:42.914Z",
+  "totalCheckpoints": 12,
   "checkpoints": [
     [
-      "cp-exp-trace_orch_1788777494350_qj1hj-1788777494365-1",
+      "cp-exp-trace_orch_1788800442705_lyyg7-1788800442736-1",
       {
-        "checkpointId": "cp-exp-trace_orch_1788777494350_qj1hj-1788777494365-1",
-        "explanationId": "exp-trace_orch_1788777494350_qj1hj-1788777494365",
-        "requestId": "req_exp_1788777494365",
-        "projectId": "proj_secure",
-        "traceId": "trace_orch_1788777494350_qj1hj",
-        "sessionId": "exp-session-1788777494365",
+        "checkpointId": "cp-exp-trace_orch_1788800442705_lyyg7-1788800442736-1",
+        "explanationId": "exp-trace_orch_1788800442705_lyyg7-1788800442736",
+        "requestId": "req_exp_1788800442736",
+        "projectId": "cert_probe_D8.15",
+        "traceId": "trace_orch_1788800442705_lyyg7",
+        "sessionId": "exp-session-1788800442736",
         "state": "TRACE_LOADING",
         "evidenceCollectedCount": 0,
         "nodesCount": 0,
         "edgesCount": 0,
-        "timestamp": "2026-09-07T10:38:14.365Z",
+        "timestamp": "2026-09-07T17:00:42.736Z",
         "savedStateSnapshot": {
           "state": "TRACE_LOADING"
         }
       }
     ],
     [
-      "cp-exp-trace_orch_1788777494350_qj1hj-1788777494365-2",
+      "cp-exp-trace_orch_1788800442705_lyyg7-1788800442736-2",
       {
-        "checkpointId": "cp-exp-trace_orch_1788777494350_qj1hj-1788777494365-2",
-        "explanationId": "exp-trace_orch_1788777494350_qj1hj-1788777494365",
-        "requestId": "req_exp_1788777494365",
-        "projectId": "proj_secure",
-        "traceId": "trace_orch_1788777494350_qj1hj",
-        "sessionId": "exp-session-1788777494365",
+        "checkpointId": "cp-exp-trace_orch_1788800442705_lyyg7-1788800442736-2",
+        "explanationId": "exp-trace_orch_1788800442705_lyyg7-1788800442736",
+        "requestId": "req_exp_1788800442736",
+        "projectId": "cert_probe_D8.15",
+        "traceId": "trace_orch_1788800442705_lyyg7",
+        "sessionId": "exp-session-1788800442736",
         "state": "CAUSAL_RECONSTRUCTION",
         "evidenceCollectedCount": 1,
         "nodesCount": 0,
         "edgesCount": 0,
-        "timestamp": "2026-09-07T10:38:14.367Z",
+        "timestamp": "2026-09-07T17:00:42.739Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788800442786_jiqlk-1788800442798-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788800442786_jiqlk-1788800442798-1",
+        "explanationId": "exp-trace_orch_1788800442786_jiqlk-1788800442798",
+        "requestId": "req_exp_1788800442798",
+        "projectId": "master_grand_cycle_app",
+        "traceId": "trace_orch_1788800442786_jiqlk",
+        "sessionId": "exp-session-1788800442798",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T17:00:42.798Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788800442786_jiqlk-1788800442798-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788800442786_jiqlk-1788800442798-2",
+        "explanationId": "exp-trace_orch_1788800442786_jiqlk-1788800442798",
+        "requestId": "req_exp_1788800442798",
+        "projectId": "master_grand_cycle_app",
+        "traceId": "trace_orch_1788800442786_jiqlk",
+        "sessionId": "exp-session-1788800442798",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T17:00:42.799Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788800442823_afucu-1788800442832-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788800442823_afucu-1788800442832-1",
+        "explanationId": "exp-trace_orch_1788800442823_afucu-1788800442832",
+        "requestId": "req_exp_1788800442832",
+        "projectId": "cert_probe_D8.15",
+        "traceId": "trace_orch_1788800442823_afucu",
+        "sessionId": "exp-session-1788800442832",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T17:00:42.832Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788800442823_afucu-1788800442832-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788800442823_afucu-1788800442832-2",
+        "explanationId": "exp-trace_orch_1788800442823_afucu-1788800442832",
+        "requestId": "req_exp_1788800442832",
+        "projectId": "cert_probe_D8.15",
+        "traceId": "trace_orch_1788800442823_afucu",
+        "sessionId": "exp-session-1788800442832",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T17:00:42.833Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788800442844_7yjod-1788800442851-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788800442844_7yjod-1788800442851-1",
+        "explanationId": "exp-trace_orch_1788800442844_7yjod-1788800442851",
+        "requestId": "req_exp_1788800442851",
+        "projectId": "master_grand_cycle_app",
+        "traceId": "trace_orch_1788800442844_7yjod",
+        "sessionId": "exp-session-1788800442851",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T17:00:42.851Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788800442844_7yjod-1788800442851-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788800442844_7yjod-1788800442851-2",
+        "explanationId": "exp-trace_orch_1788800442844_7yjod-1788800442851",
+        "requestId": "req_exp_1788800442851",
+        "projectId": "master_grand_cycle_app",
+        "traceId": "trace_orch_1788800442844_7yjod",
+        "sessionId": "exp-session-1788800442851",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T17:00:42.853Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788800442883_2ojzg-1788800442893-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788800442883_2ojzg-1788800442893-1",
+        "explanationId": "exp-trace_orch_1788800442883_2ojzg-1788800442893",
+        "requestId": "req_exp_1788800442893",
+        "projectId": "cert_probe_D8.15",
+        "traceId": "trace_orch_1788800442883_2ojzg",
+        "sessionId": "exp-session-1788800442893",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T17:00:42.893Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788800442883_2ojzg-1788800442893-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788800442883_2ojzg-1788800442893-2",
+        "explanationId": "exp-trace_orch_1788800442883_2ojzg-1788800442893",
+        "requestId": "req_exp_1788800442893",
+        "projectId": "cert_probe_D8.15",
+        "traceId": "trace_orch_1788800442883_2ojzg",
+        "sessionId": "exp-session-1788800442893",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T17:00:42.895Z",
+        "savedStateSnapshot": {
+          "state": "CAUSAL_RECONSTRUCTION"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788800442904_6zgdi-1788800442913-1",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788800442904_6zgdi-1788800442913-1",
+        "explanationId": "exp-trace_orch_1788800442904_6zgdi-1788800442913",
+        "requestId": "req_exp_1788800442913",
+        "projectId": "master_grand_cycle_app",
+        "traceId": "trace_orch_1788800442904_6zgdi",
+        "sessionId": "exp-session-1788800442913",
+        "state": "TRACE_LOADING",
+        "evidenceCollectedCount": 0,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T17:00:42.913Z",
+        "savedStateSnapshot": {
+          "state": "TRACE_LOADING"
+        }
+      }
+    ],
+    [
+      "cp-exp-trace_orch_1788800442904_6zgdi-1788800442913-2",
+      {
+        "checkpointId": "cp-exp-trace_orch_1788800442904_6zgdi-1788800442913-2",
+        "explanationId": "exp-trace_orch_1788800442904_6zgdi-1788800442913",
+        "requestId": "req_exp_1788800442913",
+        "projectId": "master_grand_cycle_app",
+        "traceId": "trace_orch_1788800442904_6zgdi",
+        "sessionId": "exp-session-1788800442913",
+        "state": "CAUSAL_RECONSTRUCTION",
+        "evidenceCollectedCount": 1,
+        "nodesCount": 0,
+        "edgesCount": 0,
+        "timestamp": "2026-09-07T17:00:42.914Z",
         "savedStateSnapshot": {
           "state": "CAUSAL_RECONSTRUCTION"
         }

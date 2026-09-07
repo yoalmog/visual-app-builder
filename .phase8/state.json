@@ -3,7 +3,7 @@
   "status": "PASSED",
   "checkpoint": "CP-D8.20",
   "startedAt": "2026-09-06T09:29:16.248Z",
-  "updatedAt": "2026-09-07T10:33:45.168Z",
+  "updatedAt": "2026-09-07T17:00:42.928Z",
   "completedDeliverables": [
     "D8.1 Workstream D8.1",
     "D8.2 Workstream D8.2",
@@ -25,7 +25,8 @@
     "D8.18 Workstream D8.18",
     "D8.19 Workstream D8.19",
     "D8.20 Workstream D8.20",
-    "D8.20 Master Phase 8 Verification & E2E Suite"
+    "D8.20 Master Phase 8 Verification & E2E Suite",
+    "D8.20"
   ],
   "activeDeliverable": null,
   "lastSuccessfulStep": "Completed D8.20 — Master Phase 8 Grand E2E Verification Suite & Platform Certification",

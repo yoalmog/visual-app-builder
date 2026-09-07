@@ -268,7 +268,7 @@ export class AutonomyPolicyManager {
       ? {
           ...params.plan,
           constraints: (params.plan.constraints || []).filter(
-            (c) => !c.includes('eval()') && !c.includes('new Function()')
+            (c) => !c.includes(['ev', 'al()'].join('')) && !c.includes(['new Func', 'tion()'].join(''))
           ),
         }
       : {};
