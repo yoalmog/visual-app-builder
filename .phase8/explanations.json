@@ -1,157 +1,15 @@
 {
-  "savedAt": "2026-09-07T17:30:42.011Z",
-  "totalExplanations": 6,
+  "savedAt": "2026-09-07T18:28:32.699Z",
+  "totalExplanations": 1,
   "explanations": [
     [
-      "exp-trace_orch_1788802241805_fuq6h-1788802241835",
+      "exp-trace_orch_1788805712550_yj0cy-1788805712674",
       {
-        "explanationId": "exp-trace_orch_1788802241805_fuq6h-1788802241835",
-        "requestId": "req_exp_1788802241835",
-        "projectId": "cert_probe_D8.15",
-        "traceId": "trace_orch_1788802241805_fuq6h",
-        "sessionId": "exp-session-1788802241835",
-        "state": "COMPLETED",
-        "status": "COMPLETED",
-        "summary": {
-          "headline": "Action evaluated without operations executed.",
-          "whyThisHappened": "Executed to fulfill the stated goal within established autonomy parameters.",
-          "whatWasExecuted": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-          "whatWasVerified": "Verification skipped or not recorded",
-          "keyConstraints": [],
-          "riskAndPolicySummary": "Policy passed. Operation risk is within pre-authorized autonomy envelope; approval not required..",
-          "uncertaintiesSummary": "Uncertainties identified in: PARTIAL_TRACE"
-        },
-        "causalChain": {
-          "nodes": [],
-          "edges": [],
-          "rootNodeId": "none",
-          "terminalNodeId": "none",
-          "isComplete": false,
-          "brokenLinks": []
-        },
-        "approvalExplanation": {
-          "approvalRequired": false,
-          "approvalStatus": "NOT_REQUIRED",
-          "summary": "Operation risk is within pre-authorized autonomy envelope; approval not required.",
-          "evidenceIds": []
-        },
-        "executionExplanation": {
-          "operationsExecutedCount": 0,
-          "operationTypes": [],
-          "executionStatus": "NO_OPERATIONS",
-          "durationMs": 0,
-          "retriesCount": 0,
-          "rollbackOccurred": false,
-          "summary": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-          "evidenceIds": []
-        },
-        "learningExplanation": {
-          "priorExperienceUsed": false,
-          "experienceCategories": [],
-          "relevantExperienceCount": 0,
-          "howExperienceInfluencedRanking": "No relevant prior experience applicable to this context.",
-          "experienceIsEvidenceNotAuthority": true,
-          "summary": "Prior experience was checked but did not alter candidate scores.",
-          "evidenceIds": []
-        },
-        "resultExplanation": {
-          "finalOutcome": "COMPLETED",
-          "whatActuallyHappened": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-          "whatUserRequested": "Create landing page header with nav links",
-          "unresolvedIssues": [],
-          "evidenceIds": [
-            "ev-evt_1788802241806_start"
-          ]
-        },
-        "evidenceBundle": {
-          "bundleId": "bundle-exp-trace_orch_1788802241805_fuq6h-1788802241835",
-          "projectId": "cert_probe_D8.15",
-          "traceId": "trace_orch_1788802241805_fuq6h",
-          "references": [
-            {
-              "evidenceId": "ev-evt_1788802241806_start",
-              "type": "TRACE_EVENT",
-              "source": "EXECUTION_TRACE",
-              "sourceIdentifier": "evt_1788802241806_start",
-              "projectId": "cert_probe_D8.15",
-              "traceId": "trace_orch_1788802241805_fuq6h",
-              "eventId": "evt_1788802241806_start",
-              "summary": "PLANNING_STARTED (SUCCESS)",
-              "strength": "STRONG",
-              "freshness": "RECENT",
-              "dataSnippet": {},
-              "timestamp": "2026-09-07T17:30:41.806Z"
-            }
-          ],
-          "totalCollected": 1,
-          "totalValid": 1,
-          "totalRedacted": 0,
-          "collectedAt": "2026-09-07T17:30:41.837Z"
-        },
-        "uncertainty": {
-          "hasUncertainty": true,
-          "categories": [
-            "PARTIAL_TRACE"
-          ],
-          "knownFacts": [
-            "1 authoritative execution events recorded"
-          ],
-          "unknownFactors": [
-            "Subsequent execution steps"
-          ],
-          "reasonsWhyUnknown": [
-            "Trace terminated prematurely"
-          ],
-          "impactOnReliability": "MEDIUM"
-        },
-        "confidence": {
-          "level": "LOW",
-          "evidenceCompleteness": "LOW",
-          "causalConfidence": "LOW",
-          "decisionConfidence": "MEDIUM",
-          "resultConfidence": "MEDIUM",
-          "rationale": "Confidence derived from 1 verified events and complete causal links."
-        },
-        "provenance": {
-          "creator": "EXPLAINABILITY_ENGINE",
-          "engineVersion": "1.0.0-d8.11",
-          "generatedAt": "2026-09-07T17:30:41.840Z",
-          "traceId": "trace_orch_1788802241805_fuq6h",
-          "projectId": "cert_probe_D8.15",
-          "claims": [
-            {
-              "claim": "PLANNING_STARTED (SUCCESS)",
-              "source": "EXECUTION_TRACE",
-              "sourceType": "TRACE_EVENT",
-              "sourceIdentifier": "evt_1788802241806_start",
-              "timestamp": "2026-09-07T17:30:41.806Z",
-              "traceId": "trace_orch_1788802241805_fuq6h",
-              "projectId": "cert_probe_D8.15",
-              "causalRelation": "DIRECT_EVENT_RECORD",
-              "evidenceStrength": "STRONG"
-            }
-          ],
-          "hash": "sha256-det-3a28cb13"
-        },
-        "redaction": {
-          "secretsRedactedCount": "[REDACTED]",
-          "sensitiveKeysRedactedCount": 0,
-          "sanitizedTextSnippetsCount": 0,
-          "redactedLabels": [],
-          "summary": "0 sensitive fields redacted; clean inputs."
-        },
-        "createdAt": "2026-09-07T17:30:41.835Z",
-        "completedAt": "2026-09-07T17:30:41.840Z"
-      }
-    ],
-    [
-      "exp-trace_orch_1788802241872_8tdvr-1788802241881",
-      {
-        "explanationId": "exp-trace_orch_1788802241872_8tdvr-1788802241881",
-        "requestId": "req_exp_1788802241881",
+        "explanationId": "exp-trace_orch_1788805712550_yj0cy-1788805712674",
+        "requestId": "req_exp_1788805712674",
         "projectId": "master_grand_cycle_app",
-        "traceId": "trace_orch_1788802241872_8tdvr",
-        "sessionId": "exp-session-1788802241881",
+        "traceId": "trace_orch_1788805712550_yj0cy",
+        "sessionId": "exp-session-1788805712674",
         "state": "COMPLETED",
         "status": "COMPLETED",
         "summary": {
@@ -202,33 +60,33 @@
           "whatUserRequested": "Build an enterprise SaaS customer portal with profile management and billing plans",
           "unresolvedIssues": [],
           "evidenceIds": [
-            "ev-evt_1788802241872_start"
+            "ev-evt_1788805712550_start"
           ]
         },
         "evidenceBundle": {
-          "bundleId": "bundle-exp-trace_orch_1788802241872_8tdvr-1788802241881",
+          "bundleId": "bundle-exp-trace_orch_1788805712550_yj0cy-1788805712674",
           "projectId": "master_grand_cycle_app",
-          "traceId": "trace_orch_1788802241872_8tdvr",
+          "traceId": "trace_orch_1788805712550_yj0cy",
           "references": [
             {
-              "evidenceId": "ev-evt_1788802241872_start",
+              "evidenceId": "ev-evt_1788805712550_start",
               "type": "TRACE_EVENT",
               "source": "EXECUTION_TRACE",
-              "sourceIdentifier": "evt_1788802241872_start",
+              "sourceIdentifier": "evt_1788805712550_start",
               "projectId": "master_grand_cycle_app",
-              "traceId": "trace_orch_1788802241872_8tdvr",
-              "eventId": "evt_1788802241872_start",
+              "traceId": "trace_orch_1788805712550_yj0cy",
+              "eventId": "evt_1788805712550_start",
               "summary": "PLANNING_STARTED (SUCCESS)",
               "strength": "STRONG",
               "freshness": "RECENT",
               "dataSnippet": {},
-              "timestamp": "2026-09-07T17:30:41.872Z"
+              "timestamp": "2026-09-07T18:28:32.550Z"
             }
           ],
           "totalCollected": 1,
           "totalValid": 1,
           "totalRedacted": 0,
-          "collectedAt": "2026-09-07T17:30:41.882Z"
+          "collectedAt": "2026-09-07T18:28:32.695Z"
         },
         "uncertainty": {
           "hasUncertainty": true,
@@ -257,23 +115,23 @@
         "provenance": {
           "creator": "EXPLAINABILITY_ENGINE",
           "engineVersion": "1.0.0-d8.11",
-          "generatedAt": "2026-09-07T17:30:41.883Z",
-          "traceId": "trace_orch_1788802241872_8tdvr",
+          "generatedAt": "2026-09-07T18:28:32.698Z",
+          "traceId": "trace_orch_1788805712550_yj0cy",
           "projectId": "master_grand_cycle_app",
           "claims": [
             {
               "claim": "PLANNING_STARTED (SUCCESS)",
               "source": "EXECUTION_TRACE",
               "sourceType": "TRACE_EVENT",
-              "sourceIdentifier": "evt_1788802241872_start",
-              "timestamp": "2026-09-07T17:30:41.872Z",
-              "traceId": "trace_orch_1788802241872_8tdvr",
+              "sourceIdentifier": "evt_1788805712550_start",
+              "timestamp": "2026-09-07T18:28:32.550Z",
+              "traceId": "trace_orch_1788805712550_yj0cy",
               "projectId": "master_grand_cycle_app",
               "causalRelation": "DIRECT_EVENT_RECORD",
               "evidenceStrength": "STRONG"
             }
           ],
-          "hash": "sha256-det-127ce0ef"
+          "hash": "sha256-det-f552389"
         },
         "redaction": {
           "secretsRedactedCount": "[REDACTED]",
@@ -282,745 +140,26 @@
           "redactedLabels": [],
           "summary": "0 sensitive fields redacted; clean inputs."
         },
-        "createdAt": "2026-09-07T17:30:41.881Z",
-        "completedAt": "2026-09-07T17:30:41.883Z"
-      }
-    ],
-    [
-      "exp-trace_orch_1788802241904_7kxas-1788802241913",
-      {
-        "explanationId": "exp-trace_orch_1788802241904_7kxas-1788802241913",
-        "requestId": "req_exp_1788802241913",
-        "projectId": "cert_probe_D8.15",
-        "traceId": "trace_orch_1788802241904_7kxas",
-        "sessionId": "exp-session-1788802241913",
-        "state": "COMPLETED",
-        "status": "COMPLETED",
-        "summary": {
-          "headline": "Action evaluated without operations executed.",
-          "whyThisHappened": "Executed to fulfill the stated goal within established autonomy parameters.",
-          "whatWasExecuted": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-          "whatWasVerified": "Verification skipped or not recorded",
-          "keyConstraints": [],
-          "riskAndPolicySummary": "Policy passed. Operation risk is within pre-authorized autonomy envelope; approval not required..",
-          "uncertaintiesSummary": "Uncertainties identified in: PARTIAL_TRACE"
-        },
-        "causalChain": {
-          "nodes": [],
-          "edges": [],
-          "rootNodeId": "none",
-          "terminalNodeId": "none",
-          "isComplete": false,
-          "brokenLinks": []
-        },
-        "approvalExplanation": {
-          "approvalRequired": false,
-          "approvalStatus": "NOT_REQUIRED",
-          "summary": "Operation risk is within pre-authorized autonomy envelope; approval not required.",
-          "evidenceIds": []
-        },
-        "executionExplanation": {
-          "operationsExecutedCount": 0,
-          "operationTypes": [],
-          "executionStatus": "NO_OPERATIONS",
-          "durationMs": 0,
-          "retriesCount": 0,
-          "rollbackOccurred": false,
-          "summary": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-          "evidenceIds": []
-        },
-        "learningExplanation": {
-          "priorExperienceUsed": false,
-          "experienceCategories": [],
-          "relevantExperienceCount": 0,
-          "howExperienceInfluencedRanking": "No relevant prior experience applicable to this context.",
-          "experienceIsEvidenceNotAuthority": true,
-          "summary": "Prior experience was checked but did not alter candidate scores.",
-          "evidenceIds": []
-        },
-        "resultExplanation": {
-          "finalOutcome": "COMPLETED",
-          "whatActuallyHappened": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-          "whatUserRequested": "Create landing page header with nav links",
-          "unresolvedIssues": [],
-          "evidenceIds": [
-            "ev-evt_1788802241905_start"
-          ]
-        },
-        "evidenceBundle": {
-          "bundleId": "bundle-exp-trace_orch_1788802241904_7kxas-1788802241913",
-          "projectId": "cert_probe_D8.15",
-          "traceId": "trace_orch_1788802241904_7kxas",
-          "references": [
-            {
-              "evidenceId": "ev-evt_1788802241905_start",
-              "type": "TRACE_EVENT",
-              "source": "EXECUTION_TRACE",
-              "sourceIdentifier": "evt_1788802241905_start",
-              "projectId": "cert_probe_D8.15",
-              "traceId": "trace_orch_1788802241904_7kxas",
-              "eventId": "evt_1788802241905_start",
-              "summary": "PLANNING_STARTED (SUCCESS)",
-              "strength": "STRONG",
-              "freshness": "RECENT",
-              "dataSnippet": {},
-              "timestamp": "2026-09-07T17:30:41.905Z"
-            }
-          ],
-          "totalCollected": 1,
-          "totalValid": 1,
-          "totalRedacted": 0,
-          "collectedAt": "2026-09-07T17:30:41.915Z"
-        },
-        "uncertainty": {
-          "hasUncertainty": true,
-          "categories": [
-            "PARTIAL_TRACE"
-          ],
-          "knownFacts": [
-            "1 authoritative execution events recorded"
-          ],
-          "unknownFactors": [
-            "Subsequent execution steps"
-          ],
-          "reasonsWhyUnknown": [
-            "Trace terminated prematurely"
-          ],
-          "impactOnReliability": "MEDIUM"
-        },
-        "confidence": {
-          "level": "LOW",
-          "evidenceCompleteness": "LOW",
-          "causalConfidence": "LOW",
-          "decisionConfidence": "MEDIUM",
-          "resultConfidence": "MEDIUM",
-          "rationale": "Confidence derived from 1 verified events and complete causal links."
-        },
-        "provenance": {
-          "creator": "EXPLAINABILITY_ENGINE",
-          "engineVersion": "1.0.0-d8.11",
-          "generatedAt": "2026-09-07T17:30:41.917Z",
-          "traceId": "trace_orch_1788802241904_7kxas",
-          "projectId": "cert_probe_D8.15",
-          "claims": [
-            {
-              "claim": "PLANNING_STARTED (SUCCESS)",
-              "source": "EXECUTION_TRACE",
-              "sourceType": "TRACE_EVENT",
-              "sourceIdentifier": "evt_1788802241905_start",
-              "timestamp": "2026-09-07T17:30:41.905Z",
-              "traceId": "trace_orch_1788802241904_7kxas",
-              "projectId": "cert_probe_D8.15",
-              "causalRelation": "DIRECT_EVENT_RECORD",
-              "evidenceStrength": "STRONG"
-            }
-          ],
-          "hash": "sha256-det-7d0ef7f1"
-        },
-        "redaction": {
-          "secretsRedactedCount": "[REDACTED]",
-          "sensitiveKeysRedactedCount": 0,
-          "sanitizedTextSnippetsCount": 0,
-          "redactedLabels": [],
-          "summary": "0 sensitive fields redacted; clean inputs."
-        },
-        "createdAt": "2026-09-07T17:30:41.913Z",
-        "completedAt": "2026-09-07T17:30:41.917Z"
-      }
-    ],
-    [
-      "exp-trace_orch_1788802241926_h6rlk-1788802241935",
-      {
-        "explanationId": "exp-trace_orch_1788802241926_h6rlk-1788802241935",
-        "requestId": "req_exp_1788802241935",
-        "projectId": "master_grand_cycle_app",
-        "traceId": "trace_orch_1788802241926_h6rlk",
-        "sessionId": "exp-session-1788802241935",
-        "state": "COMPLETED",
-        "status": "COMPLETED",
-        "summary": {
-          "headline": "Action evaluated without operations executed.",
-          "whyThisHappened": "Executed to fulfill the stated goal within established autonomy parameters.",
-          "whatWasExecuted": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-          "whatWasVerified": "Verification skipped or not recorded",
-          "keyConstraints": [],
-          "riskAndPolicySummary": "Policy passed. Operation risk is within pre-authorized autonomy envelope; approval not required..",
-          "uncertaintiesSummary": "Uncertainties identified in: PARTIAL_TRACE"
-        },
-        "causalChain": {
-          "nodes": [],
-          "edges": [],
-          "rootNodeId": "none",
-          "terminalNodeId": "none",
-          "isComplete": false,
-          "brokenLinks": []
-        },
-        "approvalExplanation": {
-          "approvalRequired": false,
-          "approvalStatus": "NOT_REQUIRED",
-          "summary": "Operation risk is within pre-authorized autonomy envelope; approval not required.",
-          "evidenceIds": []
-        },
-        "executionExplanation": {
-          "operationsExecutedCount": 0,
-          "operationTypes": [],
-          "executionStatus": "NO_OPERATIONS",
-          "durationMs": 0,
-          "retriesCount": 0,
-          "rollbackOccurred": false,
-          "summary": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-          "evidenceIds": []
-        },
-        "learningExplanation": {
-          "priorExperienceUsed": false,
-          "experienceCategories": [],
-          "relevantExperienceCount": 0,
-          "howExperienceInfluencedRanking": "No relevant prior experience applicable to this context.",
-          "experienceIsEvidenceNotAuthority": true,
-          "summary": "Prior experience was checked but did not alter candidate scores.",
-          "evidenceIds": []
-        },
-        "resultExplanation": {
-          "finalOutcome": "COMPLETED",
-          "whatActuallyHappened": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-          "whatUserRequested": "Build an enterprise SaaS customer portal with profile management and billing plans",
-          "unresolvedIssues": [],
-          "evidenceIds": [
-            "ev-evt_1788802241926_start"
-          ]
-        },
-        "evidenceBundle": {
-          "bundleId": "bundle-exp-trace_orch_1788802241926_h6rlk-1788802241935",
-          "projectId": "master_grand_cycle_app",
-          "traceId": "trace_orch_1788802241926_h6rlk",
-          "references": [
-            {
-              "evidenceId": "ev-evt_1788802241926_start",
-              "type": "TRACE_EVENT",
-              "source": "EXECUTION_TRACE",
-              "sourceIdentifier": "evt_1788802241926_start",
-              "projectId": "master_grand_cycle_app",
-              "traceId": "trace_orch_1788802241926_h6rlk",
-              "eventId": "evt_1788802241926_start",
-              "summary": "PLANNING_STARTED (SUCCESS)",
-              "strength": "STRONG",
-              "freshness": "RECENT",
-              "dataSnippet": {},
-              "timestamp": "2026-09-07T17:30:41.926Z"
-            }
-          ],
-          "totalCollected": 1,
-          "totalValid": 1,
-          "totalRedacted": 0,
-          "collectedAt": "2026-09-07T17:30:41.937Z"
-        },
-        "uncertainty": {
-          "hasUncertainty": true,
-          "categories": [
-            "PARTIAL_TRACE"
-          ],
-          "knownFacts": [
-            "1 authoritative execution events recorded"
-          ],
-          "unknownFactors": [
-            "Subsequent execution steps"
-          ],
-          "reasonsWhyUnknown": [
-            "Trace terminated prematurely"
-          ],
-          "impactOnReliability": "MEDIUM"
-        },
-        "confidence": {
-          "level": "LOW",
-          "evidenceCompleteness": "LOW",
-          "causalConfidence": "LOW",
-          "decisionConfidence": "MEDIUM",
-          "resultConfidence": "MEDIUM",
-          "rationale": "Confidence derived from 1 verified events and complete causal links."
-        },
-        "provenance": {
-          "creator": "EXPLAINABILITY_ENGINE",
-          "engineVersion": "1.0.0-d8.11",
-          "generatedAt": "2026-09-07T17:30:41.938Z",
-          "traceId": "trace_orch_1788802241926_h6rlk",
-          "projectId": "master_grand_cycle_app",
-          "claims": [
-            {
-              "claim": "PLANNING_STARTED (SUCCESS)",
-              "source": "EXECUTION_TRACE",
-              "sourceType": "TRACE_EVENT",
-              "sourceIdentifier": "evt_1788802241926_start",
-              "timestamp": "2026-09-07T17:30:41.926Z",
-              "traceId": "trace_orch_1788802241926_h6rlk",
-              "projectId": "master_grand_cycle_app",
-              "causalRelation": "DIRECT_EVENT_RECORD",
-              "evidenceStrength": "STRONG"
-            }
-          ],
-          "hash": "sha256-det-420f4c88"
-        },
-        "redaction": {
-          "secretsRedactedCount": "[REDACTED]",
-          "sensitiveKeysRedactedCount": 0,
-          "sanitizedTextSnippetsCount": 0,
-          "redactedLabels": [],
-          "summary": "0 sensitive fields redacted; clean inputs."
-        },
-        "createdAt": "2026-09-07T17:30:41.935Z",
-        "completedAt": "2026-09-07T17:30:41.938Z"
-      }
-    ],
-    [
-      "exp-trace_orch_1788802241974_usmzc-1788802241988",
-      {
-        "explanationId": "exp-trace_orch_1788802241974_usmzc-1788802241988",
-        "requestId": "req_exp_1788802241988",
-        "projectId": "cert_probe_D8.15",
-        "traceId": "trace_orch_1788802241974_usmzc",
-        "sessionId": "exp-session-1788802241988",
-        "state": "COMPLETED",
-        "status": "COMPLETED",
-        "summary": {
-          "headline": "Action evaluated without operations executed.",
-          "whyThisHappened": "Executed to fulfill the stated goal within established autonomy parameters.",
-          "whatWasExecuted": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-          "whatWasVerified": "Verification skipped or not recorded",
-          "keyConstraints": [],
-          "riskAndPolicySummary": "Policy passed. Operation risk is within pre-authorized autonomy envelope; approval not required..",
-          "uncertaintiesSummary": "Uncertainties identified in: PARTIAL_TRACE"
-        },
-        "causalChain": {
-          "nodes": [],
-          "edges": [],
-          "rootNodeId": "none",
-          "terminalNodeId": "none",
-          "isComplete": false,
-          "brokenLinks": []
-        },
-        "approvalExplanation": {
-          "approvalRequired": false,
-          "approvalStatus": "NOT_REQUIRED",
-          "summary": "Operation risk is within pre-authorized autonomy envelope; approval not required.",
-          "evidenceIds": []
-        },
-        "executionExplanation": {
-          "operationsExecutedCount": 0,
-          "operationTypes": [],
-          "executionStatus": "NO_OPERATIONS",
-          "durationMs": 0,
-          "retriesCount": 0,
-          "rollbackOccurred": false,
-          "summary": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-          "evidenceIds": []
-        },
-        "learningExplanation": {
-          "priorExperienceUsed": false,
-          "experienceCategories": [],
-          "relevantExperienceCount": 0,
-          "howExperienceInfluencedRanking": "No relevant prior experience applicable to this context.",
-          "experienceIsEvidenceNotAuthority": true,
-          "summary": "Prior experience was checked but did not alter candidate scores.",
-          "evidenceIds": []
-        },
-        "resultExplanation": {
-          "finalOutcome": "COMPLETED",
-          "whatActuallyHappened": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-          "whatUserRequested": "Create landing page header with nav links",
-          "unresolvedIssues": [],
-          "evidenceIds": [
-            "ev-evt_1788802241975_start"
-          ]
-        },
-        "evidenceBundle": {
-          "bundleId": "bundle-exp-trace_orch_1788802241974_usmzc-1788802241988",
-          "projectId": "cert_probe_D8.15",
-          "traceId": "trace_orch_1788802241974_usmzc",
-          "references": [
-            {
-              "evidenceId": "ev-evt_1788802241975_start",
-              "type": "TRACE_EVENT",
-              "source": "EXECUTION_TRACE",
-              "sourceIdentifier": "evt_1788802241975_start",
-              "projectId": "cert_probe_D8.15",
-              "traceId": "trace_orch_1788802241974_usmzc",
-              "eventId": "evt_1788802241975_start",
-              "summary": "PLANNING_STARTED (SUCCESS)",
-              "strength": "STRONG",
-              "freshness": "RECENT",
-              "dataSnippet": {},
-              "timestamp": "2026-09-07T17:30:41.975Z"
-            }
-          ],
-          "totalCollected": 1,
-          "totalValid": 1,
-          "totalRedacted": 0,
-          "collectedAt": "2026-09-07T17:30:41.990Z"
-        },
-        "uncertainty": {
-          "hasUncertainty": true,
-          "categories": [
-            "PARTIAL_TRACE"
-          ],
-          "knownFacts": [
-            "1 authoritative execution events recorded"
-          ],
-          "unknownFactors": [
-            "Subsequent execution steps"
-          ],
-          "reasonsWhyUnknown": [
-            "Trace terminated prematurely"
-          ],
-          "impactOnReliability": "MEDIUM"
-        },
-        "confidence": {
-          "level": "LOW",
-          "evidenceCompleteness": "LOW",
-          "causalConfidence": "LOW",
-          "decisionConfidence": "MEDIUM",
-          "resultConfidence": "MEDIUM",
-          "rationale": "Confidence derived from 1 verified events and complete causal links."
-        },
-        "provenance": {
-          "creator": "EXPLAINABILITY_ENGINE",
-          "engineVersion": "1.0.0-d8.11",
-          "generatedAt": "2026-09-07T17:30:41.991Z",
-          "traceId": "trace_orch_1788802241974_usmzc",
-          "projectId": "cert_probe_D8.15",
-          "claims": [
-            {
-              "claim": "PLANNING_STARTED (SUCCESS)",
-              "source": "EXECUTION_TRACE",
-              "sourceType": "TRACE_EVENT",
-              "sourceIdentifier": "evt_1788802241975_start",
-              "timestamp": "2026-09-07T17:30:41.975Z",
-              "traceId": "trace_orch_1788802241974_usmzc",
-              "projectId": "cert_probe_D8.15",
-              "causalRelation": "DIRECT_EVENT_RECORD",
-              "evidenceStrength": "STRONG"
-            }
-          ],
-          "hash": "sha256-det-7f24af6a"
-        },
-        "redaction": {
-          "secretsRedactedCount": "[REDACTED]",
-          "sensitiveKeysRedactedCount": 0,
-          "sanitizedTextSnippetsCount": 0,
-          "redactedLabels": [],
-          "summary": "0 sensitive fields redacted; clean inputs."
-        },
-        "createdAt": "2026-09-07T17:30:41.988Z",
-        "completedAt": "2026-09-07T17:30:41.991Z"
-      }
-    ],
-    [
-      "exp-trace_orch_1788802242002_kxv7q-1788802242009",
-      {
-        "explanationId": "exp-trace_orch_1788802242002_kxv7q-1788802242009",
-        "requestId": "req_exp_1788802242009",
-        "projectId": "master_grand_cycle_app",
-        "traceId": "trace_orch_1788802242002_kxv7q",
-        "sessionId": "exp-session-1788802242009",
-        "state": "COMPLETED",
-        "status": "COMPLETED",
-        "summary": {
-          "headline": "Action evaluated without operations executed.",
-          "whyThisHappened": "Executed to fulfill the stated goal within established autonomy parameters.",
-          "whatWasExecuted": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-          "whatWasVerified": "Verification skipped or not recorded",
-          "keyConstraints": [],
-          "riskAndPolicySummary": "Policy passed. Operation risk is within pre-authorized autonomy envelope; approval not required..",
-          "uncertaintiesSummary": "Uncertainties identified in: PARTIAL_TRACE"
-        },
-        "causalChain": {
-          "nodes": [],
-          "edges": [],
-          "rootNodeId": "none",
-          "terminalNodeId": "none",
-          "isComplete": false,
-          "brokenLinks": []
-        },
-        "approvalExplanation": {
-          "approvalRequired": false,
-          "approvalStatus": "NOT_REQUIRED",
-          "summary": "Operation risk is within pre-authorized autonomy envelope; approval not required.",
-          "evidenceIds": []
-        },
-        "executionExplanation": {
-          "operationsExecutedCount": 0,
-          "operationTypes": [],
-          "executionStatus": "NO_OPERATIONS",
-          "durationMs": 0,
-          "retriesCount": 0,
-          "rollbackOccurred": false,
-          "summary": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-          "evidenceIds": []
-        },
-        "learningExplanation": {
-          "priorExperienceUsed": false,
-          "experienceCategories": [],
-          "relevantExperienceCount": 0,
-          "howExperienceInfluencedRanking": "No relevant prior experience applicable to this context.",
-          "experienceIsEvidenceNotAuthority": true,
-          "summary": "Prior experience was checked but did not alter candidate scores.",
-          "evidenceIds": []
-        },
-        "resultExplanation": {
-          "finalOutcome": "COMPLETED",
-          "whatActuallyHappened": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-          "whatUserRequested": "Build an enterprise SaaS customer portal with profile management and billing plans",
-          "unresolvedIssues": [],
-          "evidenceIds": [
-            "ev-evt_1788802242002_start"
-          ]
-        },
-        "evidenceBundle": {
-          "bundleId": "bundle-exp-trace_orch_1788802242002_kxv7q-1788802242009",
-          "projectId": "master_grand_cycle_app",
-          "traceId": "trace_orch_1788802242002_kxv7q",
-          "references": [
-            {
-              "evidenceId": "ev-evt_1788802242002_start",
-              "type": "TRACE_EVENT",
-              "source": "EXECUTION_TRACE",
-              "sourceIdentifier": "evt_1788802242002_start",
-              "projectId": "master_grand_cycle_app",
-              "traceId": "trace_orch_1788802242002_kxv7q",
-              "eventId": "evt_1788802242002_start",
-              "summary": "PLANNING_STARTED (SUCCESS)",
-              "strength": "STRONG",
-              "freshness": "RECENT",
-              "dataSnippet": {},
-              "timestamp": "2026-09-07T17:30:42.002Z"
-            }
-          ],
-          "totalCollected": 1,
-          "totalValid": 1,
-          "totalRedacted": 0,
-          "collectedAt": "2026-09-07T17:30:42.010Z"
-        },
-        "uncertainty": {
-          "hasUncertainty": true,
-          "categories": [
-            "PARTIAL_TRACE"
-          ],
-          "knownFacts": [
-            "1 authoritative execution events recorded"
-          ],
-          "unknownFactors": [
-            "Subsequent execution steps"
-          ],
-          "reasonsWhyUnknown": [
-            "Trace terminated prematurely"
-          ],
-          "impactOnReliability": "MEDIUM"
-        },
-        "confidence": {
-          "level": "LOW",
-          "evidenceCompleteness": "LOW",
-          "causalConfidence": "LOW",
-          "decisionConfidence": "MEDIUM",
-          "resultConfidence": "MEDIUM",
-          "rationale": "Confidence derived from 1 verified events and complete causal links."
-        },
-        "provenance": {
-          "creator": "EXPLAINABILITY_ENGINE",
-          "engineVersion": "1.0.0-d8.11",
-          "generatedAt": "2026-09-07T17:30:42.011Z",
-          "traceId": "trace_orch_1788802242002_kxv7q",
-          "projectId": "master_grand_cycle_app",
-          "claims": [
-            {
-              "claim": "PLANNING_STARTED (SUCCESS)",
-              "source": "EXECUTION_TRACE",
-              "sourceType": "TRACE_EVENT",
-              "sourceIdentifier": "evt_1788802242002_start",
-              "timestamp": "2026-09-07T17:30:42.002Z",
-              "traceId": "trace_orch_1788802242002_kxv7q",
-              "projectId": "master_grand_cycle_app",
-              "causalRelation": "DIRECT_EVENT_RECORD",
-              "evidenceStrength": "STRONG"
-            }
-          ],
-          "hash": "sha256-det-50114214"
-        },
-        "redaction": {
-          "secretsRedactedCount": "[REDACTED]",
-          "sensitiveKeysRedactedCount": 0,
-          "sanitizedTextSnippetsCount": 0,
-          "redactedLabels": [],
-          "summary": "0 sensitive fields redacted; clean inputs."
-        },
-        "createdAt": "2026-09-07T17:30:42.009Z",
-        "completedAt": "2026-09-07T17:30:42.011Z"
+        "createdAt": "2026-09-07T18:28:32.674Z",
+        "completedAt": "2026-09-07T18:28:32.698Z"
       }
     ]
   ],
   "sessions": [
     [
-      "exp-session-1788802241835",
+      "exp-session-1788805712674",
       {
-        "sessionId": "exp-session-1788802241835",
-        "projectId": "cert_probe_D8.15",
-        "traceId": "trace_orch_1788802241805_fuq6h",
-        "currentState": "COMPLETED",
-        "checkpoints": [],
-        "latestExplanation": {
-          "explanationId": "exp-trace_orch_1788802241805_fuq6h-1788802241835",
-          "requestId": "req_exp_1788802241835",
-          "projectId": "cert_probe_D8.15",
-          "traceId": "trace_orch_1788802241805_fuq6h",
-          "sessionId": "exp-session-1788802241835",
-          "state": "COMPLETED",
-          "status": "COMPLETED",
-          "summary": {
-            "headline": "Action evaluated without operations executed.",
-            "whyThisHappened": "Executed to fulfill the stated goal within established autonomy parameters.",
-            "whatWasExecuted": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-            "whatWasVerified": "Verification skipped or not recorded",
-            "keyConstraints": [],
-            "riskAndPolicySummary": "Policy passed. Operation risk is within pre-authorized autonomy envelope; approval not required..",
-            "uncertaintiesSummary": "Uncertainties identified in: PARTIAL_TRACE"
-          },
-          "causalChain": {
-            "nodes": [],
-            "edges": [],
-            "rootNodeId": "none",
-            "terminalNodeId": "none",
-            "isComplete": false,
-            "brokenLinks": []
-          },
-          "approvalExplanation": {
-            "approvalRequired": false,
-            "approvalStatus": "NOT_REQUIRED",
-            "summary": "Operation risk is within pre-authorized autonomy envelope; approval not required.",
-            "evidenceIds": []
-          },
-          "executionExplanation": {
-            "operationsExecutedCount": 0,
-            "operationTypes": [],
-            "executionStatus": "NO_OPERATIONS",
-            "durationMs": 0,
-            "retriesCount": 0,
-            "rollbackOccurred": false,
-            "summary": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-            "evidenceIds": []
-          },
-          "learningExplanation": {
-            "priorExperienceUsed": false,
-            "experienceCategories": [],
-            "relevantExperienceCount": 0,
-            "howExperienceInfluencedRanking": "No relevant prior experience applicable to this context.",
-            "experienceIsEvidenceNotAuthority": true,
-            "summary": "Prior experience was checked but did not alter candidate scores.",
-            "evidenceIds": []
-          },
-          "resultExplanation": {
-            "finalOutcome": "COMPLETED",
-            "whatActuallyHappened": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-            "whatUserRequested": "Create landing page header with nav links",
-            "unresolvedIssues": [],
-            "evidenceIds": [
-              "ev-evt_1788802241806_start"
-            ]
-          },
-          "evidenceBundle": {
-            "bundleId": "bundle-exp-trace_orch_1788802241805_fuq6h-1788802241835",
-            "projectId": "cert_probe_D8.15",
-            "traceId": "trace_orch_1788802241805_fuq6h",
-            "references": [
-              {
-                "evidenceId": "ev-evt_1788802241806_start",
-                "type": "TRACE_EVENT",
-                "source": "EXECUTION_TRACE",
-                "sourceIdentifier": "evt_1788802241806_start",
-                "projectId": "cert_probe_D8.15",
-                "traceId": "trace_orch_1788802241805_fuq6h",
-                "eventId": "evt_1788802241806_start",
-                "summary": "PLANNING_STARTED (SUCCESS)",
-                "strength": "STRONG",
-                "freshness": "RECENT",
-                "dataSnippet": {},
-                "timestamp": "2026-09-07T17:30:41.806Z"
-              }
-            ],
-            "totalCollected": 1,
-            "totalValid": 1,
-            "totalRedacted": 0,
-            "collectedAt": "2026-09-07T17:30:41.837Z"
-          },
-          "uncertainty": {
-            "hasUncertainty": true,
-            "categories": [
-              "PARTIAL_TRACE"
-            ],
-            "knownFacts": [
-              "1 authoritative execution events recorded"
-            ],
-            "unknownFactors": [
-              "Subsequent execution steps"
-            ],
-            "reasonsWhyUnknown": [
-              "Trace terminated prematurely"
-            ],
-            "impactOnReliability": "MEDIUM"
-          },
-          "confidence": {
-            "level": "LOW",
-            "evidenceCompleteness": "LOW",
-            "causalConfidence": "LOW",
-            "decisionConfidence": "MEDIUM",
-            "resultConfidence": "MEDIUM",
-            "rationale": "Confidence derived from 1 verified events and complete causal links."
-          },
-          "provenance": {
-            "creator": "EXPLAINABILITY_ENGINE",
-            "engineVersion": "1.0.0-d8.11",
-            "generatedAt": "2026-09-07T17:30:41.840Z",
-            "traceId": "trace_orch_1788802241805_fuq6h",
-            "projectId": "cert_probe_D8.15",
-            "claims": [
-              {
-                "claim": "PLANNING_STARTED (SUCCESS)",
-                "source": "EXECUTION_TRACE",
-                "sourceType": "TRACE_EVENT",
-                "sourceIdentifier": "evt_1788802241806_start",
-                "timestamp": "2026-09-07T17:30:41.806Z",
-                "traceId": "trace_orch_1788802241805_fuq6h",
-                "projectId": "cert_probe_D8.15",
-                "causalRelation": "DIRECT_EVENT_RECORD",
-                "evidenceStrength": "STRONG"
-              }
-            ],
-            "hash": "sha256-det-3a28cb13"
-          },
-          "redaction": {
-            "secretsRedactedCount": "[REDACTED]",
-            "sensitiveKeysRedactedCount": 0,
-            "sanitizedTextSnippetsCount": 0,
-            "redactedLabels": [],
-            "summary": "0 sensitive fields redacted; clean inputs."
-          },
-          "createdAt": "2026-09-07T17:30:41.835Z",
-          "completedAt": "2026-09-07T17:30:41.840Z"
-        },
-        "createdAt": "2026-09-07T17:30:41.835Z",
-        "updatedAt": "2026-09-07T17:30:41.840Z"
-      }
-    ],
-    [
-      "exp-session-1788802241881",
-      {
-        "sessionId": "exp-session-1788802241881",
+        "sessionId": "exp-session-1788805712674",
         "projectId": "master_grand_cycle_app",
-        "traceId": "trace_orch_1788802241872_8tdvr",
+        "traceId": "trace_orch_1788805712550_yj0cy",
         "currentState": "COMPLETED",
         "checkpoints": [],
         "latestExplanation": {
-          "explanationId": "exp-trace_orch_1788802241872_8tdvr-1788802241881",
-          "requestId": "req_exp_1788802241881",
+          "explanationId": "exp-trace_orch_1788805712550_yj0cy-1788805712674",
+          "requestId": "req_exp_1788805712674",
           "projectId": "master_grand_cycle_app",
-          "traceId": "trace_orch_1788802241872_8tdvr",
-          "sessionId": "exp-session-1788802241881",
+          "traceId": "trace_orch_1788805712550_yj0cy",
+          "sessionId": "exp-session-1788805712674",
           "state": "COMPLETED",
           "status": "COMPLETED",
           "summary": {
@@ -1071,33 +210,33 @@
             "whatUserRequested": "Build an enterprise SaaS customer portal with profile management and billing plans",
             "unresolvedIssues": [],
             "evidenceIds": [
-              "ev-evt_1788802241872_start"
+              "ev-evt_1788805712550_start"
             ]
           },
           "evidenceBundle": {
-            "bundleId": "bundle-exp-trace_orch_1788802241872_8tdvr-1788802241881",
+            "bundleId": "bundle-exp-trace_orch_1788805712550_yj0cy-1788805712674",
             "projectId": "master_grand_cycle_app",
-            "traceId": "trace_orch_1788802241872_8tdvr",
+            "traceId": "trace_orch_1788805712550_yj0cy",
             "references": [
               {
-                "evidenceId": "ev-evt_1788802241872_start",
+                "evidenceId": "ev-evt_1788805712550_start",
                 "type": "TRACE_EVENT",
                 "source": "EXECUTION_TRACE",
-                "sourceIdentifier": "evt_1788802241872_start",
+                "sourceIdentifier": "evt_1788805712550_start",
                 "projectId": "master_grand_cycle_app",
-                "traceId": "trace_orch_1788802241872_8tdvr",
-                "eventId": "evt_1788802241872_start",
+                "traceId": "trace_orch_1788805712550_yj0cy",
+                "eventId": "evt_1788805712550_start",
                 "summary": "PLANNING_STARTED (SUCCESS)",
                 "strength": "STRONG",
                 "freshness": "RECENT",
                 "dataSnippet": {},
-                "timestamp": "2026-09-07T17:30:41.872Z"
+                "timestamp": "2026-09-07T18:28:32.550Z"
               }
             ],
             "totalCollected": 1,
             "totalValid": 1,
             "totalRedacted": 0,
-            "collectedAt": "2026-09-07T17:30:41.882Z"
+            "collectedAt": "2026-09-07T18:28:32.695Z"
           },
           "uncertainty": {
             "hasUncertainty": true,
@@ -1126,23 +265,23 @@
           "provenance": {
             "creator": "EXPLAINABILITY_ENGINE",
             "engineVersion": "1.0.0-d8.11",
-            "generatedAt": "2026-09-07T17:30:41.883Z",
-            "traceId": "trace_orch_1788802241872_8tdvr",
+            "generatedAt": "2026-09-07T18:28:32.698Z",
+            "traceId": "trace_orch_1788805712550_yj0cy",
             "projectId": "master_grand_cycle_app",
             "claims": [
               {
                 "claim": "PLANNING_STARTED (SUCCESS)",
                 "source": "EXECUTION_TRACE",
                 "sourceType": "TRACE_EVENT",
-                "sourceIdentifier": "evt_1788802241872_start",
-                "timestamp": "2026-09-07T17:30:41.872Z",
-                "traceId": "trace_orch_1788802241872_8tdvr",
+                "sourceIdentifier": "evt_1788805712550_start",
+                "timestamp": "2026-09-07T18:28:32.550Z",
+                "traceId": "trace_orch_1788805712550_yj0cy",
                 "projectId": "master_grand_cycle_app",
                 "causalRelation": "DIRECT_EVENT_RECORD",
                 "evidenceStrength": "STRONG"
               }
             ],
-            "hash": "sha256-det-127ce0ef"
+            "hash": "sha256-det-f552389"
           },
           "redaction": {
             "secretsRedactedCount": "[REDACTED]",
@@ -1151,615 +290,11 @@
             "redactedLabels": [],
             "summary": "0 sensitive fields redacted; clean inputs."
           },
-          "createdAt": "2026-09-07T17:30:41.881Z",
-          "completedAt": "2026-09-07T17:30:41.883Z"
+          "createdAt": "2026-09-07T18:28:32.674Z",
+          "completedAt": "2026-09-07T18:28:32.698Z"
         },
-        "createdAt": "2026-09-07T17:30:41.881Z",
-        "updatedAt": "2026-09-07T17:30:41.883Z"
-      }
-    ],
-    [
-      "exp-session-1788802241913",
-      {
-        "sessionId": "exp-session-1788802241913",
-        "projectId": "cert_probe_D8.15",
-        "traceId": "trace_orch_1788802241904_7kxas",
-        "currentState": "COMPLETED",
-        "checkpoints": [],
-        "latestExplanation": {
-          "explanationId": "exp-trace_orch_1788802241904_7kxas-1788802241913",
-          "requestId": "req_exp_1788802241913",
-          "projectId": "cert_probe_D8.15",
-          "traceId": "trace_orch_1788802241904_7kxas",
-          "sessionId": "exp-session-1788802241913",
-          "state": "COMPLETED",
-          "status": "COMPLETED",
-          "summary": {
-            "headline": "Action evaluated without operations executed.",
-            "whyThisHappened": "Executed to fulfill the stated goal within established autonomy parameters.",
-            "whatWasExecuted": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-            "whatWasVerified": "Verification skipped or not recorded",
-            "keyConstraints": [],
-            "riskAndPolicySummary": "Policy passed. Operation risk is within pre-authorized autonomy envelope; approval not required..",
-            "uncertaintiesSummary": "Uncertainties identified in: PARTIAL_TRACE"
-          },
-          "causalChain": {
-            "nodes": [],
-            "edges": [],
-            "rootNodeId": "none",
-            "terminalNodeId": "none",
-            "isComplete": false,
-            "brokenLinks": []
-          },
-          "approvalExplanation": {
-            "approvalRequired": false,
-            "approvalStatus": "NOT_REQUIRED",
-            "summary": "Operation risk is within pre-authorized autonomy envelope; approval not required.",
-            "evidenceIds": []
-          },
-          "executionExplanation": {
-            "operationsExecutedCount": 0,
-            "operationTypes": [],
-            "executionStatus": "NO_OPERATIONS",
-            "durationMs": 0,
-            "retriesCount": 0,
-            "rollbackOccurred": false,
-            "summary": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-            "evidenceIds": []
-          },
-          "learningExplanation": {
-            "priorExperienceUsed": false,
-            "experienceCategories": [],
-            "relevantExperienceCount": 0,
-            "howExperienceInfluencedRanking": "No relevant prior experience applicable to this context.",
-            "experienceIsEvidenceNotAuthority": true,
-            "summary": "Prior experience was checked but did not alter candidate scores.",
-            "evidenceIds": []
-          },
-          "resultExplanation": {
-            "finalOutcome": "COMPLETED",
-            "whatActuallyHappened": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-            "whatUserRequested": "Create landing page header with nav links",
-            "unresolvedIssues": [],
-            "evidenceIds": [
-              "ev-evt_1788802241905_start"
-            ]
-          },
-          "evidenceBundle": {
-            "bundleId": "bundle-exp-trace_orch_1788802241904_7kxas-1788802241913",
-            "projectId": "cert_probe_D8.15",
-            "traceId": "trace_orch_1788802241904_7kxas",
-            "references": [
-              {
-                "evidenceId": "ev-evt_1788802241905_start",
-                "type": "TRACE_EVENT",
-                "source": "EXECUTION_TRACE",
-                "sourceIdentifier": "evt_1788802241905_start",
-                "projectId": "cert_probe_D8.15",
-                "traceId": "trace_orch_1788802241904_7kxas",
-                "eventId": "evt_1788802241905_start",
-                "summary": "PLANNING_STARTED (SUCCESS)",
-                "strength": "STRONG",
-                "freshness": "RECENT",
-                "dataSnippet": {},
-                "timestamp": "2026-09-07T17:30:41.905Z"
-              }
-            ],
-            "totalCollected": 1,
-            "totalValid": 1,
-            "totalRedacted": 0,
-            "collectedAt": "2026-09-07T17:30:41.915Z"
-          },
-          "uncertainty": {
-            "hasUncertainty": true,
-            "categories": [
-              "PARTIAL_TRACE"
-            ],
-            "knownFacts": [
-              "1 authoritative execution events recorded"
-            ],
-            "unknownFactors": [
-              "Subsequent execution steps"
-            ],
-            "reasonsWhyUnknown": [
-              "Trace terminated prematurely"
-            ],
-            "impactOnReliability": "MEDIUM"
-          },
-          "confidence": {
-            "level": "LOW",
-            "evidenceCompleteness": "LOW",
-            "causalConfidence": "LOW",
-            "decisionConfidence": "MEDIUM",
-            "resultConfidence": "MEDIUM",
-            "rationale": "Confidence derived from 1 verified events and complete causal links."
-          },
-          "provenance": {
-            "creator": "EXPLAINABILITY_ENGINE",
-            "engineVersion": "1.0.0-d8.11",
-            "generatedAt": "2026-09-07T17:30:41.917Z",
-            "traceId": "trace_orch_1788802241904_7kxas",
-            "projectId": "cert_probe_D8.15",
-            "claims": [
-              {
-                "claim": "PLANNING_STARTED (SUCCESS)",
-                "source": "EXECUTION_TRACE",
-                "sourceType": "TRACE_EVENT",
-                "sourceIdentifier": "evt_1788802241905_start",
-                "timestamp": "2026-09-07T17:30:41.905Z",
-                "traceId": "trace_orch_1788802241904_7kxas",
-                "projectId": "cert_probe_D8.15",
-                "causalRelation": "DIRECT_EVENT_RECORD",
-                "evidenceStrength": "STRONG"
-              }
-            ],
-            "hash": "sha256-det-7d0ef7f1"
-          },
-          "redaction": {
-            "secretsRedactedCount": "[REDACTED]",
-            "sensitiveKeysRedactedCount": 0,
-            "sanitizedTextSnippetsCount": 0,
-            "redactedLabels": [],
-            "summary": "0 sensitive fields redacted; clean inputs."
-          },
-          "createdAt": "2026-09-07T17:30:41.913Z",
-          "completedAt": "2026-09-07T17:30:41.917Z"
-        },
-        "createdAt": "2026-09-07T17:30:41.913Z",
-        "updatedAt": "2026-09-07T17:30:41.917Z"
-      }
-    ],
-    [
-      "exp-session-1788802241935",
-      {
-        "sessionId": "exp-session-1788802241935",
-        "projectId": "master_grand_cycle_app",
-        "traceId": "trace_orch_1788802241926_h6rlk",
-        "currentState": "COMPLETED",
-        "checkpoints": [],
-        "latestExplanation": {
-          "explanationId": "exp-trace_orch_1788802241926_h6rlk-1788802241935",
-          "requestId": "req_exp_1788802241935",
-          "projectId": "master_grand_cycle_app",
-          "traceId": "trace_orch_1788802241926_h6rlk",
-          "sessionId": "exp-session-1788802241935",
-          "state": "COMPLETED",
-          "status": "COMPLETED",
-          "summary": {
-            "headline": "Action evaluated without operations executed.",
-            "whyThisHappened": "Executed to fulfill the stated goal within established autonomy parameters.",
-            "whatWasExecuted": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-            "whatWasVerified": "Verification skipped or not recorded",
-            "keyConstraints": [],
-            "riskAndPolicySummary": "Policy passed. Operation risk is within pre-authorized autonomy envelope; approval not required..",
-            "uncertaintiesSummary": "Uncertainties identified in: PARTIAL_TRACE"
-          },
-          "causalChain": {
-            "nodes": [],
-            "edges": [],
-            "rootNodeId": "none",
-            "terminalNodeId": "none",
-            "isComplete": false,
-            "brokenLinks": []
-          },
-          "approvalExplanation": {
-            "approvalRequired": false,
-            "approvalStatus": "NOT_REQUIRED",
-            "summary": "Operation risk is within pre-authorized autonomy envelope; approval not required.",
-            "evidenceIds": []
-          },
-          "executionExplanation": {
-            "operationsExecutedCount": 0,
-            "operationTypes": [],
-            "executionStatus": "NO_OPERATIONS",
-            "durationMs": 0,
-            "retriesCount": 0,
-            "rollbackOccurred": false,
-            "summary": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-            "evidenceIds": []
-          },
-          "learningExplanation": {
-            "priorExperienceUsed": false,
-            "experienceCategories": [],
-            "relevantExperienceCount": 0,
-            "howExperienceInfluencedRanking": "No relevant prior experience applicable to this context.",
-            "experienceIsEvidenceNotAuthority": true,
-            "summary": "Prior experience was checked but did not alter candidate scores.",
-            "evidenceIds": []
-          },
-          "resultExplanation": {
-            "finalOutcome": "COMPLETED",
-            "whatActuallyHappened": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-            "whatUserRequested": "Build an enterprise SaaS customer portal with profile management and billing plans",
-            "unresolvedIssues": [],
-            "evidenceIds": [
-              "ev-evt_1788802241926_start"
-            ]
-          },
-          "evidenceBundle": {
-            "bundleId": "bundle-exp-trace_orch_1788802241926_h6rlk-1788802241935",
-            "projectId": "master_grand_cycle_app",
-            "traceId": "trace_orch_1788802241926_h6rlk",
-            "references": [
-              {
-                "evidenceId": "ev-evt_1788802241926_start",
-                "type": "TRACE_EVENT",
-                "source": "EXECUTION_TRACE",
-                "sourceIdentifier": "evt_1788802241926_start",
-                "projectId": "master_grand_cycle_app",
-                "traceId": "trace_orch_1788802241926_h6rlk",
-                "eventId": "evt_1788802241926_start",
-                "summary": "PLANNING_STARTED (SUCCESS)",
-                "strength": "STRONG",
-                "freshness": "RECENT",
-                "dataSnippet": {},
-                "timestamp": "2026-09-07T17:30:41.926Z"
-              }
-            ],
-            "totalCollected": 1,
-            "totalValid": 1,
-            "totalRedacted": 0,
-            "collectedAt": "2026-09-07T17:30:41.937Z"
-          },
-          "uncertainty": {
-            "hasUncertainty": true,
-            "categories": [
-              "PARTIAL_TRACE"
-            ],
-            "knownFacts": [
-              "1 authoritative execution events recorded"
-            ],
-            "unknownFactors": [
-              "Subsequent execution steps"
-            ],
-            "reasonsWhyUnknown": [
-              "Trace terminated prematurely"
-            ],
-            "impactOnReliability": "MEDIUM"
-          },
-          "confidence": {
-            "level": "LOW",
-            "evidenceCompleteness": "LOW",
-            "causalConfidence": "LOW",
-            "decisionConfidence": "MEDIUM",
-            "resultConfidence": "MEDIUM",
-            "rationale": "Confidence derived from 1 verified events and complete causal links."
-          },
-          "provenance": {
-            "creator": "EXPLAINABILITY_ENGINE",
-            "engineVersion": "1.0.0-d8.11",
-            "generatedAt": "2026-09-07T17:30:41.938Z",
-            "traceId": "trace_orch_1788802241926_h6rlk",
-            "projectId": "master_grand_cycle_app",
-            "claims": [
-              {
-                "claim": "PLANNING_STARTED (SUCCESS)",
-                "source": "EXECUTION_TRACE",
-                "sourceType": "TRACE_EVENT",
-                "sourceIdentifier": "evt_1788802241926_start",
-                "timestamp": "2026-09-07T17:30:41.926Z",
-                "traceId": "trace_orch_1788802241926_h6rlk",
-                "projectId": "master_grand_cycle_app",
-                "causalRelation": "DIRECT_EVENT_RECORD",
-                "evidenceStrength": "STRONG"
-              }
-            ],
-            "hash": "sha256-det-420f4c88"
-          },
-          "redaction": {
-            "secretsRedactedCount": "[REDACTED]",
-            "sensitiveKeysRedactedCount": 0,
-            "sanitizedTextSnippetsCount": 0,
-            "redactedLabels": [],
-            "summary": "0 sensitive fields redacted; clean inputs."
-          },
-          "createdAt": "2026-09-07T17:30:41.935Z",
-          "completedAt": "2026-09-07T17:30:41.938Z"
-        },
-        "createdAt": "2026-09-07T17:30:41.935Z",
-        "updatedAt": "2026-09-07T17:30:41.938Z"
-      }
-    ],
-    [
-      "exp-session-1788802241988",
-      {
-        "sessionId": "exp-session-1788802241988",
-        "projectId": "cert_probe_D8.15",
-        "traceId": "trace_orch_1788802241974_usmzc",
-        "currentState": "COMPLETED",
-        "checkpoints": [],
-        "latestExplanation": {
-          "explanationId": "exp-trace_orch_1788802241974_usmzc-1788802241988",
-          "requestId": "req_exp_1788802241988",
-          "projectId": "cert_probe_D8.15",
-          "traceId": "trace_orch_1788802241974_usmzc",
-          "sessionId": "exp-session-1788802241988",
-          "state": "COMPLETED",
-          "status": "COMPLETED",
-          "summary": {
-            "headline": "Action evaluated without operations executed.",
-            "whyThisHappened": "Executed to fulfill the stated goal within established autonomy parameters.",
-            "whatWasExecuted": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-            "whatWasVerified": "Verification skipped or not recorded",
-            "keyConstraints": [],
-            "riskAndPolicySummary": "Policy passed. Operation risk is within pre-authorized autonomy envelope; approval not required..",
-            "uncertaintiesSummary": "Uncertainties identified in: PARTIAL_TRACE"
-          },
-          "causalChain": {
-            "nodes": [],
-            "edges": [],
-            "rootNodeId": "none",
-            "terminalNodeId": "none",
-            "isComplete": false,
-            "brokenLinks": []
-          },
-          "approvalExplanation": {
-            "approvalRequired": false,
-            "approvalStatus": "NOT_REQUIRED",
-            "summary": "Operation risk is within pre-authorized autonomy envelope; approval not required.",
-            "evidenceIds": []
-          },
-          "executionExplanation": {
-            "operationsExecutedCount": 0,
-            "operationTypes": [],
-            "executionStatus": "NO_OPERATIONS",
-            "durationMs": 0,
-            "retriesCount": 0,
-            "rollbackOccurred": false,
-            "summary": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-            "evidenceIds": []
-          },
-          "learningExplanation": {
-            "priorExperienceUsed": false,
-            "experienceCategories": [],
-            "relevantExperienceCount": 0,
-            "howExperienceInfluencedRanking": "No relevant prior experience applicable to this context.",
-            "experienceIsEvidenceNotAuthority": true,
-            "summary": "Prior experience was checked but did not alter candidate scores.",
-            "evidenceIds": []
-          },
-          "resultExplanation": {
-            "finalOutcome": "COMPLETED",
-            "whatActuallyHappened": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-            "whatUserRequested": "Create landing page header with nav links",
-            "unresolvedIssues": [],
-            "evidenceIds": [
-              "ev-evt_1788802241975_start"
-            ]
-          },
-          "evidenceBundle": {
-            "bundleId": "bundle-exp-trace_orch_1788802241974_usmzc-1788802241988",
-            "projectId": "cert_probe_D8.15",
-            "traceId": "trace_orch_1788802241974_usmzc",
-            "references": [
-              {
-                "evidenceId": "ev-evt_1788802241975_start",
-                "type": "TRACE_EVENT",
-                "source": "EXECUTION_TRACE",
-                "sourceIdentifier": "evt_1788802241975_start",
-                "projectId": "cert_probe_D8.15",
-                "traceId": "trace_orch_1788802241974_usmzc",
-                "eventId": "evt_1788802241975_start",
-                "summary": "PLANNING_STARTED (SUCCESS)",
-                "strength": "STRONG",
-                "freshness": "RECENT",
-                "dataSnippet": {},
-                "timestamp": "2026-09-07T17:30:41.975Z"
-              }
-            ],
-            "totalCollected": 1,
-            "totalValid": 1,
-            "totalRedacted": 0,
-            "collectedAt": "2026-09-07T17:30:41.990Z"
-          },
-          "uncertainty": {
-            "hasUncertainty": true,
-            "categories": [
-              "PARTIAL_TRACE"
-            ],
-            "knownFacts": [
-              "1 authoritative execution events recorded"
-            ],
-            "unknownFactors": [
-              "Subsequent execution steps"
-            ],
-            "reasonsWhyUnknown": [
-              "Trace terminated prematurely"
-            ],
-            "impactOnReliability": "MEDIUM"
-          },
-          "confidence": {
-            "level": "LOW",
-            "evidenceCompleteness": "LOW",
-            "causalConfidence": "LOW",
-            "decisionConfidence": "MEDIUM",
-            "resultConfidence": "MEDIUM",
-            "rationale": "Confidence derived from 1 verified events and complete causal links."
-          },
-          "provenance": {
-            "creator": "EXPLAINABILITY_ENGINE",
-            "engineVersion": "1.0.0-d8.11",
-            "generatedAt": "2026-09-07T17:30:41.991Z",
-            "traceId": "trace_orch_1788802241974_usmzc",
-            "projectId": "cert_probe_D8.15",
-            "claims": [
-              {
-                "claim": "PLANNING_STARTED (SUCCESS)",
-                "source": "EXECUTION_TRACE",
-                "sourceType": "TRACE_EVENT",
-                "sourceIdentifier": "evt_1788802241975_start",
-                "timestamp": "2026-09-07T17:30:41.975Z",
-                "traceId": "trace_orch_1788802241974_usmzc",
-                "projectId": "cert_probe_D8.15",
-                "causalRelation": "DIRECT_EVENT_RECORD",
-                "evidenceStrength": "STRONG"
-              }
-            ],
-            "hash": "sha256-det-7f24af6a"
-          },
-          "redaction": {
-            "secretsRedactedCount": "[REDACTED]",
-            "sensitiveKeysRedactedCount": 0,
-            "sanitizedTextSnippetsCount": 0,
-            "redactedLabels": [],
-            "summary": "0 sensitive fields redacted; clean inputs."
-          },
-          "createdAt": "2026-09-07T17:30:41.988Z",
-          "completedAt": "2026-09-07T17:30:41.991Z"
-        },
-        "createdAt": "2026-09-07T17:30:41.988Z",
-        "updatedAt": "2026-09-07T17:30:41.991Z"
-      }
-    ],
-    [
-      "exp-session-1788802242009",
-      {
-        "sessionId": "exp-session-1788802242009",
-        "projectId": "master_grand_cycle_app",
-        "traceId": "trace_orch_1788802242002_kxv7q",
-        "currentState": "COMPLETED",
-        "checkpoints": [],
-        "latestExplanation": {
-          "explanationId": "exp-trace_orch_1788802242002_kxv7q-1788802242009",
-          "requestId": "req_exp_1788802242009",
-          "projectId": "master_grand_cycle_app",
-          "traceId": "trace_orch_1788802242002_kxv7q",
-          "sessionId": "exp-session-1788802242009",
-          "state": "COMPLETED",
-          "status": "COMPLETED",
-          "summary": {
-            "headline": "Action evaluated without operations executed.",
-            "whyThisHappened": "Executed to fulfill the stated goal within established autonomy parameters.",
-            "whatWasExecuted": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-            "whatWasVerified": "Verification skipped or not recorded",
-            "keyConstraints": [],
-            "riskAndPolicySummary": "Policy passed. Operation risk is within pre-authorized autonomy envelope; approval not required..",
-            "uncertaintiesSummary": "Uncertainties identified in: PARTIAL_TRACE"
-          },
-          "causalChain": {
-            "nodes": [],
-            "edges": [],
-            "rootNodeId": "none",
-            "terminalNodeId": "none",
-            "isComplete": false,
-            "brokenLinks": []
-          },
-          "approvalExplanation": {
-            "approvalRequired": false,
-            "approvalStatus": "NOT_REQUIRED",
-            "summary": "Operation risk is within pre-authorized autonomy envelope; approval not required.",
-            "evidenceIds": []
-          },
-          "executionExplanation": {
-            "operationsExecutedCount": 0,
-            "operationTypes": [],
-            "executionStatus": "NO_OPERATIONS",
-            "durationMs": 0,
-            "retriesCount": 0,
-            "rollbackOccurred": false,
-            "summary": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-            "evidenceIds": []
-          },
-          "learningExplanation": {
-            "priorExperienceUsed": false,
-            "experienceCategories": [],
-            "relevantExperienceCount": 0,
-            "howExperienceInfluencedRanking": "No relevant prior experience applicable to this context.",
-            "experienceIsEvidenceNotAuthority": true,
-            "summary": "Prior experience was checked but did not alter candidate scores.",
-            "evidenceIds": []
-          },
-          "resultExplanation": {
-            "finalOutcome": "COMPLETED",
-            "whatActuallyHappened": "Executed 0 operations across none. Status: NO_OPERATIONS.",
-            "whatUserRequested": "Build an enterprise SaaS customer portal with profile management and billing plans",
-            "unresolvedIssues": [],
-            "evidenceIds": [
-              "ev-evt_1788802242002_start"
-            ]
-          },
-          "evidenceBundle": {
-            "bundleId": "bundle-exp-trace_orch_1788802242002_kxv7q-1788802242009",
-            "projectId": "master_grand_cycle_app",
-            "traceId": "trace_orch_1788802242002_kxv7q",
-            "references": [
-              {
-                "evidenceId": "ev-evt_1788802242002_start",
-                "type": "TRACE_EVENT",
-                "source": "EXECUTION_TRACE",
-                "sourceIdentifier": "evt_1788802242002_start",
-                "projectId": "master_grand_cycle_app",
-                "traceId": "trace_orch_1788802242002_kxv7q",
-                "eventId": "evt_1788802242002_start",
-                "summary": "PLANNING_STARTED (SUCCESS)",
-                "strength": "STRONG",
-                "freshness": "RECENT",
-                "dataSnippet": {},
-                "timestamp": "2026-09-07T17:30:42.002Z"
-              }
-            ],
-            "totalCollected": 1,
-            "totalValid": 1,
-            "totalRedacted": 0,
-            "collectedAt": "2026-09-07T17:30:42.010Z"
-          },
-          "uncertainty": {
-            "hasUncertainty": true,
-            "categories": [
-              "PARTIAL_TRACE"
-            ],
-            "knownFacts": [
-              "1 authoritative execution events recorded"
-            ],
-            "unknownFactors": [
-              "Subsequent execution steps"
-            ],
-            "reasonsWhyUnknown": [
-              "Trace terminated prematurely"
-            ],
-            "impactOnReliability": "MEDIUM"
-          },
-          "confidence": {
-            "level": "LOW",
-            "evidenceCompleteness": "LOW",
-            "causalConfidence": "LOW",
-            "decisionConfidence": "MEDIUM",
-            "resultConfidence": "MEDIUM",
-            "rationale": "Confidence derived from 1 verified events and complete causal links."
-          },
-          "provenance": {
-            "creator": "EXPLAINABILITY_ENGINE",
-            "engineVersion": "1.0.0-d8.11",
-            "generatedAt": "2026-09-07T17:30:42.011Z",
-            "traceId": "trace_orch_1788802242002_kxv7q",
-            "projectId": "master_grand_cycle_app",
-            "claims": [
-              {
-                "claim": "PLANNING_STARTED (SUCCESS)",
-                "source": "EXECUTION_TRACE",
-                "sourceType": "TRACE_EVENT",
-                "sourceIdentifier": "evt_1788802242002_start",
-                "timestamp": "2026-09-07T17:30:42.002Z",
-                "traceId": "trace_orch_1788802242002_kxv7q",
-                "projectId": "master_grand_cycle_app",
-                "causalRelation": "DIRECT_EVENT_RECORD",
-                "evidenceStrength": "STRONG"
-              }
-            ],
-            "hash": "sha256-det-50114214"
-          },
-          "redaction": {
-            "secretsRedactedCount": "[REDACTED]",
-            "sensitiveKeysRedactedCount": 0,
-            "sanitizedTextSnippetsCount": 0,
-            "redactedLabels": [],
-            "summary": "0 sensitive fields redacted; clean inputs."
-          },
-          "createdAt": "2026-09-07T17:30:42.009Z",
-          "completedAt": "2026-09-07T17:30:42.011Z"
-        },
-        "createdAt": "2026-09-07T17:30:42.009Z",
-        "updatedAt": "2026-09-07T17:30:42.011Z"
+        "createdAt": "2026-09-07T18:28:32.674Z",
+        "updatedAt": "2026-09-07T18:28:32.698Z"
       }
     ]
   ]

@@ -205,7 +205,7 @@ export class SwarmConsensusEngine {
     SwarmCollaborationBus.registerProposal(currentProposal);
 
     const round3Messages: SwarmMessage[] = [];
-    const voteMap: Record<AgentPersonaRole, { decision: VoteDecision; score: number; weight: number; rationale?: string }> = {} as any;
+    const voteMap: Record<string, { decision: VoteDecision; score: number; weight: number; rationale?: string }> = {};
 
     for (const role of activeRoles) {
       const persona = SwarmPersonaRegistry.getPersona(role)!;
@@ -274,11 +274,11 @@ export class SwarmConsensusEngine {
    * Evaluates consensus under chosen algorithmic rule.
    */
   public static evaluateConsensus(
-    votes: Record<AgentPersonaRole, { decision: VoteDecision; score: number; weight: number }>,
+    votes: Record<string, { decision: VoteDecision; score: number; weight: number }>,
     mode: SwarmConsensusMode,
     threshold = 0.7
   ): { status: 'CONSENSUS_REACHED' | 'DEADLOCK'; agreementRatioPercent: number } {
-    const roles = Object.keys(votes) as AgentPersonaRole[];
+    const roles = Object.keys(votes);
     if (roles.length === 0) {
       return { status: 'DEADLOCK', agreementRatioPercent: 0 };
     }
@@ -290,6 +290,7 @@ export class SwarmConsensusEngine {
 
     for (const role of roles) {
       const v = votes[role];
+      if (!v) continue;
       totalWeight += v.weight;
       if (v.decision === 'APPROVE' || v.decision === 'CONDITIONAL') {
         approvedWeight += v.weight;
@@ -304,7 +305,7 @@ export class SwarmConsensusEngine {
 
     switch (mode) {
       case 'UNANIMOUS': {
-        const unanimousPass = roles.every((r) => votes[r].decision === 'APPROVE');
+        const unanimousPass = roles.every((r) => votes[r]?.decision === 'APPROVE');
         return {
           status: unanimousPass ? 'CONSENSUS_REACHED' : 'DEADLOCK',
           agreementRatioPercent: unanimousPass ? 100 : agreementRatioPercent,
@@ -465,8 +466,8 @@ export class SwarmConsensusEngine {
   private static summarizeVotes(
     messages: SwarmMessage[],
     config: Required<SwarmConfig>
-  ): Record<AgentPersonaRole, { decision: VoteDecision; score: number; weight: number; rationale?: string }> {
-    const votes: Record<AgentPersonaRole, { decision: VoteDecision; score: number; weight: number; rationale?: string }> = {} as any;
+  ): Record<string, { decision: VoteDecision; score: number; weight: number; rationale?: string }> {
+    const votes: Record<string, { decision: VoteDecision; score: number; weight: number; rationale?: string }> = {};
     for (const msg of messages) {
       const persona = SwarmPersonaRegistry.getPersona(msg.senderRole);
       const weight = config.customPersonaWeights[msg.senderRole] ?? persona?.weight ?? 2.5;

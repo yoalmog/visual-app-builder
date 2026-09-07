@@ -6,3 +6,4 @@ export * from './RealtimeScalingAndMonitoring';
 export * from './ExperimentationAndDeployments';
 export * from './MarketplaceAndPluginLifecycle';
 export * from './EnterpriseAIGovernance';
+export * from './EnterprisePlatformRecoveryManager';

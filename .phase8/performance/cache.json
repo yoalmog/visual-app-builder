@@ -1,95 +1,5 @@
 [
   {
-    "key": "ctx:proj_secure:4725b59daae191d5f594daf6",
-    "value": {
-      "items": [
-        {
-          "id": "ctx_page_page_home",
-          "rawEntityId": "page_home",
-          "source": "project.pages[page_home]",
-          "category": "page",
-          "priority": 2,
-          "relevanceScore": 0.9,
-          "content": "{\"id\":\"page_home\",\"name\":\"Home\",\"slug\":\"/\",\"nodeCount\":2,\"structure\":{\"type\":\"container\",\"name\":\"Root Container\",\"children\":[{\"type\":\"button\",\"name\":\"Button\"}]}}",
-          "tokenCount": 41,
-          "freshnessTimestamp": "2026-09-07T17:29:55.989Z",
-          "derivationMethod": "ast_compression"
-        }
-      ],
-      "totalTokens": 41,
-      "truncatedCount": 0,
-      "summary": "Selected 1 context items (41 tokens) across [page]. Pruned 0 low-priority items to satisfy 4000 budget ceiling.",
-      "categoriesIncluded": {
-        "page": 1
-      },
-      "duplicateEntityWarnings": [],
-      "formattedPromptContext": "<project_context>\n\n## PAGE CONTEXT\n- [project.pages[page_home]] (priority: 2, relevance: 0.9): {\"id\":\"page_home\",\"name\":\"Home\",\"slug\":\"/\",\"nodeCount\":2,\"structure\":{\"type\":\"container\",\"name\":\"Root Container\",\"children\":[{\"type\":\"button\",\"name\":\"Button\"}]}}\n\n</project_context>"
-    },
-    "sizeBytes": 1026,
-    "createdAt": 1788802195989,
-    "expiresAt": 1788803095989,
-    "hits": 0,
-    "ttlMs": 900000,
-    "tag": "project:proj_secure"
-  },
-  {
-    "key": "ctx:cert_probe_D8.15:4f2902e730779655b3fc78c6",
-    "value": {
-      "items": [
-        {
-          "id": "ctx_page_page_home",
-          "rawEntityId": "page_home",
-          "source": "project.pages[page_home]",
-          "category": "page",
-          "priority": 2,
-          "relevanceScore": 0.9,
-          "content": "{\"id\":\"page_home\",\"name\":\"Home\",\"slug\":\"/\",\"nodeCount\":3,\"structure\":{\"type\":\"container\",\"name\":\"Container\",\"children\":[{\"type\":\"text\",\"name\":\"Text\",\"text\":\"Welcome to your app\"},{\"type\":\"button\",\"name\":\"Button\",\"text\":\"Click me\"}]}}",
-          "tokenCount": 59,
-          "freshnessTimestamp": "2026-09-07T17:30:41.812Z",
-          "derivationMethod": "ast_compression"
-        },
-        {
-          "id": "ctx_tokens",
-          "source": "project.tokens",
-          "category": "theme",
-          "priority": 2,
-          "relevanceScore": 0.7,
-          "content": "{\"totalTokens\":38,\"palette\":[{\"name\":\"Primary\",\"category\":\"color\",\"value\":\"#4F46E5\"},{\"name\":\"Secondary\",\"category\":\"color\",\"value\":\"#06B6D4\"},{\"name\":\"Accent\",\"category\":\"color\",\"value\":\"#8B5CF6\"},{\"name\":\"Background\",\"category\":\"color\",\"value\":\"#FFFFFF\"},{\"name\":\"Surface\",\"category\":\"color\",\"value\":\"#F8FAFC\"},{\"name\":\"Text\",\"category\":\"color\",\"value\":\"#0F172A\"},{\"name\":\"Muted\",\"category\":\"color\",\"value\":\"#64748B\"},{\"name\":\"Border\",\"category\":\"color\",\"value\":\"#E2E8F0\"},{\"name\":\"Success\",\"category\":\"color\",\"value\":\"#10B981\"},{\"name\":\"Warning\",\"category\":\"color\",\"value\":\"#F59E0B\"}]}",
-          "tokenCount": 147,
-          "freshnessTimestamp": "2026-09-07T17:30:41.812Z",
-          "derivationMethod": "theme_token_sample"
-        }
-      ],
-      "totalTokens": 206,
-      "truncatedCount": 0,
-      "summary": "Selected 2 context items (206 tokens) across [page, theme]. Pruned 0 low-priority items to satisfy 4000 budget ceiling.",
-      "categoriesIncluded": {
-        "page": 1,
-        "theme": 1
-      },
-      "duplicateEntityWarnings": [],
-      "formattedPromptContext": "<project_context>\n\n## PAGE CONTEXT\n- [project.pages[page_home]] (priority: 2, relevance: 0.9): {\"id\":\"page_home\",\"name\":\"Home\",\"slug\":\"/\",\"nodeCount\":3,\"structure\":{\"type\":\"container\",\"name\":\"Container\",\"children\":[{\"type\":\"text\",\"name\":\"Text\",\"text\":\"Welcome to your app\"},{\"type\":\"button\",\"name\":\"Button\",\"text\":\"Click me\"}]}}\n\n## THEME CONTEXT\n- [project.tokens] (priority: 2, relevance: 0.7): {\"totalTokens\":38,\"palette\":[{\"name\":\"Primary\",\"category\":\"color\",\"value\":\"#4F46E5\"},{\"name\":\"Secondary\",\"category\":\"color\",\"value\":\"#06B6D4\"},{\"name\":\"Accent\",\"category\":\"color\",\"value\":\"#8B5CF6\"},{\"name\":\"Background\",\"category\":\"color\",\"value\":\"#FFFFFF\"},{\"name\":\"Surface\",\"category\":\"color\",\"value\":\"#F8FAFC\"},{\"name\":\"Text\",\"category\":\"color\",\"value\":\"#0F172A\"},{\"name\":\"Muted\",\"category\":\"color\",\"value\":\"#64748B\"},{\"name\":\"Border\",\"category\":\"color\",\"value\":\"#E2E8F0\"},{\"name\":\"Success\",\"category\":\"color\",\"value\":\"#10B981\"},{\"name\":\"Warning\",\"category\":\"color\",\"value\":\"#F59E0B\"}]}\n\n</project_context>"
-    },
-    "sizeBytes": 2934,
-    "createdAt": 1788802241812,
-    "expiresAt": 1788803141812,
-    "hits": 2,
-    "ttlMs": 900000,
-    "tag": "project:cert_probe_D8.15"
-  },
-  {
-    "key": "cert_key",
-    "value": {
-      "val": 42
-    },
-    "sizeBytes": 10,
-    "createdAt": 1788802242001,
-    "expiresAt": 1788802302001,
-    "hits": 1,
-    "ttlMs": 60000,
-    "tag": "cert"
-  },
-  {
     "key": "ctx:master_grand_cycle_app:ddda98715647a136c812f782",
     "value": {
       "items": [
@@ -102,7 +12,7 @@
           "relevanceScore": 0.9,
           "content": "{\"id\":\"page_home\",\"name\":\"Home\",\"slug\":\"/\",\"nodeCount\":3,\"structure\":{\"type\":\"container\",\"name\":\"Container\",\"children\":[{\"type\":\"text\",\"name\":\"Text\",\"text\":\"Welcome to your app\"},{\"type\":\"button\",\"name\":\"Button\",\"text\":\"Click me\"}]}}",
           "tokenCount": 59,
-          "freshnessTimestamp": "2026-09-07T17:30:41.874Z",
+          "freshnessTimestamp": "2026-09-07T18:28:32.631Z",
           "derivationMethod": "ast_compression"
         },
         {
@@ -113,7 +23,7 @@
           "relevanceScore": 0.7,
           "content": "{\"totalTokens\":38,\"palette\":[{\"name\":\"Primary\",\"category\":\"color\",\"value\":\"#4F46E5\"},{\"name\":\"Secondary\",\"category\":\"color\",\"value\":\"#06B6D4\"},{\"name\":\"Accent\",\"category\":\"color\",\"value\":\"#8B5CF6\"},{\"name\":\"Background\",\"category\":\"color\",\"value\":\"#FFFFFF\"},{\"name\":\"Surface\",\"category\":\"color\",\"value\":\"#F8FAFC\"},{\"name\":\"Text\",\"category\":\"color\",\"value\":\"#0F172A\"},{\"name\":\"Muted\",\"category\":\"color\",\"value\":\"#64748B\"},{\"name\":\"Border\",\"category\":\"color\",\"value\":\"#E2E8F0\"},{\"name\":\"Success\",\"category\":\"color\",\"value\":\"#10B981\"},{\"name\":\"Warning\",\"category\":\"color\",\"value\":\"#F59E0B\"}]}",
           "tokenCount": 147,
-          "freshnessTimestamp": "2026-09-07T17:30:41.874Z",
+          "freshnessTimestamp": "2026-09-07T18:28:32.631Z",
           "derivationMethod": "theme_token_sample"
         }
       ],
@@ -128,9 +38,9 @@
       "formattedPromptContext": "<project_context>\n\n## PAGE CONTEXT\n- [project.pages[page_home]] (priority: 2, relevance: 0.9): {\"id\":\"page_home\",\"name\":\"Home\",\"slug\":\"/\",\"nodeCount\":3,\"structure\":{\"type\":\"container\",\"name\":\"Container\",\"children\":[{\"type\":\"text\",\"name\":\"Text\",\"text\":\"Welcome to your app\"},{\"type\":\"button\",\"name\":\"Button\",\"text\":\"Click me\"}]}}\n\n## THEME CONTEXT\n- [project.tokens] (priority: 2, relevance: 0.7): {\"totalTokens\":38,\"palette\":[{\"name\":\"Primary\",\"category\":\"color\",\"value\":\"#4F46E5\"},{\"name\":\"Secondary\",\"category\":\"color\",\"value\":\"#06B6D4\"},{\"name\":\"Accent\",\"category\":\"color\",\"value\":\"#8B5CF6\"},{\"name\":\"Background\",\"category\":\"color\",\"value\":\"#FFFFFF\"},{\"name\":\"Surface\",\"category\":\"color\",\"value\":\"#F8FAFC\"},{\"name\":\"Text\",\"category\":\"color\",\"value\":\"#0F172A\"},{\"name\":\"Muted\",\"category\":\"color\",\"value\":\"#64748B\"},{\"name\":\"Border\",\"category\":\"color\",\"value\":\"#E2E8F0\"},{\"name\":\"Success\",\"category\":\"color\",\"value\":\"#10B981\"},{\"name\":\"Warning\",\"category\":\"color\",\"value\":\"#F59E0B\"}]}\n\n</project_context>"
     },
     "sizeBytes": 2934,
-    "createdAt": 1788802241874,
-    "expiresAt": 1788803141874,
-    "hits": 2,
+    "createdAt": 1788805712632,
+    "expiresAt": 1788806612632,
+    "hits": 0,
     "ttlMs": 900000,
     "tag": "project:master_grand_cycle_app"
   }

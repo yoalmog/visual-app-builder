@@ -127,6 +127,12 @@ export const AIBuilderPanel: React.FC = () => {
     isCertifying,
     runPlatformCertification,
     loadPlatformCertification,
+    masterCertificationResult,
+    isMasterCertifying,
+    enterprisePlatformState,
+    runMasterPlatformCertification,
+    loadMasterPlatformCertification,
+    loadEnterprisePlatformState,
   } = useAIStore();
 
   const project = useBuilderStore((s) => s.project);
@@ -143,6 +149,7 @@ export const AIBuilderPanel: React.FC = () => {
   const [showHitl, setShowHitl] = useState(true);
   const [showGuardrails, setShowGuardrails] = useState(true);
   const [showOrchestration, setShowOrchestration] = useState(true);
+  const [showMasterCertification, setShowMasterCertification] = useState(false);
   const [showSecurity, setShowSecurity] = useState(true);
   const [showPerformance, setShowPerformance] = useState(true);
   const [showSwarm, setShowSwarm] = useState(true);
@@ -1869,6 +1876,98 @@ export const AIBuilderPanel: React.FC = () => {
             </div>
           )}
         </div>
+
+        {/* Enterprise Continuum & Master Platform Certification (Workstream E12) */}
+        <div
+          data-testid="ai-master-certification-panel"
+          className="bg-slate-900/90 border border-indigo-900/60 rounded-lg p-3 space-y-2.5 shadow-md shadow-indigo-950/20"
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1.5 font-semibold text-xs text-white">
+              <ShieldCheck className="w-4 h-4 text-indigo-400" />
+              <span>Full-Spectrum Master Certification (Phases 1–11 + E12)</span>
+              <span
+                data-testid="ai-master-certification-badge"
+                className={`text-[9px] px-1.5 py-0.5 rounded font-mono uppercase font-semibold border ${
+                  masterCertificationResult?.status === 'MASTER_CERTIFIED'
+                    ? 'bg-emerald-950 text-emerald-300 border-emerald-800'
+                    : isMasterCertifying
+                    ? 'bg-amber-950 text-amber-300 border-amber-800'
+                    : 'bg-indigo-950 text-indigo-300 border-indigo-800'
+                }`}
+              >
+                {isMasterCertifying
+                  ? 'Certifying All Phases...'
+                  : masterCertificationResult?.status === 'MASTER_CERTIFIED'
+                  ? 'Master Certified (100%)'
+                  : 'Ready for Audit'}
+              </span>
+            </div>
+            <div className="flex items-center gap-1">
+              <button
+                data-testid="ai-master-certification-toggle"
+                onClick={() => setShowMasterCertification(!showMasterCertification)}
+                className="text-slate-400 hover:text-white text-[11px]"
+              >
+                {showMasterCertification ? 'Hide' : 'Show'}
+              </button>
+            </div>
+          </div>
+
+          {showMasterCertification && (
+            <div className="space-y-2 text-[11px]">
+              <div className="flex items-center justify-between bg-black/40 px-2 py-1.5 rounded border border-indigo-950">
+                <span className="text-slate-300">Certified Continuum:</span>
+                <span className="font-mono text-indigo-400 font-bold text-[10px]">
+                  {masterCertificationResult
+                    ? `${masterCertificationResult.certifiedPhasesCount} / ${masterCertificationResult.totalPhasesAudited} Phases Certified (100%)`
+                    : 'Phases 1–11 + Workstream E12'}
+                </span>
+              </div>
+
+              {masterCertificationResult?.masterCryptographicSeal && (
+                <div className="bg-black/40 p-2 rounded border border-indigo-950 space-y-1 text-[9px]">
+                  <div className="flex items-center justify-between text-slate-400">
+                    <span>Master Cryptographic Seal:</span>
+                    <span className="font-mono text-[8px] text-indigo-300 truncate max-w-[170px]">
+                      {masterCertificationResult.masterCryptographicSeal}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-slate-400">
+                    <span>Verified Checkpoint:</span>
+                    <span className="font-mono text-[8px] text-emerald-400">
+                      {masterCertificationResult.checkpointId}
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              <div className="flex items-center justify-end gap-1.5 pt-1">
+                <button
+                  data-testid="load-master-certification-button"
+                  onClick={() => {
+                    loadMasterPlatformCertification();
+                    loadEnterprisePlatformState();
+                  }}
+                  className="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px]"
+                >
+                  Load Cached Seal
+                </button>
+                <button
+                  data-testid="run-master-certification-button"
+                  disabled={isMasterCertifying}
+                  onClick={async () => {
+                    await runMasterPlatformCertification();
+                  }}
+                  className="px-2.5 py-1 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-[10px] disabled:opacity-50"
+                >
+                  {isMasterCertifying ? 'Certifying All 11 Phases...' : 'Execute Full Master Certification'}
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+
 
 
 

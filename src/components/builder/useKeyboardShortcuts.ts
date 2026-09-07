@@ -35,6 +35,69 @@ export function useKeyboardShortcuts() {
       const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
       const cmdOrCtrl = isMac ? e.metaKey : e.ctrlKey;
 
+      // F1: Help Shortcuts
+      if (e.key === 'F1') {
+        e.preventDefault();
+        import('@/builder/commands/CommandRegistry').then((mod) => {
+          mod.defaultCommandRegistry.executeCommand('help.shortcuts');
+        });
+        return;
+      }
+
+      // New Project: Ctrl+N
+      if (cmdOrCtrl && !e.shiftKey && e.key.toLowerCase() === 'n') {
+        e.preventDefault();
+        import('@/builder/commands/CommandRegistry').then((mod) => {
+          mod.defaultCommandRegistry.executeCommand('file.new');
+        });
+        return;
+      }
+
+      // Open Project: Ctrl+O
+      if (cmdOrCtrl && !e.shiftKey && e.key.toLowerCase() === 'o') {
+        e.preventDefault();
+        import('@/builder/commands/CommandRegistry').then((mod) => {
+          mod.defaultCommandRegistry.executeCommand('file.open');
+        });
+        return;
+      }
+
+      // Save: Ctrl+S
+      if (cmdOrCtrl && !e.shiftKey && e.key.toLowerCase() === 's') {
+        e.preventDefault();
+        import('@/builder/commands/CommandRegistry').then((mod) => {
+          mod.defaultCommandRegistry.executeCommand('file.save');
+        });
+        return;
+      }
+
+      // Save As: Ctrl+Shift+S
+      if (cmdOrCtrl && e.shiftKey && e.key.toLowerCase() === 's') {
+        e.preventDefault();
+        import('@/builder/commands/CommandRegistry').then((mod) => {
+          mod.defaultCommandRegistry.executeCommand('file.saveAs');
+        });
+        return;
+      }
+
+      // Close Project: Ctrl+W
+      if (cmdOrCtrl && !e.shiftKey && e.key.toLowerCase() === 'w') {
+        e.preventDefault();
+        import('@/builder/commands/CommandRegistry').then((mod) => {
+          mod.defaultCommandRegistry.executeCommand('file.close');
+        });
+        return;
+      }
+
+      // Preview Runtime: Ctrl+P
+      if (cmdOrCtrl && !e.shiftKey && e.key.toLowerCase() === 'p') {
+        e.preventDefault();
+        import('@/builder/commands/CommandRegistry').then((mod) => {
+          mod.defaultCommandRegistry.executeCommand('run.preview');
+        });
+        return;
+      }
+
       // Undo: Ctrl+Z
       if (cmdOrCtrl && !e.shiftKey && e.key.toLowerCase() === 'z') {
         e.preventDefault();

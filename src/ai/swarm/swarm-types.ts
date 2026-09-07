@@ -11,6 +11,10 @@ export type AgentPersonaRole =
   | 'DATA_ENGINEER'
   | 'QA_SPECIALIST';
 
+export type EnterpriseAgentPersonaRole =
+  | AgentPersonaRole
+  | 'SITE_RELIABILITY_ENGINEER';
+
 export interface EvaluationDimension {
   name: string;
   weight: number; // 0.0 - 1.0
@@ -20,7 +24,7 @@ export interface EvaluationDimension {
 export interface AgentPersona {
   id: string;
   name: string;
-  role: AgentPersonaRole;
+  role: EnterpriseAgentPersonaRole;
   avatar: string;
   systemPrompt: string;
   specialty: string;
@@ -65,7 +69,7 @@ export interface SwarmPlanStep {
 export interface SwarmProposal {
   id: string;
   authorId: string;
-  authorRole: AgentPersonaRole;
+  authorRole: EnterpriseAgentPersonaRole;
   title: string;
   description: string;
   steps: SwarmPlanStep[];
@@ -78,7 +82,7 @@ export interface SwarmMessage {
   roundNumber: number;
   senderId: string;
   senderName: string;
-  senderRole: AgentPersonaRole;
+  senderRole: EnterpriseAgentPersonaRole;
   type: SwarmMessageType;
   targetProposalId?: string;
   content: string;
@@ -98,7 +102,7 @@ export type SwarmConsensusMode =
 export interface ConflictRecord {
   id: string;
   conflictType: 'SECURITY_VS_UX' | 'PERFORMANCE_VS_RELIABILITY' | 'SCHEMA_DIVERGENCE' | 'MUTUAL_EXCLUSION';
-  involvedPersonas: AgentPersonaRole[];
+  involvedPersonas: EnterpriseAgentPersonaRole[];
   conflictingProposals: string[];
   resolutionSummary: string;
   compromiseModifications: ProposedModification[];
@@ -119,7 +123,7 @@ export interface SwarmConsensusResult {
   winningProposal?: SwarmProposal;
   totalRounds: number;
   agreementRatioPercent: number; // 0 - 100
-  votesByPersona: Record<AgentPersonaRole, {
+  votesByPersona: Record<string, {
     decision: VoteDecision;
     score: number;
     weight: number;
@@ -138,6 +142,6 @@ export interface SwarmConfig {
   consensusMode?: SwarmConsensusMode;
   consensusThreshold?: number; // 0.5 - 1.0 (default 0.70)
   timeoutMs?: number;
-  enabledPersonas?: AgentPersonaRole[];
-  customPersonaWeights?: Partial<Record<AgentPersonaRole, number>>;
+  enabledPersonas?: EnterpriseAgentPersonaRole[];
+  customPersonaWeights?: Partial<Record<EnterpriseAgentPersonaRole, number>>;
 }

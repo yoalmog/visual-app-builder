@@ -78,6 +78,12 @@ import {
 } from '../swarm/swarm-types';
 import { PlatformCertificationEngine } from '../certification/PlatformCertificationEngine';
 import { PlatformCertificationReport } from '../certification/certification-types';
+import { FullPlatformCertificationEngine, MasterPlatformCertificationResult } from '../certification/FullPlatformCertificationEngine';
+import {
+  EnterprisePlatformRecoveryManager,
+  EnterprisePlatformState,
+  defaultEnterprisePlatformRecoveryManager,
+} from '../../builder/platform/enterprise/EnterprisePlatformRecoveryManager';
 
 export interface AIStoreState {
   isOpen: boolean;
@@ -151,6 +157,11 @@ export interface AIStoreState {
   certificationReport: PlatformCertificationReport | null;
   isCertifying: boolean;
 
+  // Master Full-Platform Certification (Workstream E12)
+  masterCertificationResult: MasterPlatformCertificationResult | null;
+  isMasterCertifying: boolean;
+  enterprisePlatformState: EnterprisePlatformState | null;
+
   // Actions
   setOpen: (open: boolean) => void;
   setMode: (mode: AIMode) => void;
@@ -191,6 +202,11 @@ export interface AIStoreState {
   // Platform Certification Actions (D8.20)
   runPlatformCertification: () => Promise<PlatformCertificationReport>;
   loadPlatformCertification: () => PlatformCertificationReport | null;
+
+  // Full-Spectrum Master Platform Certification Actions (E12)
+  runMasterPlatformCertification: () => Promise<MasterPlatformCertificationResult>;
+  loadMasterPlatformCertification: () => MasterPlatformCertificationResult | null;
+  loadEnterprisePlatformState: () => EnterprisePlatformState;
 
   // HITL Actions
   startHitlExecution: (params: { sessionId?: string; project: AppProject; plan?: IntelligentPlan; autonomyLevel?: AutonomyLevel }) => Promise<HITLExecutionResult>;
@@ -296,6 +312,9 @@ export const useAIStore = create<AIStoreState>((set, get) => ({
   activeSwarmPersonas: SwarmPersonaRegistry.getPersonas(),
   certificationReport: null,
   isCertifying: false,
+  masterCertificationResult: null,
+  isMasterCertifying: false,
+  enterprisePlatformState: null,
 
   setOpen: (open: boolean) => set({ isOpen: open }),
   setMode: (mode: AIMode) => set({ mode }),
@@ -579,6 +598,35 @@ export const useAIStore = create<AIStoreState>((set, get) => ({
       set({ certificationReport: report });
     }
     return report;
+  },
+
+  runMasterPlatformCertification: async () => {
+    set({ isMasterCertifying: true });
+    try {
+      const result = await FullPlatformCertificationEngine.executeFullCertification();
+      const recMgr = defaultEnterprisePlatformRecoveryManager;
+      const state = recMgr.loadState();
+      set({ masterCertificationResult: result, enterprisePlatformState: state, isMasterCertifying: false });
+      return result;
+    } catch (err) {
+      set({ isMasterCertifying: false });
+      throw err;
+    }
+  },
+
+  loadMasterPlatformCertification: () => {
+    const result = FullPlatformCertificationEngine.getLatestCertification();
+    if (result) {
+      set({ masterCertificationResult: result });
+    }
+    return result;
+  },
+
+  loadEnterprisePlatformState: () => {
+    const recMgr = defaultEnterprisePlatformRecoveryManager;
+    const state = recMgr.loadState();
+    set({ enterprisePlatformState: state });
+    return state;
   },
 
   startHitlExecution: async ({ sessionId, project, plan, autonomyLevel }) => {

@@ -1,7 +1,7 @@
 // src/ai/swarm/SwarmPersonaRegistry.ts
 // Persona definitions, specialty heuristics, and evaluation engines for D8.19 Swarm Consensus
 
-import { AgentPersona, AgentPersonaRole, SwarmProposal, ProposedModification, VoteDecision } from './swarm-types';
+import { AgentPersona, AgentPersonaRole, EnterpriseAgentPersonaRole, SwarmProposal, ProposedModification, VoteDecision } from './swarm-types';
 import { AppProject } from '../../builder/schema/project';
 import { MultiAgentSecurityAuditor } from '../security/MultiAgentSecurityAuditor';
 
@@ -16,7 +16,7 @@ export interface PersonaEvaluationResult {
 }
 
 export class SwarmPersonaRegistry {
-  private static personas: Map<AgentPersonaRole, AgentPersona> = new Map();
+  private static personas: Map<EnterpriseAgentPersonaRole, AgentPersona> = new Map();
   private static isInitialized = false;
 
   public static initialize(): void {
@@ -121,7 +121,7 @@ export class SwarmPersonaRegistry {
     return result;
   }
 
-  public static getPersona(role: AgentPersonaRole): AgentPersona | undefined {
+  public static getPersona(role: EnterpriseAgentPersonaRole): AgentPersona | undefined {
     this.initialize();
     return this.personas.get(role);
   }
@@ -129,6 +129,33 @@ export class SwarmPersonaRegistry {
   public static registerPersona(persona: AgentPersona): void {
     this.initialize();
     this.personas.set(persona.role, persona);
+  }
+
+  public static registerEnterpriseSREPersona(): AgentPersona {
+    this.initialize();
+    const sre: AgentPersona = {
+      id: 'persona_sre',
+      name: 'Vikram Patel',
+      role: 'SITE_RELIABILITY_ENGINEER',
+      avatar: '⚡',
+      specialty: 'Infrastructure Scalability, High Availability, Zero-Downtime Deployments & SLO Adherence',
+      weight: 3.0,
+      hasVetoAuthority: false,
+      systemPrompt: 'You are the Principal Site Reliability Engineer. Your mandate is production resilience, canary thresholds, multi-region replication lag, cache saturation, and zero-downtime rolling updates.',
+      evaluationDimensions: [
+        { name: 'Availability & SLO', weight: 0.40, description: 'High-availability failover and zero-downtime deployment safety' },
+        { name: 'Resource Scalability', weight: 0.35, description: 'Replication lag limits, cache hit efficiency, and worker queue health' },
+        { name: 'Canary Resilience', weight: 0.25, description: 'Safe traffic increments and automated rollback triggers' },
+      ],
+    };
+    this.personas.set('SITE_RELIABILITY_ENGINEER', sre);
+    return sre;
+  }
+
+  public static getEnterprisePersonas(): AgentPersona[] {
+    this.initialize();
+    this.registerEnterpriseSREPersona();
+    return this.getPersonas();
   }
 
   public static reset(): void {
@@ -142,7 +169,7 @@ export class SwarmPersonaRegistry {
    * Analyzes proposal steps and modifications against persona specialties.
    */
   public static evaluateProposal(
-    role: AgentPersonaRole,
+    role: EnterpriseAgentPersonaRole,
     proposal: SwarmProposal,
     project: AppProject
   ): PersonaEvaluationResult {
@@ -163,6 +190,8 @@ export class SwarmPersonaRegistry {
         return this.evaluateAsDataEngineer(proposal, project);
       case 'QA_SPECIALIST':
         return this.evaluateAsQASpecialist(proposal, project);
+      case 'SITE_RELIABILITY_ENGINEER':
+        return this.evaluateAsSiteReliabilityEngineer(proposal, project);
       default:
         return {
           score: 80,
@@ -219,7 +248,7 @@ export class SwarmPersonaRegistry {
         ],
         vetoTriggered: true,
         vetoReason: hasEval
-          ? 'Security Officer Veto: Malicious dynamic code or Function pattern detected in plan payload.'
+          ? 'Security Officer Veto: Malicious dynamic eval or Function pattern detected in plan payload.'
           : 'Security Officer Veto: Malicious or prohibited code pattern detected in plan payload.',
       };
     }
@@ -422,4 +451,58 @@ export class SwarmPersonaRegistry {
       suggestedModifications,
     };
   }
+
+  private static evaluateAsSiteReliabilityEngineer(
+    proposal: SwarmProposal,
+    _project: AppProject
+  ): PersonaEvaluationResult {
+    const critiques: string[] = [];
+    const endorsements: string[] = [];
+    const suggestedModifications: ProposedModification[] = [];
+    let score = 91;
+
+    const rawStr = JSON.stringify(proposal);
+    const mentionsDeployment = /deploy|release|canary|traffic|rollout|production/i.test(rawStr);
+    const hasCanaryCheck = /canary|rollback|health_check|stepPercentage/i.test(rawStr);
+
+    if (mentionsDeployment && !hasCanaryCheck) {
+      score -= 25;
+      critiques.push('Production deployment or traffic mutation detected without explicit canary stepping or automated rollback triggers.');
+      suggestedModifications.push({
+        id: 'sre_mod_canary_guard',
+        targetEntity: 'deployment_config',
+        action: 'WRAP',
+        description: 'Enforce canary rollout with max 20% traffic steps and automated health check triggers',
+        rationale: 'Prevent single-point-of-failure deployment outages and safeguard production SLOs',
+        securityImpact: 'SAFE',
+      });
+    } else {
+      endorsements.push('Infrastructure reliability parameters and SLO guardrails verified.');
+    }
+
+    const mentionsHighThroughput = /bulk|stream|high_load|infinite|unbounded/i.test(rawStr);
+    if (mentionsHighThroughput) {
+      score -= 15;
+      critiques.push('Unbounded data throughput detected; recommend adding cache buffering and worker queue concurrency limits.');
+      suggestedModifications.push({
+        id: 'sre_mod_cache_limit',
+        targetEntity: 'worker_scaling',
+        action: 'VALIDATE',
+        description: 'Attach distributed cache layer and enforce worker queue timeout thresholds',
+        rationale: 'Prevent database replica lag spikes during high burst traffic',
+        securityImpact: 'SAFE',
+      });
+    } else {
+      endorsements.push('Resource load and operational capacity within acceptable thresholds.');
+    }
+
+    return {
+      score: Math.max(10, score),
+      decision: score >= 70 ? 'APPROVE' : 'CONDITIONAL',
+      critiques,
+      endorsements,
+      suggestedModifications,
+    };
+  }
 }
+

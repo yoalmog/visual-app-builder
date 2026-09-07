@@ -482,7 +482,12 @@ export function loadProjectFromStorage(projectId: string): AppProject | null {
     if (!data) return null;
 
     const parsed = JSON.parse(data);
-    const migrated = migrateProject(parsed);
+    const migrated =
+      parsed?.version >= 9 || parsed?.schemaVersion >= 9
+        ? migrateProjectToV9(parsed)
+        : parsed?.version >= 8
+        ? migrateProjectToV8(parsed)
+        : migrateProject(parsed);
     const validated = AppProjectSchema.safeParse(migrated);
     if (validated.success) {
       return validated.data as AppProject;
