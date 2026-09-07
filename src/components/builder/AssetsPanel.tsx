@@ -127,6 +127,7 @@ export const AssetsPanel: React.FC = () => {
                 title={`${asset.name}\nClick to apply to selected component`}
               >
                 <div className="w-full h-20 bg-slate-900 overflow-hidden relative flex items-center justify-center">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={asset.src || asset.url}
                     alt={asset.name}

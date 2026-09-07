@@ -326,6 +326,7 @@ export const ComponentRenderer: React.FC<ComponentRendererProps> = ({
         }
 
         return (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={String(resolvedSrc)}
             alt={resolvedAlt}

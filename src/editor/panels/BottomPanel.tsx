@@ -471,6 +471,7 @@ export const BottomPanel: React.FC = () => {
                     }}
                     className="group relative h-24 rounded-lg overflow-hidden border border-[#23293D] hover:border-indigo-500 cursor-pointer transition-all"
                   >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={url} alt={`Asset ${i}`} className="w-full h-full object-cover" />
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white transition-opacity font-medium text-[11px]">
                       Copy URL

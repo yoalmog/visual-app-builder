@@ -153,6 +153,7 @@ export const RenderComponent: React.FC<RenderComponentProps> = ({ nodeId, isPrev
 
       case 'image':
         return (
+          // eslint-disable-next-line @next/next/no-img-element
           <img
             src={interpolatedProps.src || 'https://via.placeholder.com/400x200'}
             alt={interpolatedProps.alt || 'Image'}
@@ -163,6 +164,7 @@ export const RenderComponent: React.FC<RenderComponentProps> = ({ nodeId, isPrev
       case 'avatar':
         return (
           <div className="relative flex items-center justify-center overflow-hidden rounded-full bg-slate-800">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={interpolatedProps.src || 'https://via.placeholder.com/80'}
               alt={interpolatedProps.name || 'Avatar'}
