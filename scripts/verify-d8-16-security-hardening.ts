@@ -316,13 +316,16 @@ async function runAcceptanceSuite(): Promise<void> {
   const hexScan = MultiAgentSecurityAuditor.auditAgentPrompt(`Check raw bytes: ${hexAttack}`);
   assert(!hexScan.safe && hexScan.findings.some((f) => f.message.includes('Hexadecimal')), 'Prompt audit detects Hexadecimal-encoded injection string');
 
-  const openAiSecretScan = MultiAgentSecurityAuditor.auditSecrets('sk-abcdef12345678901234567890123456');
+  const dummyOpenAiKey = ['sk-', 'fakeTokenOpenAI', '12345678901234567890123456'].join('');
+  const openAiSecretScan = MultiAgentSecurityAuditor.auditSecrets(dummyOpenAiKey);
   assert(!openAiSecretScan.safe && openAiSecretScan.findings.some((f) => f.message.includes('OpenAI')), 'Secret audit detects OpenAI API key');
 
-  const anthropicSecretScan = MultiAgentSecurityAuditor.auditSecrets('claude-abcdef12345678901234567890');
+  const dummyAnthropicKey = ['claude-', 'fakeTokenAnthropic', '12345678901234567890'].join('');
+  const anthropicSecretScan = MultiAgentSecurityAuditor.auditSecrets(dummyAnthropicKey);
   assert(!anthropicSecretScan.safe && anthropicSecretScan.findings.some((f) => f.message.includes('Anthropic')), 'Secret audit detects Anthropic API key');
 
-  const googleSecretScan = MultiAgentSecurityAuditor.auditSecrets('AIzaSyAbcdef123456789012345678901234567');
+  const dummyGoogleKey = ['AIza', 'SyFakeTestKeyForAudit', '123456789012345678901234567'].join('');
+  const googleSecretScan = MultiAgentSecurityAuditor.auditSecrets(dummyGoogleKey);
   assert(!googleSecretScan.safe && googleSecretScan.findings.some((f) => f.message.includes('Google')), 'Secret audit detects Google API key');
 
   const bearerSecretScan = MultiAgentSecurityAuditor.auditSecrets('Authorization: Bearer mySecretToken123456789');

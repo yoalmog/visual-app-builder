@@ -1,13 +1,13 @@
 {
   "policies": [
     {
-      "policyId": "dgp-cert_probe_D8.14-1788800442699",
+      "policyId": "dgp-cert_probe_D8.14-1788802241803",
       "projectId": "cert_probe_D8.14",
-      "synthesizedAt": "2026-09-07T17:00:42.699Z",
+      "synthesizedAt": "2026-09-07T17:30:41.803Z",
       "riskTier": "LOW",
       "rules": [
         {
-          "ruleId": "rule-sec-eval-1788800442699-1",
+          "ruleId": "rule-sec-eval-1788802241803-1",
           "name": "No Arbitrary Eval or Dynamic Code",
           "description": "Strict prohibition against dynamic code eval or Function constructors.",
           "category": "SECURITY_INVARIANT",
@@ -18,7 +18,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-inj-1788800442699-2",
+          "ruleId": "rule-sec-inj-1788802241803-2",
           "name": "Prompt Injection Defense Invariant",
           "description": "Rejects instructions containing adversarial prompt injection signatures.",
           "category": "SECURITY_INVARIANT",
@@ -29,7 +29,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-cred-1788800442699-3",
+          "ruleId": "rule-sec-cred-1788802241803-3",
           "name": "Zero Credential Leakage Boundary",
           "description": "Prevents leakage of sensitive API keys, tokens, or credentials in payload.",
           "category": "SECURITY_INVARIANT",
@@ -40,7 +40,7 @@
           "condition": "CREDENTIAL_LEAKAGE"
         },
         {
-          "ruleId": "rule-perm-proj-1788800442699-4",
+          "ruleId": "rule-perm-proj-1788802241803-4",
           "name": "Strict Project Isolation Boundary",
           "description": "Cross-project mutations or entity access are forbidden.",
           "category": "PERMISSION_BOUNDARY",
@@ -52,7 +52,7 @@
           "threshold": 0
         },
         {
-          "ruleId": "rule-rate-mut-1788800442699-5",
+          "ruleId": "rule-rate-mut-1788802241803-5",
           "name": "Mutation Budget Ceiling Gate",
           "description": "Limits total atomic mutations in single plan to 25.",
           "category": "RATE_AND_BUDGET",
@@ -64,7 +64,7 @@
           "threshold": 25
         },
         {
-          "ruleId": "rule-rate-live-1788800442699-6",
+          "ruleId": "rule-rate-live-1788802241803-6",
           "name": "Live Execution Watchdog Throttling",
           "description": "Throttles or pauses runaway loops exceeding operational cadence.",
           "category": "RATE_AND_BUDGET",
@@ -76,7 +76,7 @@
           "threshold": 10
         },
         {
-          "ruleId": "rule-blast-1788800442699-7",
+          "ruleId": "rule-blast-1788802241803-7",
           "name": "Blast Radius Containment Guard",
           "description": "Blocks mutations spilling into unrelated components or global scopes.",
           "category": "BLAST_RADIUS",
@@ -87,7 +87,7 @@
           "condition": "BLAST_RADIUS_BREACH"
         },
         {
-          "ruleId": "rule-schema-tamper-1788800442699-8",
+          "ruleId": "rule-schema-tamper-1788802241803-8",
           "name": "Root Schema Preservation Invariant",
           "description": "Protects root component hierarchy and default routes from destructive removal.",
           "category": "SCHEMA_PRESERVATION",
@@ -98,7 +98,7 @@
           "condition": "SCHEMA_TAMPERING"
         },
         {
-          "ruleId": "rule-data-crit-1788800442699-9",
+          "ruleId": "rule-data-crit-1788802241803-9",
           "name": "Critical Data Collection Shield",
           "description": "Guards authentication, payment, and security collections from unauthorized modification.",
           "category": "DATA_INTEGRITY",
@@ -128,13 +128,13 @@
       "version": 1
     },
     {
-      "policyId": "dgp-cert_probe_D8.15-1788800442715",
+      "policyId": "dgp-cert_probe_D8.15-1788802241812",
       "projectId": "cert_probe_D8.15",
-      "synthesizedAt": "2026-09-07T17:00:42.715Z",
+      "synthesizedAt": "2026-09-07T17:30:41.812Z",
       "riskTier": "LOW",
       "rules": [
         {
-          "ruleId": "rule-sec-eval-1788800442715-1",
+          "ruleId": "rule-sec-eval-1788802241812-1",
           "name": "No Arbitrary Eval or Dynamic Code",
           "description": "Strict prohibition against dynamic code eval or Function constructors.",
           "category": "SECURITY_INVARIANT",
@@ -145,7 +145,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-inj-1788800442715-2",
+          "ruleId": "rule-sec-inj-1788802241812-2",
           "name": "Prompt Injection Defense Invariant",
           "description": "Rejects instructions containing adversarial prompt injection signatures.",
           "category": "SECURITY_INVARIANT",
@@ -156,7 +156,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-cred-1788800442715-3",
+          "ruleId": "rule-sec-cred-1788802241812-3",
           "name": "Zero Credential Leakage Boundary",
           "description": "Prevents leakage of sensitive API keys, tokens, or credentials in payload.",
           "category": "SECURITY_INVARIANT",
@@ -167,7 +167,7 @@
           "condition": "CREDENTIAL_LEAKAGE"
         },
         {
-          "ruleId": "rule-perm-proj-1788800442715-4",
+          "ruleId": "rule-perm-proj-1788802241812-4",
           "name": "Strict Project Isolation Boundary",
           "description": "Cross-project mutations or entity access are forbidden.",
           "category": "PERMISSION_BOUNDARY",
@@ -179,7 +179,7 @@
           "threshold": 0
         },
         {
-          "ruleId": "rule-rate-mut-1788800442715-5",
+          "ruleId": "rule-rate-mut-1788802241812-5",
           "name": "Mutation Budget Ceiling Gate",
           "description": "Limits total atomic mutations in single plan to 25.",
           "category": "RATE_AND_BUDGET",
@@ -191,7 +191,7 @@
           "threshold": 25
         },
         {
-          "ruleId": "rule-rate-live-1788800442715-6",
+          "ruleId": "rule-rate-live-1788802241812-6",
           "name": "Live Execution Watchdog Throttling",
           "description": "Throttles or pauses runaway loops exceeding operational cadence.",
           "category": "RATE_AND_BUDGET",
@@ -203,7 +203,7 @@
           "threshold": 10
         },
         {
-          "ruleId": "rule-blast-1788800442715-7",
+          "ruleId": "rule-blast-1788802241812-7",
           "name": "Blast Radius Containment Guard",
           "description": "Blocks mutations spilling into unrelated components or global scopes.",
           "category": "BLAST_RADIUS",
@@ -214,7 +214,7 @@
           "condition": "BLAST_RADIUS_BREACH"
         },
         {
-          "ruleId": "rule-schema-tamper-1788800442715-8",
+          "ruleId": "rule-schema-tamper-1788802241812-8",
           "name": "Root Schema Preservation Invariant",
           "description": "Protects root component hierarchy and default routes from destructive removal.",
           "category": "SCHEMA_PRESERVATION",
@@ -225,7 +225,7 @@
           "condition": "SCHEMA_TAMPERING"
         },
         {
-          "ruleId": "rule-data-crit-1788800442715-9",
+          "ruleId": "rule-data-crit-1788802241812-9",
           "name": "Critical Data Collection Shield",
           "description": "Guards authentication, payment, and security collections from unauthorized modification.",
           "category": "DATA_INTEGRITY",
@@ -256,13 +256,13 @@
       "version": 1
     },
     {
-      "policyId": "dgp-dummy_guard_proj-1788800442773",
+      "policyId": "dgp-dummy_guard_proj-1788802241864",
       "projectId": "dummy_guard_proj",
-      "synthesizedAt": "2026-09-07T17:00:42.774Z",
+      "synthesizedAt": "2026-09-07T17:30:41.864Z",
       "riskTier": "LOW",
       "rules": [
         {
-          "ruleId": "rule-sec-eval-1788800442774-1",
+          "ruleId": "rule-sec-eval-1788802241864-1",
           "name": "No Arbitrary Eval or Dynamic Code",
           "description": "Strict prohibition against dynamic code eval or Function constructors.",
           "category": "SECURITY_INVARIANT",
@@ -273,7 +273,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-inj-1788800442774-2",
+          "ruleId": "rule-sec-inj-1788802241864-2",
           "name": "Prompt Injection Defense Invariant",
           "description": "Rejects instructions containing adversarial prompt injection signatures.",
           "category": "SECURITY_INVARIANT",
@@ -284,7 +284,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-cred-1788800442774-3",
+          "ruleId": "rule-sec-cred-1788802241864-3",
           "name": "Zero Credential Leakage Boundary",
           "description": "Prevents leakage of sensitive API keys, tokens, or credentials in payload.",
           "category": "SECURITY_INVARIANT",
@@ -295,7 +295,7 @@
           "condition": "CREDENTIAL_LEAKAGE"
         },
         {
-          "ruleId": "rule-perm-proj-1788800442774-4",
+          "ruleId": "rule-perm-proj-1788802241864-4",
           "name": "Strict Project Isolation Boundary",
           "description": "Cross-project mutations or entity access are forbidden.",
           "category": "PERMISSION_BOUNDARY",
@@ -307,7 +307,7 @@
           "threshold": 0
         },
         {
-          "ruleId": "rule-rate-mut-1788800442774-5",
+          "ruleId": "rule-rate-mut-1788802241864-5",
           "name": "Mutation Budget Ceiling Gate",
           "description": "Limits total atomic mutations in single plan to 25.",
           "category": "RATE_AND_BUDGET",
@@ -319,7 +319,7 @@
           "threshold": 25
         },
         {
-          "ruleId": "rule-rate-live-1788800442774-6",
+          "ruleId": "rule-rate-live-1788802241864-6",
           "name": "Live Execution Watchdog Throttling",
           "description": "Throttles or pauses runaway loops exceeding operational cadence.",
           "category": "RATE_AND_BUDGET",
@@ -331,7 +331,7 @@
           "threshold": 10
         },
         {
-          "ruleId": "rule-blast-1788800442774-7",
+          "ruleId": "rule-blast-1788802241864-7",
           "name": "Blast Radius Containment Guard",
           "description": "Blocks mutations spilling into unrelated components or global scopes.",
           "category": "BLAST_RADIUS",
@@ -342,7 +342,7 @@
           "condition": "BLAST_RADIUS_BREACH"
         },
         {
-          "ruleId": "rule-schema-tamper-1788800442774-8",
+          "ruleId": "rule-schema-tamper-1788802241864-8",
           "name": "Root Schema Preservation Invariant",
           "description": "Protects root component hierarchy and default routes from destructive removal.",
           "category": "SCHEMA_PRESERVATION",
@@ -353,7 +353,7 @@
           "condition": "SCHEMA_TAMPERING"
         },
         {
-          "ruleId": "rule-data-crit-1788800442774-9",
+          "ruleId": "rule-data-crit-1788802241864-9",
           "name": "Critical Data Collection Shield",
           "description": "Guards authentication, payment, and security collections from unauthorized modification.",
           "category": "DATA_INTEGRITY",
@@ -383,13 +383,13 @@
       "version": 1
     },
     {
-      "policyId": "dgp-master_grand_cycle_app-1788800442790",
+      "policyId": "dgp-master_grand_cycle_app-1788802241874",
       "projectId": "master_grand_cycle_app",
-      "synthesizedAt": "2026-09-07T17:00:42.790Z",
+      "synthesizedAt": "2026-09-07T17:30:41.874Z",
       "riskTier": "LOW",
       "rules": [
         {
-          "ruleId": "rule-sec-eval-1788800442790-1",
+          "ruleId": "rule-sec-eval-1788802241874-1",
           "name": "No Arbitrary Eval or Dynamic Code",
           "description": "Strict prohibition against dynamic code eval or Function constructors.",
           "category": "SECURITY_INVARIANT",
@@ -400,7 +400,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-inj-1788800442790-2",
+          "ruleId": "rule-sec-inj-1788802241874-2",
           "name": "Prompt Injection Defense Invariant",
           "description": "Rejects instructions containing adversarial prompt injection signatures.",
           "category": "SECURITY_INVARIANT",
@@ -411,7 +411,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-cred-1788800442790-3",
+          "ruleId": "rule-sec-cred-1788802241874-3",
           "name": "Zero Credential Leakage Boundary",
           "description": "Prevents leakage of sensitive API keys, tokens, or credentials in payload.",
           "category": "SECURITY_INVARIANT",
@@ -422,7 +422,7 @@
           "condition": "CREDENTIAL_LEAKAGE"
         },
         {
-          "ruleId": "rule-perm-proj-1788800442790-4",
+          "ruleId": "rule-perm-proj-1788802241874-4",
           "name": "Strict Project Isolation Boundary",
           "description": "Cross-project mutations or entity access are forbidden.",
           "category": "PERMISSION_BOUNDARY",
@@ -434,7 +434,7 @@
           "threshold": 0
         },
         {
-          "ruleId": "rule-rate-mut-1788800442790-5",
+          "ruleId": "rule-rate-mut-1788802241874-5",
           "name": "Mutation Budget Ceiling Gate",
           "description": "Limits total atomic mutations in single plan to 25.",
           "category": "RATE_AND_BUDGET",
@@ -446,7 +446,7 @@
           "threshold": 25
         },
         {
-          "ruleId": "rule-rate-live-1788800442790-6",
+          "ruleId": "rule-rate-live-1788802241874-6",
           "name": "Live Execution Watchdog Throttling",
           "description": "Throttles or pauses runaway loops exceeding operational cadence.",
           "category": "RATE_AND_BUDGET",
@@ -458,7 +458,7 @@
           "threshold": 10
         },
         {
-          "ruleId": "rule-blast-1788800442790-7",
+          "ruleId": "rule-blast-1788802241874-7",
           "name": "Blast Radius Containment Guard",
           "description": "Blocks mutations spilling into unrelated components or global scopes.",
           "category": "BLAST_RADIUS",
@@ -469,7 +469,7 @@
           "condition": "BLAST_RADIUS_BREACH"
         },
         {
-          "ruleId": "rule-schema-tamper-1788800442790-8",
+          "ruleId": "rule-schema-tamper-1788802241874-8",
           "name": "Root Schema Preservation Invariant",
           "description": "Protects root component hierarchy and default routes from destructive removal.",
           "category": "SCHEMA_PRESERVATION",
@@ -480,7 +480,7 @@
           "condition": "SCHEMA_TAMPERING"
         },
         {
-          "ruleId": "rule-data-crit-1788800442790-9",
+          "ruleId": "rule-data-crit-1788802241874-9",
           "name": "Critical Data Collection Shield",
           "description": "Guards authentication, payment, and security collections from unauthorized modification.",
           "category": "DATA_INTEGRITY",
@@ -511,13 +511,13 @@
       "version": 1
     },
     {
-      "policyId": "dgp-cert_probe_D8.14-1788800442821",
+      "policyId": "dgp-cert_probe_D8.14-1788802241903",
       "projectId": "cert_probe_D8.14",
-      "synthesizedAt": "2026-09-07T17:00:42.821Z",
+      "synthesizedAt": "2026-09-07T17:30:41.903Z",
       "riskTier": "LOW",
       "rules": [
         {
-          "ruleId": "rule-sec-eval-1788800442821-1",
+          "ruleId": "rule-sec-eval-1788802241903-1",
           "name": "No Arbitrary Eval or Dynamic Code",
           "description": "Strict prohibition against dynamic code eval or Function constructors.",
           "category": "SECURITY_INVARIANT",
@@ -528,7 +528,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-inj-1788800442821-2",
+          "ruleId": "rule-sec-inj-1788802241903-2",
           "name": "Prompt Injection Defense Invariant",
           "description": "Rejects instructions containing adversarial prompt injection signatures.",
           "category": "SECURITY_INVARIANT",
@@ -539,7 +539,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-cred-1788800442821-3",
+          "ruleId": "rule-sec-cred-1788802241903-3",
           "name": "Zero Credential Leakage Boundary",
           "description": "Prevents leakage of sensitive API keys, tokens, or credentials in payload.",
           "category": "SECURITY_INVARIANT",
@@ -550,7 +550,7 @@
           "condition": "CREDENTIAL_LEAKAGE"
         },
         {
-          "ruleId": "rule-perm-proj-1788800442821-4",
+          "ruleId": "rule-perm-proj-1788802241903-4",
           "name": "Strict Project Isolation Boundary",
           "description": "Cross-project mutations or entity access are forbidden.",
           "category": "PERMISSION_BOUNDARY",
@@ -562,7 +562,7 @@
           "threshold": 0
         },
         {
-          "ruleId": "rule-rate-mut-1788800442821-5",
+          "ruleId": "rule-rate-mut-1788802241903-5",
           "name": "Mutation Budget Ceiling Gate",
           "description": "Limits total atomic mutations in single plan to 25.",
           "category": "RATE_AND_BUDGET",
@@ -574,7 +574,7 @@
           "threshold": 25
         },
         {
-          "ruleId": "rule-rate-live-1788800442821-6",
+          "ruleId": "rule-rate-live-1788802241903-6",
           "name": "Live Execution Watchdog Throttling",
           "description": "Throttles or pauses runaway loops exceeding operational cadence.",
           "category": "RATE_AND_BUDGET",
@@ -586,7 +586,7 @@
           "threshold": 10
         },
         {
-          "ruleId": "rule-blast-1788800442821-7",
+          "ruleId": "rule-blast-1788802241903-7",
           "name": "Blast Radius Containment Guard",
           "description": "Blocks mutations spilling into unrelated components or global scopes.",
           "category": "BLAST_RADIUS",
@@ -597,7 +597,7 @@
           "condition": "BLAST_RADIUS_BREACH"
         },
         {
-          "ruleId": "rule-schema-tamper-1788800442821-8",
+          "ruleId": "rule-schema-tamper-1788802241903-8",
           "name": "Root Schema Preservation Invariant",
           "description": "Protects root component hierarchy and default routes from destructive removal.",
           "category": "SCHEMA_PRESERVATION",
@@ -608,7 +608,7 @@
           "condition": "SCHEMA_TAMPERING"
         },
         {
-          "ruleId": "rule-data-crit-1788800442821-9",
+          "ruleId": "rule-data-crit-1788802241903-9",
           "name": "Critical Data Collection Shield",
           "description": "Guards authentication, payment, and security collections from unauthorized modification.",
           "category": "DATA_INTEGRITY",
@@ -638,13 +638,13 @@
       "version": 1
     },
     {
-      "policyId": "dgp-cert_probe_D8.15-1788800442825",
+      "policyId": "dgp-cert_probe_D8.15-1788802241907",
       "projectId": "cert_probe_D8.15",
-      "synthesizedAt": "2026-09-07T17:00:42.825Z",
+      "synthesizedAt": "2026-09-07T17:30:41.907Z",
       "riskTier": "LOW",
       "rules": [
         {
-          "ruleId": "rule-sec-eval-1788800442825-1",
+          "ruleId": "rule-sec-eval-1788802241907-1",
           "name": "No Arbitrary Eval or Dynamic Code",
           "description": "Strict prohibition against dynamic code eval or Function constructors.",
           "category": "SECURITY_INVARIANT",
@@ -655,7 +655,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-inj-1788800442825-2",
+          "ruleId": "rule-sec-inj-1788802241907-2",
           "name": "Prompt Injection Defense Invariant",
           "description": "Rejects instructions containing adversarial prompt injection signatures.",
           "category": "SECURITY_INVARIANT",
@@ -666,7 +666,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-cred-1788800442825-3",
+          "ruleId": "rule-sec-cred-1788802241907-3",
           "name": "Zero Credential Leakage Boundary",
           "description": "Prevents leakage of sensitive API keys, tokens, or credentials in payload.",
           "category": "SECURITY_INVARIANT",
@@ -677,7 +677,7 @@
           "condition": "CREDENTIAL_LEAKAGE"
         },
         {
-          "ruleId": "rule-perm-proj-1788800442825-4",
+          "ruleId": "rule-perm-proj-1788802241907-4",
           "name": "Strict Project Isolation Boundary",
           "description": "Cross-project mutations or entity access are forbidden.",
           "category": "PERMISSION_BOUNDARY",
@@ -689,7 +689,7 @@
           "threshold": 0
         },
         {
-          "ruleId": "rule-rate-mut-1788800442825-5",
+          "ruleId": "rule-rate-mut-1788802241907-5",
           "name": "Mutation Budget Ceiling Gate",
           "description": "Limits total atomic mutations in single plan to 25.",
           "category": "RATE_AND_BUDGET",
@@ -701,7 +701,7 @@
           "threshold": 25
         },
         {
-          "ruleId": "rule-rate-live-1788800442825-6",
+          "ruleId": "rule-rate-live-1788802241907-6",
           "name": "Live Execution Watchdog Throttling",
           "description": "Throttles or pauses runaway loops exceeding operational cadence.",
           "category": "RATE_AND_BUDGET",
@@ -713,7 +713,7 @@
           "threshold": 10
         },
         {
-          "ruleId": "rule-blast-1788800442825-7",
+          "ruleId": "rule-blast-1788802241907-7",
           "name": "Blast Radius Containment Guard",
           "description": "Blocks mutations spilling into unrelated components or global scopes.",
           "category": "BLAST_RADIUS",
@@ -724,7 +724,7 @@
           "condition": "BLAST_RADIUS_BREACH"
         },
         {
-          "ruleId": "rule-schema-tamper-1788800442825-8",
+          "ruleId": "rule-schema-tamper-1788802241907-8",
           "name": "Root Schema Preservation Invariant",
           "description": "Protects root component hierarchy and default routes from destructive removal.",
           "category": "SCHEMA_PRESERVATION",
@@ -735,7 +735,7 @@
           "condition": "SCHEMA_TAMPERING"
         },
         {
-          "ruleId": "rule-data-crit-1788800442825-9",
+          "ruleId": "rule-data-crit-1788802241907-9",
           "name": "Critical Data Collection Shield",
           "description": "Guards authentication, payment, and security collections from unauthorized modification.",
           "category": "DATA_INTEGRITY",
@@ -766,13 +766,13 @@
       "version": 1
     },
     {
-      "policyId": "dgp-master_grand_cycle_app-1788800442845",
+      "policyId": "dgp-master_grand_cycle_app-1788802241927",
       "projectId": "master_grand_cycle_app",
-      "synthesizedAt": "2026-09-07T17:00:42.845Z",
+      "synthesizedAt": "2026-09-07T17:30:41.927Z",
       "riskTier": "LOW",
       "rules": [
         {
-          "ruleId": "rule-sec-eval-1788800442845-1",
+          "ruleId": "rule-sec-eval-1788802241927-1",
           "name": "No Arbitrary Eval or Dynamic Code",
           "description": "Strict prohibition against dynamic code eval or Function constructors.",
           "category": "SECURITY_INVARIANT",
@@ -783,7 +783,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-inj-1788800442845-2",
+          "ruleId": "rule-sec-inj-1788802241927-2",
           "name": "Prompt Injection Defense Invariant",
           "description": "Rejects instructions containing adversarial prompt injection signatures.",
           "category": "SECURITY_INVARIANT",
@@ -794,7 +794,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-cred-1788800442845-3",
+          "ruleId": "rule-sec-cred-1788802241927-3",
           "name": "Zero Credential Leakage Boundary",
           "description": "Prevents leakage of sensitive API keys, tokens, or credentials in payload.",
           "category": "SECURITY_INVARIANT",
@@ -805,7 +805,7 @@
           "condition": "CREDENTIAL_LEAKAGE"
         },
         {
-          "ruleId": "rule-perm-proj-1788800442845-4",
+          "ruleId": "rule-perm-proj-1788802241927-4",
           "name": "Strict Project Isolation Boundary",
           "description": "Cross-project mutations or entity access are forbidden.",
           "category": "PERMISSION_BOUNDARY",
@@ -817,7 +817,7 @@
           "threshold": 0
         },
         {
-          "ruleId": "rule-rate-mut-1788800442845-5",
+          "ruleId": "rule-rate-mut-1788802241927-5",
           "name": "Mutation Budget Ceiling Gate",
           "description": "Limits total atomic mutations in single plan to 25.",
           "category": "RATE_AND_BUDGET",
@@ -829,7 +829,7 @@
           "threshold": 25
         },
         {
-          "ruleId": "rule-rate-live-1788800442845-6",
+          "ruleId": "rule-rate-live-1788802241927-6",
           "name": "Live Execution Watchdog Throttling",
           "description": "Throttles or pauses runaway loops exceeding operational cadence.",
           "category": "RATE_AND_BUDGET",
@@ -841,7 +841,7 @@
           "threshold": 10
         },
         {
-          "ruleId": "rule-blast-1788800442845-7",
+          "ruleId": "rule-blast-1788802241927-7",
           "name": "Blast Radius Containment Guard",
           "description": "Blocks mutations spilling into unrelated components or global scopes.",
           "category": "BLAST_RADIUS",
@@ -852,7 +852,7 @@
           "condition": "BLAST_RADIUS_BREACH"
         },
         {
-          "ruleId": "rule-schema-tamper-1788800442845-8",
+          "ruleId": "rule-schema-tamper-1788802241927-8",
           "name": "Root Schema Preservation Invariant",
           "description": "Protects root component hierarchy and default routes from destructive removal.",
           "category": "SCHEMA_PRESERVATION",
@@ -863,7 +863,7 @@
           "condition": "SCHEMA_TAMPERING"
         },
         {
-          "ruleId": "rule-data-crit-1788800442845-9",
+          "ruleId": "rule-data-crit-1788802241927-9",
           "name": "Critical Data Collection Shield",
           "description": "Guards authentication, payment, and security collections from unauthorized modification.",
           "category": "DATA_INTEGRITY",
@@ -894,13 +894,13 @@
       "version": 1
     },
     {
-      "policyId": "dgp-cert_probe_D8.14-1788800442882",
+      "policyId": "dgp-cert_probe_D8.14-1788802241973",
       "projectId": "cert_probe_D8.14",
-      "synthesizedAt": "2026-09-07T17:00:42.882Z",
+      "synthesizedAt": "2026-09-07T17:30:41.973Z",
       "riskTier": "LOW",
       "rules": [
         {
-          "ruleId": "rule-sec-eval-1788800442882-1",
+          "ruleId": "rule-sec-eval-1788802241973-1",
           "name": "No Arbitrary Eval or Dynamic Code",
           "description": "Strict prohibition against dynamic code eval or Function constructors.",
           "category": "SECURITY_INVARIANT",
@@ -911,7 +911,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-inj-1788800442882-2",
+          "ruleId": "rule-sec-inj-1788802241973-2",
           "name": "Prompt Injection Defense Invariant",
           "description": "Rejects instructions containing adversarial prompt injection signatures.",
           "category": "SECURITY_INVARIANT",
@@ -922,7 +922,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-cred-1788800442882-3",
+          "ruleId": "rule-sec-cred-1788802241973-3",
           "name": "Zero Credential Leakage Boundary",
           "description": "Prevents leakage of sensitive API keys, tokens, or credentials in payload.",
           "category": "SECURITY_INVARIANT",
@@ -933,7 +933,7 @@
           "condition": "CREDENTIAL_LEAKAGE"
         },
         {
-          "ruleId": "rule-perm-proj-1788800442882-4",
+          "ruleId": "rule-perm-proj-1788802241973-4",
           "name": "Strict Project Isolation Boundary",
           "description": "Cross-project mutations or entity access are forbidden.",
           "category": "PERMISSION_BOUNDARY",
@@ -945,7 +945,7 @@
           "threshold": 0
         },
         {
-          "ruleId": "rule-rate-mut-1788800442882-5",
+          "ruleId": "rule-rate-mut-1788802241973-5",
           "name": "Mutation Budget Ceiling Gate",
           "description": "Limits total atomic mutations in single plan to 25.",
           "category": "RATE_AND_BUDGET",
@@ -957,7 +957,7 @@
           "threshold": 25
         },
         {
-          "ruleId": "rule-rate-live-1788800442882-6",
+          "ruleId": "rule-rate-live-1788802241973-6",
           "name": "Live Execution Watchdog Throttling",
           "description": "Throttles or pauses runaway loops exceeding operational cadence.",
           "category": "RATE_AND_BUDGET",
@@ -969,7 +969,7 @@
           "threshold": 10
         },
         {
-          "ruleId": "rule-blast-1788800442882-7",
+          "ruleId": "rule-blast-1788802241973-7",
           "name": "Blast Radius Containment Guard",
           "description": "Blocks mutations spilling into unrelated components or global scopes.",
           "category": "BLAST_RADIUS",
@@ -980,7 +980,7 @@
           "condition": "BLAST_RADIUS_BREACH"
         },
         {
-          "ruleId": "rule-schema-tamper-1788800442882-8",
+          "ruleId": "rule-schema-tamper-1788802241973-8",
           "name": "Root Schema Preservation Invariant",
           "description": "Protects root component hierarchy and default routes from destructive removal.",
           "category": "SCHEMA_PRESERVATION",
@@ -991,7 +991,7 @@
           "condition": "SCHEMA_TAMPERING"
         },
         {
-          "ruleId": "rule-data-crit-1788800442882-9",
+          "ruleId": "rule-data-crit-1788802241973-9",
           "name": "Critical Data Collection Shield",
           "description": "Guards authentication, payment, and security collections from unauthorized modification.",
           "category": "DATA_INTEGRITY",
@@ -1021,13 +1021,13 @@
       "version": 1
     },
     {
-      "policyId": "dgp-cert_probe_D8.15-1788800442884",
+      "policyId": "dgp-cert_probe_D8.15-1788802241976",
       "projectId": "cert_probe_D8.15",
-      "synthesizedAt": "2026-09-07T17:00:42.885Z",
+      "synthesizedAt": "2026-09-07T17:30:41.977Z",
       "riskTier": "LOW",
       "rules": [
         {
-          "ruleId": "rule-sec-eval-1788800442885-1",
+          "ruleId": "rule-sec-eval-1788802241976-1",
           "name": "No Arbitrary Eval or Dynamic Code",
           "description": "Strict prohibition against dynamic code eval or Function constructors.",
           "category": "SECURITY_INVARIANT",
@@ -1038,7 +1038,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-inj-1788800442885-2",
+          "ruleId": "rule-sec-inj-1788802241977-2",
           "name": "Prompt Injection Defense Invariant",
           "description": "Rejects instructions containing adversarial prompt injection signatures.",
           "category": "SECURITY_INVARIANT",
@@ -1049,7 +1049,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-cred-1788800442885-3",
+          "ruleId": "rule-sec-cred-1788802241977-3",
           "name": "Zero Credential Leakage Boundary",
           "description": "Prevents leakage of sensitive API keys, tokens, or credentials in payload.",
           "category": "SECURITY_INVARIANT",
@@ -1060,7 +1060,7 @@
           "condition": "CREDENTIAL_LEAKAGE"
         },
         {
-          "ruleId": "rule-perm-proj-1788800442885-4",
+          "ruleId": "rule-perm-proj-1788802241977-4",
           "name": "Strict Project Isolation Boundary",
           "description": "Cross-project mutations or entity access are forbidden.",
           "category": "PERMISSION_BOUNDARY",
@@ -1072,7 +1072,7 @@
           "threshold": 0
         },
         {
-          "ruleId": "rule-rate-mut-1788800442885-5",
+          "ruleId": "rule-rate-mut-1788802241977-5",
           "name": "Mutation Budget Ceiling Gate",
           "description": "Limits total atomic mutations in single plan to 25.",
           "category": "RATE_AND_BUDGET",
@@ -1084,7 +1084,7 @@
           "threshold": 25
         },
         {
-          "ruleId": "rule-rate-live-1788800442885-6",
+          "ruleId": "rule-rate-live-1788802241977-6",
           "name": "Live Execution Watchdog Throttling",
           "description": "Throttles or pauses runaway loops exceeding operational cadence.",
           "category": "RATE_AND_BUDGET",
@@ -1096,7 +1096,7 @@
           "threshold": 10
         },
         {
-          "ruleId": "rule-blast-1788800442885-7",
+          "ruleId": "rule-blast-1788802241977-7",
           "name": "Blast Radius Containment Guard",
           "description": "Blocks mutations spilling into unrelated components or global scopes.",
           "category": "BLAST_RADIUS",
@@ -1107,7 +1107,7 @@
           "condition": "BLAST_RADIUS_BREACH"
         },
         {
-          "ruleId": "rule-schema-tamper-1788800442885-8",
+          "ruleId": "rule-schema-tamper-1788802241977-8",
           "name": "Root Schema Preservation Invariant",
           "description": "Protects root component hierarchy and default routes from destructive removal.",
           "category": "SCHEMA_PRESERVATION",
@@ -1118,7 +1118,7 @@
           "condition": "SCHEMA_TAMPERING"
         },
         {
-          "ruleId": "rule-data-crit-1788800442885-9",
+          "ruleId": "rule-data-crit-1788802241977-9",
           "name": "Critical Data Collection Shield",
           "description": "Guards authentication, payment, and security collections from unauthorized modification.",
           "category": "DATA_INTEGRITY",
@@ -1149,13 +1149,13 @@
       "version": 1
     },
     {
-      "policyId": "dgp-master_grand_cycle_app-1788800442906",
+      "policyId": "dgp-master_grand_cycle_app-1788802242003",
       "projectId": "master_grand_cycle_app",
-      "synthesizedAt": "2026-09-07T17:00:42.907Z",
+      "synthesizedAt": "2026-09-07T17:30:42.003Z",
       "riskTier": "LOW",
       "rules": [
         {
-          "ruleId": "rule-sec-eval-1788800442907-1",
+          "ruleId": "rule-sec-eval-1788802242003-1",
           "name": "No Arbitrary Eval or Dynamic Code",
           "description": "Strict prohibition against dynamic code eval or Function constructors.",
           "category": "SECURITY_INVARIANT",
@@ -1166,7 +1166,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-inj-1788800442907-2",
+          "ruleId": "rule-sec-inj-1788802242003-2",
           "name": "Prompt Injection Defense Invariant",
           "description": "Rejects instructions containing adversarial prompt injection signatures.",
           "category": "SECURITY_INVARIANT",
@@ -1177,7 +1177,7 @@
           "condition": "PROHIBITED_CODE_DETECTED"
         },
         {
-          "ruleId": "rule-sec-cred-1788800442907-3",
+          "ruleId": "rule-sec-cred-1788802242003-3",
           "name": "Zero Credential Leakage Boundary",
           "description": "Prevents leakage of sensitive API keys, tokens, or credentials in payload.",
           "category": "SECURITY_INVARIANT",
@@ -1188,7 +1188,7 @@
           "condition": "CREDENTIAL_LEAKAGE"
         },
         {
-          "ruleId": "rule-perm-proj-1788800442907-4",
+          "ruleId": "rule-perm-proj-1788802242003-4",
           "name": "Strict Project Isolation Boundary",
           "description": "Cross-project mutations or entity access are forbidden.",
           "category": "PERMISSION_BOUNDARY",
@@ -1200,7 +1200,7 @@
           "threshold": 0
         },
         {
-          "ruleId": "rule-rate-mut-1788800442907-5",
+          "ruleId": "rule-rate-mut-1788802242003-5",
           "name": "Mutation Budget Ceiling Gate",
           "description": "Limits total atomic mutations in single plan to 25.",
           "category": "RATE_AND_BUDGET",
@@ -1212,7 +1212,7 @@
           "threshold": 25
         },
         {
-          "ruleId": "rule-rate-live-1788800442907-6",
+          "ruleId": "rule-rate-live-1788802242003-6",
           "name": "Live Execution Watchdog Throttling",
           "description": "Throttles or pauses runaway loops exceeding operational cadence.",
           "category": "RATE_AND_BUDGET",
@@ -1224,7 +1224,7 @@
           "threshold": 10
         },
         {
-          "ruleId": "rule-blast-1788800442907-7",
+          "ruleId": "rule-blast-1788802242003-7",
           "name": "Blast Radius Containment Guard",
           "description": "Blocks mutations spilling into unrelated components or global scopes.",
           "category": "BLAST_RADIUS",
@@ -1235,7 +1235,7 @@
           "condition": "BLAST_RADIUS_BREACH"
         },
         {
-          "ruleId": "rule-schema-tamper-1788800442907-8",
+          "ruleId": "rule-schema-tamper-1788802242003-8",
           "name": "Root Schema Preservation Invariant",
           "description": "Protects root component hierarchy and default routes from destructive removal.",
           "category": "SCHEMA_PRESERVATION",
@@ -1246,7 +1246,7 @@
           "condition": "SCHEMA_TAMPERING"
         },
         {
-          "ruleId": "rule-data-crit-1788800442907-9",
+          "ruleId": "rule-data-crit-1788802242003-9",
           "name": "Critical Data Collection Shield",
           "description": "Guards authentication, payment, and security collections from unauthorized modification.",
           "category": "DATA_INTEGRITY",
@@ -1279,5 +1279,5 @@
   ],
   "breachesCount": 3,
   "containmentCount": 0,
-  "updatedAt": "2026-09-07T17:00:42.907Z"
+  "updatedAt": "2026-09-07T17:30:42.004Z"
 }

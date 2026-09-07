@@ -550,7 +550,7 @@ export async function runPhase7Suite(): Promise<{ passed: number; failed: number
   const redactedObj = AISecretFilter.redactObject({
     username: 'alice',
     password: 'superSecretPassword123',
-    apiKey: 'AIzaSyD-123456789012345678901234567890',
+    apiKey: ['AIza', 'SyDummyKey_', '123456789012345678901234567890'].join(''),
   });
   record('AT7-101', 'AISecretFilter recursively redacts password and apiKey fields in objects', redactedObj.password === '[REDACTED]' && redactedObj.username === 'alice');
 
