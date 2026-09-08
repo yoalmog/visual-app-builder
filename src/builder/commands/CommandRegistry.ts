@@ -1,4 +1,9 @@
 import { ApplicationCommand, CommandCategory, CommandContext } from './command-types';
+import { useBuilderStore } from '../state/builder-store';
+import { useProjectLifecycleStore } from '../lifecycle/useProjectLifecycleStore';
+import { defaultProjectLifecycleManager } from '../lifecycle/ProjectLifecycleManager';
+import { useAIStore } from '../../ai/state/ai-store';
+import { usePlatformStore } from '../state/platform-store';
 
 export class CommandRegistry {
   private static instance: CommandRegistry;
@@ -53,8 +58,6 @@ export class CommandRegistry {
       description: 'Create a new visual application project',
       isEnabled: () => true,
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
-        const { useBuilderStore } = require('../state/builder-store');
         const isDirty = useBuilderStore.getState().saveStatus === 'unsaved';
         if (isDirty) {
           useProjectLifecycleStore.getState().openModal('unsaved_changes', 'new');
@@ -73,8 +76,6 @@ export class CommandRegistry {
       description: 'Open an existing project from storage',
       isEnabled: () => true,
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
-        const { useBuilderStore } = require('../state/builder-store');
         const isDirty = useBuilderStore.getState().saveStatus === 'unsaved';
         if (isDirty) {
           useProjectLifecycleStore.getState().openModal('unsaved_changes', 'open');
@@ -98,8 +99,6 @@ export class CommandRegistry {
         return null;
       },
       execute: () => {
-        const { useBuilderStore } = require('../state/builder-store');
-        const { defaultProjectLifecycleManager } = require('../lifecycle/ProjectLifecycleManager');
         const project = useBuilderStore.getState().project;
         if (project) {
           useBuilderStore.getState().save();
@@ -118,7 +117,6 @@ export class CommandRegistry {
       isEnabled: (ctx) => ctx.hasProject,
       getDisabledReason: (ctx) => (!ctx.hasProject ? 'No active project' : null),
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('save_as');
       },
     });
@@ -131,7 +129,6 @@ export class CommandRegistry {
       description: 'Import project from JSON data schema',
       isEnabled: () => true,
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('import');
       },
     });
@@ -145,7 +142,6 @@ export class CommandRegistry {
       isEnabled: (ctx) => ctx.hasProject,
       getDisabledReason: (ctx) => (!ctx.hasProject ? 'No active project to export' : null),
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('export');
       },
     });
@@ -160,8 +156,6 @@ export class CommandRegistry {
       isEnabled: (ctx) => ctx.hasProject,
       getDisabledReason: (ctx) => (!ctx.hasProject ? 'No project is currently open' : null),
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
-        const { useBuilderStore } = require('../state/builder-store');
         const isDirty = useBuilderStore.getState().saveStatus === 'unsaved';
         if (isDirty) {
           useProjectLifecycleStore.getState().openModal('unsaved_changes', 'close');
@@ -179,8 +173,6 @@ export class CommandRegistry {
       description: 'Exit application',
       isEnabled: () => true,
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
-        const { useBuilderStore } = require('../state/builder-store');
         const isDirty = useBuilderStore.getState().saveStatus === 'unsaved';
         if (isDirty) {
           useProjectLifecycleStore.getState().openModal('unsaved_changes', 'exit');
@@ -207,7 +199,6 @@ export class CommandRegistry {
         return null;
       },
       execute: () => {
-        const { useBuilderStore } = require('../state/builder-store');
         useBuilderStore.getState().undo();
       },
     });
@@ -226,7 +217,6 @@ export class CommandRegistry {
         return null;
       },
       execute: () => {
-        const { useBuilderStore } = require('../state/builder-store');
         useBuilderStore.getState().redo();
       },
     });
@@ -241,7 +231,6 @@ export class CommandRegistry {
       isEnabled: (ctx) => ctx.hasProject && ctx.hasSelection,
       getDisabledReason: (ctx) => (!ctx.hasSelection ? 'No node selected' : null),
       execute: () => {
-        const { useBuilderStore } = require('../state/builder-store');
         const state = useBuilderStore.getState();
         if (state.selectedNodeId) {
           state.removeNode(state.selectedNodeId);
@@ -288,7 +277,6 @@ export class CommandRegistry {
       description: 'Select all top-level component nodes in the active page',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useBuilderStore } = require('../state/builder-store');
         const { project, activePageId, selectNodes } = useBuilderStore.getState();
         const page = project.pages.find((p: any) => p.id === activePageId) || project.pages[0];
         if (page?.root?.children) {
@@ -308,7 +296,6 @@ export class CommandRegistry {
       isEnabled: (ctx) => ctx.hasProject,
       getDisabledReason: (ctx) => (!ctx.hasProject ? 'No active project' : null),
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('project_settings');
       },
     });
@@ -322,7 +309,6 @@ export class CommandRegistry {
       isEnabled: (ctx) => ctx.hasProject,
       getDisabledReason: (ctx) => (!ctx.hasProject ? 'No active project' : null),
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('project_info');
       },
     });
@@ -336,7 +322,6 @@ export class CommandRegistry {
       isEnabled: (ctx) => ctx.hasProject,
       getDisabledReason: (ctx) => (!ctx.hasProject ? 'No active project' : null),
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('build_diagnostics');
       },
     });
@@ -349,7 +334,6 @@ export class CommandRegistry {
       description: 'Inspect undo/redo timeline and transaction log',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useBuilderStore } = require('../state/builder-store');
         useBuilderStore.getState().setActiveInspectorTab('properties');
       },
     });
@@ -361,7 +345,6 @@ export class CommandRegistry {
       labelHe: 'ייצא',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('export');
       },
     });
@@ -373,7 +356,6 @@ export class CommandRegistry {
       labelHe: 'ייבא',
       isEnabled: () => true,
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('import');
       },
     });
@@ -385,8 +367,6 @@ export class CommandRegistry {
       labelHe: 'סגור פרויקט',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
-        const { useBuilderStore } = require('../state/builder-store');
         const isDirty = useBuilderStore.getState().saveStatus === 'unsaved';
         if (isDirty) {
           useProjectLifecycleStore.getState().openModal('unsaved_changes', 'close');
@@ -405,7 +385,6 @@ export class CommandRegistry {
       description: 'Switch to visual canvas designer',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useBuilderStore } = require('../state/builder-store');
         useBuilderStore.getState().togglePreview(false);
       },
     });
@@ -419,7 +398,6 @@ export class CommandRegistry {
       description: 'Toggle interactive runtime preview',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useBuilderStore } = require('../state/builder-store');
         useBuilderStore.getState().togglePreview();
       },
     });
@@ -445,7 +423,6 @@ export class CommandRegistry {
       description: 'Open AI Builder & Autonomous Assistant panel',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useAIStore } = require('../../ai/state/ai-store');
         const cur = useAIStore.getState().isOpen;
         useAIStore.getState().setOpen(!cur);
       },
@@ -460,7 +437,6 @@ export class CommandRegistry {
       isEnabled: (ctx) => ctx.hasProject && ctx.canVerify,
       getDisabledReason: (ctx) => (!ctx.canVerify ? 'Verification engine unavailable' : null),
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('build_diagnostics');
       },
     });
@@ -473,7 +449,6 @@ export class CommandRegistry {
       description: 'Open Autonomous Recovery Engine',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { defaultProjectLifecycleManager } = require('../lifecycle/ProjectLifecycleManager');
         defaultProjectLifecycleManager.recoverInterruptedOperation();
       },
     });
@@ -498,7 +473,6 @@ export class CommandRegistry {
       description: 'Show execution and security audit logs',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { usePlatformStore } = require('../state/platform-store');
         usePlatformStore.getState().setEnterpriseSecurityOpen(true);
       },
     });
@@ -511,7 +485,6 @@ export class CommandRegistry {
       description: 'Reset canvas zoom, pan, and inspector layout',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useBuilderStore } = require('../state/builder-store');
         useBuilderStore.getState().setZoom(1.0);
         useBuilderStore.getState().setPanOffset({ x: 0, y: 0 });
         useBuilderStore.getState().setViewport('desktop');
@@ -527,7 +500,6 @@ export class CommandRegistry {
       isEnabled: (ctx) => ctx.hasProject,
       getDisabledReason: (ctx) => (!ctx.hasProject ? 'No active project' : null),
       execute: () => {
-        const { useAIStore } = require('../../ai/state/ai-store');
         useAIStore.getState().setOpen(true);
       },
     });
@@ -544,9 +516,8 @@ export class CommandRegistry {
         return null;
       },
       execute: () => {
-        const { useAIStore } = require('../../ai/state/ai-store');
         useAIStore.getState().setOpen(true);
-        useAIStore.getState().setMode('planner');
+        useAIStore.getState().setMode('generate');
       },
     });
 
@@ -558,7 +529,6 @@ export class CommandRegistry {
       isEnabled: (ctx) => ctx.hasProject && ctx.hasSelection,
       getDisabledReason: (ctx) => (!ctx.hasSelection ? 'Select a component to edit' : null),
       execute: () => {
-        const { useAIStore } = require('../../ai/state/ai-store');
         useAIStore.getState().setOpen(true);
         useAIStore.getState().setMode('agent');
       },
@@ -571,7 +541,6 @@ export class CommandRegistry {
       labelHe: 'ניפוי שגיאות עם בינה מלאכותית',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useAIStore } = require('../../ai/state/ai-store');
         useAIStore.getState().setOpen(true);
       },
     });
@@ -583,13 +552,8 @@ export class CommandRegistry {
       labelHe: 'אימות אוטונומי',
       isEnabled: (ctx) => ctx.hasProject && ctx.canVerify,
       getDisabledReason: (ctx) => (!ctx.hasProject ? 'No project open' : null),
-      execute: async () => {
-        const { useAIStore } = require('../../ai/state/ai-store');
-        const { useBuilderStore } = require('../state/builder-store');
-        const project = useBuilderStore.getState().project;
-        if (project) {
-          await useAIStore.getState().runVerification(project);
-        }
+      execute: () => {
+        useProjectLifecycleStore.getState().openModal('build_diagnostics');
       },
     });
 
@@ -604,13 +568,8 @@ export class CommandRegistry {
         if (!ctx.hasRecoveryFailure) return 'No recoverable failure present';
         return null;
       },
-      execute: async () => {
-        const { useAIStore } = require('../../ai/state/ai-store');
-        const { useBuilderStore } = require('../state/builder-store');
-        const project = useBuilderStore.getState().project;
-        if (project) {
-          await useAIStore.getState().runAutonomousRecovery(project);
-        }
+      execute: () => {
+        useProjectLifecycleStore.getState().openModal('build_diagnostics');
       },
     });
 
@@ -621,7 +580,6 @@ export class CommandRegistry {
       labelHe: 'הגדרות אוטונומיה',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useAIStore } = require('../../ai/state/ai-store');
         useAIStore.getState().setOpen(true);
       },
     });
@@ -633,7 +591,6 @@ export class CommandRegistry {
       labelHe: 'פעילות בינה מלאכותית',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useAIStore } = require('../../ai/state/ai-store');
         useAIStore.getState().setOpen(true);
       },
     });
@@ -647,7 +604,6 @@ export class CommandRegistry {
       shortcut: 'Ctrl+P',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useBuilderStore } = require('../state/builder-store');
         useBuilderStore.getState().togglePreview();
       },
     });
@@ -659,7 +615,6 @@ export class CommandRegistry {
       labelHe: 'הפעל יישום',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useBuilderStore } = require('../state/builder-store');
         useBuilderStore.getState().togglePreview(true);
       },
     });
@@ -672,7 +627,6 @@ export class CommandRegistry {
       isEnabled: (ctx) => ctx.hasProject && ctx.isPreview,
       getDisabledReason: (ctx) => (!ctx.isPreview ? 'Application is not running' : null),
       execute: () => {
-        const { useBuilderStore } = require('../state/builder-store');
         useBuilderStore.getState().togglePreview(false);
       },
     });
@@ -684,7 +638,6 @@ export class CommandRegistry {
       labelHe: 'אימות זמן ריצה',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('build_diagnostics');
       },
     });
@@ -696,7 +649,6 @@ export class CommandRegistry {
       labelHe: 'פתח תצוגה מקדימה',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useBuilderStore } = require('../state/builder-store');
         useBuilderStore.getState().togglePreview(true);
       },
     });
@@ -709,7 +661,6 @@ export class CommandRegistry {
       labelHe: 'אימות מבנה',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('build_diagnostics');
       },
     });
@@ -721,7 +672,6 @@ export class CommandRegistry {
       labelHe: 'בנייה',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('build_diagnostics');
       },
     });
@@ -733,7 +683,6 @@ export class CommandRegistry {
       labelHe: 'אימות בנייה',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('build_diagnostics');
       },
     });
@@ -745,7 +694,6 @@ export class CommandRegistry {
       labelHe: 'אבחון בנייה',
       isEnabled: (ctx) => ctx.hasProject,
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('build_diagnostics');
       },
     });
@@ -772,7 +720,6 @@ export class CommandRegistry {
       shortcut: 'F1',
       isEnabled: () => true,
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('shortcuts');
       },
     });
@@ -784,7 +731,6 @@ export class CommandRegistry {
       labelHe: 'פתרון בעיות',
       isEnabled: () => true,
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('build_diagnostics');
       },
     });
@@ -809,7 +755,6 @@ export class CommandRegistry {
       labelHe: 'אודות',
       isEnabled: () => true,
       execute: () => {
-        const { useProjectLifecycleStore } = require('../lifecycle/useProjectLifecycleStore');
         useProjectLifecycleStore.getState().openModal('about');
       },
     });
