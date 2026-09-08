@@ -1,9 +1,6 @@
 // src/builder/platform/enterprise/EnterprisePlatformRecoveryManager.ts
 // Enterprise Platform State, Durable Recovery & Checkpoint Management (Workstream E12)
-
-import fs from 'fs';
-import path from 'path';
-import crypto from 'crypto';
+// Browser-safe implementation: uses localStorage instead of fs/path/crypto.
 
 export interface EnterpriseDeliverableStatus {
   id: string;
@@ -37,17 +34,46 @@ export interface EnterprisePlatformState {
   nextAction: string;
 }
 
+// ---------------------------------------------------------------------------
+// Storage helpers — localStorage in browser, in-memory fallback on server
+// ---------------------------------------------------------------------------
+const STORAGE_KEY_STATE = 'epm:state';
+const STORAGE_KEY_CHECKPOINTS = 'epm:checkpoints';
+
+function storageGet(key: string): string | null {
+  if (typeof window === 'undefined' || typeof localStorage === 'undefined') return null;
+  try { return localStorage.getItem(key); } catch { return null; }
+}
+
+function storageSet(key: string, value: string): void {
+  if (typeof window === 'undefined' || typeof localStorage === 'undefined') return;
+  try { localStorage.setItem(key, value); } catch { /* quota exceeded — ignore */ }
+}
+
+/** Deterministic djb2 hash — no Node crypto needed. */
+function simpleHash(data: string): string {
+  let h = 5381;
+  for (let i = 0; i < data.length; i++) {
+    h = ((h << 5) + h) ^ data.charCodeAt(i);
+    h = h >>> 0; // keep 32-bit unsigned
+  }
+  return h.toString(16).padStart(8, '0');
+}
+
+// ---------------------------------------------------------------------------
+
 export class EnterprisePlatformRecoveryManager {
   private static instance: EnterprisePlatformRecoveryManager;
-  private readonly platformDir: string;
-  private readonly checkpointsDir: string;
-  private readonly stateFilePath: string;
 
-  constructor(baseDir: string = process.cwd()) {
-    this.platformDir = path.join(baseDir, '.platform');
-    this.checkpointsDir = path.join(this.platformDir, 'checkpoints');
-    this.stateFilePath = path.join(this.platformDir, 'state.json');
-    this.ensureDirectories();
+  // In-memory checkpoint store (browser has no filesystem)
+  private checkpoints: Record<string, object> = {};
+
+  constructor() {
+    // Load persisted checkpoints map from localStorage if present
+    const raw = storageGet(STORAGE_KEY_CHECKPOINTS);
+    if (raw) {
+      try { this.checkpoints = JSON.parse(raw); } catch { /* corrupt — reset */ }
+    }
   }
 
   public static getInstance(): EnterprisePlatformRecoveryManager {
@@ -55,15 +81,6 @@ export class EnterprisePlatformRecoveryManager {
       EnterprisePlatformRecoveryManager.instance = new EnterprisePlatformRecoveryManager();
     }
     return EnterprisePlatformRecoveryManager.instance;
-  }
-
-  private ensureDirectories(): void {
-    if (!fs.existsSync(this.platformDir)) {
-      fs.mkdirSync(this.platformDir, { recursive: true });
-    }
-    if (!fs.existsSync(this.checkpointsDir)) {
-      fs.mkdirSync(this.checkpointsDir, { recursive: true });
-    }
   }
 
   public getInitialState(): EnterprisePlatformState {
@@ -125,22 +142,19 @@ export class EnterprisePlatformRecoveryManager {
       testResults: state.testResults,
       regressionStatus: state.regressionStatus,
     });
-    return crypto.createHash('sha256').update(raw).digest('hex');
+    return simpleHash(raw);
   }
 
   public loadState(): EnterprisePlatformState {
-    this.ensureDirectories();
-    if (!fs.existsSync(this.stateFilePath)) {
+    const raw = storageGet(STORAGE_KEY_STATE);
+    if (!raw) {
       const initial = this.getInitialState();
       initial.stateHash = this.computeStateHash(initial);
       this.saveState(initial);
       return initial;
     }
-
     try {
-      const content = fs.readFileSync(this.stateFilePath, 'utf-8');
-      const parsed = JSON.parse(content) as EnterprisePlatformState;
-      return parsed;
+      return JSON.parse(raw) as EnterprisePlatformState;
     } catch {
       const initial = this.getInitialState();
       initial.stateHash = this.computeStateHash(initial);
@@ -150,16 +164,14 @@ export class EnterprisePlatformRecoveryManager {
   }
 
   public saveState(updates: Partial<EnterprisePlatformState>): EnterprisePlatformState {
-    this.ensureDirectories();
-    const current = fs.existsSync(this.stateFilePath) ? this.loadState() : this.getInitialState();
+    const current = this.loadState();
     const merged: EnterprisePlatformState = {
       ...current,
       ...updates,
       updatedAt: new Date().toISOString(),
     };
-
     merged.stateHash = this.computeStateHash(merged);
-    fs.writeFileSync(this.stateFilePath, JSON.stringify(merged, null, 2), 'utf-8');
+    storageSet(STORAGE_KEY_STATE, JSON.stringify(merged));
     return merged;
   }
 
@@ -172,12 +184,8 @@ export class EnterprisePlatformRecoveryManager {
     const d = current.deliverables.find((item) => item.id === deliverableId);
     if (d) {
       d.status = status;
-      if (status === 'PASS') {
-        d.completedAt = new Date().toISOString();
-      }
-      if (notes) {
-        d.notes = notes;
-      }
+      if (status === 'PASS') d.completedAt = new Date().toISOString();
+      if (notes) d.notes = notes;
     } else {
       current.deliverables.push({
         id: deliverableId,
@@ -187,14 +195,14 @@ export class EnterprisePlatformRecoveryManager {
         notes,
       });
     }
-
-    const nextPending = current.deliverables.find((item) => item.status === 'PENDING' || item.status === 'IN_PROGRESS');
+    const nextPending = current.deliverables.find(
+      (item) => item.status === 'PENDING' || item.status === 'IN_PROGRESS'
+    );
     current.activeDeliverable = nextPending ? nextPending.id : null;
     return this.saveState(current);
   }
 
   public createCheckpoint(id: string, metadata: Record<string, any> = {}): string {
-    this.ensureDirectories();
     const state = this.loadState();
     state.checkpoint = id;
     state.lastVerifiedCheckpoint = id;
@@ -204,24 +212,24 @@ export class EnterprisePlatformRecoveryManager {
       timestamp: new Date().toISOString(),
       state,
       metadata,
-      signature: crypto.createHash('sha256').update(JSON.stringify({ id, state, metadata })).digest('hex'),
+      signature: simpleHash(JSON.stringify({ id, state, metadata })),
     };
 
-    const filePath = path.join(this.checkpointsDir, `checkpoint-${id.toLowerCase()}.json`);
-    fs.writeFileSync(filePath, JSON.stringify(checkpointPayload, null, 2), 'utf-8');
-
+    const key = id.toLowerCase();
+    this.checkpoints[key] = checkpointPayload;
+    storageSet(STORAGE_KEY_CHECKPOINTS, JSON.stringify(this.checkpoints));
     this.saveState(state);
-    return filePath;
+
+    // Return a virtual "path" string so existing callers don't break
+    return `epm://checkpoints/checkpoint-${key}.json`;
   }
 
   public restoreCheckpoint(id: string): EnterprisePlatformState {
-    const filePath = path.join(this.checkpointsDir, `checkpoint-${id.toLowerCase()}.json`);
-    if (!fs.existsSync(filePath)) {
-      throw new Error(`Checkpoint ${id} not found at ${filePath}`);
+    const key = id.toLowerCase();
+    const payload = this.checkpoints[key] as any;
+    if (!payload) {
+      throw new Error(`Checkpoint ${id} not found in browser storage`);
     }
-
-    const raw = fs.readFileSync(filePath, 'utf-8');
-    const payload = JSON.parse(raw);
     const restoredState = payload.state as EnterprisePlatformState;
     this.saveState(restoredState);
     return restoredState;
