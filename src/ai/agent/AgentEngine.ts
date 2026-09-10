@@ -1,16 +1,17 @@
-// Agent Engine: Bounded autonomous execution loop
+// Agent Engine: Bounded autonomous execution loop using real Gemini AI
 import { AppProject } from '../../builder/schema/project';
 import { AgentTask, AgentStep } from './AgentTask';
 import { AgentToolRegistry } from './AgentToolRegistry';
 import { AgentGuardrails } from './AgentGuardrails';
-import { AIPlanner } from '../planner/AIPlanner';
+import { ProviderFactory } from '../providers/ProviderFactory';
+import { PlanOutput } from '../planner/AIPlanner';
 import { ApprovalManager } from '../approval/ApprovalManager';
 import { AITransactionManager } from '../history/AITransactionManager';
 import { AIError } from '../core/AIError';
 
 export class AgentEngine {
   /**
-   * Initializes and executes an agent task toward a given goal.
+   * Initializes and executes an agent task toward a given goal using real Gemini AI.
    */
   public static async runTask(params: {
     goal: string;
@@ -55,21 +56,33 @@ export class AgentEngine {
       task.steps.push(step1);
       params.onStep?.(step1);
 
-      // Step 2: Formulate Plan
+      // Step 2: Formulate Plan via real Gemini AI
       AgentGuardrails.checkCancellation(params.signal);
       AgentGuardrails.checkStepLimit(task);
       task.currentStep++;
 
-      const planResult = AIPlanner.plan({
+      const provider = ProviderFactory.getProvider();
+      const aiResponse = await provider.generate({
+        id: `agent_req_${Date.now()}`,
         prompt: params.goal,
-        project: params.project,
+        context: { project: params.project },
+        signal: params.signal,
       });
+
+      const planResult: PlanOutput = aiResponse.structuredData as PlanOutput;
+
+      if (!planResult?.operations || !Array.isArray(planResult.operations)) {
+        throw new AIError(
+          'PLAN_GENERATION_FAILURE',
+          `Gemini did not return a valid plan. Response: ${aiResponse.text?.slice(0, 200)}`
+        );
+      }
 
       task.plannedOperations = planResult.operations;
 
       const step2: AgentStep = {
         stepNumber: 2,
-        thought: `Synthesized plan with ${planResult.operations.length} operations. Validating risk and dependencies.`,
+        thought: `Gemini AI synthesized plan: "${planResult.summary}" — ${planResult.operations.length} operations. Validating risk and dependencies.`,
         toolName: 'validate_operations',
         toolArgs: { operations: planResult.operations },
         toolResult: { valid: true, count: planResult.operations.length },
@@ -118,7 +131,7 @@ export class AgentEngine {
 
       const step3: AgentStep = {
         stepNumber: 3,
-        thought: 'Applied operations successfully and verified schema integrity.',
+        thought: 'Applied Gemini-generated operations successfully and verified schema integrity.',
         toolName: 'apply_transaction',
         toolArgs: { count: txResult.appliedOperations.length },
         toolResult: txResult.diff,

@@ -19,7 +19,6 @@ import {
   ConfidenceAssessment,
 } from './types';
 import { ContextIntelligenceEngine } from './ContextIntelligenceEngine';
-import { AIPlanner } from '../planner/AIPlanner';
 import { AIOperation } from '../operations/AIOperation';
 import { AIRisk } from '../../builder/schema/ai';
 import { PromptInjectionDefense } from '../security/PromptInjectionDefense';
@@ -74,18 +73,12 @@ export class IntelligentPlanGenerator {
       return this.generateAmbiguityBlockedPlan(goal, effectiveContext, promptHasDirectConflict ? 'Conflicting directives detected in objective' : undefined);
     }
 
-    // ─────────────────────────────────────────────────────────────────────────
-    // 4. OPERATION SYNTHESIS & MINIMAL CHANGE PRINCIPLE
-    // ─────────────────────────────────────────────────────────────────────────
-    const rawPlan = AIPlanner.plan({
-      prompt: AISecretFilter.redactText(goal.rawPrompt),
-      project,
-    });
+    // Operation synthesis is handled below by IntelligentPlanGenerator's own goal-driven synthesizer.
+    // Real operations arrive via GeminiProvider (through ai-store sendMessage);
+    // IntelligentPlanGenerator produces structural steps for HITL/orchestration flows.
+    let synthesizedOps: AIOperation[] = [];
 
-    let synthesizedOps: AIOperation[] = [...rawPlan.operations];
-
-    // If AIPlanner produced 0 operations (e.g. for general modify/create without interactive canvas selection),
-    // synthesize the appropriate deterministic operations matching the GoalRepresentation
+    // Synthesize operations from GoalRepresentation when running in synchronous HITL/orchestration context
     if (synthesizedOps.length === 0 && goal.intent !== 'explain') {
       const activePage = project.pages[0] || { id: 'page_home', name: 'Home', root: { id: 'root_home' } };
       const pageId = activePage.id;

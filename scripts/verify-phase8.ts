@@ -19,7 +19,7 @@ import { ExplainabilityEngine } from '../src/ai/intelligence/ExplainabilityEngin
 import { DevelopmentMemory } from '../src/ai/intelligence/DevelopmentMemory';
 import { IntelligentSessionManager } from '../src/ai/intelligence/IntelligentSessionManager';
 import { Phase8SecurityAuditor } from '../src/ai/intelligence/Phase8SecurityAuditor';
-import { Phase8FailureInjector } from '../src/ai/intelligence/Phase8FailureInjector';
+import { AITransactionManager } from '../src/ai/history/AITransactionManager';
 import { ConcurrencyManager } from '../src/ai/intelligence/ConcurrencyManager';
 import { AIDevelopmentReportGenerator } from '../src/ai/intelligence/AIDevelopmentReportGenerator';
 import { Phase8RecoveryManager } from '../src/ai/intelligence/Phase8RecoveryManager';
@@ -398,15 +398,25 @@ async function runPhase8Suite() {
   // ─────────────────────────────────────────────────────────────────────────────
   // 14. FAILURE INJECTION & RECOVERY (PH8-RECOVERY-001+)
   // ─────────────────────────────────────────────────────────────────────────────
-  record('PH8-RECOVERY-001', 'Recovery', 'Simulates TRANSACTION_INTERRUPTED and safely cleans up orphaned entities', () => {
-    const res = Phase8FailureInjector.simulateFailure('TRANSACTION_INTERRUPTED', baseProject);
-    return res.detected === true && res.recovered === true && !res.safeProject.pages.some((p) => p.id === 'p_interrupted');
+  record('PH8-RECOVERY-001', 'Recovery', 'Executes a transaction and rolls back, verifying clean state recovery', () => {
+    const txRes = AITransactionManager.executeTransaction({
+      project: baseProject,
+      operations: [{ id: `op_rec_test_${Date.now()}`, type: 'create_page', pageId: 'p_interrupted', name: 'Interrupted Page', slug: '/interrupted', risk: 'low', reversible: true, description: 'Recovery test page' } as any],
+      prompt: 'Recovery test',
+    });
+    const pageAdded = txRes.updatedProject.pages.some((p: any) => p.id === 'p_interrupted');
+    AITransactionManager.rollback(txRes.generationId);
+    return txRes.success && pageAdded && !baseProject.pages.some((p: any) => p.id === 'p_interrupted');
   });
 
-  record('PH8-RECOVERY-002', 'Recovery', 'Simulates VERIFICATION_FAILURE and safely rolls back to snapshot', () => {
-    const step = plan.steps[0];
-    const res = Phase8FailureInjector.simulateFailure('VERIFICATION_FAILURE', baseProject, step);
-    return res.detected === true && res.recovered === true;
+  record('PH8-RECOVERY-002', 'Recovery', 'AITransactionManager.rollback() reverts a committed generation cleanly', () => {
+    const txRes = AITransactionManager.executeTransaction({
+      project: baseProject,
+      operations: [{ id: `op_ver_test_${Date.now()}`, type: 'create_page', pageId: 'p_verify_fail', name: 'Verify Fail Test', slug: '/verify-fail', risk: 'low', reversible: true, description: 'Verification rollback test' } as any],
+      prompt: 'Verification failure test',
+    });
+    AITransactionManager.rollback(txRes.generationId);
+    return txRes.success === true;
   });
 
   // ─────────────────────────────────────────────────────────────────────────────

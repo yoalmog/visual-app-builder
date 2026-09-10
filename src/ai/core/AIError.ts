@@ -12,7 +12,8 @@ export type AIErrorCode =
   | 'UNSAFE_OPERATION'
   | 'PROMPT_INJECTION_DETECTED'
   | 'SECRET_EXPOSURE_PREVENTED'
-  | 'AGENT_MAX_STEPS_EXCEEDED';
+  | 'AGENT_MAX_STEPS_EXCEEDED'
+  | 'PLAN_GENERATION_FAILURE';
 
 export class AIError extends Error {
   public readonly code: AIErrorCode;

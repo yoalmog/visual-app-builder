@@ -2,7 +2,7 @@
 import { create } from 'zustand';
 import { AIMessage, AIMode } from '../../builder/schema/ai';
 import { AIOperation } from '../operations/AIOperation';
-import { PlanOutput, AIPlanner } from '../planner/AIPlanner';
+import { PlanOutput } from '../planner/AIPlanner';
 import { ApprovalRequest, ApprovalManager } from '../approval/ApprovalManager';
 import { AgentTask } from '../agent/AgentTask';
 import { AgentEngine } from '../agent/AgentEngine';
@@ -249,13 +249,13 @@ export const useAIStore = create<AIStoreState>((set, get) => ({
       id: 'welcome_msg',
       role: 'assistant',
       content:
-        '👋 Welcome to the AI Application Builder! Tell me what you want to build (e.g. "Build me a restaurant app" or "Create a customer dashboard") or ask me to modify the selected component.',
+        '👋 Welcome to the AI Application Builder! I can now generate **real, custom applications** powered by Google Gemini AI.\n\nTell me what you want to build — be specific! The more detail you give, the better the result.',
       timestamp: new Date().toISOString(),
       suggestedActions: [
-        'Build me a restaurant ordering app',
-        'Create a customer CRM dashboard',
-        'Add a pricing section with three plans',
-        'Make this page look good on mobile',
+        'Build a pet grooming salon booking app',
+        'Create a project management tool with kanban boards',
+        'Build an e-commerce store for handmade jewelry',
+        'Create a fitness tracking dashboard with workout logs',
       ],
     },
   ],
@@ -823,32 +823,48 @@ export const useAIStore = create<AIStoreState>((set, get) => ({
       }
 
       // Standard Generation / Edit / Ask mode
-      const provider = ProviderFactory.getProvider(project.aiMetadata?.settings?.provider || 'mock');
+      // Use auto-detected provider (Gemini when API key is set, mock otherwise)
+      const provider = ProviderFactory.getProvider(project.aiMetadata?.settings?.provider);
 
-      let streamedText = '';
+      let providerError: Error | null = null;
+      let providerResponse: import('../core/AIProvider').AIResponse | null = null;
       await provider.stream?.(
         {
           id: `req_${Date.now()}`,
           prompt,
           context: { project, activePageId, selectedNode },
-          signal: activeAbortController.signal,
+          signal: activeAbortController?.signal,
         },
         {
-          onToken: (token) => {
-            streamedText += token;
+          onToken: (_token) => {
+            // tokens streamed for UI feedback only
           },
           onProgress: (stage, percent) => {
             set({ streamStage: stage, streamPercent: percent || 50 });
           },
+          onError: (err) => {
+            providerError = err;
+          },
+          onComplete: (response) => {
+            providerResponse = response;
+          },
         }
       );
 
-      const plan = AIPlanner.plan({
-        prompt,
-        project,
-        activePageId,
-        selectedNode,
-      });
+      // Surface provider errors immediately (e.g. missing API key, parse failure)
+      if (providerError) {
+        throw providerError;
+      }
+
+      // Use Gemini's structured plan — no fallback to local keyword matching
+      if (!providerResponse || !(providerResponse as any).structuredData?.operations) {
+        throw new Error(
+          '⚠️ The AI did not return a structured plan. ' +
+          'Check that your NEXT_PUBLIC_GEMINI_API_KEY is set in .env.local and the dev server has been restarted.'
+        );
+      }
+
+      const plan: PlanOutput = (providerResponse as any).structuredData as PlanOutput;
 
       set({
         currentPlan: plan,
