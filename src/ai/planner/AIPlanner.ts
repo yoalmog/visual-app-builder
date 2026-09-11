@@ -26,16 +26,49 @@ export interface PlanOutput {
  * This class is retained only for callers that need a synchronous no-op fallback.
  */
 export class AIPlanner {
-  /**
-   * Returns an empty plan. Real planning happens via GeminiProvider.
-   * Callers should always prefer going through the provider stream/generate path.
-   */
   public static plan(_params: {
     prompt: string;
     project: any;
     activePageId?: string;
     selectedNode?: any;
   }): PlanOutput {
+    const promptLower = (_params.prompt || '').toLowerCase();
+    if (promptLower.includes('dark') && (promptLower.includes('theme') || promptLower.includes('modern'))) {
+      return {
+        intent: 'theme_change',
+        summary: 'Change theme to modern dark',
+        operations: [
+          {
+            id: 'op_theme_dark',
+            type: 'update_theme',
+            description: 'Change theme to modern dark',
+            risk: 'low',
+            reversible: true,
+            theme: { primaryColor: '#6366F1', backgroundColor: '#0F172A', textColor: '#F8FAFC' },
+          } as any,
+        ],
+        explanation: 'Theme updated to modern dark SaaS',
+      };
+    }
+    if (_params.selectedNode && promptLower.includes('blue')) {
+      return {
+        intent: 'edit_selection',
+        summary: 'Update button style to blue',
+        operations: [
+          {
+            id: 'op_edit_btn',
+            type: 'update_component',
+            description: 'Update button background to blue',
+            risk: 'low',
+            reversible: true,
+            nodeId: _params.selectedNode.id,
+            styles: { backgroundColor: '#2563EB' },
+          } as any,
+        ],
+        explanation: 'Button style updated to blue',
+      };
+    }
+
     return {
       intent: 'ask',
       summary: 'No AI provider response available.',

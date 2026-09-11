@@ -68,6 +68,11 @@ export const ComponentRenderer: React.FC<ComponentRendererProps> = ({
   const setPreviewVisibleOverride = useBuilderStore((s) => s.setPreviewVisibleOverride);
   const togglePreviewVisibleOverride = useBuilderStore((s) => s.togglePreviewVisibleOverride);
   const activeComponentState = useBuilderStore((s) => s.activeComponentState);
+  const updateNodeProps = useBuilderStore((s) => s.updateNodeProps);
+
+  // Next-Gen WYSIWYG Inline text editing state
+  const [isInlineEditing, setIsInlineEditing] = useState(false);
+  const [editedText, setEditedText] = useState('');
 
   // Runtime Store state
   const runtimeVariables = useRuntimeStore((s) => s.variables);
@@ -180,16 +185,26 @@ export const ComponentRenderer: React.FC<ComponentRendererProps> = ({
 
 
   const handleDoubleClick = (e: React.MouseEvent) => {
-    if (isPreview && node.interactions && node.interactions.length > 0) {
+    if (isPreview) {
+      if (node.interactions && node.interactions.length > 0) {
+        e.stopPropagation();
+        triggerNodeInteractions(node.interactions, 'double_click', {
+          project,
+          activePageId,
+          setActivePage,
+          visibleOverrides: previewVisibleOverrides,
+          setVisibleOverride: setPreviewVisibleOverride,
+          toggleVisibleOverride: togglePreviewVisibleOverride,
+        });
+      }
+      return;
+    }
+
+    // In Edit mode: Activate instant inline text editing for text-based elements
+    if (['text', 'heading', 'paragraph', 'button'].includes(node.type)) {
       e.stopPropagation();
-      triggerNodeInteractions(node.interactions, 'double_click', {
-        project,
-        activePageId,
-        setActivePage,
-        visibleOverrides: previewVisibleOverrides,
-        setVisibleOverride: setPreviewVisibleOverride,
-        toggleVisibleOverride: togglePreviewVisibleOverride,
-      });
+      setIsInlineEditing(true);
+      setEditedText(String(node.props?.text ?? ''));
     }
   };
 
@@ -253,6 +268,41 @@ export const ComponentRenderer: React.FC<ComponentRendererProps> = ({
 
   // Render Component content based on registry definition
   const renderContent = () => {
+    if (isInlineEditing) {
+      return (
+        <input
+          type="text"
+          autoFocus
+          value={editedText}
+          onChange={(e) => setEditedText(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              e.stopPropagation();
+              updateNodeProps(node.id, { text: editedText });
+              setIsInlineEditing(false);
+            } else if (e.key === 'Escape') {
+              e.stopPropagation();
+              setIsInlineEditing(false);
+            }
+          }}
+          onBlur={() => {
+            updateNodeProps(node.id, { text: editedText });
+            setIsInlineEditing(false);
+          }}
+          onClick={(e) => e.stopPropagation()}
+          className="bg-transparent border-b-2 border-indigo-500 outline-none text-inherit w-full px-0.5 rounded-none"
+          style={{
+            fontSize: 'inherit',
+            fontWeight: 'inherit',
+            fontFamily: 'inherit',
+            color: 'inherit',
+            textAlign: (style.textAlign as any) || 'inherit',
+          }}
+        />
+      );
+    }
+
     switch (node.type) {
       case 'text':
         return (

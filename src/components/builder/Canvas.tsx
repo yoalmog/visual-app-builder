@@ -6,6 +6,8 @@ import { CanvasViewport } from './CanvasViewport';
 import { COMPONENT_REGISTRY, createDefaultNode } from '@/builder/components/registry';
 import { MarqueeOverlay, MarqueeRect } from './MarqueeOverlay';
 import { MultiSelectionBox } from './MultiSelectionBox';
+import { AIGhostOverlay } from './AIGhostOverlay';
+import { CanvasMinimap } from './CanvasMinimap';
 
 interface CanvasProps {
   onContextMenu?: (e: React.MouseEvent, nodeId: string) => void;
@@ -181,23 +183,31 @@ export const Canvas: React.FC<CanvasProps> = ({ onContextMenu }) => {
   };
 
   return (
-    <main
-      ref={canvasRef}
-      data-testid="builder-canvas"
-      className="flex-1 h-full overflow-auto bg-[#07090E] flex flex-col items-center justify-start p-10 relative select-none"
-      style={{
-        backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px)`,
-        backgroundSize: '20px 20px',
-        transform: panOffset.x || panOffset.y ? `translate(${panOffset.x}px, ${panOffset.y}px)` : undefined,
-      }}
-      onPointerDown={handlePointerDown}
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
-      onDrop={handleDrop}
-    >
-      <CanvasViewport onContextMenu={onContextMenu} />
-      <MarqueeOverlay marquee={marquee} />
-      <MultiSelectionBox />
-    </main>
+    <div className="flex-1 h-full relative overflow-hidden">
+      <main
+        ref={canvasRef}
+        data-testid="builder-canvas"
+        className="w-full h-full overflow-auto bg-[#07090E] flex flex-col items-center justify-start p-10 relative select-none"
+        style={{
+          backgroundImage: `radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px)`,
+          backgroundSize: '20px 20px',
+          transform: panOffset.x || panOffset.y ? `translate(${panOffset.x}px, ${panOffset.y}px)` : undefined,
+        }}
+        onPointerDown={handlePointerDown}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+      >
+        <CanvasViewport onContextMenu={onContextMenu} />
+        <MarqueeOverlay marquee={marquee} />
+        <MultiSelectionBox />
+      </main>
+
+      {/* Next-Gen AI Ghost Staging Overlay */}
+      <AIGhostOverlay />
+
+      {/* Next-Gen Viewport Navigator Minimap */}
+      <CanvasMinimap />
+    </div>
   );
 };

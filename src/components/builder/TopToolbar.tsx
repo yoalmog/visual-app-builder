@@ -48,7 +48,12 @@ const DistributeVerticalIcon = ({ className = 'w-3.5 h-3.5' }: { className?: str
   </svg>
 );
 
-export const TopToolbar: React.FC = () => {
+interface TopToolbarProps {
+  isCodeOpen?: boolean;
+  onToggleCode?: () => void;
+}
+
+export const TopToolbar: React.FC<TopToolbarProps> = ({ isCodeOpen, onToggleCode }) => {
   const project = useBuilderStore((s) => s.project);
   const undo = useBuilderStore((s) => s.undo);
   const redo = useBuilderStore((s) => s.redo);
@@ -377,6 +382,20 @@ export const TopToolbar: React.FC = () => {
             </>
           )}
         </div>
+
+        {/* Live Code Inspector Toggle */}
+        <button
+          onClick={onToggleCode}
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold border transition-colors shadow-sm ${
+            isCodeOpen
+              ? 'bg-indigo-600 text-white border-indigo-500'
+              : 'bg-[#181B26] hover:bg-[#222736] text-slate-200 border-[#272D3E]'
+          }`}
+          title="Toggle Live React/TSX Code View"
+        >
+          <Code2 className={`w-3.5 h-3.5 ${isCodeOpen ? 'text-white' : 'text-indigo-400'}`} />
+          <span>Code</span>
+        </button>
 
         {/* Live Preview Toggle Button */}
         <button

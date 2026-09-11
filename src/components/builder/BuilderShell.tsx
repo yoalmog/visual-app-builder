@@ -17,6 +17,7 @@ import { DeveloperPortalModal } from './platform/DeveloperPortalModal';
 import { ExperimentationModal } from './platform/ExperimentationModal';
 import { AdvancedDeploymentsModal } from './platform/AdvancedDeploymentsModal';
 import { usePlatformStore } from '@/builder/state/platform-store';
+import { LiveCodeInspector } from './LiveCodeInspector';
 
 import { AppMenuBar } from '@/components/shell/AppMenuBar';
 import { StatusBar } from '@/components/shell/StatusBar';
@@ -48,6 +49,7 @@ export const BuilderShell: React.FC<BuilderShellProps> = ({ projectId }) => {
   const language = useProjectLifecycleStore((s) => s.language);
 
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; nodeId: string } | null>(null);
+  const [isCodeInspectorOpen, setIsCodeInspectorOpen] = useState(false);
 
   useEffect(() => {
     // Check for crash recovery first
@@ -137,7 +139,10 @@ export const BuilderShell: React.FC<BuilderShellProps> = ({ projectId }) => {
       ) : (
         <>
           {/* 2. Top Application Bar */}
-          <TopToolbar />
+          <TopToolbar
+            isCodeOpen={isCodeInspectorOpen}
+            onToggleCode={() => setIsCodeInspectorOpen(!isCodeInspectorOpen)}
+          />
 
           {/* 3. Main Workspace Body */}
           <div className="flex flex-1 overflow-hidden relative">
@@ -150,6 +155,12 @@ export const BuilderShell: React.FC<BuilderShellProps> = ({ projectId }) => {
             {/* Right Properties Inspector */}
             <Inspector />
           </div>
+
+          {/* Live Code Split-View Inspector */}
+          <LiveCodeInspector
+            isOpen={isCodeInspectorOpen}
+            onClose={() => setIsCodeInspectorOpen(false)}
+          />
 
           {/* 4. Bottom Layers Panel */}
           <LayersPanel />
