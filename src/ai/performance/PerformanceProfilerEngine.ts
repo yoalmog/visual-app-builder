@@ -14,6 +14,14 @@ export class PerformanceProfilerEngine {
     { stage: PerformanceStage | string; startNano: bigint; startEpochMs: number; metadata?: Record<string, any> }
   > = new Map();
 
+  private static getNanoTime(): bigint {
+    if (typeof process !== 'undefined' && process.hrtime?.bigint) {
+      return process.hrtime.bigint();
+    }
+    const ms = typeof performance !== 'undefined' ? performance.now() : Date.now();
+    return BigInt(Math.round(ms * 1_000_000));
+  }
+
   /**
    * Starts a high-precision stage timer.
    */
@@ -21,7 +29,7 @@ export class PerformanceProfilerEngine {
     const timerId = `timer_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
     this.activeTimers.set(timerId, {
       stage,
-      startNano: process.hrtime.bigint(),
+      startNano: this.getNanoTime(),
       startEpochMs: Date.now(),
       metadata,
     });
@@ -40,7 +48,7 @@ export class PerformanceProfilerEngine {
       throw new Error(`Performance timer not found or already concluded: ${timerId}`);
     }
 
-    const endNano = process.hrtime.bigint();
+    const endNano = this.getNanoTime();
     const endEpochMs = Date.now();
     const durationMs = Math.round(Number(endNano - timer.startNano) / 10_000) / 100; // 2 decimal precision
 

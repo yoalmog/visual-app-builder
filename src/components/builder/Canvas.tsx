@@ -8,6 +8,7 @@ import { MarqueeOverlay, MarqueeRect } from './MarqueeOverlay';
 import { MultiSelectionBox } from './MultiSelectionBox';
 import { AIGhostOverlay } from './AIGhostOverlay';
 import { CanvasMinimap } from './CanvasMinimap';
+import { AlignmentGuides, AlignmentGuide } from './AlignmentGuides';
 
 interface CanvasProps {
   onContextMenu?: (e: React.MouseEvent, nodeId: string) => void;
@@ -25,6 +26,7 @@ export const Canvas: React.FC<CanvasProps> = ({ onContextMenu }) => {
   const setPanOffset = useBuilderStore((s) => s.setPanOffset);
 
   const [isRootDragOver, setIsRootDragOver] = useState(false);
+  const [alignmentGuides, setAlignmentGuides] = useState<AlignmentGuide[]>([]);
   const [marquee, setMarquee] = useState<MarqueeRect>({
     startX: 0,
     startY: 0,
@@ -154,17 +156,69 @@ export const Canvas: React.FC<CanvasProps> = ({ onContextMenu }) => {
     e.preventDefault();
     e.stopPropagation();
     setIsRootDragOver(true);
+
+    if (canvasRef.current) {
+      const canvasRect = canvasRef.current.getBoundingClientRect();
+      const mouseX = e.clientX - canvasRect.left;
+      const mouseY = e.clientY - canvasRect.top;
+      const guides: AlignmentGuide[] = [];
+
+      const SNAP_THRESHOLD = 8;
+
+      // 1. Center of canvas snapping
+      const centerX = canvasRect.width / 2;
+      const centerY = canvasRect.height / 2;
+
+      if (Math.abs(mouseX - centerX) <= SNAP_THRESHOLD) {
+        guides.push({ type: 'vertical', position: Math.round(centerX) });
+      }
+      if (Math.abs(mouseY - centerY) <= SNAP_THRESHOLD) {
+        guides.push({ type: 'horizontal', position: Math.round(centerY) });
+      }
+
+      // 2. Sibling elements snapping
+      const elements = canvasRef.current.querySelectorAll('[id^="builder-node-"]');
+      elements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const elLeft = rect.left - canvasRect.left;
+        const elRight = rect.right - canvasRect.left;
+        const elTop = rect.top - canvasRect.top;
+        const elBottom = rect.bottom - canvasRect.top;
+        const elCenterX = elLeft + rect.width / 2;
+        const elCenterY = elTop + rect.height / 2;
+
+        if (Math.abs(mouseX - elLeft) <= SNAP_THRESHOLD) {
+          guides.push({ type: 'vertical', position: Math.round(elLeft) });
+        } else if (Math.abs(mouseX - elRight) <= SNAP_THRESHOLD) {
+          guides.push({ type: 'vertical', position: Math.round(elRight) });
+        } else if (Math.abs(mouseX - elCenterX) <= SNAP_THRESHOLD) {
+          guides.push({ type: 'vertical', position: Math.round(elCenterX) });
+        }
+
+        if (Math.abs(mouseY - elTop) <= SNAP_THRESHOLD) {
+          guides.push({ type: 'horizontal', position: Math.round(elTop) });
+        } else if (Math.abs(mouseY - elBottom) <= SNAP_THRESHOLD) {
+          guides.push({ type: 'horizontal', position: Math.round(elBottom) });
+        } else if (Math.abs(mouseY - elCenterY) <= SNAP_THRESHOLD) {
+          guides.push({ type: 'horizontal', position: Math.round(elCenterY) });
+        }
+      });
+
+      setAlignmentGuides(guides.slice(0, 4));
+    }
   };
 
   const handleDragLeave = (e: React.DragEvent) => {
     e.stopPropagation();
     setIsRootDragOver(false);
+    setAlignmentGuides([]);
   };
 
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setIsRootDragOver(false);
+    setAlignmentGuides([]);
 
     if (!activePage?.root) return;
 
@@ -199,6 +253,7 @@ export const Canvas: React.FC<CanvasProps> = ({ onContextMenu }) => {
         onDrop={handleDrop}
       >
         <CanvasViewport onContextMenu={onContextMenu} />
+        <AlignmentGuides guides={alignmentGuides} />
         <MarqueeOverlay marquee={marquee} />
         <MultiSelectionBox />
       </main>

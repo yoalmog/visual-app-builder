@@ -30,6 +30,8 @@ import {
   Code2,
   SlidersHorizontal,
   Rocket,
+  Users,
+  Search,
 } from 'lucide-react';
 
 const DistributeHorizontalIcon = ({ className = 'w-3.5 h-3.5' }: { className?: string }) => (
@@ -51,9 +53,16 @@ const DistributeVerticalIcon = ({ className = 'w-3.5 h-3.5' }: { className?: str
 interface TopToolbarProps {
   isCodeOpen?: boolean;
   onToggleCode?: () => void;
+  onOpenSwarm?: () => void;
+  onOpenCommandPalette?: () => void;
 }
 
-export const TopToolbar: React.FC<TopToolbarProps> = ({ isCodeOpen, onToggleCode }) => {
+export const TopToolbar: React.FC<TopToolbarProps> = ({
+  isCodeOpen,
+  onToggleCode,
+  onOpenSwarm,
+  onOpenCommandPalette,
+}) => {
   const project = useBuilderStore((s) => s.project);
   const undo = useBuilderStore((s) => s.undo);
   const redo = useBuilderStore((s) => s.redo);
@@ -382,6 +391,30 @@ export const TopToolbar: React.FC<TopToolbarProps> = ({ isCodeOpen, onToggleCode
             </>
           )}
         </div>
+
+        {/* Quick Command Palette Trigger */}
+        <button
+          onClick={onOpenCommandPalette}
+          className="hidden md:flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs bg-[#131620] hover:bg-[#1C2232] text-slate-400 hover:text-slate-200 border border-[#202738] transition-colors shadow-sm"
+          title="Quick Command Palette (Ctrl+K)"
+        >
+          <Search className="w-3.5 h-3.5 text-indigo-400" />
+          <span className="text-[11px]">Search...</span>
+          <kbd className="text-[9px] font-mono px-1 py-0.2 rounded bg-[#1A2030] text-slate-400 border border-[#273048]">
+            Ctrl+K
+          </kbd>
+        </button>
+
+        {/* Swarm Consensus Debate Studio Button */}
+        <button
+          data-testid="topbar-swarm-btn"
+          onClick={onOpenSwarm}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#181B26] hover:bg-[#222736] text-slate-200 border border-[#272D3E] transition-colors shadow-sm"
+          title="Open Swarm Consensus Debate Studio & Performance Profiler (D8.19)"
+        >
+          <Users className="w-3.5 h-3.5 text-purple-400" />
+          <span>Swarm</span>
+        </button>
 
         {/* Live Code Inspector Toggle */}
         <button

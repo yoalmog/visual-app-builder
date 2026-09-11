@@ -16,6 +16,8 @@ import { EnterpriseSecurityModal } from './platform/EnterpriseSecurityModal';
 import { DeveloperPortalModal } from './platform/DeveloperPortalModal';
 import { ExperimentationModal } from './platform/ExperimentationModal';
 import { AdvancedDeploymentsModal } from './platform/AdvancedDeploymentsModal';
+import { SwarmDebateModal } from './platform/SwarmDebateModal';
+import { CommandPaletteModal } from '@/components/shell/modals/CommandPaletteModal';
 import { usePlatformStore } from '@/builder/state/platform-store';
 import { LiveCodeInspector } from './LiveCodeInspector';
 
@@ -50,6 +52,21 @@ export const BuilderShell: React.FC<BuilderShellProps> = ({ projectId }) => {
 
   const [contextMenu, setContextMenu] = useState<{ x: number; y: number; nodeId: string } | null>(null);
   const [isCodeInspectorOpen, setIsCodeInspectorOpen] = useState(false);
+  const [isSwarmOpen, setIsSwarmOpen] = useState(false);
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
+
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      const isMac = typeof navigator !== 'undefined' && navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+      const cmdOrCtrl = isMac ? e.metaKey : e.ctrlKey;
+      if (cmdOrCtrl && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsCommandPaletteOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleGlobalKeyDown);
+    return () => window.removeEventListener('keydown', handleGlobalKeyDown);
+  }, []);
 
   useEffect(() => {
     // Check for crash recovery first
@@ -142,6 +159,8 @@ export const BuilderShell: React.FC<BuilderShellProps> = ({ projectId }) => {
           <TopToolbar
             isCodeOpen={isCodeInspectorOpen}
             onToggleCode={() => setIsCodeInspectorOpen(!isCodeInspectorOpen)}
+            onOpenSwarm={() => setIsSwarmOpen(true)}
+            onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
           />
 
           {/* 3. Main Workspace Body */}
@@ -202,6 +221,20 @@ export const BuilderShell: React.FC<BuilderShellProps> = ({ projectId }) => {
       <DeveloperPortalModal />
       <ExperimentationModal />
       <AdvancedDeploymentsModal />
+
+      {/* Swarm Consensus Debate Studio Modal */}
+      <SwarmDebateModal
+        isOpen={isSwarmOpen}
+        onClose={() => setIsSwarmOpen(false)}
+      />
+
+      {/* Universal Quick Command Palette Modal (Ctrl+K) */}
+      <CommandPaletteModal
+        isOpen={isCommandPaletteOpen}
+        onClose={() => setIsCommandPaletteOpen(false)}
+        onOpenSwarm={() => setIsSwarmOpen(true)}
+        onToggleCode={() => setIsCodeInspectorOpen(!isCodeInspectorOpen)}
+      />
     </div>
   );
 };

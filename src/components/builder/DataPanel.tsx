@@ -24,7 +24,15 @@ import {
   Key,
   Shield,
   Loader2,
+  Sparkles,
+  Zap,
+  CheckCircle2,
 } from 'lucide-react';
+import {
+  testAndIntrospectEndpoint,
+  createCollectionFromApiResult,
+  LiveApiTestResult,
+} from '@/builder/data/live-api-client';
 
 const SUPPORTED_FIELD_TYPES: DataFieldType[] = [
   'text',
@@ -57,8 +65,8 @@ export const DataPanel: React.FC = () => {
   const deleteApiConnector = useBuilderStore((s) => s.deleteApiConnector);
   const updateCloudConfig = useBuilderStore((s) => s.updateCloudConfig);
 
-  // Sub-tabs: 'collections' | 'cloud' | 'api'
-  const [dataTab, setDataTab] = useState<'collections' | 'cloud' | 'api'>('collections');
+  // Sub-tabs: 'collections' | 'cloud' | 'api' | 'live_wizard'
+  const [dataTab, setDataTab] = useState<'collections' | 'cloud' | 'api' | 'live_wizard'>('collections');
 
   const collections = project.collections || [];
   const apiConnectors = project.apiConnectors || [];
@@ -100,6 +108,56 @@ export const DataPanel: React.FC = () => {
   const [isTestingApi, setIsTestingApi] = useState(false);
   const [apiTestResult, setApiTestResult] = useState<any>(null);
   const [isTestingCloud, setIsTestingCloud] = useState(false);
+
+  // Live REST & Supabase Introspect Wizard state
+  const [liveUrl, setLiveUrl] = useState('https://jsonplaceholder.typicode.com/users');
+  const [liveMethod, setLiveMethod] = useState<'GET' | 'POST'>('GET');
+  const [liveApiKey, setLiveApiKey] = useState('');
+  const [liveCollectionName, setLiveCollectionName] = useState('External Users');
+  const [isIntrospecting, setIsIntrospecting] = useState(false);
+  const [liveResult, setLiveResult] = useState<LiveApiTestResult | null>(null);
+  const [importedSuccess, setImportedSuccess] = useState(false);
+
+  const handleIntrospect = async () => {
+    if (!liveUrl.trim()) return;
+    setIsIntrospecting(true);
+    setLiveResult(null);
+    setImportedSuccess(false);
+
+    try {
+      const res = await testAndIntrospectEndpoint({
+        url: liveUrl.trim(),
+        method: liveMethod,
+        apiKey: liveApiKey.trim() || undefined,
+      });
+      setLiveResult(res);
+    } catch (err: any) {
+      setLiveResult({
+        success: false,
+        status: 0,
+        statusText: 'Network Error',
+        durationMs: 0,
+        data: null,
+        inferredFields: [],
+        inferredRecords: [],
+        error: err.message || 'Network request failed',
+      });
+    } finally {
+      setIsIntrospecting(false);
+    }
+  };
+
+  const handleImportCollection = () => {
+    if (!liveResult || !liveResult.success) return;
+    const newCol = createCollectionFromApiResult(liveCollectionName || 'Imported API Collection', liveResult);
+    addCollection(newCol);
+    setSelectedCollectionId(newCol.id);
+    setImportedSuccess(true);
+    setTimeout(() => {
+      setDataTab('collections');
+      setImportedSuccess(false);
+    }, 1200);
+  };
 
   const activeCollection = collections.find((c) => c.id === selectedCollectionId) || collections[0];
   const activeConnector = apiConnectors.find((c) => c.id === selectedConnectorId) || apiConnectors[0];
@@ -269,11 +327,11 @@ export const DataPanel: React.FC = () => {
         </div>
 
         {/* Sub-tab Switcher */}
-        <div className="grid grid-cols-3 gap-1 bg-[#141724] p-0.5 rounded-lg border border-[#262B3D]">
+        <div className="grid grid-cols-4 gap-1 bg-[#141724] p-0.5 rounded-lg border border-[#262B3D]">
           <button
             data-testid="data-subtab-collections"
             onClick={() => setDataTab('collections')}
-            className={`py-1 rounded text-[11px] font-medium transition-colors ${
+            className={`py-1 rounded text-[10px] font-medium transition-colors ${
               dataTab === 'collections'
                 ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-400 hover:text-white'
@@ -284,7 +342,7 @@ export const DataPanel: React.FC = () => {
           <button
             data-testid="data-subtab-cloud"
             onClick={() => setDataTab('cloud')}
-            className={`py-1 rounded text-[11px] font-medium transition-colors ${
+            className={`py-1 rounded text-[10px] font-medium transition-colors ${
               dataTab === 'cloud'
                 ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-400 hover:text-white'
@@ -295,13 +353,24 @@ export const DataPanel: React.FC = () => {
           <button
             data-testid="data-subtab-api"
             onClick={() => setDataTab('api')}
-            className={`py-1 rounded text-[11px] font-medium transition-colors ${
+            className={`py-1 rounded text-[10px] font-medium transition-colors ${
               dataTab === 'api'
                 ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-400 hover:text-white'
             }`}
           >
-            APIs ({apiConnectors.length})
+            APIs
+          </button>
+          <button
+            data-testid="data-subtab-live-wizard"
+            onClick={() => setDataTab('live_wizard')}
+            className={`py-1 rounded text-[10px] font-medium transition-colors ${
+              dataTab === 'live_wizard'
+                ? 'bg-emerald-600 text-white shadow-sm'
+                : 'text-slate-400 hover:text-white'
+            }`}
+          >
+            Live REST
           </button>
         </div>
       </div>
@@ -499,6 +568,219 @@ export const DataPanel: React.FC = () => {
             </div>
           ) : (
             <div className="p-4 text-center text-slate-500 italic">Select or create an API connector.</div>
+          )}
+        </div>
+      )}
+
+      {/* 4. LIVE REST & SUPABASE INTROSPECT WIZARD TAB */}
+      {dataTab === 'live_wizard' && (
+        <div className="p-3 space-y-3.5 overflow-y-auto flex-1">
+          {/* Presets Header */}
+          <div className="space-y-1.5">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+              Quick Live Presets
+            </span>
+            <div className="grid grid-cols-2 gap-1.5">
+              <button
+                onClick={() => {
+                  setLiveUrl('https://jsonplaceholder.typicode.com/users');
+                  setLiveCollectionName('Remote Users');
+                  setLiveMethod('GET');
+                  setLiveApiKey('');
+                }}
+                className="p-1.5 rounded bg-[#151926] hover:bg-[#1E2436] border border-[#232A3E] text-left text-[11px] text-slate-300 hover:text-white transition-colors flex items-center gap-1.5"
+              >
+                <span>👥</span>
+                <span className="truncate">Users REST</span>
+              </button>
+              <button
+                onClick={() => {
+                  setLiveUrl('https://dummyjson.com/products');
+                  setLiveCollectionName('Product Catalog');
+                  setLiveMethod('GET');
+                  setLiveApiKey('');
+                }}
+                className="p-1.5 rounded bg-[#151926] hover:bg-[#1E2436] border border-[#232A3E] text-left text-[11px] text-slate-300 hover:text-white transition-colors flex items-center gap-1.5"
+              >
+                <span>🛍️</span>
+                <span className="truncate">Products API</span>
+              </button>
+              <button
+                onClick={() => {
+                  setLiveUrl('https://jsonplaceholder.typicode.com/posts');
+                  setLiveCollectionName('Blog Posts');
+                  setLiveMethod('GET');
+                  setLiveApiKey('');
+                }}
+                className="p-1.5 rounded bg-[#151926] hover:bg-[#1E2436] border border-[#232A3E] text-left text-[11px] text-slate-300 hover:text-white transition-colors flex items-center gap-1.5"
+              >
+                <span>📝</span>
+                <span className="truncate">Posts REST</span>
+              </button>
+              <button
+                onClick={() => {
+                  setLiveUrl('https://example.supabase.co/rest/v1/customers');
+                  setLiveCollectionName('Supabase Customers');
+                  setLiveMethod('GET');
+                  setLiveApiKey('sb-anon-key-placeholder');
+                }}
+                className="p-1.5 rounded bg-[#151926] hover:bg-[#1E2436] border border-[#232A3E] text-left text-[11px] text-slate-300 hover:text-white transition-colors flex items-center gap-1.5"
+              >
+                <span>⚡</span>
+                <span className="truncate">Supabase REST</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Configuration Form */}
+          <div className="bg-[#111420] p-3 rounded-xl border border-[#1E2436] space-y-2.5">
+            <div>
+              <label className="text-[10px] text-slate-400 font-semibold uppercase">Target Collection Name</label>
+              <input
+                type="text"
+                value={liveCollectionName}
+                onChange={(e) => setLiveCollectionName(e.target.value)}
+                className="w-full mt-1 bg-[#161B29] border border-[#262E44] rounded px-2.5 py-1 text-white text-xs outline-none focus:border-indigo-500 font-mono"
+              />
+            </div>
+
+            <div>
+              <label className="text-[10px] text-slate-400 font-semibold uppercase">HTTP Method & Endpoint URL</label>
+              <div className="flex gap-1.5 mt-1">
+                <select
+                  value={liveMethod}
+                  onChange={(e) => setLiveMethod(e.target.value as 'GET' | 'POST')}
+                  className="bg-[#161B29] border border-[#262E44] rounded px-1.5 py-1 text-white text-xs outline-none focus:border-indigo-500 font-mono"
+                >
+                  <option value="GET">GET</option>
+                  <option value="POST">POST</option>
+                </select>
+                <input
+                  type="text"
+                  value={liveUrl}
+                  onChange={(e) => setLiveUrl(e.target.value)}
+                  placeholder="https://..."
+                  className="flex-1 bg-[#161B29] border border-[#262E44] rounded px-2 py-1 text-white text-xs outline-none focus:border-indigo-500 font-mono"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label className="text-[10px] text-slate-400 font-semibold uppercase">
+                Supabase / Bearer API Key (Optional)
+              </label>
+              <input
+                type="password"
+                value={liveApiKey}
+                onChange={(e) => setLiveApiKey(e.target.value)}
+                placeholder="Bearer token or Supabase anon key..."
+                className="w-full mt-1 bg-[#161B29] border border-[#262E44] rounded px-2.5 py-1 text-white text-xs outline-none focus:border-indigo-500 font-mono"
+              />
+            </div>
+
+            <button
+              onClick={handleIntrospect}
+              disabled={isIntrospecting || !liveUrl.trim()}
+              className={`w-full py-1.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 shadow-md transition-all ${
+                isIntrospecting
+                  ? 'bg-slate-700 text-slate-400 cursor-not-allowed'
+                  : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-600/20'
+              }`}
+            >
+              {isIntrospecting ? (
+                <>
+                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                  <span>Introspecting Remote Schema...</span>
+                </>
+              ) : (
+                <>
+                  <Globe className="w-3.5 h-3.5" />
+                  <span>Test & Introspect Endpoint</span>
+                </>
+              )}
+            </button>
+          </div>
+
+          {/* Introspection Result View */}
+          {liveResult && (
+            <div className="bg-[#111420] p-3 rounded-xl border border-[#1E2436] space-y-3">
+              <div className="flex items-center justify-between border-b border-[#1E2436] pb-2">
+                <div className="flex items-center gap-1.5">
+                  <span
+                    className={`w-2 h-2 rounded-full ${
+                      liveResult.success ? 'bg-emerald-400' : 'bg-red-400'
+                    }`}
+                  />
+                  <span className="font-bold text-xs text-white">
+                    {liveResult.status} {liveResult.statusText || (liveResult.success ? 'OK' : 'Error')}
+                  </span>
+                </div>
+                <span className="font-mono text-[10px] text-slate-400">
+                  {liveResult.durationMs}ms latency
+                </span>
+              </div>
+
+              {liveResult.success ? (
+                <div className="space-y-2.5">
+                  {/* Discovered Schema Fields */}
+                  <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                        Auto-Discovered Schema ({liveResult.inferredFields.length} fields)
+                      </span>
+                      <span className="text-[10px] font-mono text-emerald-400">
+                        {liveResult.inferredRecords.length} records sampled
+                      </span>
+                    </div>
+
+                    <div className="max-h-36 overflow-y-auto space-y-1 pr-0.5">
+                      {liveResult.inferredFields.map((field) => (
+                        <div
+                          key={field.id}
+                          className="px-2 py-1 rounded bg-[#161B29] border border-[#22293C] flex items-center justify-between text-[11px]"
+                        >
+                          <span className="font-mono font-medium text-slate-200">{field.name}</span>
+                          <span className="px-1.5 py-0.2 rounded text-[9px] font-mono uppercase bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                            {field.type}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Import Button */}
+                  <button
+                    onClick={handleImportCollection}
+                    disabled={importedSuccess}
+                    className={`w-full py-1.5 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 shadow-md transition-all ${
+                      importedSuccess
+                        ? 'bg-emerald-600/30 text-emerald-400 border border-emerald-500/40'
+                        : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-600/20'
+                    }`}
+                  >
+                    {importedSuccess ? (
+                      <>
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                        <span>Collection Imported Successfully!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Database className="w-3.5 h-3.5" />
+                        <span>Import as Live Collection</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              ) : (
+                <div className="p-2.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 text-[11px] leading-relaxed">
+                  <div className="font-semibold flex items-center gap-1 mb-1">
+                    <AlertCircle className="w-3.5 h-3.5 text-red-400" />
+                    <span>Connection Failed</span>
+                  </div>
+                  <p className="font-mono text-[10px] text-red-300/90">{liveResult.error || 'Failed to introspect API endpoint'}</p>
+                </div>
+              )}
+            </div>
           )}
         </div>
       )}
