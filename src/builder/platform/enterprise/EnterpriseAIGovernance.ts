@@ -13,7 +13,7 @@ export class EnterpriseAIGovernance {
       pol = {
         organizationId,
         allowedProviders: ['openai', 'gemini', 'anthropic', 'local_mock'],
-        allowedModels: ['gpt-4o', 'gemini-1.5-pro', 'claude-3-5-sonnet', 'mock-ai'],
+        allowedModels: ['gpt-4o', 'gemini-3.5-flash', 'gemini-3.6-flash', 'gemini-3.8-flash', 'gemini-1.5-pro', 'claude-3-5-sonnet', 'mock-ai'],
         maxMonthlyTokens: 1000000,
         maxAgentSteps: 20,
         requireApprovalForSensitiveOps: true,

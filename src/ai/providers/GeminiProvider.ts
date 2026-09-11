@@ -27,7 +27,8 @@ RULES:
 2. Use descriptive IDs like col_products, page_home, btn_submit.
 3. Use appropriate realistic styles (colors, padding, borderRadius, display, flexDirection, gap, etc.)
 4. Children arrays must be fully nested component trees.
-5. Respond ONLY with valid JSON matching this schema — no extra text.
+5. Keep your response concise, complete, and within output token limits. Never truncate JSON.
+6. Respond ONLY with valid JSON matching this schema — no extra text.
 
 RESPONSE SCHEMA:
 {
@@ -105,9 +106,21 @@ export class GeminiProvider implements AIProvider {
     }
     this.client = new GoogleGenAI({ apiKey });
     const localModel = typeof window !== 'undefined' ? localStorage.getItem('apex_gemini_model') : null;
-    let model = localModel || process.env.NEXT_PUBLIC_GEMINI_MODEL || 'gemini-2.0-flash';
-    if (model.includes('-exp')) {
-      model = 'gemini-2.0-flash';
+    let model = localModel || process.env.NEXT_PUBLIC_GEMINI_MODEL || 'gemini-3.5-flash';
+    const DEPRECATED_MODELS = [
+      'gemini-1.5-flash',
+      'gemini-1.5-pro',
+      'gemini-1.5-flash-latest',
+      'gemini-2.0-flash',
+      'gemini-2.0-pro',
+      'gemini-2.5-flash',
+      'gemini-2.5-pro',
+    ];
+    if (DEPRECATED_MODELS.includes(model) || model.includes('-exp')) {
+      model = 'gemini-3.5-flash';
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('apex_gemini_model', 'gemini-3.5-flash');
+      }
     }
     this.modelName = model;
   }
@@ -127,13 +140,29 @@ export class GeminiProvider implements AIProvider {
   }
 
   private getCandidateModels(): string[] {
-    const defaultOrder = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash-latest', 'gemini-1.5-pro'];
-    const candidates = [this.modelName, ...defaultOrder];
+    const defaultOrder = [
+      'gemini-3.5-flash',
+      'gemini-3.6-flash',
+      'gemini-3.5-flash-lite',
+      'gemini-flash-latest',
+      'gemini-3.8-flash',
+    ];
+    const DEPRECATED_MODELS = [
+      'gemini-1.5-flash',
+      'gemini-1.5-pro',
+      'gemini-1.5-flash-latest',
+      'gemini-2.0-flash',
+      'gemini-2.0-pro',
+      'gemini-2.5-flash',
+      'gemini-2.5-pro',
+    ];
+    const preferred = DEPRECATED_MODELS.includes(this.modelName) ? 'gemini-3.5-flash' : this.modelName;
+    const candidates = [preferred, ...defaultOrder];
     return Array.from(
       new Set(
         candidates
           .filter(Boolean)
-          .map((m) => (m.includes('-exp') ? 'gemini-1.5-flash' : m))
+          .filter((m) => !DEPRECATED_MODELS.includes(m) && !m.includes('-exp'))
       )
     );
   }
@@ -145,7 +174,14 @@ export class GeminiProvider implements AIProvider {
       str.includes('404') ||
       str.includes('not supported for generatecontent') ||
       str.includes('listmodels') ||
-      str.includes('model not available')
+      str.includes('model not available') ||
+      str.includes('no longer available') ||
+      str.includes('unavailable') ||
+      str.includes('503') ||
+      str.includes('spikes in demand') ||
+      str.includes('quota exceeded') ||
+      str.includes('resource_exhausted') ||
+      str.includes('429')
     );
   }
 
@@ -200,7 +236,7 @@ export class GeminiProvider implements AIProvider {
             systemInstruction: SYSTEM_PROMPT,
             responseMimeType: 'application/json',
             temperature: 0.7,
-            maxOutputTokens: 8192,
+            maxOutputTokens: 16384,
           },
         });
         successfulModel = model;
@@ -285,7 +321,7 @@ export class GeminiProvider implements AIProvider {
               systemInstruction: SYSTEM_PROMPT,
               responseMimeType: 'application/json',
               temperature: 0.7,
-              maxOutputTokens: 8192,
+              maxOutputTokens: 16384,
             },
           });
 

@@ -17,7 +17,7 @@ export const ProjectSettingsModal: React.FC = () => {
   const [backgroundColor, setBackgroundColor] = useState(project?.theme?.backgroundColor || '#FFFFFF');
   const [apiKey, setApiKey] = useState('');
   const [showApiKey, setShowApiKey] = useState(false);
-  const [selectedModel, setSelectedModel] = useState('gemini-2.0-flash');
+  const [selectedModel, setSelectedModel] = useState('gemini-3.5-flash');
   const [saved, setSaved] = useState(false);
 
   useEffect(() => {
@@ -36,11 +36,20 @@ export const ProjectSettingsModal: React.FC = () => {
           .catch(() => {});
       }
 
+      const DEPRECATED_MODELS = [
+        'gemini-1.5-flash',
+        'gemini-1.5-pro',
+        'gemini-1.5-flash-latest',
+        'gemini-2.0-flash',
+        'gemini-2.0-pro',
+        'gemini-2.5-flash',
+        'gemini-2.5-pro',
+      ];
       const localModel = typeof window !== 'undefined' ? localStorage.getItem('apex_gemini_model') : '';
-      if (localModel && !localModel.includes('-exp')) {
+      if (localModel && !DEPRECATED_MODELS.includes(localModel) && !localModel.includes('-exp')) {
         setSelectedModel(localModel);
       } else {
-        setSelectedModel('gemini-2.0-flash');
+        setSelectedModel('gemini-3.5-flash');
       }
     }
   }, [activeModal]);
@@ -228,9 +237,10 @@ export const ProjectSettingsModal: React.FC = () => {
                 onChange={(e) => setSelectedModel(e.target.value)}
                 className="w-full px-3 py-2 bg-[#141824] border border-[#262D3D] rounded-lg text-xs text-white focus:outline-none focus:border-indigo-500 cursor-pointer"
               >
-                <option value="gemini-2.0-flash">Gemini 2.0 Flash (Recommended — Ultra Fast)</option>
-                <option value="gemini-1.5-flash">Gemini 1.5 Flash (Production Standard)</option>
-                <option value="gemini-1.5-pro">Gemini 1.5 Pro (Advanced Reasoning)</option>
+                <option value="gemini-3.5-flash">Gemini 3.5 Flash (Recommended — Ultra Fast & Stable)</option>
+                <option value="gemini-3.6-flash">Gemini 3.6 Flash (High Performance)</option>
+                <option value="gemini-3.8-flash">Gemini 3.8 Flash (Advanced Reasoning)</option>
+                <option value="gemini-3.5-flash-lite">Gemini 3.5 Flash Lite (Lowest Latency)</option>
               </select>
             </div>
           </div>

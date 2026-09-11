@@ -904,24 +904,30 @@ export const AIBuilderPanel: React.FC = () => {
               </div>
             )}
 
-            {/* Quick Model Fallback Switch if error is 404 or model-related */}
-            {(error.includes('404') || error.toLowerCase().includes('not found') || error.toLowerCase().includes('model')) && (
+            {/* Quick Model Fallback Switch if error is 404, 503, or model-related */}
+            {(error.includes('404') || error.includes('503') || error.toLowerCase().includes('not found') || error.toLowerCase().includes('model') || error.toLowerCase().includes('unavailable')) && (
               <div className="p-2 rounded bg-[#0D1017] border border-[#2A3142] space-y-1.5">
                 <span className="text-[10px] text-slate-300 font-medium block">
-                  Model Not Found? Switch & Retry:
+                  Model Not Found or Unavailable? Switch & Retry:
                 </span>
                 <div className="flex gap-1.5 flex-wrap">
                   <button
-                    onClick={() => handleSwitchModel('gemini-2.0-flash')}
+                    onClick={() => handleSwitchModel('gemini-3.5-flash')}
                     className="px-2 py-1 rounded bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-medium transition-colors"
                   >
-                    Use Gemini 2.0 Flash
+                    Use Gemini 3.5 Flash (Fast)
                   </button>
                   <button
-                    onClick={() => handleSwitchModel('gemini-1.5-flash')}
+                    onClick={() => handleSwitchModel('gemini-3.6-flash')}
+                    className="px-2 py-1 rounded bg-purple-600 hover:bg-purple-500 text-white text-[10px] font-medium transition-colors"
+                  >
+                    Use Gemini 3.6 Flash
+                  </button>
+                  <button
+                    onClick={() => handleSwitchModel('gemini-3.8-flash')}
                     className="px-2 py-1 rounded bg-slate-700 hover:bg-slate-600 text-white text-[10px] font-medium transition-colors"
                   >
-                    Use Gemini 1.5 Flash
+                    Use Gemini 3.8 Flash
                   </button>
                 </div>
               </div>

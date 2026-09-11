@@ -10,6 +10,24 @@ import {
 
 export class TokenEconomicsEngine {
   public static readonly PRICING_TABLE: Record<SupportedModelId, ModelPricingTier> = {
+    'gemini-3.5-flash': {
+      modelId: 'gemini-3.5-flash',
+      inputCostPerMillion: 0.35,
+      outputCostPerMillion: 1.05,
+      cachedInputCostPerMillion: 0.0875,
+    },
+    'gemini-3.6-flash': {
+      modelId: 'gemini-3.6-flash',
+      inputCostPerMillion: 0.35,
+      outputCostPerMillion: 1.05,
+      cachedInputCostPerMillion: 0.0875,
+    },
+    'gemini-3.8-flash': {
+      modelId: 'gemini-3.8-flash',
+      inputCostPerMillion: 0.5,
+      outputCostPerMillion: 1.5,
+      cachedInputCostPerMillion: 0.125,
+    },
     'gemini-1.5-pro': {
       modelId: 'gemini-1.5-pro',
       inputCostPerMillion: 3.5,

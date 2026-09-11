@@ -57,9 +57,18 @@ export class ScreenshotAnalyzer {
 
     const client = new GoogleGenAI({ apiKey });
     const localModel = typeof window !== 'undefined' ? localStorage.getItem('apex_gemini_model') : null;
-    let modelName = localModel || process.env.NEXT_PUBLIC_GEMINI_MODEL || 'gemini-2.0-flash';
-    if (modelName.includes('-exp')) {
-      modelName = 'gemini-2.0-flash';
+    let modelName = localModel || process.env.NEXT_PUBLIC_GEMINI_MODEL || 'gemini-3.5-flash';
+    const DEPRECATED_MODELS = [
+      'gemini-1.5-flash',
+      'gemini-1.5-pro',
+      'gemini-1.5-flash-latest',
+      'gemini-2.0-flash',
+      'gemini-2.0-pro',
+      'gemini-2.5-flash',
+      'gemini-2.5-pro',
+    ];
+    if (DEPRECATED_MODELS.includes(modelName) || modelName.includes('-exp')) {
+      modelName = 'gemini-3.5-flash';
     }
 
     // Build the image part for Gemini
