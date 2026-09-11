@@ -10,6 +10,7 @@ import { removeNode } from '../../builder/tree/remove-node';
 import { updateNode } from '../../builder/tree/update-node';
 import { moveNode } from '../../builder/tree/move-node';
 import { findNode } from '../../builder/tree/find-node';
+import { AIOperationNormalizer } from './AIOperationNormalizer';
 
 export class OperationExecutor {
   /**
@@ -93,8 +94,13 @@ export class OperationExecutor {
         const page = project.pages.find((p) => p.id === op.pageId);
         if (!page) throw new Error(`Page ${op.pageId} not found`);
 
-        const newNode = this.normalizeNode(op.node, op.parentId);
-        const updatedRoot = insertNode(page.root, op.parentId, newNode, op.index);
+        let targetParentId = op.parentId;
+        if (!targetParentId || targetParentId === 'root' || targetParentId === page.id || !findNode(page.root, targetParentId)) {
+          targetParentId = page.root.id;
+        }
+
+        const newNode = this.normalizeNode(op.node, targetParentId);
+        const updatedRoot = insertNode(page.root, targetParentId, newNode, op.index);
         page.root = updatedRoot;
         break;
       }
@@ -319,22 +325,6 @@ export class OperationExecutor {
   }
 
   private static normalizeNode(raw: any, parentId?: string): ComponentNode {
-    const node: ComponentNode = {
-      id: raw.id,
-      type: raw.type,
-      name: raw.name || raw.type,
-      props: raw.props || {},
-      styles: raw.styles || {},
-      bindings: raw.bindings || {},
-      locked: Boolean(raw.locked),
-      states: raw.states || {},
-      interactions: raw.interactions || [],
-      parentId,
-      children: [],
-    };
-    if (Array.isArray(raw.children)) {
-      node.children = raw.children.map((child: any) => this.normalizeNode(child, node.id));
-    }
-    return node;
+    return AIOperationNormalizer.normalizeNode(raw, parentId);
   }
 }

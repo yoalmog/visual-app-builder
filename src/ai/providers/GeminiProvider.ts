@@ -2,6 +2,7 @@
 import { GoogleGenAI } from '@google/genai';
 import { AIProvider, AIRequest, AIResponse, AICostEstimate, AIStreamCallbacks } from '../core/AIProvider';
 import { AIError } from '../core/AIError';
+import { AIOperationNormalizer } from '../operations/AIOperationNormalizer';
 
 // ─── System prompt ────────────────────────────────────────────────────────────
 
@@ -11,31 +12,40 @@ The user is working inside a no-code/low-code visual builder and wants to build 
 Your job is to understand the user's request and respond with a JSON object that describes EXACTLY what to build.
 
 AVAILABLE OPERATION TYPES:
-- create_page: { pageId, name, slug }
-- add_component: { pageId, parentId, node: { id, type, name, props, styles, children } }
-- update_component: { pageId, nodeId, props?, styles? }
-- create_collection: { collectionId, name, fields: [{ id, name, type, required }] }
-- create_workflow: { workflow: { id, name, nodes, edges } }
-- update_theme: { theme: { primaryColor, backgroundColor, textColor, borderRadius, colors } }
+- create_page: { id, type: "create_page", description, risk: "low", reversible: true, pageId, name, slug }
+- add_component: { id, type: "add_component", description, risk: "low", reversible: true, pageId, parentId, node: { id, type, name, props, styles, children } }
+- update_component: { id, type: "update_component", description, risk: "low", reversible: true, pageId, nodeId, props?, styles? }
+- create_collection: { id, type: "create_collection", description, risk: "low", reversible: true, collectionId, name, fields: [{ id, name, type, required }] }
+- create_workflow: { id, type: "create_workflow", description, risk: "low", reversible: true, workflow: { id, name, nodes, edges } }
+- update_theme: { id, type: "update_theme", description, risk: "low", reversible: true, theme: { primaryColor, backgroundColor, textColor, borderRadius, colors } }
 
-COMPONENT TYPES: container, section, heading, text, button, image, card, form, input, select, checkbox, table, chart_bar, chart_line, chart_pie, list, navbar, footer, hero, badge, modal, tabs, sidebar
+EVERY OPERATION IN "operations" MUST BE AN OBJECT WITH:
+- "id": A unique string (e.g. "op_create_page", "op_add_hero", "op_col_songs")
+- "type": One of the operation types above
+- "description": Short description of what this operation accomplishes
+- "risk": "low"
+- "reversible": true
+
+COMPONENT TYPES: container, row, column, stack, section, heading, paragraph, text, button, image, card, input, textarea, select, checkbox, data_table, chart_bar, chart_line, chart_pie, list, navbar, footer, badge, modal, tabs, sidebar
 
 FIELD TYPES: text, number, boolean, date, email, url, image, select, relation
 
 RULES:
-1. Always generate REAL content specific to what the user asked — never generic placeholders.
-2. Use descriptive IDs like col_products, page_home, btn_submit.
-3. Use appropriate realistic styles (colors, padding, borderRadius, display, flexDirection, gap, etc.)
-4. Children arrays must be fully nested component trees.
-5. Keep your response concise, complete, and within output token limits. Never truncate JSON.
-6. Respond ONLY with valid JSON matching this schema — no extra text.
+1. Every operation MUST have "id", "type", "description", "risk": "low", and "reversible": true.
+2. For "add_component", parentId must either be the page's root ID, or the ID of an existing container node.
+3. Always generate REAL content specific to what the user asked — never generic placeholders.
+4. Use descriptive IDs like col_songs, page_jukebox, btn_play, track_row_1.
+5. Use appropriate realistic styles (colors, padding, borderRadius, display, flexDirection, gap, etc.)
+6. Children arrays must be fully nested component trees.
+7. Keep your response concise, complete, and within output token limits. Never truncate JSON.
+8. Respond ONLY with valid JSON matching this schema — no extra text.
 
 RESPONSE SCHEMA:
 {
   "intent": "generate_app" | "generate_page" | "generate_dashboard" | "generate_section" | "edit_selection" | "theme_change" | "ask",
   "summary": "Brief human-readable description of what was built",
   "explanation": "Detailed explanation of the generated components and structure",
-  "operations": [ ...array of AIOperation objects... ]
+  "operations": [ ...array of AIOperation objects with id, type, description, risk, reversible... ]
 }`;
 
 // ─── Context builder (shared by generate and stream) ─────────────────────────
@@ -73,6 +83,7 @@ function parseStructuredResponse(rawText: string): any {
   if (!data.operations || !Array.isArray(data.operations)) {
     throw new Error('Gemini response missing "operations" array');
   }
+  data.operations = AIOperationNormalizer.normalizeOperations(data.operations);
   return data;
 }
 

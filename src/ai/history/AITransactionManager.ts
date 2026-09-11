@@ -2,6 +2,7 @@
 import { AppProject } from '../../builder/schema/project';
 import { AIOperation } from '../operations/AIOperation';
 import { OperationValidator } from '../operations/OperationValidator';
+import { AIOperationNormalizer } from '../operations/AIOperationNormalizer';
 import { OperationDependencyResolver } from '../operations/OperationDependencyResolver';
 import { OperationExecutor } from '../operations/OperationExecutor';
 import { AIDiff, ProjectDiffSummary } from './AIDiff';
@@ -17,11 +18,11 @@ export interface TransactionResult {
 }
 
 export class AITransactionManager {
-  private static rollbackSnapshots = new Map<string, AppProject>();
+  private static rollbackSnapshots: Map<string, AppProject> = new Map();
 
   /**
-   * Executes an array of operations atomically against an AppProject.
-   * If any error occurs, the original project state is preserved and restored.
+   * Executes an array of AIOperations atomically.
+   * If any operation fails, rolls back completely to the snapshot.
    */
   public static executeTransaction(params: {
     project: AppProject;
@@ -36,8 +37,14 @@ export class AITransactionManager {
     // Save snapshot for potential rollback
     this.rollbackSnapshots.set(generationId, snapshot);
 
+    // Normalize incoming operations ensuring id, risk, reversible, description are present
+    const operations = AIOperationNormalizer.normalizeOperations(
+      params.operations,
+      params.project?.pages?.[0]?.id
+    );
+
     // 1. Validate operations
-    const valResult = OperationValidator.validateAll(params.operations);
+    const valResult = OperationValidator.validateAll(operations);
     if (!valResult.valid) {
       return {
         success: false,
@@ -50,7 +57,7 @@ export class AITransactionManager {
     }
 
     // 2. Resolve dependencies
-    const depResult = OperationDependencyResolver.resolve(params.operations);
+    const depResult = OperationDependencyResolver.resolve(operations);
     if (depResult.hasCycle) {
       return {
         success: false,
@@ -114,7 +121,7 @@ export class AITransactionManager {
         workflowsCreated: diff.workflowsAdded.length,
         themesUpdated: diff.themeModified ? 1 : 0,
       },
-      operationIds: params.operations.map((o) => o.id),
+      operationIds: operations.map((o) => o.id),
       projectVersionBefore: snapshot.version,
       projectVersionAfter: execResult.updatedProject.version,
       appliedAt: new Date().toISOString(),

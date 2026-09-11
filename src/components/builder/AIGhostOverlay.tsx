@@ -12,6 +12,7 @@ export const AIGhostOverlay: React.FC = () => {
   const pendingOperations = useAIStore((s) => s.pendingOperations);
   const pendingApproval = useAIStore((s) => s.pendingApproval);
   const approvePending = useAIStore((s) => s.approvePending);
+  const applyPlan = useAIStore((s) => s.applyPlan);
   const rollbackLast = useAIStore((s) => s.rollbackLast);
   const lastGenerationId = useAIStore((s) => s.lastGenerationId);
   const activeAdaptationProposals = useAIStore((s) => s.activeAdaptationProposals);
@@ -21,9 +22,10 @@ export const AIGhostOverlay: React.FC = () => {
 
   const handleApprove = () => {
     if (!project) return;
-    const updated = approvePending(project);
+    const updated = approvePending(project) || applyPlan(project);
     if (updated) {
       setProject(updated);
+      useAIStore.setState({ error: null });
     }
   };
 

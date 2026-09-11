@@ -7,6 +7,7 @@ import { ApprovalRequest, ApprovalManager } from '../approval/ApprovalManager';
 import { AgentTask } from '../agent/AgentTask';
 import { AgentEngine } from '../agent/AgentEngine';
 import { AITransactionManager } from '../history/AITransactionManager';
+import { AIOperationNormalizer } from '../operations/AIOperationNormalizer';
 import { ProviderFactory } from '../providers/ProviderFactory';
 import { AppProject } from '../../builder/schema/project';
 import { ComponentNode } from '../../builder/schema/component';
@@ -865,6 +866,10 @@ export const useAIStore = create<AIStoreState>((set, get) => ({
       }
 
       const plan: PlanOutput = (providerResponse as any).structuredData as PlanOutput;
+      plan.operations = AIOperationNormalizer.normalizeOperations(
+        plan.operations,
+        activePageId || project.pages[0]?.id
+      );
 
       set({
         currentPlan: plan,
