@@ -127,13 +127,13 @@ export class GeminiProvider implements AIProvider {
   }
 
   private getCandidateModels(): string[] {
-    const defaultOrder = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-pro'];
+    const defaultOrder = ['gemini-1.5-flash', 'gemini-2.0-flash', 'gemini-1.5-flash-latest', 'gemini-1.5-pro'];
     const candidates = [this.modelName, ...defaultOrder];
     return Array.from(
       new Set(
         candidates
           .filter(Boolean)
-          .map((m) => (m.includes('-exp') ? 'gemini-2.0-flash' : m))
+          .map((m) => (m.includes('-exp') ? 'gemini-1.5-flash' : m))
       )
     );
   }
@@ -144,24 +144,30 @@ export class GeminiProvider implements AIProvider {
       str.includes('not found') ||
       str.includes('404') ||
       str.includes('not supported for generatecontent') ||
-      str.includes('listmodels')
+      str.includes('listmodels') ||
+      str.includes('model not available')
     );
   }
 
   private formatGeminiErrorMessage(err: any): string {
     const raw = err?.message || String(err || 'Unknown error');
     try {
-      const match = raw.match(/\{[\s\S]*\}/);
-      if (match) {
-        const parsed = JSON.parse(match[0]);
+      const start = raw.indexOf('{');
+      const end = raw.lastIndexOf('}');
+      if (start !== -1 && end > start) {
+        const jsonStr = raw.substring(start, end + 1);
+        const parsed = JSON.parse(jsonStr);
         if (parsed?.error?.message) {
           return `Gemini API: ${parsed.error.message.trim()}`;
+        }
+        if (parsed?.message) {
+          return `Gemini API: ${parsed.message.trim()}`;
         }
       }
     } catch {
       // ignore JSON parse error
     }
-    return `Gemini API error: ${raw}`;
+    return `Gemini API: ${raw}`;
   }
 
   public async estimateCost(request: AIRequest): Promise<AICostEstimate> {
@@ -265,14 +271,14 @@ export class GeminiProvider implements AIProvider {
 
     try {
       const candidateModels = this.getCandidateModels();
-      let streamResult: any = null;
+      let fullText = '';
       let successfulModel = this.modelName;
       let lastErr: any = null;
 
       for (const model of candidateModels) {
         try {
           callbacks.onProgress?.(`Contacting Gemini (${model})...`, 30);
-          streamResult = await this.client.models.generateContentStream({
+          const streamResult = await this.client.models.generateContentStream({
             model,
             contents: buildUserMessage(request),
             config: {
@@ -282,6 +288,21 @@ export class GeminiProvider implements AIProvider {
               maxOutputTokens: 8192,
             },
           });
+
+          callbacks.onProgress?.(`Receiving response from Gemini (${model})...`, 55);
+          fullText = '';
+          for await (const chunk of streamResult) {
+            if (request.signal?.aborted) {
+              callbacks.onError?.(new AIError('CANCELLED', 'Request was cancelled.'));
+              return;
+            }
+            const chunkText = chunk.text || '';
+            fullText += chunkText;
+            if (chunkText) {
+              callbacks.onToken?.(chunkText);
+            }
+          }
+
           successfulModel = model;
           this.modelName = model;
           if (typeof window !== 'undefined') {
@@ -291,30 +312,15 @@ export class GeminiProvider implements AIProvider {
         } catch (err: any) {
           lastErr = err;
           if (this.isModelNotFoundError(err)) {
-            console.warn(`[GeminiProvider] Model ${model} not available. Trying next candidate...`);
+            console.warn(`[GeminiProvider] Model ${model} not available (${err?.message || err}). Trying next candidate...`);
             continue;
           }
           throw err;
         }
       }
 
-      if (!streamResult) {
+      if (!fullText) {
         throw lastErr || new AIError('PROVIDER_UNAVAILABLE', 'No available Gemini model responded.');
-      }
-
-      callbacks.onProgress?.('Gemini AI generating application structure...', 55);
-
-      let fullText = '';
-      for await (const chunk of streamResult) {
-        if (request.signal?.aborted) {
-          callbacks.onError?.(new AIError('CANCELLED', 'Request was cancelled.'));
-          return;
-        }
-        const chunkText = chunk.text || '';
-        fullText += chunkText;
-        if (chunkText) {
-          callbacks.onToken?.(chunkText);
-        }
       }
 
       callbacks.onProgress?.('Parsing AI response...', 80);

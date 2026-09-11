@@ -274,141 +274,398 @@ export const AIBuilderPanel: React.FC = () => {
     const promptText = lastSubmittedPrompt || inputPrompt || 'Create modern responsive SaaS Hero';
 
     const ts = Date.now();
-    const heroNodeId = `hero_${ts}`;
-    const badgeId = `badge_${ts}`;
-    const headingId = `heading_${ts}`;
-    const subId = `sub_${ts}`;
-    const btnRowId = `row_${ts}`;
-    const btn1Id = `btn1_${ts}`;
-    const btn2Id = `btn2_${ts}`;
+    const isJukebox = /jukebox|music|song|audio|player|playlist/i.test(promptText);
 
-    const operations: AIOperation[] = [
-      {
-        id: `op_hero_${ts}`,
-        type: 'add_component',
-        risk: 'low',
-        reversible: true,
-        description: 'Add Responsive SaaS Hero Section',
-        pageId: activePage.id,
-        parentId: activePage.root.id,
-        node: {
-          id: heroNodeId,
-          type: 'container',
-          name: 'Hero Showcase Section',
-          props: {},
-          styles: {
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '44px 28px',
-            gap: '18px',
-            backgroundColor: '#0F172A',
-            borderRadius: '16px',
-            border: '1px solid #1E293B',
-            textAlign: 'center',
-            color: '#F8FAFC',
-            marginTop: '16px',
-            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
+    let operations: AIOperation[];
+
+    if (isJukebox) {
+      operations = [
+        {
+          id: `op_jukebox_${ts}`,
+          type: 'add_component',
+          risk: 'low',
+          reversible: true,
+          description: 'Add Retro Neon Jukebox Music Center',
+          pageId: activePage.id,
+          parentId: activePage.root.id,
+          node: {
+            id: `jb_container_${ts}`,
+            type: 'container',
+            name: 'Neon Jukebox Station',
+            props: {},
+            styles: {
+              display: 'flex',
+              flexDirection: 'column',
+              padding: '28px 24px',
+              gap: '20px',
+              backgroundColor: '#0F0926',
+              borderRadius: '20px',
+              border: '2px solid #8B5CF6',
+              boxShadow: '0 0 35px rgba(139, 92, 246, 0.35)',
+              color: '#FFFFFF',
+              marginTop: '16px',
+            },
+            children: [
+              {
+                id: `jb_hdr_${ts}`,
+                type: 'row',
+                name: 'Jukebox Header Bar',
+                props: {},
+                styles: {
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  paddingBottom: '14px',
+                  borderBottom: '1px solid rgba(139, 92, 246, 0.3)',
+                },
+                children: [
+                  {
+                    id: `jb_title_${ts}`,
+                    type: 'heading',
+                    name: 'Jukebox Brand',
+                    props: { content: '🎵 RETRO NEON JUKEBOX 3000', level: 2 },
+                    styles: {
+                      fontSize: '22px',
+                      fontWeight: '800',
+                      color: '#F472B6',
+                      letterSpacing: '0.05em',
+                    },
+                  },
+                  {
+                    id: `jb_coins_${ts}`,
+                    type: 'text',
+                    name: 'Credit Badge',
+                    props: { content: '🪙 CREDITS: 12' },
+                    styles: {
+                      backgroundColor: '#1E1548',
+                      color: '#FBBF24',
+                      fontWeight: '700',
+                      fontSize: '12px',
+                      padding: '6px 14px',
+                      borderRadius: '9999px',
+                      border: '1px solid #F59E0B',
+                    },
+                  },
+                ],
+              },
+              {
+                id: `jb_now_playing_${ts}`,
+                type: 'container',
+                name: 'Now Playing Stage',
+                props: {},
+                styles: {
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  padding: '20px',
+                  backgroundColor: '#160E36',
+                  borderRadius: '14px',
+                  border: '1px solid #7C3AED',
+                  gap: '10px',
+                  textAlign: 'center',
+                },
+                children: [
+                  {
+                    id: `jb_song_${ts}`,
+                    type: 'heading',
+                    name: 'Current Song Title',
+                    props: { content: 'Midnight Highway (Synthwave Mix)', level: 3 },
+                    styles: {
+                      fontSize: '20px',
+                      fontWeight: '700',
+                      color: '#38BDF8',
+                    },
+                  },
+                  {
+                    id: `jb_artist_${ts}`,
+                    type: 'text',
+                    name: 'Artist Info',
+                    props: { content: 'The Cyber Dynamos • Neon Horizons Album (1984)' },
+                    styles: {
+                      fontSize: '13px',
+                      color: '#A78BFA',
+                    },
+                  },
+                  {
+                    id: `jb_controls_${ts}`,
+                    type: 'row',
+                    name: 'Playback Controls',
+                    props: {},
+                    styles: {
+                      display: 'flex',
+                      gap: '12px',
+                      justifyContent: 'center',
+                      marginTop: '10px',
+                    },
+                    children: [
+                      {
+                        id: `jb_prev_${ts}`,
+                        type: 'button',
+                        name: 'Previous Button',
+                        props: { label: '⏮ Prev' },
+                        styles: {
+                          backgroundColor: '#2A1F5E',
+                          color: '#E2E8F0',
+                          padding: '8px 16px',
+                          borderRadius: '8px',
+                          border: '1px solid #4C1D95',
+                          cursor: 'pointer',
+                        },
+                      },
+                      {
+                        id: `jb_play_${ts}`,
+                        type: 'button',
+                        name: 'Play Button',
+                        props: { label: '▶ PLAYING NOW' },
+                        styles: {
+                          backgroundColor: '#EC4899',
+                          color: '#FFFFFF',
+                          padding: '8px 22px',
+                          borderRadius: '8px',
+                          fontWeight: '700',
+                          border: 'none',
+                          cursor: 'pointer',
+                          boxShadow: '0 0 16px rgba(236, 72, 153, 0.6)',
+                        },
+                      },
+                      {
+                        id: `jb_next_${ts}`,
+                        type: 'button',
+                        name: 'Next Button',
+                        props: { label: '⏭ Next' },
+                        styles: {
+                          backgroundColor: '#2A1F5E',
+                          color: '#E2E8F0',
+                          padding: '8px 16px',
+                          borderRadius: '8px',
+                          border: '1px solid #4C1D95',
+                          cursor: 'pointer',
+                        },
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                id: `jb_playlist_${ts}`,
+                type: 'container',
+                name: 'Song Selection Catalog',
+                props: {},
+                styles: {
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '8px',
+                },
+                children: [
+                  {
+                    id: `jb_track1_${ts}`,
+                    type: 'row',
+                    name: 'Track Row 1',
+                    props: {},
+                    styles: {
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      padding: '10px 14px',
+                      backgroundColor: '#1C1242',
+                      borderRadius: '8px',
+                      border: '1px solid #3B2D71',
+                    },
+                    children: [
+                      {
+                        id: `jb_t1_title_${ts}`,
+                        type: 'text',
+                        name: 'Track 1 Title',
+                        props: { content: '01. Electric Starlight Journey — 03:45' },
+                        styles: { color: '#F1F5F9', fontWeight: '500' },
+                      },
+                      {
+                        id: `jb_t1_btn_${ts}`,
+                        type: 'button',
+                        name: 'Play Track 1',
+                        props: { label: 'Queue Track' },
+                        styles: {
+                          backgroundColor: '#7C3AED',
+                          color: '#FFF',
+                          padding: '4px 10px',
+                          borderRadius: '6px',
+                          border: 'none',
+                          fontSize: '11px',
+                        },
+                      },
+                    ],
+                  },
+                  {
+                    id: `jb_track2_${ts}`,
+                    type: 'row',
+                    name: 'Track Row 2',
+                    props: {},
+                    styles: {
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      padding: '10px 14px',
+                      backgroundColor: '#1C1242',
+                      borderRadius: '8px',
+                      border: '1px solid #3B2D71',
+                    },
+                    children: [
+                      {
+                        id: `jb_t2_title_${ts}`,
+                        type: 'text',
+                        name: 'Track 2 Title',
+                        props: { content: '02. Neon Tokyo Sunset Boulevard — 04:12' },
+                        styles: { color: '#F1F5F9', fontWeight: '500' },
+                      },
+                      {
+                        id: `jb_t2_btn_${ts}`,
+                        type: 'button',
+                        name: 'Play Track 2',
+                        props: { label: 'Queue Track' },
+                        styles: {
+                          backgroundColor: '#7C3AED',
+                          color: '#FFF',
+                          padding: '4px 10px',
+                          borderRadius: '6px',
+                          border: 'none',
+                          fontSize: '11px',
+                        },
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
           },
-          children: [
-            {
-              id: badgeId,
-              type: 'text',
-              name: 'Pill Badge',
-              props: { content: '✨ APEX STUDIO NEXT-GEN ENGINE' },
-              styles: {
-                fontSize: '11px',
-                fontWeight: '700',
-                color: '#818CF8',
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                padding: '5px 12px',
-                backgroundColor: 'rgba(99, 102, 241, 0.15)',
-                borderRadius: '9999px',
-                border: '1px solid rgba(129, 140, 248, 0.3)',
-              },
-            },
-            {
-              id: headingId,
-              type: 'heading',
-              name: 'Hero Heading',
-              props: { content: 'Build Full-Stack Apps Visually', level: 1 },
-              styles: {
-                fontSize: '32px',
-                fontWeight: '800',
-                color: '#FFFFFF',
-                lineHeight: '1.2',
-                maxWidth: '680px',
-              },
-            },
-            {
-              id: subId,
-              type: 'paragraph',
-              name: 'Hero Subtitle',
-              props: {
-                content:
-                  'Schema-first architecture with instantaneous component rendering, visual state management, and production-ready code generation.',
-              },
-              styles: {
-                fontSize: '14px',
-                color: '#94A3B8',
-                maxWidth: '560px',
-                lineHeight: '1.6',
-              },
-            },
-            {
-              id: btnRowId,
-              type: 'row',
-              name: 'Call To Action Buttons',
-              props: {},
-              styles: {
-                display: 'flex',
-                flexDirection: 'row',
-                gap: '12px',
-                justifyContent: 'center',
-                alignItems: 'center',
-                marginTop: '8px',
-              },
-              children: [
-                {
-                  id: btn1Id,
-                  type: 'button',
-                  name: 'Primary CTA Button',
-                  props: { label: 'Explore Features 🚀' },
-                  styles: {
-                    backgroundColor: '#4F46E5',
-                    color: '#FFFFFF',
-                    padding: '10px 22px',
-                    borderRadius: '8px',
-                    fontWeight: '600',
-                    fontSize: '13px',
-                    border: 'none',
-                    cursor: 'pointer',
-                  },
-                },
-                {
-                  id: btn2Id,
-                  type: 'button',
-                  name: 'Secondary Button',
-                  props: { label: 'View Documentation' },
-                  styles: {
-                    backgroundColor: '#1E293B',
-                    color: '#CBD5E1',
-                    padding: '10px 22px',
-                    borderRadius: '8px',
-                    fontWeight: '500',
-                    fontSize: '13px',
-                    border: '1px solid #334155',
-                    cursor: 'pointer',
-                  },
-                },
-              ],
-            },
-          ],
         },
-      },
-    ];
+      ];
+    } else {
+      operations = [
+        {
+          id: `op_hero_${ts}`,
+          type: 'add_component',
+          risk: 'low',
+          reversible: true,
+          description: 'Add Responsive SaaS Hero Section',
+          pageId: activePage.id,
+          parentId: activePage.root.id,
+          node: {
+            id: `hero_${ts}`,
+            type: 'container',
+            name: 'Hero Showcase Section',
+            props: {},
+            styles: {
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '44px 28px',
+              gap: '18px',
+              backgroundColor: '#0F172A',
+              borderRadius: '16px',
+              border: '1px solid #1E293B',
+              textAlign: 'center',
+              color: '#F8FAFC',
+              marginTop: '16px',
+              boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
+            },
+            children: [
+              {
+                id: `badge_${ts}`,
+                type: 'text',
+                name: 'Pill Badge',
+                props: { content: '✨ APEX STUDIO NEXT-GEN ENGINE' },
+                styles: {
+                  fontSize: '11px',
+                  fontWeight: '700',
+                  color: '#818CF8',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  padding: '5px 12px',
+                  backgroundColor: 'rgba(99, 102, 241, 0.15)',
+                  borderRadius: '9999px',
+                  border: '1px solid rgba(129, 140, 248, 0.3)',
+                },
+              },
+              {
+                id: `heading_${ts}`,
+                type: 'heading',
+                name: 'Hero Heading',
+                props: { content: 'Build Full-Stack Apps Visually', level: 1 },
+                styles: {
+                  fontSize: '32px',
+                  fontWeight: '800',
+                  color: '#FFFFFF',
+                  lineHeight: '1.2',
+                  maxWidth: '680px',
+                },
+              },
+              {
+                id: `sub_${ts}`,
+                type: 'paragraph',
+                name: 'Hero Subtitle',
+                props: {
+                  content:
+                    'Schema-first architecture with instantaneous component rendering, visual state management, and production-ready code generation.',
+                },
+                styles: {
+                  fontSize: '14px',
+                  color: '#94A3B8',
+                  maxWidth: '560px',
+                  lineHeight: '1.6',
+                },
+              },
+              {
+                id: `row_${ts}`,
+                type: 'row',
+                name: 'Call To Action Buttons',
+                props: {},
+                styles: {
+                  display: 'flex',
+                  flexDirection: 'row',
+                  gap: '12px',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  marginTop: '8px',
+                },
+                children: [
+                  {
+                    id: `btn1_${ts}`,
+                    type: 'button',
+                    name: 'Primary CTA Button',
+                    props: { label: 'Explore Features 🚀' },
+                    styles: {
+                      backgroundColor: '#4F46E5',
+                      color: '#FFFFFF',
+                      padding: '10px 22px',
+                      borderRadius: '8px',
+                      fontWeight: '600',
+                      fontSize: '13px',
+                      border: 'none',
+                      cursor: 'pointer',
+                    },
+                  },
+                  {
+                    id: `btn2_${ts}`,
+                    type: 'button',
+                    name: 'Secondary Button',
+                    props: { label: 'View Documentation' },
+                    styles: {
+                      backgroundColor: '#1E293B',
+                      color: '#CBD5E1',
+                      padding: '10px 22px',
+                      borderRadius: '8px',
+                      fontWeight: '500',
+                      fontSize: '13px',
+                      border: '1px solid #334155',
+                      cursor: 'pointer',
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+        },
+      ];
+    }
 
     const res = AITransactionManager.executeTransaction({
       project,
