@@ -46,11 +46,12 @@ export class ScreenshotAnalyzer {
    * Returns a VisualInferenceResult with AIOperations to recreate the detected UI.
    */
   public static async analyze(image: ImageInput): Promise<VisualInferenceResult> {
-    const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+    const localKey = typeof window !== 'undefined' ? localStorage.getItem('apex_gemini_api_key') : null;
+    const apiKey = (localKey && localKey.trim().length > 0 ? localKey.trim() : null) || process.env.NEXT_PUBLIC_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
     if (!apiKey || apiKey.trim().length === 0) {
       throw new AIError(
         'PROVIDER_UNAVAILABLE',
-        '⚠️ Gemini API key not configured. Add NEXT_PUBLIC_GEMINI_API_KEY to your .env.local file.'
+        '⚠️ Gemini API key not configured. Add NEXT_PUBLIC_GEMINI_API_KEY to your .env.local file or configure it in Settings.'
       );
     }
 

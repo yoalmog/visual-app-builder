@@ -36,7 +36,13 @@ import {
   ShieldCheck,
   Flag,
   Users,
+  Key,
+  ExternalLink,
+  Zap,
 } from 'lucide-react';
+import { AITransactionManager } from '@/ai/history/AITransactionManager';
+import { AIOperation } from '@/ai/operations/AIOperation';
+import { useProjectLifecycleStore } from '@/builder/lifecycle/useProjectLifecycleStore';
 
 export const AIBuilderPanel: React.FC = () => {
   const {
@@ -156,6 +162,10 @@ export const AIBuilderPanel: React.FC = () => {
   const [showCertification, setShowCertification] = useState(true);
   const [expandedEventId, setExpandedEventId] = useState<string | null>(null);
   const [selectedEvidenceId, setSelectedEvidenceId] = useState<string | null>(null);
+  const openModal = useProjectLifecycleStore((s) => s.openModal);
+  const [quickApiKey, setQuickApiKey] = useState('');
+  const [isSavingKey, setIsSavingKey] = useState(false);
+  const [keySavedNotice, setKeySavedNotice] = useState(false);
 
 
   const syncWithHistory = (updated: any) => {
@@ -214,6 +224,210 @@ export const AIBuilderPanel: React.FC = () => {
       handleSend(lastSubmittedPrompt);
     }
   };
+
+  const handleSaveQuickApiKey = async () => {
+    const trimmed = quickApiKey.trim();
+    if (!trimmed) return;
+    setIsSavingKey(true);
+    try {
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('apex_gemini_api_key', trimmed);
+      }
+      await fetch('/api/config/api-key', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ apiKey: trimmed }),
+      });
+      const { ProviderFactory } = await import('@/ai/providers/ProviderFactory');
+      const { GeminiProvider } = await import('@/ai/providers/GeminiProvider');
+      GeminiProvider.setApiKey(trimmed);
+      ProviderFactory.resetAll();
+
+      useAIStore.setState({ error: null });
+      setKeySavedNotice(true);
+      setTimeout(() => setKeySavedNotice(false), 3000);
+
+      if (lastSubmittedPrompt) {
+        handleSend(lastSubmittedPrompt);
+      }
+    } catch (e) {
+      console.error('Failed to save API key:', e);
+    } finally {
+      setIsSavingKey(false);
+    }
+  };
+
+  const handleUseOfflineDemo = () => {
+    if (!activePage) return;
+    const promptText = lastSubmittedPrompt || inputPrompt || 'Create modern responsive SaaS Hero';
+
+    const ts = Date.now();
+    const heroNodeId = `hero_${ts}`;
+    const badgeId = `badge_${ts}`;
+    const headingId = `heading_${ts}`;
+    const subId = `sub_${ts}`;
+    const btnRowId = `row_${ts}`;
+    const btn1Id = `btn1_${ts}`;
+    const btn2Id = `btn2_${ts}`;
+
+    const operations: AIOperation[] = [
+      {
+        id: `op_hero_${ts}`,
+        type: 'add_component',
+        risk: 'low',
+        reversible: true,
+        description: 'Add Responsive SaaS Hero Section',
+        pageId: activePage.id,
+        parentId: activePage.root.id,
+        node: {
+          id: heroNodeId,
+          type: 'container',
+          name: 'Hero Showcase Section',
+          props: {},
+          styles: {
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '44px 28px',
+            gap: '18px',
+            backgroundColor: '#0F172A',
+            borderRadius: '16px',
+            border: '1px solid #1E293B',
+            textAlign: 'center',
+            color: '#F8FAFC',
+            marginTop: '16px',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
+          },
+          children: [
+            {
+              id: badgeId,
+              type: 'text',
+              name: 'Pill Badge',
+              props: { content: '✨ APEX STUDIO NEXT-GEN ENGINE' },
+              styles: {
+                fontSize: '11px',
+                fontWeight: '700',
+                color: '#818CF8',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                padding: '5px 12px',
+                backgroundColor: 'rgba(99, 102, 241, 0.15)',
+                borderRadius: '9999px',
+                border: '1px solid rgba(129, 140, 248, 0.3)',
+              },
+            },
+            {
+              id: headingId,
+              type: 'heading',
+              name: 'Hero Heading',
+              props: { content: 'Build Full-Stack Apps Visually', level: 1 },
+              styles: {
+                fontSize: '32px',
+                fontWeight: '800',
+                color: '#FFFFFF',
+                lineHeight: '1.2',
+                maxWidth: '680px',
+              },
+            },
+            {
+              id: subId,
+              type: 'paragraph',
+              name: 'Hero Subtitle',
+              props: {
+                content:
+                  'Schema-first architecture with instantaneous component rendering, visual state management, and production-ready code generation.',
+              },
+              styles: {
+                fontSize: '14px',
+                color: '#94A3B8',
+                maxWidth: '560px',
+                lineHeight: '1.6',
+              },
+            },
+            {
+              id: btnRowId,
+              type: 'row',
+              name: 'Call To Action Buttons',
+              props: {},
+              styles: {
+                display: 'flex',
+                flexDirection: 'row',
+                gap: '12px',
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginTop: '8px',
+              },
+              children: [
+                {
+                  id: btn1Id,
+                  type: 'button',
+                  name: 'Primary CTA Button',
+                  props: { label: 'Explore Features 🚀' },
+                  styles: {
+                    backgroundColor: '#4F46E5',
+                    color: '#FFFFFF',
+                    padding: '10px 22px',
+                    borderRadius: '8px',
+                    fontWeight: '600',
+                    fontSize: '13px',
+                    border: 'none',
+                    cursor: 'pointer',
+                  },
+                },
+                {
+                  id: btn2Id,
+                  type: 'button',
+                  name: 'Secondary Button',
+                  props: { label: 'View Documentation' },
+                  styles: {
+                    backgroundColor: '#1E293B',
+                    color: '#CBD5E1',
+                    padding: '10px 22px',
+                    borderRadius: '8px',
+                    fontWeight: '500',
+                    fontSize: '13px',
+                    border: '1px solid #334155',
+                    cursor: 'pointer',
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      },
+    ];
+
+    const res = AITransactionManager.executeTransaction({
+      project,
+      operations,
+      prompt: promptText,
+      mode: 'generate',
+    });
+
+    if (res.success && res.updatedProject) {
+      syncWithHistory(res.updatedProject);
+      useAIStore.setState((state) => ({
+        error: null,
+        lastGenerationId: res.generationId,
+        messages: [
+          ...state.messages,
+          {
+            id: `msg_${Date.now()}`,
+            role: 'assistant',
+            content: `⚡ **Instant Demo Layout Generated!**\n\nAdded a responsive SaaS Hero Section and CTA buttons to your canvas via atomic schema transaction \`${res.generationId}\`.\n\n💡 *Tip: To generate arbitrary custom UIs with live Gemini 2.0 Flash, configure your free API key in the panel or via Project Settings.*`,
+            timestamp: new Date().toISOString(),
+            suggestedActions: [
+              'Add a 3-column feature comparison grid',
+              'Add a pricing tier table',
+              'Connect Supabase backend to form',
+            ],
+          },
+        ],
+      }));
+    }
+  };
+
 
   return (
     <div
@@ -286,6 +500,24 @@ export const AIBuilderPanel: React.FC = () => {
               {msg.content}
             </div>
 
+            {/* Quick API Key / Offline Demo actions for missing key messages */}
+            {msg.content.includes('Gemini API key not configured') && (
+              <div className="mt-2 flex items-center gap-2 flex-wrap">
+                <button
+                  onClick={() => openModal('project_settings')}
+                  className="text-[11px] px-2.5 py-1 rounded bg-indigo-900/60 border border-indigo-700 hover:bg-indigo-800 text-indigo-200 font-medium flex items-center gap-1 transition-colors shadow-sm"
+                >
+                  <Key className="w-3 h-3 text-indigo-300" /> Open Settings to Add Key
+                </button>
+                <button
+                  onClick={handleUseOfflineDemo}
+                  className="text-[11px] px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-medium flex items-center gap-1 transition-colors shadow-sm"
+                >
+                  <Zap className="w-3 h-3 text-amber-300" /> Try Offline Demo
+                </button>
+              </div>
+            )}
+
             {/* Quick action buttons if provided */}
             {msg.suggestedActions && (
               <div className="flex flex-col gap-1.5 mt-2 w-full">
@@ -339,24 +571,87 @@ export const AIBuilderPanel: React.FC = () => {
           </div>
         )}
 
-        {/* Error State with Retry */}
+        {/* Error State with Retry, Key Connect, & Offline Showcase */}
         {error && !isGenerating && (
           <div
             data-testid="ai-error-state"
-            className="p-2.5 rounded-lg bg-red-950/40 border border-red-800/80 text-red-200 space-y-2"
+            className="p-3 rounded-lg bg-red-950/40 border border-red-800/80 text-red-200 space-y-2.5"
           >
-            <div className="flex items-center gap-1.5 font-semibold text-xs text-red-400">
-              <AlertTriangle className="w-4 h-4" />
-              <span>Generation Error</span>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-1.5 font-semibold text-xs text-red-400">
+                <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />
+                <span>Generation Error</span>
+              </div>
+              <button
+                onClick={() => openModal('project_settings')}
+                className="text-[10px] text-red-300 hover:text-white underline flex items-center gap-0.5"
+              >
+                Open Settings
+              </button>
             </div>
             <p className="text-[11px] text-red-300 leading-normal">{error}</p>
-            <button
-              data-testid="ai-retry-button"
-              onClick={handleRetry}
-              className="py-1 px-2.5 rounded bg-red-800 hover:bg-red-700 text-white font-medium text-[11px] transition-colors flex items-center gap-1 shadow-sm"
-            >
-              <RefreshCw className="w-3 h-3" /> Retry Generation
-            </button>
+
+            {/* Quick Key Input Box if error is API Key related */}
+            {(error.includes('Gemini API key') || error.includes('API key')) && (
+              <div className="p-2 rounded bg-[#0D1017] border border-[#2A3142] space-y-1.5">
+                <div className="flex items-center justify-between text-[10px] font-medium text-slate-300">
+                  <span className="flex items-center gap-1">
+                    <Key className="w-3 h-3 text-indigo-400" />
+                    Quick API Key Connect
+                  </span>
+                  <a
+                    href="https://aistudio.google.com/apikey"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[10px] text-indigo-400 hover:text-indigo-300 flex items-center gap-0.5"
+                  >
+                    Get free key <ExternalLink className="w-2.5 h-2.5" />
+                  </a>
+                </div>
+                <div className="flex gap-1.5">
+                  <input
+                    type="password"
+                    placeholder="AIzaSy..."
+                    value={quickApiKey}
+                    onChange={(e) => setQuickApiKey(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter') handleSaveQuickApiKey();
+                    }}
+                    className="flex-1 bg-[#141824] border border-[#232838] focus:border-indigo-500 rounded px-2 py-1 text-xs text-white placeholder:text-slate-500 focus:outline-none"
+                  />
+                  <button
+                    onClick={handleSaveQuickApiKey}
+                    disabled={!quickApiKey.trim() || isSavingKey}
+                    className="px-2.5 py-1 rounded bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-medium text-[11px] flex items-center gap-1 transition-colors"
+                  >
+                    {isSavingKey ? 'Saving...' : 'Save & Retry'}
+                  </button>
+                </div>
+                {keySavedNotice && (
+                  <p className="text-[10px] text-emerald-400 flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3" /> Key saved and activated!
+                  </p>
+                )}
+              </div>
+            )}
+
+            <div className="flex items-center gap-2 pt-0.5 flex-wrap">
+              <button
+                data-testid="ai-retry-button"
+                onClick={handleRetry}
+                className="py-1 px-2.5 rounded bg-red-800 hover:bg-red-700 text-white font-medium text-[11px] transition-colors flex items-center gap-1 shadow-sm"
+              >
+                <RefreshCw className="w-3 h-3" /> Retry Generation
+              </button>
+
+              <button
+                data-testid="ai-offline-demo-button"
+                onClick={handleUseOfflineDemo}
+                className="py-1 px-2.5 rounded bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-medium text-[11px] transition-all flex items-center gap-1 shadow-sm"
+              >
+                <Zap className="w-3 h-3 text-amber-300" /> Instant Demo Layout
+              </button>
+            </div>
           </div>
         )}
 

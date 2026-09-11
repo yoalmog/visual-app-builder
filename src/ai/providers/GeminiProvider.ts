@@ -83,9 +83,20 @@ export class GeminiProvider implements AIProvider {
 
   private client: GoogleGenAI;
   private modelName: string;
+  private static inMemoryApiKey: string | null = null;
+
+  public static setApiKey(key: string): void {
+    GeminiProvider.inMemoryApiKey = key.trim() || null;
+  }
 
   constructor() {
-    const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY || process.env.GEMINI_API_KEY;
+    const localKey = typeof window !== 'undefined' ? localStorage.getItem('apex_gemini_api_key') : null;
+    const apiKey =
+      GeminiProvider.inMemoryApiKey ||
+      (localKey && localKey.trim().length > 0 ? localKey.trim() : null) ||
+      process.env.NEXT_PUBLIC_GEMINI_API_KEY ||
+      process.env.GEMINI_API_KEY;
+
     if (!apiKey || apiKey.trim().length === 0) {
       throw new AIError(
         'PROVIDER_UNAVAILABLE',

@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useProjectLifecycleStore } from '@/builder/lifecycle/useProjectLifecycleStore';
 import { useBuilderStore } from '@/builder/state/builder-store';
-import { X, Settings, Check } from 'lucide-react';
+import { X, Settings, Check, Key, ExternalLink } from 'lucide-react';
 
 export const ProjectSettingsModal: React.FC = () => {
   const activeModal = useProjectLifecycleStore((s) => s.activeModal);
@@ -15,7 +15,27 @@ export const ProjectSettingsModal: React.FC = () => {
   const [name, setName] = useState(project?.name || '');
   const [primaryColor, setPrimaryColor] = useState(project?.theme?.primaryColor || '#4F46E5');
   const [backgroundColor, setBackgroundColor] = useState(project?.theme?.backgroundColor || '#FFFFFF');
+  const [apiKey, setApiKey] = useState('');
+  const [showApiKey, setShowApiKey] = useState(false);
   const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    if (activeModal === 'project_settings') {
+      const localKey = typeof window !== 'undefined' ? localStorage.getItem('apex_gemini_api_key') : '';
+      if (localKey) {
+        setApiKey(localKey);
+      } else {
+        fetch('/api/config/api-key')
+          .then((r) => r.json())
+          .then((d) => {
+            if (d.configured && d.maskedKey) {
+              setApiKey(d.maskedKey);
+            }
+          })
+          .catch(() => {});
+      }
+    }
+  }, [activeModal]);
 
   if (activeModal !== 'project_settings') return null;
 
@@ -33,6 +53,21 @@ export const ProjectSettingsModal: React.FC = () => {
       },
     };
     setProject(updated);
+
+    if (apiKey.trim() && !apiKey.includes('••••')) {
+      const trimmed = apiKey.trim();
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('apex_gemini_api_key', trimmed);
+      }
+      fetch('/api/config/api-key', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ apiKey: trimmed }),
+      }).catch(console.error);
+
+      import('@/ai/providers/ProviderFactory').then((m) => m.ProviderFactory.resetAll());
+    }
+
     setSaved(true);
     setTimeout(() => {
       setSaved(false);
@@ -122,6 +157,51 @@ export const ProjectSettingsModal: React.FC = () => {
                   className="flex-1 px-2.5 py-1.5 bg-[#141824] border border-[#262D3D] rounded-lg text-xs text-white uppercase focus:outline-none"
                 />
               </div>
+            </div>
+          </div>
+
+          {/* AI Configuration Section */}
+          <div className="pt-3 border-t border-[#1E2330] space-y-2">
+            <div className="flex items-center justify-between">
+              <label className="block text-xs font-semibold text-slate-300">
+                Google Gemini API Key
+              </label>
+              <span
+                className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
+                  apiKey.trim()
+                    ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                    : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                }`}
+              >
+                {apiKey.trim() ? '● Configured' : '○ Not Set'}
+              </span>
+            </div>
+            <div className="relative">
+              <input
+                type={showApiKey ? 'text' : 'password'}
+                placeholder="AIzaSy..."
+                value={apiKey}
+                onChange={(e) => setApiKey(e.target.value)}
+                className="w-full px-3 py-2 pr-16 bg-[#141824] border border-[#262D3D] rounded-lg text-xs text-white placeholder-slate-500 font-mono focus:outline-none focus:border-indigo-500"
+              />
+              <button
+                type="button"
+                onClick={() => setShowApiKey(!showApiKey)}
+                className="absolute right-2 top-2 text-[10px] text-slate-400 hover:text-white px-1.5 py-0.5 rounded bg-[#1C2234]"
+              >
+                {showApiKey ? 'Hide' : 'Show'}
+              </button>
+            </div>
+            <div className="text-[11px] text-slate-400 flex items-center justify-between">
+              <span>Required for AI Application Builder.</span>
+              <a
+                href="https://aistudio.google.com/apikey"
+                target="_blank"
+                rel="noreferrer"
+                className="text-indigo-400 hover:underline inline-flex items-center gap-0.5"
+              >
+                Get free key ↗
+              </a>
             </div>
           </div>
         </div>
