@@ -56,7 +56,11 @@ export class ScreenshotAnalyzer {
     }
 
     const client = new GoogleGenAI({ apiKey });
-    const modelName = process.env.NEXT_PUBLIC_GEMINI_MODEL || 'gemini-2.0-flash-exp';
+    const localModel = typeof window !== 'undefined' ? localStorage.getItem('apex_gemini_model') : null;
+    let modelName = localModel || process.env.NEXT_PUBLIC_GEMINI_MODEL || 'gemini-2.0-flash';
+    if (modelName.includes('-exp')) {
+      modelName = 'gemini-2.0-flash';
+    }
 
     // Build the image part for Gemini
     let imagePart: any;

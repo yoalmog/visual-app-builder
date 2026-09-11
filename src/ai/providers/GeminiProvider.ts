@@ -104,11 +104,65 @@ export class GeminiProvider implements AIProvider {
       );
     }
     this.client = new GoogleGenAI({ apiKey });
-    this.modelName = process.env.NEXT_PUBLIC_GEMINI_MODEL || 'gemini-2.0-flash-exp';
+    const localModel = typeof window !== 'undefined' ? localStorage.getItem('apex_gemini_model') : null;
+    let model = localModel || process.env.NEXT_PUBLIC_GEMINI_MODEL || 'gemini-2.0-flash';
+    if (model.includes('-exp')) {
+      model = 'gemini-2.0-flash';
+    }
+    this.modelName = model;
   }
 
   public supportsVision(): boolean { return true; }
   public supportsStructuredOutput(): boolean { return true; }
+
+  public setModel(model: string): void {
+    this.modelName = model;
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('apex_gemini_model', model);
+    }
+  }
+
+  public getModel(): string {
+    return this.modelName;
+  }
+
+  private getCandidateModels(): string[] {
+    const defaultOrder = ['gemini-2.0-flash', 'gemini-1.5-flash', 'gemini-1.5-pro'];
+    const candidates = [this.modelName, ...defaultOrder];
+    return Array.from(
+      new Set(
+        candidates
+          .filter(Boolean)
+          .map((m) => (m.includes('-exp') ? 'gemini-2.0-flash' : m))
+      )
+    );
+  }
+
+  private isModelNotFoundError(err: any): boolean {
+    const str = String(err?.message || err?.status || err || '').toLowerCase();
+    return (
+      str.includes('not found') ||
+      str.includes('404') ||
+      str.includes('not supported for generatecontent') ||
+      str.includes('listmodels')
+    );
+  }
+
+  private formatGeminiErrorMessage(err: any): string {
+    const raw = err?.message || String(err || 'Unknown error');
+    try {
+      const match = raw.match(/\{[\s\S]*\}/);
+      if (match) {
+        const parsed = JSON.parse(match[0]);
+        if (parsed?.error?.message) {
+          return `Gemini API: ${parsed.error.message.trim()}`;
+        }
+      }
+    } catch {
+      // ignore JSON parse error
+    }
+    return `Gemini API error: ${raw}`;
+  }
 
   public async estimateCost(request: AIRequest): Promise<AICostEstimate> {
     const inputTokens = Math.ceil((request.prompt?.length || 0) / 4) + 800;
@@ -126,17 +180,45 @@ export class GeminiProvider implements AIProvider {
     }
 
     const startMs = Date.now();
+    const candidateModels = this.getCandidateModels();
+    let response: any = null;
+    let successfulModel = this.modelName;
+    let lastErr: any = null;
 
-    const response = await this.client.models.generateContent({
-      model: this.modelName,
-      contents: buildUserMessage(request),
-      config: {
-        systemInstruction: SYSTEM_PROMPT,
-        responseMimeType: 'application/json',
-        temperature: 0.7,
-        maxOutputTokens: 8192,
-      },
-    });
+    for (const model of candidateModels) {
+      try {
+        response = await this.client.models.generateContent({
+          model,
+          contents: buildUserMessage(request),
+          config: {
+            systemInstruction: SYSTEM_PROMPT,
+            responseMimeType: 'application/json',
+            temperature: 0.7,
+            maxOutputTokens: 8192,
+          },
+        });
+        successfulModel = model;
+        this.modelName = model;
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('apex_gemini_model', model);
+        }
+        break;
+      } catch (err: any) {
+        lastErr = err;
+        if (this.isModelNotFoundError(err)) {
+          console.warn(`[GeminiProvider] Model ${model} not available. Trying next candidate...`);
+          continue;
+        }
+        throw new AIError('PROVIDER_UNAVAILABLE', this.formatGeminiErrorMessage(err));
+      }
+    }
+
+    if (!response) {
+      throw new AIError(
+        'PROVIDER_UNAVAILABLE',
+        lastErr ? this.formatGeminiErrorMessage(lastErr) : 'No available Gemini model responded.'
+      );
+    }
 
     const rawText = response.text || '';
     const durationMs = Date.now() - startMs;
@@ -156,7 +238,7 @@ export class GeminiProvider implements AIProvider {
     return {
       id: `gemini_resp_${Date.now()}`,
       provider: this.id,
-      model: this.modelName,
+      model: successfulModel,
       text: structuredData.explanation || structuredData.summary || 'Generated successfully.',
       structuredData,
       finishReason: 'stop',
@@ -182,18 +264,43 @@ export class GeminiProvider implements AIProvider {
     const startMs = Date.now();
 
     try {
-      callbacks.onProgress?.('Gemini AI analyzing your request...', 30);
+      const candidateModels = this.getCandidateModels();
+      let streamResult: any = null;
+      let successfulModel = this.modelName;
+      let lastErr: any = null;
 
-      const streamResult = await this.client.models.generateContentStream({
-        model: this.modelName,
-        contents: buildUserMessage(request),
-        config: {
-          systemInstruction: SYSTEM_PROMPT,
-          responseMimeType: 'application/json',
-          temperature: 0.7,
-          maxOutputTokens: 8192,
-        },
-      });
+      for (const model of candidateModels) {
+        try {
+          callbacks.onProgress?.(`Contacting Gemini (${model})...`, 30);
+          streamResult = await this.client.models.generateContentStream({
+            model,
+            contents: buildUserMessage(request),
+            config: {
+              systemInstruction: SYSTEM_PROMPT,
+              responseMimeType: 'application/json',
+              temperature: 0.7,
+              maxOutputTokens: 8192,
+            },
+          });
+          successfulModel = model;
+          this.modelName = model;
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('apex_gemini_model', model);
+          }
+          break;
+        } catch (err: any) {
+          lastErr = err;
+          if (this.isModelNotFoundError(err)) {
+            console.warn(`[GeminiProvider] Model ${model} not available. Trying next candidate...`);
+            continue;
+          }
+          throw err;
+        }
+      }
+
+      if (!streamResult) {
+        throw lastErr || new AIError('PROVIDER_UNAVAILABLE', 'No available Gemini model responded.');
+      }
 
       callbacks.onProgress?.('Gemini AI generating application structure...', 55);
 
@@ -230,7 +337,7 @@ export class GeminiProvider implements AIProvider {
       callbacks.onComplete?.({
         id: `gemini_stream_${Date.now()}`,
         provider: this.id,
-        model: this.modelName,
+        model: successfulModel,
         text: structuredData.explanation || structuredData.summary || 'Generated successfully.',
         structuredData,
         finishReason: 'stop',
@@ -244,7 +351,7 @@ export class GeminiProvider implements AIProvider {
       callbacks.onError?.(
         err instanceof AIError
           ? err
-          : new AIError('PROVIDER_UNAVAILABLE', `Gemini API error: ${err?.message || String(err)}`)
+          : new AIError('PROVIDER_UNAVAILABLE', this.formatGeminiErrorMessage(err))
       );
     }
   }

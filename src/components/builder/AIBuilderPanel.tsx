@@ -257,6 +257,18 @@ export const AIBuilderPanel: React.FC = () => {
     }
   };
 
+  const handleSwitchModel = async (newModel: string) => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('apex_gemini_model', newModel);
+    }
+    const { ProviderFactory } = await import('@/ai/providers/ProviderFactory');
+    ProviderFactory.resetAll();
+    useAIStore.setState({ error: null });
+    if (lastSubmittedPrompt) {
+      handleSend(lastSubmittedPrompt);
+    }
+  };
+
   const handleUseOfflineDemo = () => {
     if (!activePage) return;
     const promptText = lastSubmittedPrompt || inputPrompt || 'Create modern responsive SaaS Hero';
@@ -632,6 +644,29 @@ export const AIBuilderPanel: React.FC = () => {
                     <CheckCircle2 className="w-3 h-3" /> Key saved and activated!
                   </p>
                 )}
+              </div>
+            )}
+
+            {/* Quick Model Fallback Switch if error is 404 or model-related */}
+            {(error.includes('404') || error.toLowerCase().includes('not found') || error.toLowerCase().includes('model')) && (
+              <div className="p-2 rounded bg-[#0D1017] border border-[#2A3142] space-y-1.5">
+                <span className="text-[10px] text-slate-300 font-medium block">
+                  Model Not Found? Switch & Retry:
+                </span>
+                <div className="flex gap-1.5 flex-wrap">
+                  <button
+                    onClick={() => handleSwitchModel('gemini-2.0-flash')}
+                    className="px-2 py-1 rounded bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-medium transition-colors"
+                  >
+                    Use Gemini 2.0 Flash
+                  </button>
+                  <button
+                    onClick={() => handleSwitchModel('gemini-1.5-flash')}
+                    className="px-2 py-1 rounded bg-slate-700 hover:bg-slate-600 text-white text-[10px] font-medium transition-colors"
+                  >
+                    Use Gemini 1.5 Flash
+                  </button>
+                </div>
               </div>
             )}
 
